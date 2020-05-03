@@ -1,6 +1,8 @@
 lib
 src/pb
 
+.vscode/
+
 lib-cov
 *.seed
 *.log

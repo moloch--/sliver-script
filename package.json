@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "./protobuf.sh && tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --config jestconfig.json"
   },
   "prepublishOnly" : "npm test && npm run lint",
   "files": [
