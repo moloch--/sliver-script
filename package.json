@@ -8,13 +8,13 @@
     "build": "./protobuf.sh && tsc",
     "test": "jest --config jestconfig.json"
   },
-  "prepublishOnly" : "npm test && npm run lint",
+  "prepublishOnly": "npm test && npm run lint",
   "files": [
     "lib/**/*"
   ],
   "keywords": [],
   "author": "moloch",
-  "license": "GPLv3",
+  "license": "AGPL-3.0-only",
   "repository": {
     "type": "git",
     "url": "https://github.com/moloch--/sliver-script"
