@@ -19,7 +19,7 @@ PROTOC_GEN_TS_PATH="./node_modules/.bin/protoc-gen-ts"
 PROTOC_GEN_GRPC_PATH="./node_modules/.bin/grpc_tools_node_protoc_plugin"
 
 TS_OUT_DIR="./src/pb"
-JS_OUT_DIR="./src/pb"
+JS_OUT_DIR="./lib/pb"
 
 # Directory to write generated code to (.js and .d.ts files)
 mkdir -p ${TS_OUT_DIR} && mkdir -p  ${JS_OUT_DIR}
