@@ -1,0 +1,5 @@
+[submodule "sliver"]
+	path = sliver
+	url = https://github.com/BishopFox/sliver
+[submodule "Submod"]
+	branch = grpc
