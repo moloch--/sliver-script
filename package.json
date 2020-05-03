@@ -2,7 +2,8 @@
   "name": "sliver-script",
   "version": "1.0.0",
   "description": "TypeScript/JavaScript Sliver client library",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "./protobuf.sh && tsc",
     "test": "jest --config jestconfig.json"
