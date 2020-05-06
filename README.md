@@ -21,14 +21,14 @@ import { SliverClient, ParseConfigFile } from 'sliver-script';
 
 (async function () {
     
-    const config = await ParseConfigFile('./moloch_localhost.cfg');
-    const client = new SliverClient(config);
+    const config = await ParseConfigFile('./moloch_localhost.cfg')
+    const client = new SliverClient(config)
 
-    console.log(`Connecting to ${client.host()} ...`);
-    await client.connect();
+    console.log(`Connecting to ${client.host()} ...`)
+    await client.connect()
 
-    sessions = await client.sessions();
-    console.log(sessions);
+    sessions = await client.sessions()
+    console.log(sessions)
 
 })()
 ```
@@ -45,7 +45,7 @@ import { SliverClient, ParseConfigFile } from 'sliver-script';
     const client = new SliverClient(config);
     await client.connect()
     client.event$.subscribe(event => {
-        console.log(event);
+        console.log(event)
     });
 
 })();

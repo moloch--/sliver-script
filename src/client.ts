@@ -1,5 +1,6 @@
 import * as grpc from 'grpc';
 import { Subject } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 import * as commonpb from './pb/commonpb/common_pb';
 import * as clientpb from './pb/clientpb/client_pb'
@@ -11,7 +12,7 @@ import { SliverClientConfig } from './config';
 const TIMEOUT = 30; // Default timeout in seconds
 
 
-export class Session {
+export class InteractiveSession {
 
   private _rpc: SliverRPCClient;
   private _session: clientpb.Session;
@@ -78,7 +79,7 @@ export class Session {
     });
   }
 
-  ls(path: string, timeout = TIMEOUT): Promise<sliverpb.Ls> {
+  ls(path = '.', timeout = TIMEOUT): Promise<sliverpb.Ls> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.LsReq();
       req.setPath(path);
@@ -363,6 +364,10 @@ export class SliverClient {
   private _events: grpc.ClientReadableStream<clientpb.Event>|null = null;
   event$ = new Subject<clientpb.Event>();
 
+  session$ = this.event$.pipe(filter(event => event.getSession() !== undefined));
+  job$ = this.event$.pipe(filter(event => event.getJob() !== undefined));
+  client$ = this.event$.pipe(filter(event => event.getClient() !== undefined));
+
   constructor(config: SliverClientConfig) {
     this._config = config;
   }
@@ -438,8 +443,8 @@ export class SliverClient {
     });
   }
 
-  async interact(session: clientpb.Session): Promise<Session> {
-    return new Session(this.rpc, session);
+  async interact(session: clientpb.Session): Promise<InteractiveSession> {
+    return new InteractiveSession(this.rpc, session);
   }
 
   killSession(sessionId: number, timeout = TIMEOUT): Promise<void> {
