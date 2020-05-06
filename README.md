@@ -17,7 +17,7 @@ __NOTE:__ Due to unresolved issues with `grpc-node` this library only supports N
 #### Basic
 
 ```typescript
-import { SliverClient, ParseConfigFile } from 'sliver-script';
+import { SliverClient, ParseConfigFile } from 'sliver-script'
 
 (async function () {
     
@@ -36,25 +36,25 @@ import { SliverClient, ParseConfigFile } from 'sliver-script';
 #### Monitor Events in Real-time
 
 ```typescript
-import { SliverClient, ParseConfigFile } from 'sliver-script';
+import { SliverClient, ParseConfigFile } from 'sliver-script'
 
 (async function() {
 
     const config = await ParseConfigFile('./moloch_localhost.cfg')
 
-    const client = new SliverClient(config);
+    const client = new SliverClient(config)
     await client.connect()
     client.event$.subscribe((event) => {
         console.log(event)
-    });
+    })
 
-})();
+})()
 ```
 
 #### Automatically Interact with New Sessions
 
 ```typescript
-import { SliverClient, ParseConfigFile } from 'sliver-script';
+import { SliverClient, ParseConfigFile } from 'sliver-script'
 
 
 (async function() {
