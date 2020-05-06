@@ -59,20 +59,20 @@ import { SliverClient, ParseConfigFile } from 'sliver-script';
 
 (async function() {
 
-    const config = await ParseConfigFile('/Users/moloch/.sliver-client/configs/moloch_localhost.cfg')
+    const config = await ParseConfigFile('moloch_localhost.cfg')
     const client = new SliverClient(config);
     await client.connect()
 
     console.log('Waiting for new sessions ...')
     client.session$.subscribe(async (event) => {
         console.log(`New session #${event.getSession().getId()}!`)
-        const session = await client.interact(event.getSession());
+        const session = await client.interact(event.getSession())
         const ls = await session.ls();
         console.log(`Path: ${ls.getPath()}`)
         ls.getFilesList().forEach(file => {
-            console.log(`Name: ${file.getName()} (Size: ${file.getSize()})`);
-        });
-    });
+            console.log(`Name: ${file.getName()} (Size: ${file.getSize()})`)
+        })
+    })
 
-})();
+})()
 ```
