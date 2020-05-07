@@ -51,7 +51,7 @@ protoc \
     --plugin=protoc-gen-grpc=${PROTOC_GEN_GRPC_PATH} \
     --js_out="import_style=commonjs,binary:${OUT_DIR}" \
     --ts_out="service=grpc-node:${OUT_DIR}" \
-    --grpc_out="${OUT_DIR}" \
+    --grpc_out="generate_package_definition:${OUT_DIR}" \
     sliver/protobuf/rpcpb/services.proto
 
 cp -r ${OUT_DIR} ${LIB_DIR}
