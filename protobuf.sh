@@ -55,5 +55,7 @@ protoc \
     --grpc_out=generate_package_definition:${OUT_DIR} \
     sliver/protobuf/rpcpb/services.proto
 
+# Because NodeJS is a fucking joke of languange
+sed -i '' 's/"grpc"/"@grpc\/grpc-js"/' ./${OUT_DIR}/rpcpb/services_grpc_pb.d.ts
 cp -r ${OUT_DIR} ${LIB_DIR}
 
