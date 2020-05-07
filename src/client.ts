@@ -1,4 +1,4 @@
-import * as grpc from 'grpc';
+import * as grpc from '@grpc/grpc-js';
 import { Subject } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
