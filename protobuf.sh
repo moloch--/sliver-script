@@ -15,47 +15,18 @@
 
 
 # Path to this plugin
-PROTOC_GEN_TS_PATH="./node_modules/.bin/protoc-gen-ts"
-PROTOC_GEN_GRPC_PATH="./node_modules/.bin/grpc_tools_node_protoc_plugin"
+PROTOC="./node_modules/.bin/pbjs"
+PROTOC_TS="./node_modules/.bin/pbts"
+OUT_DIR="./src"
 
-OUT_DIR="src/pb"
-LIB_DIR="lib"
-
-# Directory to write generated code to (.js and .d.ts files)
-rm -rf ./${OUT_DIR} ./${LIB_DIR}
-mkdir -p ${OUT_DIR} && mkdir -p  ${LIB_DIR}
-
-protoc \
-    -I sliver/protobuf \
-    --plugin=protoc-gen-ts=${PROTOC_GEN_TS_PATH} \
-    --js_out=import_style=commonjs,binary:${OUT_DIR} \
-    --ts_out=${OUT_DIR} \
-    sliver/protobuf/commonpb/common.proto
-
-protoc \
-    -I sliver/protobuf \
-    --plugin=protoc-gen-ts=${PROTOC_GEN_TS_PATH} \
-    --js_out=import_style=commonjs,binary:${OUT_DIR} \
-    --ts_out=${OUT_DIR} \
-    sliver/protobuf/sliverpb/sliver.proto
-
-protoc \
-    -I sliver/protobuf \
-    --plugin=protoc-gen-ts=${PROTOC_GEN_TS_PATH} \
-    --js_out=import_style=commonjs,binary:${OUT_DIR} \
-    --ts_out=${OUT_DIR} \
-    sliver/protobuf/clientpb/client.proto
-
-protoc \
-    -I sliver/protobuf \
-    --plugin=protoc-gen-ts=${PROTOC_GEN_TS_PATH} \
-    --plugin=protoc-gen-grpc=${PROTOC_GEN_GRPC_PATH} \
-    --js_out=import_style=commonjs,binary:${OUT_DIR} \
-    --ts_out=service=grpc-node:${OUT_DIR} \
-    --grpc_out=generate_package_definition:${OUT_DIR} \
+${PROTOC} \
+    --target static-module \
+    --path sliver/protobuf \
+    --es6 --wrap es6 \
+    --out ${OUT_DIR}/proto.js \
+    sliver/protobuf/commonpb/common.proto \
+    sliver/protobuf/sliverpb/sliver.proto \
+    sliver/protobuf/clientpb/client.proto \
     sliver/protobuf/rpcpb/services.proto
 
-# Because NodeJS is a fucking joke of languange
-sed -i '' 's/"grpc"/"@grpc\/grpc-js"/' ./${OUT_DIR}/rpcpb/services_grpc_pb.d.ts
-cp -r ${OUT_DIR} ${LIB_DIR}
-
+${PROTOC_TS} -o ${OUT_DIR}/proto.d.ts ${OUT_DIR}/proto.js

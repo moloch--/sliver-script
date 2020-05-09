@@ -2,10 +2,8 @@ import * as grpc from '@grpc/grpc-js';
 import { Subject } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
-import * as commonpb from './pb/commonpb/common_pb';
-import * as clientpb from './pb/clientpb/client_pb'
-import * as sliverpb from './pb/sliverpb/sliver_pb'
-import { SliverRPCClient } from './pb/rpcpb/services_grpc_pb';
+import { commonpb, sliverpb, clientpb } from './proto';
+
 import { SliverClientConfig } from './config';
 
 
