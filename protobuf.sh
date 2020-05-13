@@ -15,36 +15,52 @@
 
 
 # Path to this plugin
-PROTOC="./node_modules/.bin/grpc_tools_node_protoc"
-PROTOC_GEN_TS_PATH="./node_modules/.bin/protoc-gen-ts"
 OUT_DIR="./src/pb"
+TS_OUT_DIR="./src/pb"
 
-${PROTOC} \
+IN_DIR="./sliver/protobuf"
+
+PROTOC="node_modules/.bin/grpc_tools_node_protoc"
+PROTOC_GEN_TS="node_modules/.bin/protoc-gen-ts"
+
+mkdir -p "$OUT_DIR"
+mkdir -p "$TS_OUT_DIR"
+
+
+$PROTOC \
     -I ./sliver/protobuf/ \
-    --plugin="protoc-gen-ts=${PROTOC_GEN_TS_PATH}" \
+    --plugin="protoc-gen-ts=${PROTOC_GEN_TS}" \
     --js_out="import_style=commonjs,binary:${OUT_DIR}" \
     --ts_out="${OUT_DIR}" \
     sliver/protobuf/commonpb/common.proto
 
-${PROTOC} \
+$PROTOC \
     -I ./sliver/protobuf/ \
-    --plugin="protoc-gen-ts=${PROTOC_GEN_TS_PATH}" \
+    --plugin="protoc-gen-ts=${PROTOC_GEN_TS}" \
     --js_out="import_style=commonjs,binary:${OUT_DIR}" \
     --ts_out="${OUT_DIR}" \
     sliver/protobuf/sliverpb/sliver.proto
 
-${PROTOC} \
+$PROTOC \
     -I ./sliver/protobuf/ \
-    --plugin="protoc-gen-ts=${PROTOC_GEN_TS_PATH}" \
+    --plugin="protoc-gen-ts=${PROTOC_GEN_TS}" \
     --js_out="import_style=commonjs,binary:${OUT_DIR}" \
     --ts_out="${OUT_DIR}" \
     sliver/protobuf/clientpb/client.proto
 
-${PROTOC} \
-    -I ./sliver/protobuf \
-    --plugin="protoc-gen-ts=${PROTOC_GEN_TS_PATH}" \
-    --ts_out="service=grpc-node:${OUT_DIR}" \
-    --grpc_out="generate_package_definition:${OUT_DIR}" \
-    sliver/protobuf/rpcpb/services.proto
 
-sed -i '' 's/\"grpc\"/\"\@grpc\/grpc-js\"/1' ${OUT_DIR}/rpcpb/services_grpc_pb.d.ts
+$PROTOC \
+    -I=$IN_DIR \
+    --plugin=protoc-gen-ts=$PROTOC_GEN_TS \
+    --js_out=import_style=commonjs:$OUT_DIR \
+    --grpc_out=:$OUT_DIR \
+    --ts_out=service=grpc-node:$TS_OUT_DIR \
+    $IN_DIR/rpcpb/services.proto
+
+sed -i "" -e \
+    "s/require('grpc')/require('@grpc\/grpc-js')/g" \
+    "$OUT_DIR/rpcpb/"*
+
+sed -i "" -e \
+    "s/from \"grpc\"/from \"@grpc\/grpc-js\"/g" \
+    "$TS_OUT_DIR/rpcpb/"*
