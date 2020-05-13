@@ -1,13 +1,13 @@
 # Sliver Script
 
-TypeScript/JavaScript client library for Sliver.
+Sliver-script is a TypeScript/JavaScript client library for Sliver, it can be used to automate any operator interaction with Sliver.
 
 
 ### Install
 
-This package is available via npm: `npm install sliver-script`
+For best compatibility use Node v14+ this package is available via npm: 
+`npm install sliver-script`
 
-__NOTE:__ For best compatibility use Node v14+
 
 ### TypeScript Example
 
