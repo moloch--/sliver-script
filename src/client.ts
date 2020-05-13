@@ -1,11 +1,12 @@
-import * as grpc from 'grpc';
+import * as grpc from '@grpc/grpc-js';
 import { Subject } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 import * as commonpb from './pb/commonpb/common_pb';
-import * as clientpb from './pb/clientpb/client_pb'
-import * as sliverpb from './pb/sliverpb/sliver_pb'
-import { SliverRPCClient } from './pb/rpcpb/services_grpc_pb';
+import * as sliverpb from './pb/sliverpb/sliver_pb';
+import * as clientpb from './pb/clientpb/client_pb';
+import * as rpcpb from './pb/rpcpb/services_grpc_pb';
+
 import { SliverClientConfig } from './config';
 
 
@@ -14,10 +15,10 @@ const TIMEOUT = 30; // Default timeout in seconds
 
 export class InteractiveSession {
 
-  private _rpc: SliverRPCClient;
+  private _rpc: rpcpb.SliverRPCClient;
   private _session: clientpb.Session;
 
-  constructor(rpc: SliverRPCClient, session: clientpb.Session) {
+  constructor(rpc: rpcpb.SliverRPCClient, session: clientpb.Session) {
     this._rpc = rpc;
     this._session = session;
   }
@@ -358,7 +359,7 @@ export class InteractiveSession {
 export class SliverClient {
 
   private _config: SliverClientConfig;
-  private _rpc: SliverRPCClient|null = null;
+  private _rpc: rpcpb.SliverRPCClient|null = null;
   private empty = new commonpb.Empty();
 
   private _events: grpc.ClientReadableStream<clientpb.Event>|null = null;
@@ -385,7 +386,7 @@ export class SliverClient {
     });
   }
 
-  get rpc(): SliverRPCClient {
+  get rpc(): rpcpb.SliverRPCClient {
     if (this._rpc === null) {
       throw new Error('SliverRPCClient not connected');
     }
@@ -398,7 +399,7 @@ export class SliverClient {
 
   connect(): Promise<SliverClient> {
     return new Promise((resolve, reject) => {
-      const rpc = new SliverRPCClient(this.host(), this.credentials());
+      const rpc = new rpcpb.SliverRPCClient(this.host(), this.credentials());
       rpc.getVersion(this.empty, (err) => {
         if (err) {
           return reject(err);
