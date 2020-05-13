@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build": "cp -r ./sliver/protobuf/ ./src/protobuf && cp -r ./sliver/protobuf/ ./lib/protobuf && tsc",
+    "build": "./protobuf.sh && cp -r ./src/pb ./lib/pb && tsc",
     "test": "jest --config jestconfig.json"
   },
   "prepublishOnly": "npm test && npm run lint",
