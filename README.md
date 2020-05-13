@@ -5,12 +5,9 @@ TypeScript/JavaScript client library for Sliver.
 
 ### Install
 
-This package is available via npm:
+This package is available via npm: `npm install sliver-script`
 
-`npm install sliver-script`
-
-__NOTE:__ Due to unresolved issues with `grpc-node` this library only supports NodeJS v12.x, though with some workarounds it may be possible to run on newer versions.
- * [Issue #1376](https://github.com/grpc/grpc-node/issues/1376)
+__NOTE:__ For best compatibility use Node v14+
 
 ### TypeScript Example
 
