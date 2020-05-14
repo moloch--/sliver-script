@@ -1,6 +1,6 @@
 # Sliver Script
 
-Sliver-script is a TypeScript/JavaScript client library for Sliver, it can be used to automate any operator interaction with Sliver.
+Sliver-script is a TypeScript/JavaScript client library for Sliver, it can be used to automate any operator interaction with Sliver. Sliver-script uses existing Sliver client configuration files and connects to servers using gRPC over Mutual-TLS. It also provides [RxJS](https://www.learnrxjs.io/) abstractions for easy interactions with real-time components.
 
 
 ### Install

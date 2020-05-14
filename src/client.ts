@@ -1,5 +1,5 @@
 import * as grpc from '@grpc/grpc-js';
-import { Subject } from 'rxjs';
+import { Subject, Observable, Observer } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 import * as commonpb from './pb/commonpb/common_pb';
@@ -17,9 +17,13 @@ export class InteractiveSession {
 
   private _rpc: rpcpb.SliverRPCClient;
   private _session: clientpb.Session;
+  private _tunnelStream: grpc.ClientDuplexStream<sliverpb.TunnelData, sliverpb.TunnelData>;
 
-  constructor(rpc: rpcpb.SliverRPCClient, session: clientpb.Session) {
+  constructor(rpc: rpcpb.SliverRPCClient, 
+              tunnelStream: grpc.ClientDuplexStream<sliverpb.TunnelData, sliverpb.TunnelData>,  
+              session: clientpb.Session) {
     this._rpc = rpc;
+    this._tunnelStream = tunnelStream;
     this._session = session;
   }
 
@@ -229,20 +233,6 @@ export class InteractiveSession {
     });
   }
 
-  remoteTask(pid: number, shellcode: Buffer, encoder: string, rwx: boolean, timeout = TIMEOUT): Promise<sliverpb.Task> {
-    return new Promise((resolve, reject) => {
-      const req = new sliverpb.RemoteTaskReq();
-      req.setEncoder(encoder);
-      req.setRwxpages(rwx);
-      req.setPid(pid);
-      req.setData(shellcode);
-      req.setRequest(this.request(timeout));
-      this._rpc.remoteTask(req, (err, task) => {
-        err ? reject(err) : resolve(task);
-      });
-    });
-  }
-
   msf(payload: string, lhost: string, lport: number, encoder: string, iterations: number, timeout = TIMEOUT): Promise<void> {
     return new Promise((resolve, reject) => {
       const req = new clientpb.MSFReq();
@@ -353,6 +343,51 @@ export class InteractiveSession {
     });
   }
 
+  shell(path: string, pty: boolean, timeout = TIMEOUT): Promise<void> {
+    return new Promise((resolve, reject) => {
+
+      const tunnel = new sliverpb.Tunnel();
+      tunnel.setSessionid(this._session.getId());
+      this._rpc.createTunnel(tunnel, (err, rpcTunnel) => {
+        if (err || rpcTunnel === undefined) {
+          return reject(err);
+        }
+        const tunnelData = new sliverpb.TunnelData();
+        tunnelData.setSessionid(this._session.getId());
+        tunnelData.setTunnelid(rpcTunnel.getTunnelid());
+        this._tunnelStream.write(tunnelData); // Bind tunnel
+        const req = new sliverpb.ShellReq();
+        req.setTunnelid(rpcTunnel.getTunnelid());
+        req.setPath(path);
+        req.setEnablepty(pty);
+        req.setRequest(this.request(timeout));
+        this._rpc.shell(req, (err, shell) => {
+          if (err || shell === undefined) {
+            return reject(err);
+          }
+          
+          const stdout = new Observable<Buffer>();
+
+          const stdin: Observer<Buffer> = {
+            next: (raw: Buffer) => {
+              const data = new sliverpb.TunnelData();
+              data.setTunnelid(rpcTunnel.getTunnelid());
+              data.setSessionid(this._session.getId());
+              data.setData(raw);
+              this._tunnelStream.write(data);
+            },
+            complete: () => {
+              this._rpc.closeTunnel(rpcTunnel, () => {})
+            },
+            error: () => {},
+          };
+
+        });
+      });
+
+    });
+  }
+
 }
 
 
@@ -369,12 +404,14 @@ export class SliverClient {
   job$ = this.event$.pipe(filter(event => event.getJob() !== undefined));
   client$ = this.event$.pipe(filter(event => event.getClient() !== undefined));
 
+  private _tunnelStream: grpc.ClientDuplexStream<sliverpb.TunnelData, sliverpb.TunnelData>|null = null;
+
   constructor(config: SliverClientConfig) {
     this._config = config;
   }
 
   host(): string {
-    return `${this._config.lhost}:${this._config.lport}`
+    return `${this._config.lhost}:${this._config.lport}`;
   }
 
   credentials(): grpc.ChannelCredentials {
@@ -382,7 +419,7 @@ export class SliverClient {
     const privateKey = Buffer.from(this._config.private_key);
     const certificate = Buffer.from(this._config.certificate);
     return grpc.credentials.createSsl(ca, privateKey, certificate, {
-      checkServerIdentity: () => undefined,  // This doesn't work, hostname must match
+      checkServerIdentity: () => undefined,
     });
   }
 
@@ -391,6 +428,13 @@ export class SliverClient {
       throw new Error('SliverRPCClient not connected');
     }
     return this._rpc;
+  }
+
+  get tunnelStream(): grpc.ClientDuplexStream<sliverpb.TunnelData, sliverpb.TunnelData> {
+    if (this._tunnelStream === null) {
+      throw new Error('SliverRPCClient not connected');
+    }
+    return this._tunnelStream;
   }
 
   get isConnected(): boolean {
@@ -404,11 +448,22 @@ export class SliverClient {
         if (err) {
           return reject(err);
         }
+
+        // RPC Client
         this._rpc = rpc;
+
+        // Events streams
         this._events = this.rpc.events(this.empty);
         this._events?.on('data', event => { this.event$.next(event) });
         this._events?.on('error', err => { this.event$.error(err) });
         this._events?.on('end', () => { this.event$.complete() });
+
+        // Tunnel streams
+        this._tunnelStream = rpc.tunnelData();
+        if (this._tunnelStream === undefined) {
+          return reject('Failed to open tunnel data stream');
+        }
+
         resolve(this);
       });
     });
@@ -445,7 +500,7 @@ export class SliverClient {
   }
 
   async interact(session: clientpb.Session): Promise<InteractiveSession> {
-    return new InteractiveSession(this.rpc, session);
+    return new InteractiveSession(this.rpc, this.tunnelStream, session);
   }
 
   killSession(sessionId: number, timeout = TIMEOUT): Promise<void> {
