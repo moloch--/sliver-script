@@ -17,7 +17,7 @@ For best compatibility use Node v14+ this package is available via npm:
 ```typescript
 import { SliverClient, ParseConfigFile } from 'sliver-script'
 
-(async function () {
+(async function() {
     
     const config = await ParseConfigFile('./moloch_localhost.cfg')
     const client = new SliverClient(config)

@@ -1,5 +1,5 @@
 [submodule "sliver"]
 	path = sliver
-	url = https://github.com/BishopFox/sliver
+	url = https://github.com/BishopFox/sliver.git
 [submodule "Submod"]
-	branch = grpc
+	branch = master

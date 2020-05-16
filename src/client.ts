@@ -13,6 +13,13 @@ import { SliverClientConfig } from './config';
 const TIMEOUT = 30; // Default timeout in seconds
 
 
+// Exported/simplified tunnel interfaces
+export interface Tunnel {
+  stdout: Observable<Buffer>
+  stdin: Observer<Buffer>
+}
+
+
 export class InteractiveSession {
 
   private _rpc: rpcpb.SliverRPCClient;
@@ -343,7 +350,7 @@ export class InteractiveSession {
     });
   }
 
-  shell(path: string, pty: boolean, timeout = TIMEOUT): Promise<void> {
+  shell(path: string, pty: boolean, timeout = TIMEOUT): Promise<Tunnel> {
     return new Promise((resolve, reject) => {
 
       const tunnel = new sliverpb.Tunnel();
@@ -365,9 +372,13 @@ export class InteractiveSession {
           if (err || shell === undefined) {
             return reject(err);
           }
-          
-          const stdout = new Observable<Buffer>();
 
+          const stdout = new Observable<Buffer>(producer => {
+            this._tunnelStream.on('data', (tunnelData: sliverpb.TunnelData) => {
+              producer.next(Buffer.from(tunnelData.getData_asU8()));
+            });
+          });
+          
           const stdin: Observer<Buffer> = {
             next: (raw: Buffer) => {
               const data = new sliverpb.TunnelData();
@@ -376,11 +387,14 @@ export class InteractiveSession {
               data.setData(raw);
               this._tunnelStream.write(data);
             },
-            complete: () => {
+            complete: () => { this._rpc.closeTunnel(rpcTunnel, () => {}) },
+            error: (err) => {
+              console.error(err);
               this._rpc.closeTunnel(rpcTunnel, () => {})
             },
-            error: () => {},
           };
+
+          resolve({stdin: stdin,  stdout: stdout});
 
         });
       });
@@ -590,6 +604,45 @@ export class SliverClient {
       https.setWebsite(website);
       this.rpc.startHTTPSListener(https, (err, listener) => {
         err ? reject(err) : resolve(listener);
+      });
+    });
+  }
+
+  startTCPStagerListener(host: string, port: number, data: Buffer): Promise<clientpb.StagerListener> {
+    return new Promise((resolve, reject) => {
+      const req = new clientpb.StagerListenerReq();
+      req.setProtocol(clientpb.StageProtocol.TCP);
+      req.setHost(host);
+      req.setPort(port);
+      req.setData(data);
+      this.rpc.startTCPStagerListener(req, (err, tcpListener) => {
+        err ? reject(err) : resolve(tcpListener);
+      });
+    });
+  }
+
+  startHTTPStagerListener(host: string, port: number, data: Buffer): Promise<clientpb.StagerListener> {
+    return new Promise((resolve, reject) => {
+      const req = new clientpb.StagerListenerReq();
+      req.setProtocol(clientpb.StageProtocol.HTTP);
+      req.setHost(host);
+      req.setPort(port);
+      req.setData(data);
+      this.rpc.startHTTPStagerListener(req, (err, httpListener) => {
+        err ? reject(err) : resolve(httpListener);
+      });
+    });
+  }
+
+  startHTTPSStagerListener(host: string, port: number, data: Buffer): Promise<clientpb.StagerListener> {
+    return new Promise((resolve, reject) => {
+      const req = new clientpb.StagerListenerReq();
+      req.setProtocol(clientpb.StageProtocol.HTTPS);
+      req.setHost(host);
+      req.setPort(port);
+      req.setData(data);
+      this.rpc.startHTTPStagerListener(req, (err, httpsListener) => {
+        err ? reject(err) : resolve(httpsListener);
       });
     });
   }
