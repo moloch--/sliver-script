@@ -477,10 +477,22 @@ export class SliverClient {
         if (this._tunnelStream === undefined) {
           return reject('Failed to open tunnel data stream');
         }
-
         resolve(this);
       });
     });
+  }
+
+  async disconnect(): Promise<void> {
+    if (this._events !== null) {
+      this._events.on('error', () => {})
+      this._events.cancel()
+    }
+    if (this._tunnelStream !== null) {
+      this._tunnelStream.on('error', () => {})
+      this._tunnelStream.cancel()
+    }
+    this.rpc.close()
+    this._rpc = null
   }
 
   // ---- Version ----
