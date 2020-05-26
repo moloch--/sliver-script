@@ -459,9 +459,10 @@ export class SliverClient {
 
   connect(): Promise<SliverClient> {
     return new Promise((resolve, reject) => {
+
       const rpc = new rpcpb.SliverRPCClient(this.host(), this.credentials(), {
         'grpc.max_send_message_length': 2*Gb,
-        'grpc.max_recv_message_length': 2*Gb,
+        'grpc.max_receive_message_length': 2*Gb,
       });
       rpc.getVersion(this.empty, (err) => {
         if (err) {
