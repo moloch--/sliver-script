@@ -11,7 +11,9 @@ import { SliverClientConfig } from './config';
 
 
 const TIMEOUT = 30; // Default timeout in seconds
-
+const Kb = 1024;
+const Mb = 1024*Kb;
+const Gb = 1024*Mb;
 
 // Exported/simplified tunnel interfaces
 export interface Tunnel {
@@ -457,7 +459,10 @@ export class SliverClient {
 
   connect(): Promise<SliverClient> {
     return new Promise((resolve, reject) => {
-      const rpc = new rpcpb.SliverRPCClient(this.host(), this.credentials());
+      const rpc = new rpcpb.SliverRPCClient(this.host(), this.credentials(), {
+        'grpc.max_send_message_length': 2*Gb,
+        'grpc.max_recv_message_length': 2*Gb,
+      });
       rpc.getVersion(this.empty, (err) => {
         if (err) {
           return reject(err);
