@@ -1,6 +1,6 @@
 {
   "name": "sliver-script",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "TypeScript/JavaScript Sliver client library",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -8,7 +8,7 @@
     "build": "./protobuf.sh && cp -r ./src/pb ./lib/pb && tsc",
     "test": "jest --config jestconfig.json"
   },
-  "prepublishOnly": "npm test && npm run lint",
+  "prepublishOnly": "npm test && npm run build",
   "files": [
     "lib/**/*"
   ],
