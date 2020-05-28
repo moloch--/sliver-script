@@ -36,15 +36,6 @@ export class InteractiveSession {
     this._session = session;
   }
 
-  ping(): Promise<sliverpb.Ping> {
-    return new Promise((resolve, reject) => {
-      const ping = new sliverpb.Ping();
-      this._rpc.ping(ping, (err, pong) => {
-        err ? reject(err) : resolve(pong);
-      });
-    });
-  }
-
   private request(timeout: number): commonpb.Request {
     const req = new commonpb.Request();
     req.setSessionid(this._session.getId());
@@ -52,11 +43,27 @@ export class InteractiveSession {
     return req;
   }
 
+  private deadline(timeout = TIMEOUT) {
+    return {
+      'deadline': Date.now() + ((timeout + 1) * 1000)
+    }
+  }
+
+  ping(timeout = TIMEOUT): Promise<sliverpb.Ping> {
+    return new Promise((resolve, reject) => {
+      const ping = new sliverpb.Ping();
+      ping.setRequest(this.request(timeout))
+      this._rpc.ping(ping, this.deadline(timeout), (err, pong) => {
+        err ? reject(err) : resolve(pong);
+      });
+    });
+  }
+
   ps(timeout = TIMEOUT): Promise<commonpb.Process[]> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.PsReq();
       req.setRequest(this.request(timeout));
-      this._rpc.ps(req, (err, ps) => {
+      this._rpc.ps(req, this.deadline(timeout), (err, ps) => {
         err ? reject(err) : resolve(ps?.getProcessesList());
       });
     });
@@ -67,7 +74,7 @@ export class InteractiveSession {
       const req = new sliverpb.TerminateReq();
       req.setPid(pid);
       req.setRequest(this.request(timeout));
-      this._rpc.terminate(req, (err, terminate) => {
+      this._rpc.terminate(req, this.deadline(timeout), (err, terminate) => {
         err ? reject(err) : resolve(terminate);
       });
     });
@@ -77,7 +84,7 @@ export class InteractiveSession {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.IfconfigReq();
       req.setRequest(this.request(timeout));
-      this._rpc.ifconfig(req, (err, ifconfig) => {
+      this._rpc.ifconfig(req, this.deadline(timeout), (err, ifconfig) => {
         err ? reject(err) : resolve(ifconfig);
       });
     }); 
@@ -87,7 +94,7 @@ export class InteractiveSession {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.NetstatReq();
       req.setRequest(this.request(timeout));
-      this._rpc.netstat(req, (err, netstat) => {
+      this._rpc.netstat(req, this.deadline(timeout), (err, netstat) => {
         err ? reject(err) : resolve(netstat);
       });
     });
@@ -98,7 +105,7 @@ export class InteractiveSession {
       const req = new sliverpb.LsReq();
       req.setPath(path);
       req.setRequest(this.request(timeout));
-      this._rpc.ls(req, (err, ls) => {
+      this._rpc.ls(req, this.deadline(timeout), (err, ls) => {
         err ? reject(err) : resolve(ls);
       });
     });
@@ -109,7 +116,7 @@ export class InteractiveSession {
       const req = new sliverpb.CdReq();
       req.setPath(path);
       req.setRequest(this.request(timeout));
-      this._rpc.cd(req, (err, pwd) => {
+      this._rpc.cd(req, this.deadline(timeout), (err, pwd) => {
         err ? reject(err) : resolve(pwd);
       });
     });
@@ -119,7 +126,7 @@ export class InteractiveSession {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.PwdReq();
       req.setRequest(this.request(timeout));
-      this._rpc.pwd(req, (err, pwd) => {
+      this._rpc.pwd(req, this.deadline(timeout), (err, pwd) => {
         err ? reject(err) : resolve(pwd);
       });
     });
@@ -130,7 +137,7 @@ export class InteractiveSession {
       const req = new sliverpb.RmReq();
       req.setPath(path);
       req.setRequest(this.request(timeout));
-      this._rpc.rm(req, (err, rm) => {
+      this._rpc.rm(req, this.deadline(timeout), (err, rm) => {
         err ? reject(err) : resolve(rm);
       });
     });
@@ -141,7 +148,7 @@ export class InteractiveSession {
       const req = new sliverpb.MkdirReq();
       req.setPath(path);
       req.setRequest(this.request(timeout));
-      this._rpc.mkdir(req, (err, mkdir) => {
+      this._rpc.mkdir(req, this.deadline(timeout), (err, mkdir) => {
         err ? reject(err) : resolve(mkdir);
       });
     }); 
@@ -152,7 +159,7 @@ export class InteractiveSession {
       const req = new sliverpb.DownloadReq();
       req.setPath(path);
       req.setRequest(this.request(timeout));
-      this._rpc.download(req, (err, download) => {
+      this._rpc.download(req, this.deadline(timeout), (err, download) => {
         err ? reject(err) : resolve(download);
       });
     }); 
@@ -165,7 +172,7 @@ export class InteractiveSession {
       req.setEncoder(encoder);
       req.setData(data);
       req.setRequest(this.request(timeout));
-      this._rpc.upload(req, (err, upload) => {
+      this._rpc.upload(req, this.deadline(timeout), (err, upload) => {
         err ? reject(err) : resolve(upload);
       });
     }); 
@@ -176,7 +183,7 @@ export class InteractiveSession {
       const req = new sliverpb.ProcessDumpReq();
       req.setPid(pid);
       req.setRequest(this.request(timeout));
-      this._rpc.processDump(req, (err, procdump) => {
+      this._rpc.processDump(req, this.deadline(timeout), (err, procdump) => {
         err ? reject(err) : resolve(procdump);
       });
     });
@@ -189,7 +196,7 @@ export class InteractiveSession {
       req.setProcessname(processName);
       req.setArgs(args);
       req.setRequest(this.request(timeout));
-      this._rpc.runAs(req, (err, runAs) => {
+      this._rpc.runAs(req, this.deadline(timeout), (err, runAs) => {
         err ? reject(err) : resolve(runAs);
       });
     });
@@ -200,7 +207,7 @@ export class InteractiveSession {
       const req = new sliverpb.ImpersonateReq();
       req.setUsername(userName);
       req.setRequest(this.request(timeout));
-      this._rpc.impersonate(req, (err, impersonate) => {
+      this._rpc.impersonate(req, this.deadline(timeout), (err, impersonate) => {
         err ? reject(err) : resolve(impersonate);
       });
     });
@@ -210,7 +217,7 @@ export class InteractiveSession {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.RevToSelfReq();
       req.setRequest(this.request(timeout));
-      this._rpc.revToSelf(req, (err, revToSelf) => {
+      this._rpc.revToSelf(req, this.deadline(timeout), (err, revToSelf) => {
         err ? reject(err) : resolve(revToSelf);
       });
     });
@@ -222,7 +229,7 @@ export class InteractiveSession {
       req.setHostingprocess(hostingProcess);
       req.setConfig(config);
       req.setRequest(this.request(timeout));
-      this._rpc.getSystem(req, (err, getSystem) => {
+      this._rpc.getSystem(req, this.deadline(timeout), (err, getSystem) => {
         err ? reject(err) : resolve(getSystem);
       });
     });
@@ -236,7 +243,7 @@ export class InteractiveSession {
       req.setPid(pid);
       req.setData(shellcode);
       req.setRequest(this.request(timeout));
-      this._rpc.task(req, (err, task) => {
+      this._rpc.task(req, this.deadline(timeout), (err, task) => {
         err ? reject(err) : resolve(task);
       });
     });
@@ -251,7 +258,7 @@ export class InteractiveSession {
       req.setEncoder(encoder);
       req.setIterations(iterations);
       req.setRequest(this.request(timeout));
-      this._rpc.msf(req, (err) => {
+      this._rpc.msf(req, this.deadline(timeout), (err) => {
         err ? reject(err) : resolve();
       });
     }); 
@@ -283,7 +290,7 @@ export class InteractiveSession {
       req.setProcess(process);
       req.setAmsibypass(AMSIBypass);
       req.setRequest(this.request(timeout));
-      this._rpc.executeAssembly(req, (err, executeAssembly) => {
+      this._rpc.executeAssembly(req, this.deadline(timeout), (err, executeAssembly) => {
         err ? reject(err) : resolve(executeAssembly);
       });
     });
@@ -295,7 +302,7 @@ export class InteractiveSession {
       req.setPid(pid);
       req.setConfig(config);
       req.setRequest(this.request(timeout));
-      this._rpc.migrate(req, (err, migration) => {
+      this._rpc.migrate(req, this.deadline(), (err, migration) => {
         err ? reject(err) : resolve(migration);
       });
     });
@@ -308,7 +315,7 @@ export class InteractiveSession {
       req.setArgsList(args);
       req.setOutput(output);
       req.setRequest(this.request(timeout));
-      this._rpc.execute(req, (err, exec) => {
+      this._rpc.execute(req, this.deadline(timeout), (err, exec) => {
         err ? reject(err) : resolve(exec);
       });
     });
@@ -322,7 +329,7 @@ export class InteractiveSession {
       req.setArgs(args);
       req.setEntrypoint(entryPoint);
       req.setRequest(this.request(timeout));
-      this._rpc.sideload(req, (err, exec) => {
+      this._rpc.sideload(req, this.deadline(timeout), (err, exec) => {
         err ? reject(err) : resolve(exec);
       });
     });
@@ -336,7 +343,7 @@ export class InteractiveSession {
       req.setArgs(args);
       req.setOffset(offset);
       req.setRequest(this.request(timeout));
-      this._rpc.spawnDll(req, (err, dll) => {
+      this._rpc.spawnDll(req, this.deadline(timeout), (err, dll) => {
         err ? reject(err) : resolve(dll);
       });
     });
@@ -346,7 +353,7 @@ export class InteractiveSession {
     return new Promise((resolve, reject) => { 
       const req = new sliverpb.ScreenshotReq();
       req.setRequest(this.request(timeout));
-      this._rpc.screenshot(req, (err, screenshot) => {
+      this._rpc.screenshot(req, this.deadline(timeout), (err, screenshot) => {
         err ? reject(err) : resolve(screenshot);
       });
     });
@@ -411,7 +418,9 @@ export class SliverClient {
 
   private _config: SliverClientConfig;
   private _rpc: rpcpb.SliverRPCClient|null = null;
+  private _deadline = (TIMEOUT + 1) * 1000 // TIMEOUT + 1 seconds by default
   private empty = new commonpb.Empty();
+  
 
   private _events: grpc.ClientReadableStream<clientpb.Event>|null = null;
   event$ = new Subject<clientpb.Event>();
@@ -501,11 +510,21 @@ export class SliverClient {
     this._rpc = null
   }
 
+  setDeadline(seconds: number) {
+    this._deadline = seconds * 1000
+  }
+
+  private deadline() {
+    return {
+      'deadline': Date.now() + this._deadline
+    }
+  }
+
   // ---- Version ----
 
   getVersion(): Promise<clientpb.Version> {
     return new Promise((resolve, reject) => {
-      this.rpc.getVersion(this.empty, (err, version) => {
+      this.rpc.getVersion(this.empty, this.deadline(), (err, version) => {
         err ? reject(err) : resolve(version);
       });
     })
@@ -515,7 +534,7 @@ export class SliverClient {
 
   getOperators(): Promise<clientpb.Operator[]> {
     return new Promise((resolve, reject) => {
-      this.rpc.getOperators(this.empty, (err, operators) => {
+      this.rpc.getOperators(this.empty, this.deadline(), (err, operators) => {
         err ? reject(err) : resolve(operators?.getOperatorsList());
       });
     });
@@ -525,7 +544,7 @@ export class SliverClient {
 
   sessions(): Promise<clientpb.Session[]> {
     return new Promise((resolve, reject) => {
-      this.rpc.getSessions(this.empty, (err, sessions) => {
+      this.rpc.getSessions(this.empty, this.deadline(), (err, sessions) => {
         err ? reject(err) : resolve(sessions?.getSessionsList());
       });
     });
@@ -542,7 +561,7 @@ export class SliverClient {
       req.setSessionid(sessionId);
       req.setTimeout(timeout);
       kill.setRequest(req);
-      this.rpc.killSession(kill, (err) => {
+      this.rpc.killSession(kill, this.deadline(), (err) => {
         err ? reject(err) : resolve();
       });
     });
@@ -552,7 +571,7 @@ export class SliverClient {
 
   jobs(): Promise<clientpb.Job[]> {
     return new Promise((resolve, reject) => {
-      this.rpc.getJobs(this.empty, (err, jobs) => {
+      this.rpc.getJobs(this.empty, this.deadline(), (err, jobs) => {
         err ? reject(err) : resolve(jobs?.getActiveList());
       });
     });
@@ -562,7 +581,7 @@ export class SliverClient {
     return new Promise((resolve, reject) => {
       const kill = new clientpb.KillJobReq();
       kill.setId(jobId);
-      this.rpc.killJob(kill, (err, killed) => {
+      this.rpc.killJob(kill, this.deadline(), (err, killed) => {
         err ? reject(err) : resolve(killed);
       });
     });
@@ -575,7 +594,7 @@ export class SliverClient {
       const mtls = new clientpb.MTLSListenerReq();
       mtls.setHost(host);
       mtls.setPort(port);
-      this.rpc.startMTLSListener(mtls, (err, listener) => {
+      this.rpc.startMTLSListener(mtls, this.deadline(), (err, listener) => {
         err ? reject(err) : resolve(listener);
       });
     });
@@ -588,7 +607,7 @@ export class SliverClient {
       dns.setCanaries(canaries);
       dns.setHost(host);
       dns.setPort(port);
-      this.rpc.startDNSListener(dns, (err, listener) => {
+      this.rpc.startDNSListener(dns, this.deadline(), (err, listener) => {
         err ? reject(err) : resolve(listener);
       });
     });
@@ -602,7 +621,7 @@ export class SliverClient {
       http.setPort(port);
       http.setSecure(false);
       http.setWebsite(website);
-      this.rpc.startHTTPListener(http, (err, listener) => {
+      this.rpc.startHTTPListener(http, this.deadline(), (err, listener) => {
         err ? reject(err) : resolve(listener);
       });
     });
@@ -620,7 +639,7 @@ export class SliverClient {
       key ? https.setKey(key) : null;
       https.setAcme(acme);
       https.setWebsite(website);
-      this.rpc.startHTTPSListener(https, (err, listener) => {
+      this.rpc.startHTTPSListener(https, this.deadline(), (err, listener) => {
         err ? reject(err) : resolve(listener);
       });
     });
@@ -646,7 +665,7 @@ export class SliverClient {
       req.setHost(host);
       req.setPort(port);
       req.setData(data);
-      this.rpc.startHTTPStagerListener(req, (err, httpListener) => {
+      this.rpc.startHTTPStagerListener(req, this.deadline(), (err, httpListener) => {
         err ? reject(err) : resolve(httpListener);
       });
     });
@@ -659,7 +678,7 @@ export class SliverClient {
       req.setHost(host);
       req.setPort(port);
       req.setData(data);
-      this.rpc.startHTTPStagerListener(req, (err, httpsListener) => {
+      this.rpc.startHTTPStagerListener(req, this.deadline(), (err, httpsListener) => {
         err ? reject(err) : resolve(httpsListener);
       });
     });
@@ -671,7 +690,7 @@ export class SliverClient {
     return new Promise((resolve, reject) => {
       const req = new clientpb.GenerateReq();
       req.setConfig(config);
-      this.rpc.generate(req, (err, generated) => {
+      this.rpc.generate(req, this.deadline(), (err, generated) => {
         err ? reject(err) : resolve(generated?.getFile());
       });
     });
@@ -681,7 +700,7 @@ export class SliverClient {
     return new Promise((resolve, reject) => {
       const req = new clientpb.RegenerateReq();
       req.setImplantname(name);
-      this.rpc.regenerate(req, (err, generated) => {
+      this.rpc.regenerate(req, this.deadline(), (err, generated) => {
         err ? reject(err) : resolve(generated?.getFile());
       });
     });
@@ -689,7 +708,7 @@ export class SliverClient {
 
   implantBuilds(): Promise<clientpb.ImplantBuilds> {
     return new Promise((resolve, reject) => {
-      this.rpc.implantBuilds(this.empty, (err, builds) => {
+      this.rpc.implantBuilds(this.empty, this.deadline(), (err, builds) => {
         err ? reject(err) : resolve(builds);
       });
     });
@@ -697,7 +716,7 @@ export class SliverClient {
 
   canaries(): Promise<clientpb.DNSCanary[]> {
     return new Promise((resolve, reject) => {
-      this.rpc.canaries(this.empty, (err, canaries) => {
+      this.rpc.canaries(this.empty, this.deadline(), (err, canaries) => {
         err ? reject(err) : resolve(canaries?.getCanariesList());
       });
     });
@@ -705,7 +724,7 @@ export class SliverClient {
 
   implantProfiles(): Promise<clientpb.ImplantProfile[]> {
     return new Promise((resolve, reject) => {
-      this.rpc.implantProfiles(this.empty, (err, profiles) => {
+      this.rpc.implantProfiles(this.empty, this.deadline(), (err, profiles) => {
         err ? reject(err) : resolve(profiles?.getProfilesList());
       });
     });
@@ -713,7 +732,7 @@ export class SliverClient {
 
   saveImplantProfile(profile: clientpb.ImplantProfile): Promise<clientpb.ImplantProfile> {
     return new Promise((resolve, reject) => {
-      this.rpc.saveImplantProfile(profile, (err, profile) => {
+      this.rpc.saveImplantProfile(profile, this.deadline(), (err, profile) => {
         err ? reject(err) : resolve(profile);
       });
     });
@@ -722,7 +741,7 @@ export class SliverClient {
   // ---- Websites ----
   websites(): Promise<clientpb.Website[]> {
     return new Promise((resolve, reject) => {
-      this.rpc.websites(this.empty, (err, websites) => {
+      this.rpc.websites(this.empty, this.deadline(), (err, websites) => {
         err ? reject(err) : resolve(websites?.getWebsitesList());
       });
     });
@@ -732,7 +751,7 @@ export class SliverClient {
     return new Promise((resolve, reject) => {
       const web = new clientpb.Website();
       web.setName(name);
-      this.rpc.website(web, (err, website) => {
+      this.rpc.website(web, this.deadline(), (err, website) => {
         err ? reject(err) : resolve(website);
       });
     });
@@ -742,7 +761,7 @@ export class SliverClient {
     return new Promise((resolve, reject) => {
       const web = new clientpb.Website();
       web.setName(name);
-      this.rpc.websiteRemove(web, (err) => {
+      this.rpc.websiteRemove(web, this.deadline(), (err) => {
         err ? reject(err) : resolve();
       });
     });
@@ -755,7 +774,7 @@ export class SliverClient {
       contents.forEach((value, key) => {
         addContent.getContentsMap().set(key, value);
       });
-      this.rpc.websiteAddContent(addContent, (err, website) => {
+      this.rpc.websiteAddContent(addContent, this.deadline(), (err, website) => {
         err ? reject(err) : resolve(website);
       });
     });
@@ -766,7 +785,7 @@ export class SliverClient {
       const rm = new clientpb.WebsiteRemoveContent();
       rm.setName(name);
       rm.setPathsList(paths);
-      this.rpc.websiteRemoveContent(rm, (err, website) => {
+      this.rpc.websiteRemoveContent(rm, this.deadline(), (err, website) => {
         err ? reject(err) : resolve(website);
       });
     });
