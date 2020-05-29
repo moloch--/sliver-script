@@ -49,10 +49,11 @@ export class InteractiveSession {
     }
   }
 
-  ping(timeout = TIMEOUT): Promise<sliverpb.Ping> {
+  ping(nonce: number, timeout = TIMEOUT): Promise<sliverpb.Ping> {
     return new Promise((resolve, reject) => {
       const ping = new sliverpb.Ping();
       ping.setRequest(this.request(timeout))
+      ping.setNonce(nonce)
       this._rpc.ping(ping, this.deadline(timeout), (err, pong) => {
         err ? reject(err) : resolve(pong);
       });
