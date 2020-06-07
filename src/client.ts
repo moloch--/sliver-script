@@ -1,5 +1,4 @@
 import * as zlib from 'zlib';
-import { promisify } from 'util';
 
 import * as grpc from '@grpc/grpc-js';
 import { Subject, Observable, Observer } from 'rxjs';
@@ -20,7 +19,7 @@ const Gb = 1024*Mb;
 
 export async function gzip(data: Buffer): Promise<Buffer> {
   return new Promise((resolve, reject) => {
-      zlib.gzip(data, (err, result: Buffer) => {
+      zlib.gzip(data, (err, result) => {
         err ? reject(err) : resolve(result);
       });
   });
@@ -28,7 +27,7 @@ export async function gzip(data: Buffer): Promise<Buffer> {
 
 export async function gunzip(data: Buffer): Promise<Buffer> {
   return new Promise((resolve, reject) => {
-      zlib.gunzip(data, (err, result: Buffer) => {
+      zlib.gunzip(data, (err, result) => {
         err ? reject(err) : resolve(result);
       });
   });
@@ -175,15 +174,34 @@ export class InteractiveSession {
     }); 
   }
 
-  download(path: string, timeout = TIMEOUT): Promise<sliverpb.Download> {
+  download(path: string, timeout = TIMEOUT): Promise<Buffer> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.DownloadReq();
       req.setPath(path);
       req.setRequest(this.request(timeout));
-      this._rpc.download(req, this.deadline(timeout), (err, download) => {
-        err ? reject(err) : resolve(download);
+      this._rpc.download(req, this.deadline(timeout), async (err, download) => {
+        if (err || download === undefined) {
+          return reject(err ? err : 'Null response');
+        }
+        let data = Buffer.from(download.getData());
+        const encoder = download.getEncoder();
+        if (encoder === 'gzip') {
+          data = await gunzip(data);
+        } else if (encoder !== '') {
+          return reject(`Unsupported encoder ${encoder}`);
+        }
+        resolve(data);
       });
     }); 
+  }
+
+  private toUint8Array(buf: Buffer): Uint8Array {
+    let arrayBuf = new ArrayBuffer(buf.length);
+    let uint8Array = new Uint8Array(arrayBuf);
+    for (let index = 0; index < buf.length; ++index) {
+      uint8Array[index] = buf[index];
+    }
+    return uint8Array;
   }
 
   upload(path: string, data: Buffer, timeout = TIMEOUT): Promise<sliverpb.Upload> {
@@ -191,14 +209,13 @@ export class InteractiveSession {
       const req = new sliverpb.UploadReq();
       req.setPath(path);
       req.setEncoder('gzip');
-      let payload = data;
-      payload = await gzip(data)
-      req.setData(payload);
+      const payload = await gzip(data)
+      req.setData(this.toUint8Array(payload));
       req.setRequest(this.request(timeout));
       this._rpc.upload(req, this.deadline(timeout), (err, upload) => {
         err ? reject(err) : resolve(upload);
       });
-    }); 
+    });
   }
 
   processDump(pid: number, timeout = TIMEOUT): Promise<sliverpb.ProcessDump> {
