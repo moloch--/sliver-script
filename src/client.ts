@@ -186,17 +186,13 @@ export class InteractiveSession {
     }); 
   }
 
-  upload(path: string, encoder: string, data: Buffer, timeout = TIMEOUT): Promise<sliverpb.Upload> {
+  upload(path: string, data: Buffer, timeout = TIMEOUT): Promise<sliverpb.Upload> {
     return new Promise(async (resolve, reject) => {
       const req = new sliverpb.UploadReq();
       req.setPath(path);
-      req.setEncoder(encoder);
+      req.setEncoder('gzip');
       let payload = data;
-      if (encoder === 'gzip') {
-        payload = await gzip(data)
-      } else if (encoder !== '') {
-        return reject(`Unsupported encoder ${encoder}`)
-      }
+      payload = await gzip(data)
       req.setData(payload);
       req.setRequest(this.request(timeout));
       this._rpc.upload(req, this.deadline(timeout), (err, upload) => {
