@@ -1,3 +1,6 @@
+import * as zlib from 'zlib';
+import { promisify } from 'util';
+
 import * as grpc from '@grpc/grpc-js';
 import { Subject, Observable, Observer } from 'rxjs';
 import { filter } from 'rxjs/operators';
@@ -14,6 +17,23 @@ const TIMEOUT = 30; // Default timeout in seconds
 const Kb = 1024;
 const Mb = 1024*Kb;
 const Gb = 1024*Mb;
+
+export async function gzip(data: Buffer): Promise<Buffer> {
+  return new Promise((resolve, reject) => {
+      zlib.gzip(data, (err, result: Buffer) => {
+        err ? reject(err) : resolve(result);
+      });
+  });
+}
+
+export async function gunzip(data: Buffer): Promise<Buffer> {
+  return new Promise((resolve, reject) => {
+      zlib.gunzip(data, (err, result: Buffer) => {
+        err ? reject(err) : resolve(result);
+      });
+  });
+}
+
 
 // Exported/simplified tunnel interfaces
 export interface Tunnel {
@@ -167,11 +187,17 @@ export class InteractiveSession {
   }
 
   upload(path: string, encoder: string, data: Buffer, timeout = TIMEOUT): Promise<sliverpb.Upload> {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
       const req = new sliverpb.UploadReq();
       req.setPath(path);
       req.setEncoder(encoder);
-      req.setData(data);
+      let payload = data;
+      if (encoder === 'gzip') {
+        payload = await gzip(data)
+      } else if (encoder !== '') {
+        return reject(`Unsupported encoder ${encoder}`)
+      }
+      req.setData(payload);
       req.setRequest(this.request(timeout));
       this._rpc.upload(req, this.deadline(timeout), (err, upload) => {
         err ? reject(err) : resolve(upload);
