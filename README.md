@@ -25,7 +25,7 @@ import { SliverClient, ParseConfigFile } from 'sliver-script'
     console.log(`Connecting to ${client.host()} ...`)
     await client.connect()
 
-    sessions = await client.sessions()
+    const sessions = await client.sessions()
     console.log(sessions)
 
 })()
