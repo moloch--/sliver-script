@@ -74,3 +74,32 @@ import { SliverClient, ParseConfigFile } from 'sliver-script'
 
 })()
 ```
+
+### JavaScript Example
+
+```javascript
+const sliver = require('sliver-script');
+
+(async function() { 
+
+    const config = await sliver.ParseConfigFile('/Users/moloch/.sliver-client/configs/moloch_localhost.cfg')
+    const client = new sliver.SliverClient(config)
+    await client.connect()
+
+    console.log('Waiting for new sessions ...')
+
+    client.session$.subscribe(async (event) => {
+
+        console.log(`New session #${event.getSession().getId()}!`)
+
+        const session = await client.interact(event.getSession())
+        const ls = await session.ls()
+        console.log(`Path: ${ls.getPath()}`)
+        ls.getFilesList().forEach(file => {
+            console.log(`Name: ${file.getName()} (Size: ${file.getSize()})`)
+        })
+        
+    })
+
+})()
+```
