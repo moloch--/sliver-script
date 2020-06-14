@@ -82,7 +82,7 @@ const sliver = require('sliver-script');
 
 (async function() { 
 
-    const config = await sliver.ParseConfigFile('/Users/moloch/.sliver-client/configs/moloch_localhost.cfg')
+    const config = await sliver.ParseConfigFile('./moloch_localhost.cfg')
     const client = new sliver.SliverClient(config)
     await client.connect()
 
