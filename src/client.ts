@@ -488,6 +488,10 @@ export class SliverClient {
     });
   }
 
+  get config(): SliverClientConfig {
+    return this._config;
+  }
+
   get rpc(): rpcpb.SliverRPCClient {
     if (this._rpc === null) {
       throw new Error('SliverRPCClient not connected');
