@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build": "./protobuf.sh && cp -r ./src/pb ./lib/pb && tsc",
+    "build": "rm -r ./lib && mkdir -p ./lib && ./protobuf.sh && cp -r ./src/pb ./lib/pb && tsc",
     "test": "jest --config jestconfig.json"
   },
   "engines": {

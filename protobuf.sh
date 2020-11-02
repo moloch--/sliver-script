@@ -64,3 +64,17 @@ sed -i "" -e \
 sed -i "" -e \
     "s/from \"grpc\"/from \"@grpc\/grpc-js\"/g" \
     "$TS_OUT_DIR/rpcpb/"*
+
+### Remove eval()'s
+
+sed -i "" -e \
+    "s/Function('return this')()/(function(){return this;})()/g" \
+    "$TS_OUT_DIR/clientpb/"*
+
+sed -i "" -e \
+    "s/Function('return this')()/(function(){return this;})()/g" \
+    "$TS_OUT_DIR/commonpb/"*
+
+sed -i "" -e \
+    "s/Function('return this')()/(function(){return this;})()/g" \
+    "$TS_OUT_DIR/sliverpb/"*
