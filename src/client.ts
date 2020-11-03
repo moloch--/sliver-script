@@ -44,20 +44,20 @@ export interface Tunnel {
 export class InteractiveSession {
 
   private _rpc: rpcpb.SliverRPCClient;
-  private _session: clientpb.Session;
+  private _sessionId: number;
   private _tunnelStream: grpc.ClientDuplexStream<sliverpb.TunnelData, sliverpb.TunnelData>;
 
   constructor(rpc: rpcpb.SliverRPCClient, 
               tunnelStream: grpc.ClientDuplexStream<sliverpb.TunnelData, sliverpb.TunnelData>,  
-              session: clientpb.Session) {
+              sessionId: number) {
     this._rpc = rpc;
     this._tunnelStream = tunnelStream;
-    this._session = session;
+    this._sessionId = sessionId;
   }
 
   private request(timeout: number): commonpb.Request {
     const req = new commonpb.Request();
-    req.setSessionid(this._session.getId());
+    req.setSessionid(this._sessionId);
     req.setTimeout(timeout);
     return req;
   }
@@ -403,13 +403,13 @@ export class InteractiveSession {
     return new Promise((resolve, reject) => {
 
       const tunnel = new sliverpb.Tunnel();
-      tunnel.setSessionid(this._session.getId());
+      tunnel.setSessionid(this._sessionId);
       this._rpc.createTunnel(tunnel, (err, rpcTunnel) => {
         if (err || rpcTunnel === undefined) {
           return reject(err);
         }
         const tunnelData = new sliverpb.TunnelData();
-        tunnelData.setSessionid(this._session.getId());
+        tunnelData.setSessionid(this._sessionId);
         tunnelData.setTunnelid(rpcTunnel.getTunnelid());
         this._tunnelStream.write(tunnelData); // Bind tunnel
         const req = new sliverpb.ShellReq();
@@ -432,7 +432,7 @@ export class InteractiveSession {
             next: (raw: Buffer) => {
               const data = new sliverpb.TunnelData();
               data.setTunnelid(rpcTunnel.getTunnelid());
-              data.setSessionid(this._session.getId());
+              data.setSessionid(this._sessionId);
               data.setData(raw);
               this._tunnelStream.write(data);
             },
@@ -594,8 +594,12 @@ export class SliverClient {
     });
   }
 
-  async interact(session: clientpb.Session): Promise<InteractiveSession> {
-    return new InteractiveSession(this.rpc, this.tunnelStream, session);
+  async interactWith(session: clientpb.Session): Promise<InteractiveSession> {
+    return new InteractiveSession(this.rpc, this.tunnelStream, session.getId());
+  }
+
+  async interact(sessionId: number): Promise<InteractiveSession> {
+    return new InteractiveSession(this.rpc, this.tunnelStream, sessionId);
   }
 
   killSession(sessionId: number, timeout = TIMEOUT): Promise<void> {

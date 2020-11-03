@@ -65,7 +65,7 @@ import { SliverClient, ParseConfigFile } from 'sliver-script'
     console.log('Waiting for new sessions ...')
     client.session$.subscribe(async (event) => {
         console.log(`New session #${event.getSession().getId()}!`)
-        const session = await client.interact(event.getSession())
+        const session = await client.interactWith(event.getSession())
         const ls = await session.ls();
         console.log(`Path: ${ls.getPath()}`)
         ls.getFilesList().forEach(file => {
@@ -93,7 +93,7 @@ const sliver = require('sliver-script');
 
         console.log(`New session #${event.getSession().getId()}!`)
 
-        const session = await client.interact(event.getSession())
+        const session = await client.interactWith(event.getSession())
         const ls = await session.ls()
         console.log(`Path: ${ls.getPath()}`)
         ls.getFilesList().forEach(file => {
