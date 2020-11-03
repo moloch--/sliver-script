@@ -1,6 +1,6 @@
 {
   "name": "sliver-script",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "description": "TypeScript/JavaScript Sliver client library",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -35,7 +35,7 @@
     "@improbable-eng/grpc-web": "^0.12.0",
     "@types/google-protobuf": "^3.7.2",
     "google-protobuf": "^3.11.4",
-    "protobufjs": "^6.9.0",
+    "protobufjs": "^6.10.1",
     "rxjs": "^6.5.5"
   }
 }

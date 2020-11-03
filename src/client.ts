@@ -475,11 +475,11 @@ export class SliverClient {
     this._config = config;
   }
 
-  host(): string {
+  rpcHost(): string {
     return `${this._config.lhost}:${this._config.lport}`;
   }
 
-  credentials(): grpc.ChannelCredentials {
+  rpcCredentials(): grpc.ChannelCredentials {
     const ca = Buffer.from(this._config.ca_certificate);
     const privateKey = Buffer.from(this._config.private_key);
     const certificate = Buffer.from(this._config.certificate);
@@ -513,7 +513,7 @@ export class SliverClient {
   connect(): Promise<SliverClient> {
     return new Promise((resolve, reject) => {
 
-      const rpc = new rpcpb.SliverRPCClient(this.host(), this.credentials(), {
+      const rpc = new rpcpb.SliverRPCClient(this.rpcHost(), this.rpcCredentials(), {
         'grpc.max_send_message_length': 2*Gb,
         'grpc.max_receive_message_length': 2*Gb,
       });
