@@ -66,7 +66,7 @@ import { SliverClient, ParseConfigFile } from 'sliver-script'
     client.session$.subscribe(async (event) => {
         console.log(`New session #${event.getSession().getId()}!`)
         const session = await client.interactWith(event.getSession())
-        const ls = await session.ls();
+        const ls = await session.ls()
         console.log(`Path: ${ls.getPath()}`)
         ls.getFilesList().forEach(file => {
             console.log(`Name: ${file.getName()} (Size: ${file.getSize()})`)
@@ -79,7 +79,7 @@ import { SliverClient, ParseConfigFile } from 'sliver-script'
 ### JavaScript Example
 
 ```javascript
-const sliver = require('sliver-script');
+const sliver = require('sliver-script')
 
 (async function() { 
 
