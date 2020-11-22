@@ -342,7 +342,7 @@ export class InteractiveSession {
       req.setPid(pid);
       req.setConfig(config);
       req.setRequest(this.request(timeout));
-      this._rpc.migrate(req, this.deadline(), (err, migration) => {
+      this._rpc.migrate(req, this.deadline(timeout), (err, migration) => {
         err ? reject(err) : resolve(migration);
       });
     });
@@ -554,21 +554,17 @@ export class SliverClient {
     this._rpc = null
   }
 
-  setDeadline(seconds: number) {
-    this._deadline = seconds * 1000
-  }
-
-  private deadline() {
+  private deadline(timeout: number) {
     return {
-      'deadline': Date.now() + this._deadline
+      'deadline': Date.now() + (timeout * 1000)
     }
   }
 
   // ---- Version ----
 
-  getVersion(): Promise<clientpb.Version> {
+  getVersion(timeout = TIMEOUT): Promise<clientpb.Version> {
     return new Promise((resolve, reject) => {
-      this.rpc.getVersion(this.empty, this.deadline(), (err, version) => {
+      this.rpc.getVersion(this.empty, this.deadline(timeout), (err, version) => {
         err ? reject(err) : resolve(version);
       });
     })
@@ -576,9 +572,9 @@ export class SliverClient {
 
   // ---- Operators ----
 
-  getOperators(): Promise<clientpb.Operator[]> {
+  getOperators(timeout = TIMEOUT): Promise<clientpb.Operator[]> {
     return new Promise((resolve, reject) => {
-      this.rpc.getOperators(this.empty, this.deadline(), (err, operators) => {
+      this.rpc.getOperators(this.empty, this.deadline(timeout), (err, operators) => {
         err ? reject(err) : resolve(operators?.getOperatorsList());
       });
     });
@@ -586,19 +582,19 @@ export class SliverClient {
 
   // ---- Sessions ----
 
-  sessions(): Promise<clientpb.Session[]> {
+  sessions(timeout = TIMEOUT): Promise<clientpb.Session[]> {
     return new Promise((resolve, reject) => {
-      this.rpc.getSessions(this.empty, this.deadline(), (err, sessions) => {
+      this.rpc.getSessions(this.empty, this.deadline(timeout), (err, sessions) => {
         err ? reject(err) : resolve(sessions?.getSessionsList());
       });
     });
   }
 
-  async interactWith(session: clientpb.Session): Promise<InteractiveSession> {
+  async interactWith(session: clientpb.Session, timeout = TIMEOUT): Promise<InteractiveSession> {
     return new InteractiveSession(this.rpc, this.tunnelStream, session.getId());
   }
 
-  async interact(sessionId: number): Promise<InteractiveSession> {
+  async interact(sessionId: number, timeout = TIMEOUT): Promise<InteractiveSession> {
     return new InteractiveSession(this.rpc, this.tunnelStream, sessionId);
   }
 
@@ -609,7 +605,7 @@ export class SliverClient {
       req.setSessionid(sessionId);
       req.setTimeout(timeout);
       kill.setRequest(req);
-      this.rpc.killSession(kill, this.deadline(), (err) => {
+      this.rpc.killSession(kill, this.deadline(timeout), (err) => {
         err ? reject(err) : resolve();
       });
     });
@@ -617,19 +613,19 @@ export class SliverClient {
 
   // ---- Jobs ----
 
-  jobs(): Promise<clientpb.Job[]> {
+  jobs(timeout = TIMEOUT): Promise<clientpb.Job[]> {
     return new Promise((resolve, reject) => {
-      this.rpc.getJobs(this.empty, this.deadline(), (err, jobs) => {
+      this.rpc.getJobs(this.empty, this.deadline(timeout), (err, jobs) => {
         err ? reject(err) : resolve(jobs?.getActiveList());
       });
     });
   }
 
-  killJob(jobId: number): Promise<clientpb.KillJob> {
+  killJob(jobId: number, timeout = TIMEOUT): Promise<clientpb.KillJob> {
     return new Promise((resolve, reject) => {
       const kill = new clientpb.KillJobReq();
       kill.setId(jobId);
-      this.rpc.killJob(kill, this.deadline(), (err, killed) => {
+      this.rpc.killJob(kill, this.deadline(timeout), (err, killed) => {
         err ? reject(err) : resolve(killed);
       });
     });
@@ -637,31 +633,31 @@ export class SliverClient {
 
   // ---- Listeners ----
 
-  startMTLSListener(host: string, port: number): Promise<clientpb.MTLSListener> {
+  startMTLSListener(host: string, port: number, timeout = TIMEOUT): Promise<clientpb.MTLSListener> {
     return new Promise((resolve, reject) => {
       const mtls = new clientpb.MTLSListenerReq();
       mtls.setHost(host);
       mtls.setPort(port);
-      this.rpc.startMTLSListener(mtls, this.deadline(), (err, listener) => {
+      this.rpc.startMTLSListener(mtls, this.deadline(timeout), (err, listener) => {
         err ? reject(err) : resolve(listener);
       });
     });
   }
 
-  startDNSListener(domains: string[], canaries: boolean, host: string, port: number): Promise<clientpb.DNSListener> {
+  startDNSListener(domains: string[], canaries: boolean, host: string, port: number, timeout = TIMEOUT): Promise<clientpb.DNSListener> {
     return new Promise((resolve, reject) => {
       const dns = new clientpb.DNSListenerReq();
       dns.setDomainsList(domains);
       dns.setCanaries(canaries);
       dns.setHost(host);
       dns.setPort(port);
-      this.rpc.startDNSListener(dns, this.deadline(), (err, listener) => {
+      this.rpc.startDNSListener(dns, this.deadline(timeout), (err, listener) => {
         err ? reject(err) : resolve(listener);
       });
     });
   }
 
-  startHTTPListener(domain: string, host: string, port: number, website = ''): Promise<clientpb.HTTPListener> {
+  startHTTPListener(domain: string, host: string, port: number, website = '', timeout = TIMEOUT): Promise<clientpb.HTTPListener> {
     return new Promise((resolve, reject) => {
       const http = new clientpb.HTTPListenerReq();
       http.setDomain(domain);
@@ -669,14 +665,14 @@ export class SliverClient {
       http.setPort(port);
       http.setSecure(false);
       http.setWebsite(website);
-      this.rpc.startHTTPListener(http, this.deadline(), (err, listener) => {
+      this.rpc.startHTTPListener(http, this.deadline(timeout), (err, listener) => {
         err ? reject(err) : resolve(listener);
       });
     });
   }
 
   startHTTPSListener(domain: string, host: string, port: number, acme = false, website = '', 
-                     cert?: Buffer, key?: Buffer): Promise<clientpb.HTTPListener> {
+                     cert?: Buffer, key?: Buffer, timeout = TIMEOUT): Promise<clientpb.HTTPListener> {
     return new Promise((resolve, reject) => { 
       const https = new clientpb.HTTPListenerReq();
       https.setDomain(domain);
@@ -687,13 +683,13 @@ export class SliverClient {
       key ? https.setKey(key) : null;
       https.setAcme(acme);
       https.setWebsite(website);
-      this.rpc.startHTTPSListener(https, this.deadline(), (err, listener) => {
+      this.rpc.startHTTPSListener(https, this.deadline(timeout), (err, listener) => {
         err ? reject(err) : resolve(listener);
       });
     });
   }
 
-  startTCPStagerListener(host: string, port: number, data: Buffer): Promise<clientpb.StagerListener> {
+  startTCPStagerListener(host: string, port: number, data: Buffer, timeout = TIMEOUT): Promise<clientpb.StagerListener> {
     return new Promise((resolve, reject) => {
       const req = new clientpb.StagerListenerReq();
       req.setProtocol(clientpb.StageProtocol.TCP);
@@ -706,27 +702,27 @@ export class SliverClient {
     });
   }
 
-  startHTTPStagerListener(host: string, port: number, data: Buffer): Promise<clientpb.StagerListener> {
+  startHTTPStagerListener(host: string, port: number, data: Buffer, timeout = TIMEOUT): Promise<clientpb.StagerListener> {
     return new Promise((resolve, reject) => {
       const req = new clientpb.StagerListenerReq();
       req.setProtocol(clientpb.StageProtocol.HTTP);
       req.setHost(host);
       req.setPort(port);
       req.setData(data);
-      this.rpc.startHTTPStagerListener(req, this.deadline(), (err, httpListener) => {
+      this.rpc.startHTTPStagerListener(req, this.deadline(timeout), (err, httpListener) => {
         err ? reject(err) : resolve(httpListener);
       });
     });
   }
 
-  startHTTPSStagerListener(host: string, port: number, data: Buffer): Promise<clientpb.StagerListener> {
+  startHTTPSStagerListener(host: string, port: number, data: Buffer, timeout = TIMEOUT): Promise<clientpb.StagerListener> {
     return new Promise((resolve, reject) => {
       const req = new clientpb.StagerListenerReq();
       req.setProtocol(clientpb.StageProtocol.HTTPS);
       req.setHost(host);
       req.setPort(port);
       req.setData(data);
-      this.rpc.startHTTPStagerListener(req, this.deadline(), (err, httpsListener) => {
+      this.rpc.startHTTPStagerListener(req, this.deadline(timeout), (err, httpsListener) => {
         err ? reject(err) : resolve(httpsListener);
       });
     });
@@ -734,106 +730,106 @@ export class SliverClient {
 
   // ---- Implants ----
 
-  generate(config: clientpb.ImplantConfig): Promise<commonpb.File> {
+  generate(config: clientpb.ImplantConfig, timeout = TIMEOUT): Promise<commonpb.File> {
     return new Promise((resolve, reject) => {
       const req = new clientpb.GenerateReq();
       req.setConfig(config);
-      this.rpc.generate(req, this.deadline(), (err, generated) => {
+      this.rpc.generate(req, this.deadline(timeout), (err, generated) => {
         err ? reject(err) : resolve(generated?.getFile());
       });
     });
   }
 
-  regenerate(name: string): Promise<commonpb.File> {
+  regenerate(name: string, timeout = TIMEOUT): Promise<commonpb.File> {
     return new Promise((resolve, reject) => {
       const req = new clientpb.RegenerateReq();
       req.setImplantname(name);
-      this.rpc.regenerate(req, this.deadline(), (err, generated) => {
+      this.rpc.regenerate(req, this.deadline(timeout), (err, generated) => {
         err ? reject(err) : resolve(generated?.getFile());
       });
     });
   }
 
-  implantBuilds(): Promise<clientpb.ImplantBuilds> {
+  implantBuilds(timeout = TIMEOUT): Promise<clientpb.ImplantBuilds> {
     return new Promise((resolve, reject) => {
-      this.rpc.implantBuilds(this.empty, this.deadline(), (err, builds) => {
+      this.rpc.implantBuilds(this.empty, this.deadline(timeout), (err, builds) => {
         err ? reject(err) : resolve(builds);
       });
     });
   }
 
-  canaries(): Promise<clientpb.DNSCanary[]> {
+  canaries(timeout = TIMEOUT): Promise<clientpb.DNSCanary[]> {
     return new Promise((resolve, reject) => {
-      this.rpc.canaries(this.empty, this.deadline(), (err, canaries) => {
+      this.rpc.canaries(this.empty, this.deadline(timeout), (err, canaries) => {
         err ? reject(err) : resolve(canaries?.getCanariesList());
       });
     });
   }
 
-  implantProfiles(): Promise<clientpb.ImplantProfile[]> {
+  implantProfiles(timeout = TIMEOUT): Promise<clientpb.ImplantProfile[]> {
     return new Promise((resolve, reject) => {
-      this.rpc.implantProfiles(this.empty, this.deadline(), (err, profiles) => {
+      this.rpc.implantProfiles(this.empty, this.deadline(timeout), (err, profiles) => {
         err ? reject(err) : resolve(profiles?.getProfilesList());
       });
     });
   }
 
-  saveImplantProfile(profile: clientpb.ImplantProfile): Promise<clientpb.ImplantProfile> {
+  saveImplantProfile(profile: clientpb.ImplantProfile, timeout = TIMEOUT): Promise<clientpb.ImplantProfile> {
     return new Promise((resolve, reject) => {
-      this.rpc.saveImplantProfile(profile, this.deadline(), (err, profile) => {
+      this.rpc.saveImplantProfile(profile, this.deadline(timeout), (err, profile) => {
         err ? reject(err) : resolve(profile);
       });
     });
   }
 
   // ---- Websites ----
-  websites(): Promise<clientpb.Website[]> {
+  websites(timeout = TIMEOUT): Promise<clientpb.Website[]> {
     return new Promise((resolve, reject) => {
-      this.rpc.websites(this.empty, this.deadline(), (err, websites) => {
+      this.rpc.websites(this.empty, this.deadline(timeout), (err, websites) => {
         err ? reject(err) : resolve(websites?.getWebsitesList());
       });
     });
   }
 
-  website(name: string): Promise<clientpb.Website> {
+  website(name: string, timeout = TIMEOUT): Promise<clientpb.Website> {
     return new Promise((resolve, reject) => {
       const web = new clientpb.Website();
       web.setName(name);
-      this.rpc.website(web, this.deadline(), (err, website) => {
+      this.rpc.website(web, this.deadline(timeout), (err, website) => {
         err ? reject(err) : resolve(website);
       });
     });
   }
 
-  websiteRemove(name: string): Promise<void> {
+  websiteRemove(name: string, timeout = TIMEOUT): Promise<void> {
     return new Promise((resolve, reject) => {
       const web = new clientpb.Website();
       web.setName(name);
-      this.rpc.websiteRemove(web, this.deadline(), (err) => {
+      this.rpc.websiteRemove(web, this.deadline(timeout), (err) => {
         err ? reject(err) : resolve();
       });
     });
   }
 
-  websiteAddContent(name: string, contents: Map<string, clientpb.WebContent>): Promise<clientpb.Website> {
+  websiteAddContent(name: string, contents: Map<string, clientpb.WebContent>, timeout = TIMEOUT): Promise<clientpb.Website> {
     return new Promise((resolve, reject) => {
       const addContent = new clientpb.WebsiteAddContent();
       addContent.setName(name);
       contents.forEach((value, key) => {
         addContent.getContentsMap().set(key, value);
       });
-      this.rpc.websiteAddContent(addContent, this.deadline(), (err, website) => {
+      this.rpc.websiteAddContent(addContent, this.deadline(timeout), (err, website) => {
         err ? reject(err) : resolve(website);
       });
     });
   }
 
-  websiteRemoveContent(name: string, paths: string[]): Promise<clientpb.Website> {
+  websiteRemoveContent(name: string, paths: string[], timeout = TIMEOUT): Promise<clientpb.Website> {
     return new Promise((resolve, reject) => {
       const rm = new clientpb.WebsiteRemoveContent();
       rm.setName(name);
       rm.setPathsList(paths);
-      this.rpc.websiteRemoveContent(rm, this.deadline(), (err, website) => {
+      this.rpc.websiteRemoveContent(rm, this.deadline(timeout), (err, website) => {
         err ? reject(err) : resolve(website);
       });
     });
