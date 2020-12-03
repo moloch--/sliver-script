@@ -757,6 +757,16 @@ export class SliverClient {
     });
   }
 
+  deleteImplantBuild(name: string, timeout = TIMEOUT): Promise<void> {
+    const delReq = new clientpb.DeleteReq();
+    delReq.setName(name);
+    return new Promise((resolve, reject) => {
+      this.rpc.deleteImplantBuild(delReq, this.deadline(timeout), (err) => {
+        err ? reject(err) : resolve();
+      });
+    });
+  }
+
   canaries(timeout = TIMEOUT): Promise<clientpb.DNSCanary[]> {
     return new Promise((resolve, reject) => {
       this.rpc.canaries(this.empty, this.deadline(timeout), (err, canaries) => {
@@ -777,6 +787,16 @@ export class SliverClient {
     return new Promise((resolve, reject) => {
       this.rpc.saveImplantProfile(profile, this.deadline(timeout), (err, profile) => {
         err ? reject(err) : resolve(profile);
+      });
+    });
+  }
+
+  deleteImplantProfile(name: string, timeout = TIMEOUT): Promise<void> {
+    const delReq = new clientpb.DeleteReq();
+    delReq.setName(name);
+    return new Promise((resolve, reject) => {
+      this.rpc.deleteImplantProfile(delReq, this.deadline(timeout), (err) => {
+        err ? reject(err) : resolve();
       });
     });
   }
@@ -818,6 +838,19 @@ export class SliverClient {
         addContent.getContentsMap().set(key, value);
       });
       this.rpc.websiteAddContent(addContent, this.deadline(timeout), (err, website) => {
+        err ? reject(err) : resolve(website);
+      });
+    });
+  }
+
+  websiteUpdateContent(name: string, contents: Map<string, clientpb.WebContent>, timeout = TIMEOUT): Promise<clientpb.Website> {
+    return new Promise((resolve, reject) => {
+      const addContent = new clientpb.WebsiteAddContent();
+      addContent.setName(name);
+      contents.forEach((value, key) => {
+        addContent.getContentsMap().set(key, value);
+      });
+      this.rpc.websiteUpdateContent(addContent, this.deadline(timeout), (err, website) => {
         err ? reject(err) : resolve(website);
       });
     });

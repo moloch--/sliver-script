@@ -8,5 +8,6 @@ export enum Events {
     JobStarted = 'job-started',
     JobStopped = 'job-stopped',
     BuildCompleted = 'build-completed',
-    Profile = 'profile'
+    Profile = 'profile',
+    Website = 'website'
 };
