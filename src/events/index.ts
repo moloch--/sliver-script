@@ -7,6 +7,7 @@ export enum Events {
     Canary = 'canary',
     JobStarted = 'job-started',
     JobStopped = 'job-stopped',
+    Build = 'build',
     BuildCompleted = 'build-completed',
     Profile = 'profile',
     Website = 'website'
