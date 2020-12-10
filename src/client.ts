@@ -14,22 +14,22 @@ import { SliverClientConfig } from './config';
 
 const TIMEOUT = 30; // Default timeout in seconds
 const Kb = 1024;
-const Mb = 1024*Kb;
-const Gb = 1024*Mb;
+const Mb = 1024 * Kb;
+const Gb = 1024 * Mb;
 
 export async function gzip(data: Buffer): Promise<Buffer> {
   return new Promise((resolve, reject) => {
-      zlib.gzip(data, (err, result) => {
-        err ? reject(err) : resolve(result);
-      });
+    zlib.gzip(data, (err, result) => {
+      err ? reject(err) : resolve(result);
+    });
   });
 }
 
 export async function gunzip(data: Buffer): Promise<Buffer> {
   return new Promise((resolve, reject) => {
-      zlib.gunzip(data, (err, result) => {
-        err ? reject(err) : resolve(result);
-      });
+    zlib.gunzip(data, (err, result) => {
+      err ? reject(err) : resolve(result);
+    });
   });
 }
 
@@ -46,9 +46,9 @@ export class InteractiveSession {
   private _sessionId: number;
   private _tunnelStream: grpc.ClientDuplexStream<sliverpb.TunnelData, sliverpb.TunnelData>;
 
-  constructor(rpc: rpcpb.SliverRPCClient, 
-              tunnelStream: grpc.ClientDuplexStream<sliverpb.TunnelData, sliverpb.TunnelData>,  
-              sessionId: number) {
+  constructor(rpc: rpcpb.SliverRPCClient,
+    tunnelStream: grpc.ClientDuplexStream<sliverpb.TunnelData, sliverpb.TunnelData>,
+    sessionId: number) {
     this._rpc = rpc;
     this._tunnelStream = tunnelStream;
     this._sessionId = sessionId;
@@ -106,7 +106,7 @@ export class InteractiveSession {
       this._rpc.ifconfig(req, this.deadline(timeout), (err, ifconfig) => {
         err ? reject(err) : resolve(ifconfig);
       });
-    }); 
+    });
   }
 
   netstat(timeout = TIMEOUT): Promise<sliverpb.Netstat> {
@@ -170,7 +170,7 @@ export class InteractiveSession {
       this._rpc.mkdir(req, this.deadline(timeout), (err, mkdir) => {
         err ? reject(err) : resolve(mkdir);
       });
-    }); 
+    });
   }
 
   download(path: string, timeout = TIMEOUT): Promise<Buffer> {
@@ -191,7 +191,7 @@ export class InteractiveSession {
         }
         resolve(data);
       });
-    }); 
+    });
   }
 
   private toUint8Array(buf: Buffer): Uint8Array {
@@ -300,7 +300,7 @@ export class InteractiveSession {
       this._rpc.msf(req, this.deadline(timeout), (err) => {
         err ? reject(err) : resolve();
       });
-    }); 
+    });
   }
 
   msfRemote(pid: number, payload: string, lhost: string, lport: number, encoder: string, iterations: number, timeout = TIMEOUT): Promise<void> {
@@ -316,11 +316,11 @@ export class InteractiveSession {
       this._rpc.msf(req, (err) => {
         err ? reject(err) : resolve();
       });
-    }); 
+    });
   }
 
-  executeAssembly(hostingDLL: Buffer, assembly: Buffer, args: string, process: string, 
-                  AMSIBypass: boolean, timeout = TIMEOUT): Promise<sliverpb.ExecuteAssembly> {
+  executeAssembly(hostingDLL: Buffer, assembly: Buffer, args: string, process: string,
+    AMSIBypass: boolean, timeout = TIMEOUT): Promise<sliverpb.ExecuteAssembly> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.ExecuteAssemblyReq();
       req.setHostingdll(hostingDLL);
@@ -336,7 +336,7 @@ export class InteractiveSession {
   }
 
   migrate(pid: number, config: clientpb.ImplantConfig, timeout = TIMEOUT): Promise<sliverpb.Migrate> {
-    return new Promise((resolve, reject) => { 
+    return new Promise((resolve, reject) => {
       const req = new clientpb.MigrateReq();
       req.setPid(pid);
       req.setConfig(config);
@@ -348,7 +348,7 @@ export class InteractiveSession {
   }
 
   execute(exe: string, args: string[], output: boolean, timeout = TIMEOUT): Promise<sliverpb.Execute> {
-    return new Promise((resolve, reject) => { 
+    return new Promise((resolve, reject) => {
       const req = new sliverpb.ExecuteReq();
       req.setPath(exe);
       req.setArgsList(args);
@@ -361,7 +361,7 @@ export class InteractiveSession {
   }
 
   sideload(data: Buffer, processName: string, args: string, entryPoint: string, timeout = TIMEOUT): Promise<sliverpb.Sideload> {
-    return new Promise((resolve, reject) => { 
+    return new Promise((resolve, reject) => {
       const req = new sliverpb.SideloadReq();
       req.setData(data);
       req.setProcessname(processName);
@@ -375,7 +375,7 @@ export class InteractiveSession {
   }
 
   spawnDLL(data: Buffer, processName: string, offset: number, args: string, timeout = TIMEOUT): Promise<sliverpb.SpawnDll> {
-    return new Promise((resolve, reject) => { 
+    return new Promise((resolve, reject) => {
       const req = new sliverpb.SpawnDllReq();
       req.setData(data);
       req.setProcessname(processName);
@@ -389,7 +389,7 @@ export class InteractiveSession {
   }
 
   screenshot(timeout = TIMEOUT): Promise<sliverpb.Screenshot> {
-    return new Promise((resolve, reject) => { 
+    return new Promise((resolve, reject) => {
       const req = new sliverpb.ScreenshotReq();
       req.setRequest(this.request(timeout));
       this._rpc.screenshot(req, this.deadline(timeout), (err, screenshot) => {
@@ -403,50 +403,60 @@ export class InteractiveSession {
 
       const tunnel = new sliverpb.Tunnel();
       tunnel.setSessionid(this._sessionId);
+
       this._rpc.createTunnel(tunnel, (err, rpcTunnel) => {
         if (err || rpcTunnel === undefined) {
           return reject(err);
         }
+        const tunnelId = rpcTunnel.getTunnelid();
         const tunnelData = new sliverpb.TunnelData();
         tunnelData.setSessionid(this._sessionId);
-        tunnelData.setTunnelid(rpcTunnel.getTunnelid());
-        this._tunnelStream.write(tunnelData); // Bind tunnel
-        const req = new sliverpb.ShellReq();
-        req.setTunnelid(rpcTunnel.getTunnelid());
-        req.setPath(path);
-        req.setEnablepty(pty);
-        req.setRequest(this.request(timeout));
-        this._rpc.shell(req, (err, shell) => {
-          if (err || shell === undefined) {
-            return reject(err);
-          }
-
-          const stdout = new Observable<Buffer>(producer => {
-            this._tunnelStream.on('data', (tunnelData: sliverpb.TunnelData) => {
-              producer.next(Buffer.from(tunnelData.getData_asU8()));
+        tunnelData.setTunnelid(tunnelId);
+        
+        this._tunnelStream.write(tunnelData, () => {
+          const req = new sliverpb.ShellReq();
+          req.setTunnelid(tunnelId);
+          req.setPath(path);
+          req.setEnablepty(pty);
+          req.setRequest(this.request(timeout));
+          this._rpc.shell(req, (err, shell) => {
+            if (err || shell === undefined) {
+              return reject(err);
+            }
+            const stdout = new Observable<Buffer>(producer => {
+              this._tunnelStream.on('data', (tunnelData: sliverpb.TunnelData) => {
+                const isClosed = tunnelData.getClosed();
+                if (isClosed) {
+                  const drain = Buffer.from(tunnelData.getData_asU8());
+                  if (drain.length) {
+                    producer.next(drain);
+                  }
+                  producer.complete();
+                } else {
+                  producer.next(Buffer.from(tunnelData.getData_asU8()));
+                }
+              });
             });
+
+            const stdin: Observer<Buffer> = {
+              next: (raw: Buffer) => {
+                const data = new sliverpb.TunnelData();
+                data.setTunnelid(tunnelId);
+                data.setSessionid(this._sessionId);
+                data.setData(raw);
+                this._tunnelStream.write(data);
+              },
+              complete: () => {
+                this._rpc.closeTunnel(rpcTunnel, () => { });
+              },
+              error: () => {
+                this._rpc.closeTunnel(rpcTunnel, () => { });
+              },
+            };
+            resolve({ stdin: stdin, stdout: stdout });
           });
-          
-          const stdin: Observer<Buffer> = {
-            next: (raw: Buffer) => {
-              const data = new sliverpb.TunnelData();
-              data.setTunnelid(rpcTunnel.getTunnelid());
-              data.setSessionid(this._sessionId);
-              data.setData(raw);
-              this._tunnelStream.write(data);
-            },
-            complete: () => { this._rpc.closeTunnel(rpcTunnel, () => {}) },
-            error: (err) => {
-              console.error(err);
-              this._rpc.closeTunnel(rpcTunnel, () => {})
-            },
-          };
-
-          resolve({stdin: stdin,  stdout: stdout});
-
-        });
+        }); // Bind tunnel
       });
-
     });
   }
 
@@ -456,19 +466,18 @@ export class InteractiveSession {
 export class SliverClient {
 
   private _config: SliverClientConfig;
-  private _rpc: rpcpb.SliverRPCClient|null = null;
-  private _deadline = (TIMEOUT + 1) * 1000 // TIMEOUT + 1 seconds by default
+  private _rpc: rpcpb.SliverRPCClient | null = null;
   private empty = new commonpb.Empty();
-  
 
-  private _events: grpc.ClientReadableStream<clientpb.Event>|null = null;
+
+  private _events: grpc.ClientReadableStream<clientpb.Event> | null = null;
   event$ = new Subject<clientpb.Event>();
 
   session$ = this.event$.pipe(filter(event => event.getSession() !== undefined));
   job$ = this.event$.pipe(filter(event => event.getJob() !== undefined));
   client$ = this.event$.pipe(filter(event => event.getClient() !== undefined));
 
-  private _tunnelStream: grpc.ClientDuplexStream<sliverpb.TunnelData, sliverpb.TunnelData>|null = null;
+  private _tunnelStream: grpc.ClientDuplexStream<sliverpb.TunnelData, sliverpb.TunnelData> | null = null;
 
   constructor(config: SliverClientConfig) {
     this._config = config;
@@ -513,8 +522,8 @@ export class SliverClient {
     return new Promise((resolve, reject) => {
 
       const rpc = new rpcpb.SliverRPCClient(this.rpcHost(), this.rpcCredentials(), {
-        'grpc.max_send_message_length': 2*Gb,
-        'grpc.max_receive_message_length': 2*Gb,
+        'grpc.max_send_message_length': 2 * Gb,
+        'grpc.max_receive_message_length': 2 * Gb,
       });
       rpc.getVersion(this.empty, (err) => {
         if (err) {
@@ -542,11 +551,11 @@ export class SliverClient {
 
   async disconnect(): Promise<void> {
     if (this._events !== null) {
-      this._events.on('error', () => {})
+      this._events.on('error', () => { })
       this._events.cancel()
     }
     if (this._tunnelStream !== null) {
-      this._tunnelStream.on('error', () => {})
+      this._tunnelStream.on('error', () => { })
       this._tunnelStream.cancel()
     }
     this.rpc.close()
@@ -598,7 +607,7 @@ export class SliverClient {
   }
 
   killSession(sessionId: number, timeout = TIMEOUT): Promise<void> {
-    return new Promise((resolve, reject) => { 
+    return new Promise((resolve, reject) => {
       const kill = new sliverpb.KillSessionReq();
       const req = new commonpb.Request();
       req.setSessionid(sessionId);
@@ -670,9 +679,9 @@ export class SliverClient {
     });
   }
 
-  startHTTPSListener(domain: string, host: string, port: number, acme = false, website = '', 
-                     cert?: Buffer, key?: Buffer, timeout = TIMEOUT): Promise<clientpb.HTTPListener> {
-    return new Promise((resolve, reject) => { 
+  startHTTPSListener(domain: string, host: string, port: number, acme = false, website = '',
+    cert?: Buffer, key?: Buffer, timeout = TIMEOUT): Promise<clientpb.HTTPListener> {
+    return new Promise((resolve, reject) => {
       const https = new clientpb.HTTPListenerReq();
       https.setDomain(domain);
       https.setHost(host);

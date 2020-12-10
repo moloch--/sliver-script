@@ -1,6 +1,6 @@
 {
   "name": "sliver-script",
-  "version": "1.0.32",
+  "version": "1.0.33",
   "description": "TypeScript/JavaScript Sliver client library",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@types/jest": "^25.2.1",
+    "@types/long": "^4.0.1",
     "grpc-tools": "^1.8.1",
     "jest": "^25.5.4",
     "ts-jest": "^25.4.0",
