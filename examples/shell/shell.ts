@@ -13,16 +13,16 @@ const SLIVER_CONFIG_FILE = process.env['SLIVER_CONFIG_FILE'] || DEFAULT_CONFIG_P
 
 
 (async () => {
-    console.log(`Loading config: ${SLIVER_CONFIG_FILE}`)
-    const config = await ParseConfigFile(SLIVER_CONFIG_FILE)
-    const client = new SliverClient(config)
+    console.log(`Loading config: ${SLIVER_CONFIG_FILE}`);
+    const config = await ParseConfigFile(SLIVER_CONFIG_FILE);
+    const client = new SliverClient(config);
 
-    console.log(`Connecting to ${config.lhost} ...`)
-    await client.connect()
-    const sessions = await client.sessions()
+    console.log(`Connecting to ${config.lhost} ...`);
+    await client.connect();
+    const sessions = await client.sessions();
     console.log(sessions);
     if (0 < sessions.length) {
-        const interact = await client.interactWith(sessions[0])
+        const interact = await client.interactWith(sessions[0]);
         const shell = await interact.shell('/bin/bash', true);
         shell.stdout.subscribe(data => {
             process.stdout.write(data);
@@ -36,6 +36,6 @@ const SLIVER_CONFIG_FILE = process.env['SLIVER_CONFIG_FILE'] || DEFAULT_CONFIG_P
         setTimeout(() => { process.exit(0) }, 5000);
     } else {
         console.log('No sessions');
-        process.exit(0)
+        process.exit(0);
     }
-})()
+})();

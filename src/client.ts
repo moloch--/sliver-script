@@ -425,6 +425,9 @@ export class InteractiveSession {
             }
             const stdout = new Observable<Buffer>(producer => {
               this._tunnelStream.on('data', (tunnelData: sliverpb.TunnelData) => {
+                if (tunnelData.getTunnelid() !== tunnelId) {
+                  return; // Data is from another tunnel
+                }
                 const isClosed = tunnelData.getClosed();
                 if (isClosed) {
                   const drain = Buffer.from(tunnelData.getData_asU8());

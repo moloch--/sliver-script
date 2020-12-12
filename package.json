@@ -1,6 +1,6 @@
 {
   "name": "sliver-script",
-  "version": "1.0.33",
+  "version": "1.0.34",
   "description": "TypeScript/JavaScript Sliver client library",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
