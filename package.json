@@ -6,6 +6,7 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "rm -r ./lib && mkdir -p ./lib && ./protobuf.sh && cp -r ./src/pb ./lib/pb && tsc",
+    "docs": "typedoc --out ./docs/ ./src",
     "test": "jest --config jestconfig.json"
   },
   "engines": {
@@ -29,6 +30,7 @@
     "jest": "^25.5.4",
     "ts-jest": "^25.4.0",
     "ts-protoc-gen": "^0.12.0",
+    "typedoc": "^0.19.2",
     "typescript": "^3.8.3"
   },
   "dependencies": {
