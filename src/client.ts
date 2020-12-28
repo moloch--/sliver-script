@@ -67,7 +67,7 @@ export class InteractiveSession {
     }
   }
 
-  ping(nonce: number, timeout = TIMEOUT): Promise<sliverpb.Ping> {
+  ping(nonce: number, timeout = TIMEOUT): Promise<sliverpb.Ping|undefined> {
     return new Promise((resolve, reject) => {
       const ping = new sliverpb.Ping();
       ping.setRequest(this.request(timeout))
@@ -78,7 +78,7 @@ export class InteractiveSession {
     });
   }
 
-  ps(timeout = TIMEOUT): Promise<commonpb.Process[]> {
+  ps(timeout = TIMEOUT): Promise<commonpb.Process[]|undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.PsReq();
       req.setRequest(this.request(timeout));
@@ -88,7 +88,7 @@ export class InteractiveSession {
     });
   }
 
-  terminate(pid: number, timeout = TIMEOUT): Promise<sliverpb.Terminate> {
+  terminate(pid: number, timeout = TIMEOUT): Promise<sliverpb.Terminate|undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.TerminateReq();
       req.setPid(pid);
@@ -99,7 +99,7 @@ export class InteractiveSession {
     });
   }
 
-  ifconfig(timeout = TIMEOUT): Promise<sliverpb.Ifconfig> {
+  ifconfig(timeout = TIMEOUT): Promise<sliverpb.Ifconfig|undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.IfconfigReq();
       req.setRequest(this.request(timeout));
@@ -109,7 +109,7 @@ export class InteractiveSession {
     });
   }
 
-  netstat(timeout = TIMEOUT): Promise<sliverpb.Netstat> {
+  netstat(timeout = TIMEOUT): Promise<sliverpb.Netstat|undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.NetstatReq();
       req.setRequest(this.request(timeout));
@@ -119,7 +119,7 @@ export class InteractiveSession {
     });
   }
 
-  ls(path = '.', timeout = TIMEOUT): Promise<sliverpb.Ls> {
+  ls(path = '.', timeout = TIMEOUT): Promise<sliverpb.Ls|undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.LsReq();
       req.setPath(path);
@@ -130,7 +130,7 @@ export class InteractiveSession {
     });
   }
 
-  cd(path: string, timeout = TIMEOUT): Promise<sliverpb.Pwd> {
+  cd(path: string, timeout = TIMEOUT): Promise<sliverpb.Pwd|undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.CdReq();
       req.setPath(path);
@@ -141,7 +141,7 @@ export class InteractiveSession {
     });
   }
 
-  pwd(timeout = TIMEOUT): Promise<sliverpb.Pwd> {
+  pwd(timeout = TIMEOUT): Promise<sliverpb.Pwd|undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.PwdReq();
       req.setRequest(this.request(timeout));
@@ -151,7 +151,7 @@ export class InteractiveSession {
     });
   }
 
-  rm(path: string, timeout = TIMEOUT): Promise<sliverpb.Rm> {
+  rm(path: string, timeout = TIMEOUT): Promise<sliverpb.Rm|undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.RmReq();
       req.setPath(path);
@@ -162,7 +162,7 @@ export class InteractiveSession {
     });
   }
 
-  mkdir(path: string, timeout = TIMEOUT): Promise<sliverpb.Mkdir> {
+  mkdir(path: string, timeout = TIMEOUT): Promise<sliverpb.Mkdir|undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.MkdirReq();
       req.setPath(path);
@@ -203,7 +203,7 @@ export class InteractiveSession {
     return uint8Array;
   }
 
-  upload(path: string, data: Buffer, timeout = TIMEOUT): Promise<sliverpb.Upload> {
+  upload(path: string, data: Buffer, timeout = TIMEOUT): Promise<sliverpb.Upload|undefined> {
     return new Promise(async (resolve, reject) => {
       const req = new sliverpb.UploadReq();
       req.setPath(path);
@@ -217,7 +217,7 @@ export class InteractiveSession {
     });
   }
 
-  processDump(pid: number, timeout = TIMEOUT): Promise<sliverpb.ProcessDump> {
+  processDump(pid: number, timeout = TIMEOUT): Promise<sliverpb.ProcessDump|undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.ProcessDumpReq();
       req.setPid(pid);
@@ -228,7 +228,7 @@ export class InteractiveSession {
     });
   }
 
-  runAs(userName: string, processName: string, args: string, timeout = TIMEOUT): Promise<sliverpb.RunAs> {
+  runAs(userName: string, processName: string, args: string, timeout = TIMEOUT): Promise<sliverpb.RunAs|undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.RunAsReq();
       req.setUsername(userName);
@@ -241,7 +241,7 @@ export class InteractiveSession {
     });
   }
 
-  impersonate(userName: string, timeout = TIMEOUT): Promise<sliverpb.Impersonate> {
+  impersonate(userName: string, timeout = TIMEOUT): Promise<sliverpb.Impersonate|undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.ImpersonateReq();
       req.setUsername(userName);
@@ -252,7 +252,7 @@ export class InteractiveSession {
     });
   }
 
-  revToSelf(timeout = TIMEOUT): Promise<sliverpb.RevToSelf> {
+  revToSelf(timeout = TIMEOUT): Promise<sliverpb.RevToSelf|undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.RevToSelfReq();
       req.setRequest(this.request(timeout));
@@ -262,7 +262,7 @@ export class InteractiveSession {
     });
   }
 
-  getSystem(hostingProcess: string, config: clientpb.ImplantConfig, timeout = TIMEOUT): Promise<sliverpb.GetSystem> {
+  getSystem(hostingProcess: string, config: clientpb.ImplantConfig, timeout = TIMEOUT): Promise<sliverpb.GetSystem|undefined> {
     return new Promise((resolve, reject) => {
       const req = new clientpb.GetSystemReq();
       req.setHostingprocess(hostingProcess);
@@ -274,7 +274,7 @@ export class InteractiveSession {
     });
   }
 
-  task(pid: number, shellcode: Buffer, encoder: string, rwx: boolean, timeout = TIMEOUT): Promise<sliverpb.Task> {
+  task(pid: number, shellcode: Buffer, encoder: string, rwx: boolean, timeout = TIMEOUT): Promise<sliverpb.Task|undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.TaskReq();
       req.setEncoder(encoder);
@@ -319,15 +319,16 @@ export class InteractiveSession {
     });
   }
 
-  executeAssembly(hostingDLL: Buffer, assembly: Buffer, args: string, process: string,
-    AMSIBypass: boolean, timeout = TIMEOUT): Promise<sliverpb.ExecuteAssembly> {
+  executeAssembly(assembly: Buffer, args: string, process: string, AMSIBypass: boolean, ETWBypass: boolean, 
+                  timeout = TIMEOUT): Promise<sliverpb.ExecuteAssembly|undefined>
+  {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.ExecuteAssemblyReq();
-      req.setHostingdll(hostingDLL);
       req.setAssembly(assembly);
       req.setArguments(args);
       req.setProcess(process);
       req.setAmsibypass(AMSIBypass);
+      req.setEtwbypass(ETWBypass);
       req.setRequest(this.request(timeout));
       this._rpc.executeAssembly(req, this.deadline(timeout), (err, executeAssembly) => {
         err ? reject(err) : resolve(executeAssembly);
@@ -335,7 +336,7 @@ export class InteractiveSession {
     });
   }
 
-  migrate(pid: number, config: clientpb.ImplantConfig, timeout = TIMEOUT): Promise<sliverpb.Migrate> {
+  migrate(pid: number, config: clientpb.ImplantConfig, timeout = TIMEOUT): Promise<sliverpb.Migrate|undefined> {
     return new Promise((resolve, reject) => {
       const req = new clientpb.MigrateReq();
       req.setPid(pid);
@@ -347,7 +348,7 @@ export class InteractiveSession {
     });
   }
 
-  execute(exe: string, args: string[], output: boolean, timeout = TIMEOUT): Promise<sliverpb.Execute> {
+  execute(exe: string, args: string[], output: boolean, timeout = TIMEOUT): Promise<sliverpb.Execute|undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.ExecuteReq();
       req.setPath(exe);
@@ -360,7 +361,7 @@ export class InteractiveSession {
     });
   }
 
-  sideload(data: Buffer, processName: string, args: string, entryPoint: string, timeout = TIMEOUT): Promise<sliverpb.Sideload> {
+  sideload(data: Buffer, processName: string, args: string, entryPoint: string, timeout = TIMEOUT): Promise<sliverpb.Sideload|undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.SideloadReq();
       req.setData(data);
@@ -374,7 +375,7 @@ export class InteractiveSession {
     });
   }
 
-  spawnDLL(data: Buffer, processName: string, offset: number, args: string, timeout = TIMEOUT): Promise<sliverpb.SpawnDll> {
+  spawnDLL(data: Buffer, processName: string, offset: number, args: string, timeout = TIMEOUT): Promise<sliverpb.SpawnDll|undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.SpawnDllReq();
       req.setData(data);
@@ -388,7 +389,7 @@ export class InteractiveSession {
     });
   }
 
-  screenshot(timeout = TIMEOUT): Promise<sliverpb.Screenshot> {
+  screenshot(timeout = TIMEOUT): Promise<sliverpb.Screenshot|undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.ScreenshotReq();
       req.setRequest(this.request(timeout));
@@ -573,7 +574,7 @@ export class SliverClient {
 
   // ---- Version ----
 
-  getVersion(timeout = TIMEOUT): Promise<clientpb.Version> {
+  getVersion(timeout = TIMEOUT): Promise<clientpb.Version|undefined> {
     return new Promise((resolve, reject) => {
       this.rpc.getVersion(this.empty, this.deadline(timeout), (err, version) => {
         err ? reject(err) : resolve(version);
@@ -583,7 +584,7 @@ export class SliverClient {
 
   // ---- Operators ----
 
-  getOperators(timeout = TIMEOUT): Promise<clientpb.Operator[]> {
+  getOperators(timeout = TIMEOUT): Promise<clientpb.Operator[]|undefined> {
     return new Promise((resolve, reject) => {
       this.rpc.getOperators(this.empty, this.deadline(timeout), (err, operators) => {
         err ? reject(err) : resolve(operators?.getOperatorsList());
@@ -593,7 +594,7 @@ export class SliverClient {
 
   // ---- Sessions ----
 
-  sessions(timeout = TIMEOUT): Promise<clientpb.Session[]> {
+  sessions(timeout = TIMEOUT): Promise<clientpb.Session[]|undefined> {
     return new Promise((resolve, reject) => {
       this.rpc.getSessions(this.empty, this.deadline(timeout), (err, sessions) => {
         err ? reject(err) : resolve(sessions?.getSessionsList());
@@ -624,7 +625,7 @@ export class SliverClient {
 
   // ---- Jobs ----
 
-  jobs(timeout = TIMEOUT): Promise<clientpb.Job[]> {
+  jobs(timeout = TIMEOUT): Promise<clientpb.Job[]|undefined> {
     return new Promise((resolve, reject) => {
       this.rpc.getJobs(this.empty, this.deadline(timeout), (err, jobs) => {
         err ? reject(err) : resolve(jobs?.getActiveList());
@@ -632,7 +633,7 @@ export class SliverClient {
     });
   }
 
-  killJob(jobId: number, timeout = TIMEOUT): Promise<clientpb.KillJob> {
+  killJob(jobId: number, timeout = TIMEOUT): Promise<clientpb.KillJob|undefined> {
     return new Promise((resolve, reject) => {
       const kill = new clientpb.KillJobReq();
       kill.setId(jobId);
@@ -644,7 +645,7 @@ export class SliverClient {
 
   // ---- Listeners ----
 
-  startMTLSListener(host: string, port: number, timeout = TIMEOUT): Promise<clientpb.MTLSListener> {
+  startMTLSListener(host: string, port: number, timeout = TIMEOUT): Promise<clientpb.MTLSListener|undefined> {
     return new Promise((resolve, reject) => {
       const mtls = new clientpb.MTLSListenerReq();
       mtls.setHost(host);
@@ -655,7 +656,7 @@ export class SliverClient {
     });
   }
 
-  startDNSListener(domains: string[], canaries: boolean, host: string, port: number, timeout = TIMEOUT): Promise<clientpb.DNSListener> {
+  startDNSListener(domains: string[], canaries: boolean, host: string, port: number, timeout = TIMEOUT): Promise<clientpb.DNSListener|undefined> {
     return new Promise((resolve, reject) => {
       const dns = new clientpb.DNSListenerReq();
       dns.setDomainsList(domains);
@@ -668,7 +669,7 @@ export class SliverClient {
     });
   }
 
-  startHTTPListener(domain: string, host: string, port: number, website = '', timeout = TIMEOUT): Promise<clientpb.HTTPListener> {
+  startHTTPListener(domain: string, host: string, port: number, website = '', timeout = TIMEOUT): Promise<clientpb.HTTPListener|undefined> {
     return new Promise((resolve, reject) => {
       const http = new clientpb.HTTPListenerReq();
       http.setDomain(domain);
@@ -683,7 +684,7 @@ export class SliverClient {
   }
 
   startHTTPSListener(domain: string, host: string, port: number, acme = false, website = '',
-    cert?: Buffer, key?: Buffer, timeout = TIMEOUT): Promise<clientpb.HTTPListener> {
+    cert?: Buffer, key?: Buffer, timeout = TIMEOUT): Promise<clientpb.HTTPListener|undefined> {
     return new Promise((resolve, reject) => {
       const https = new clientpb.HTTPListenerReq();
       https.setDomain(domain);
@@ -700,7 +701,7 @@ export class SliverClient {
     });
   }
 
-  startTCPStagerListener(host: string, port: number, data: Buffer, timeout = TIMEOUT): Promise<clientpb.StagerListener> {
+  startTCPStagerListener(host: string, port: number, data: Buffer, timeout = TIMEOUT): Promise<clientpb.StagerListener|undefined> {
     return new Promise((resolve, reject) => {
       const req = new clientpb.StagerListenerReq();
       req.setProtocol(clientpb.StageProtocol.TCP);
@@ -713,7 +714,7 @@ export class SliverClient {
     });
   }
 
-  startHTTPStagerListener(host: string, port: number, data: Buffer, timeout = TIMEOUT): Promise<clientpb.StagerListener> {
+  startHTTPStagerListener(host: string, port: number, data: Buffer, timeout = TIMEOUT): Promise<clientpb.StagerListener|undefined> {
     return new Promise((resolve, reject) => {
       const req = new clientpb.StagerListenerReq();
       req.setProtocol(clientpb.StageProtocol.HTTP);
@@ -726,7 +727,7 @@ export class SliverClient {
     });
   }
 
-  startHTTPSStagerListener(host: string, port: number, data: Buffer, timeout = TIMEOUT): Promise<clientpb.StagerListener> {
+  startHTTPSStagerListener(host: string, port: number, data: Buffer, timeout = TIMEOUT): Promise<clientpb.StagerListener|undefined> {
     return new Promise((resolve, reject) => {
       const req = new clientpb.StagerListenerReq();
       req.setProtocol(clientpb.StageProtocol.HTTPS);
@@ -741,7 +742,7 @@ export class SliverClient {
 
   // ---- Implants ----
 
-  generate(config: clientpb.ImplantConfig, timeout = TIMEOUT): Promise<commonpb.File> {
+  generate(config: clientpb.ImplantConfig, timeout = TIMEOUT): Promise<commonpb.File|undefined> {
     return new Promise((resolve, reject) => {
       const req = new clientpb.GenerateReq();
       req.setConfig(config);
@@ -751,7 +752,7 @@ export class SliverClient {
     });
   }
 
-  regenerate(name: string, timeout = TIMEOUT): Promise<commonpb.File> {
+  regenerate(name: string, timeout = TIMEOUT): Promise<commonpb.File|undefined> {
     return new Promise((resolve, reject) => {
       const req = new clientpb.RegenerateReq();
       req.setImplantname(name);
@@ -761,7 +762,7 @@ export class SliverClient {
     });
   }
 
-  implantBuilds(timeout = TIMEOUT): Promise<clientpb.ImplantBuilds> {
+  implantBuilds(timeout = TIMEOUT): Promise<clientpb.ImplantBuilds|undefined> {
     return new Promise((resolve, reject) => {
       this.rpc.implantBuilds(this.empty, this.deadline(timeout), (err, builds) => {
         err ? reject(err) : resolve(builds);
@@ -779,7 +780,7 @@ export class SliverClient {
     });
   }
 
-  canaries(timeout = TIMEOUT): Promise<clientpb.DNSCanary[]> {
+  canaries(timeout = TIMEOUT): Promise<clientpb.DNSCanary[]|undefined> {
     return new Promise((resolve, reject) => {
       this.rpc.canaries(this.empty, this.deadline(timeout), (err, canaries) => {
         err ? reject(err) : resolve(canaries?.getCanariesList());
@@ -787,7 +788,7 @@ export class SliverClient {
     });
   }
 
-  implantProfiles(timeout = TIMEOUT): Promise<clientpb.ImplantProfile[]> {
+  implantProfiles(timeout = TIMEOUT): Promise<clientpb.ImplantProfile[]|undefined> {
     return new Promise((resolve, reject) => {
       this.rpc.implantProfiles(this.empty, this.deadline(timeout), (err, profiles) => {
         err ? reject(err) : resolve(profiles?.getProfilesList());
@@ -795,7 +796,7 @@ export class SliverClient {
     });
   }
 
-  saveImplantProfile(profile: clientpb.ImplantProfile, timeout = TIMEOUT): Promise<clientpb.ImplantProfile> {
+  saveImplantProfile(profile: clientpb.ImplantProfile, timeout = TIMEOUT): Promise<clientpb.ImplantProfile|undefined> {
     return new Promise((resolve, reject) => {
       this.rpc.saveImplantProfile(profile, this.deadline(timeout), (err, profile) => {
         err ? reject(err) : resolve(profile);
@@ -814,7 +815,7 @@ export class SliverClient {
   }
 
   // ---- Websites ----
-  websites(timeout = TIMEOUT): Promise<clientpb.Website[]> {
+  websites(timeout = TIMEOUT): Promise<clientpb.Website[]|undefined> {
     return new Promise((resolve, reject) => {
       this.rpc.websites(this.empty, this.deadline(timeout), (err, websites) => {
         err ? reject(err) : resolve(websites?.getWebsitesList());
@@ -822,7 +823,7 @@ export class SliverClient {
     });
   }
 
-  website(name: string, timeout = TIMEOUT): Promise<clientpb.Website> {
+  website(name: string, timeout = TIMEOUT): Promise<clientpb.Website|undefined> {
     return new Promise((resolve, reject) => {
       const web = new clientpb.Website();
       web.setName(name);
@@ -842,7 +843,7 @@ export class SliverClient {
     });
   }
 
-  websiteAddContent(name: string, contents: Map<string, clientpb.WebContent>, timeout = TIMEOUT): Promise<clientpb.Website> {
+  websiteAddContent(name: string, contents: Map<string, clientpb.WebContent>, timeout = TIMEOUT): Promise<clientpb.Website|undefined> {
     return new Promise((resolve, reject) => {
       const addContent = new clientpb.WebsiteAddContent();
       addContent.setName(name);
@@ -855,7 +856,7 @@ export class SliverClient {
     });
   }
 
-  websiteUpdateContent(name: string, contents: Map<string, clientpb.WebContent>, timeout = TIMEOUT): Promise<clientpb.Website> {
+  websiteUpdateContent(name: string, contents: Map<string, clientpb.WebContent>, timeout = TIMEOUT): Promise<clientpb.Website|undefined> {
     return new Promise((resolve, reject) => {
       const addContent = new clientpb.WebsiteAddContent();
       addContent.setName(name);
@@ -868,7 +869,7 @@ export class SliverClient {
     });
   }
 
-  websiteRemoveContent(name: string, paths: string[], timeout = TIMEOUT): Promise<clientpb.Website> {
+  websiteRemoveContent(name: string, paths: string[], timeout = TIMEOUT): Promise<clientpb.Website|undefined> {
     return new Promise((resolve, reject) => {
       const rm = new clientpb.WebsiteRemoveContent();
       rm.setName(name);
