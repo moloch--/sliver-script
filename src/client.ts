@@ -274,7 +274,8 @@ export class InteractiveSession {
     });
   }
 
-  task(pid: number, shellcode: Buffer, encoder: string, rwx: boolean, timeout = TIMEOUT): Promise<sliverpb.Task|undefined> {
+  // 'shellcode' aka "task"
+  executeShellcode(pid: number, shellcode: Buffer, encoder: string, rwx: boolean, timeout = TIMEOUT): Promise<sliverpb.Task|undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.TaskReq();
       req.setEncoder(encoder);
@@ -555,15 +556,15 @@ export class SliverClient {
 
   async disconnect(): Promise<void> {
     if (this._events !== null) {
-      this._events.on('error', () => { })
-      this._events.cancel()
+      this._events.on('error', () => { });
+      this._events.cancel();
     }
     if (this._tunnelStream !== null) {
-      this._tunnelStream.on('error', () => { })
-      this._tunnelStream.cancel()
+      this._tunnelStream.on('error', () => { });
+      this._tunnelStream.cancel();
     }
-    this.rpc.close()
-    this._rpc = null
+    this.rpc.close();
+    this._rpc = null;
   }
 
   private deadline(timeout: number) {
