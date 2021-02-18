@@ -376,13 +376,13 @@ export class InteractiveSession {
     });
   }
 
-  spawnDLL(data: Buffer, processName: string, offset: number, args: string, timeout = TIMEOUT): Promise<sliverpb.SpawnDll|undefined> {
+  spawnDLL(data: Buffer, entrypoint: string, processName: string, args: string, timeout = TIMEOUT): Promise<sliverpb.SpawnDll|undefined> {
     return new Promise((resolve, reject) => {
-      const req = new sliverpb.SpawnDllReq();
+      const req = new sliverpb.InvokeSpawnDllReq();
       req.setData(data);
       req.setProcessname(processName);
       req.setArgs(args);
-      req.setOffset(offset);
+      req.setEntrypoint(entrypoint);
       req.setRequest(this.request(timeout));
       this._rpc.spawnDll(req, this.deadline(timeout), (err, dll) => {
         err ? reject(err) : resolve(dll);
