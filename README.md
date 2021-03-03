@@ -6,9 +6,11 @@ Sliver-script is a TypeScript/JavaScript client library for Sliver, it can be us
 
 ### Install
 
-For best compatibility use Node v14.x (LTS) this package is available via npm:
+For best compatibility use Node v14.15.3 (LTS) this package is available via npm:
 
 `npm install sliver-script`
+
+NOTE: You must use exactly v14.15.3, Node versions after v14.15.3 [break mTLS compatibility in gRPC](https://github.com/grpc/grpc-node/issues/1669) and there is no fix.
 
 
 ### TypeScript Example
