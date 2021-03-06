@@ -496,6 +496,7 @@ export class SliverClient {
     const ca = Buffer.from(this._config.ca_certificate);
     const privateKey = Buffer.from(this._config.private_key);
     const certificate = Buffer.from(this._config.certificate);
+    
     return grpc.credentials.createSsl(ca, privateKey, certificate, {
       checkServerIdentity: () => undefined,
     });
