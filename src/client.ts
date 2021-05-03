@@ -328,8 +328,8 @@ export class InteractiveSession {
       req.setAssembly(assembly);
       req.setArguments(args);
       req.setProcess(process);
-      req.setAmsibypass(AMSIBypass);
-      req.setEtwbypass(ETWBypass);
+      //req.setAmsibypass(AMSIBypass);
+      //req.setEtwbypass(ETWBypass);
       req.setRequest(this.request(timeout));
       this._rpc.executeAssembly(req, this.deadline(timeout), (err, executeAssembly) => {
         err ? reject(err) : resolve(executeAssembly);
