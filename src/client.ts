@@ -320,16 +320,12 @@ export class InteractiveSession {
     });
   }
 
-  executeAssembly(assembly: Buffer, args: string, process: string, AMSIBypass: boolean, ETWBypass: boolean, 
-                  timeout = TIMEOUT): Promise<sliverpb.ExecuteAssembly|undefined>
-  {
+  executeAssembly(assembly: Buffer, args: string, process: string, timeout = TIMEOUT): Promise<sliverpb.ExecuteAssembly|undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.ExecuteAssemblyReq();
       req.setAssembly(assembly);
       req.setArguments(args);
       req.setProcess(process);
-      //req.setAmsibypass(AMSIBypass);
-      //req.setEtwbypass(ETWBypass);
       req.setRequest(this.request(timeout));
       this._rpc.executeAssembly(req, this.deadline(timeout), (err, executeAssembly) => {
         err ? reject(err) : resolve(executeAssembly);
