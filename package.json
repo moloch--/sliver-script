@@ -5,7 +5,8 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build": "rm -r ./lib && mkdir -p ./lib && ./protobuf.sh && cp -r ./src/pb ./lib/pb && tsc",
+    "build": "rm -r ./lib && mkdir -p ./lib && cp -r ./src/pb ./lib/pb && tsc",
+    "pb": "./protobuf.sh",
     "docs": "typedoc --out ./docs/ ./src",
     "test": "jest --config jestconfig.json"
   },
@@ -29,7 +30,8 @@
     "ts-jest": "^25.4.0",
     "ts-protoc-gen": "^0.12.0",
     "typedoc": "^0.20.36",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "ws": ">=7.4.6"
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.2.8",
