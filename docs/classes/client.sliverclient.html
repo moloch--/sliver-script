@@ -1,0 +1,1743 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>SliverClient | sliver-script</title>
+	<meta name="description" content="Documentation for sliver-script">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+	<script async src="../assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">sliver-script</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../modules.html">sliver-script</a>
+				</li>
+				<li>
+					<a href="../modules/client.html">client</a>
+				</li>
+				<li>
+					<a href="client.sliverclient.html">SliverClient</a>
+				</li>
+			</ul>
+			<h1>Class SliverClient</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">SliverClient</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="client.sliverclient.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="client.sliverclient.html#_config" class="tsd-kind-icon">_config</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="client.sliverclient.html#_events" class="tsd-kind-icon">_events</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="client.sliverclient.html#_rpc" class="tsd-kind-icon">_rpc</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="client.sliverclient.html#_tunnelstream" class="tsd-kind-icon">_tunnel<wbr>Stream</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="client.sliverclient.html#client_" class="tsd-kind-icon">client$</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="client.sliverclient.html#empty" class="tsd-kind-icon">empty</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="client.sliverclient.html#event_" class="tsd-kind-icon">event$</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="client.sliverclient.html#job_" class="tsd-kind-icon">job$</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="client.sliverclient.html#loot_" class="tsd-kind-icon">loot$</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="client.sliverclient.html#looteventtypes" class="tsd-kind-icon">loot<wbr>Event<wbr>Types</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="client.sliverclient.html#session_" class="tsd-kind-icon">session$</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Accessors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="client.sliverclient.html#config" class="tsd-kind-icon">config</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="client.sliverclient.html#isconnected" class="tsd-kind-icon">is<wbr>Connected</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="client.sliverclient.html#rpc" class="tsd-kind-icon">rpc</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="client.sliverclient.html#tunnelstream" class="tsd-kind-icon">tunnel<wbr>Stream</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#canaries" class="tsd-kind-icon">canaries</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#connect" class="tsd-kind-icon">connect</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="client.sliverclient.html#deadline" class="tsd-kind-icon">deadline</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#deleteimplantbuild" class="tsd-kind-icon">delete<wbr>Implant<wbr>Build</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#deleteimplantprofile" class="tsd-kind-icon">delete<wbr>Implant<wbr>Profile</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#disconnect" class="tsd-kind-icon">disconnect</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#generate" class="tsd-kind-icon">generate</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#getoperators" class="tsd-kind-icon">get<wbr>Operators</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#getversion" class="tsd-kind-icon">get<wbr>Version</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#implantbuilds" class="tsd-kind-icon">implant<wbr>Builds</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#implantprofiles" class="tsd-kind-icon">implant<wbr>Profiles</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#interact" class="tsd-kind-icon">interact</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#interactwith" class="tsd-kind-icon">interact<wbr>With</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#jobs" class="tsd-kind-icon">jobs</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#killjob" class="tsd-kind-icon">kill<wbr>Job</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#killsession" class="tsd-kind-icon">kill<wbr>Session</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#lootadd" class="tsd-kind-icon">loot<wbr>Add</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#lootall" class="tsd-kind-icon">loot<wbr>All</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#lootallof" class="tsd-kind-icon">loot<wbr>All<wbr>Of</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#lootcontent" class="tsd-kind-icon">loot<wbr>Content</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#lootremove" class="tsd-kind-icon">loot<wbr>Remove</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#lootupdate" class="tsd-kind-icon">loot<wbr>Update</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#regenerate" class="tsd-kind-icon">regenerate</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#rpccredentials" class="tsd-kind-icon">rpc<wbr>Credentials</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#rpchost" class="tsd-kind-icon">rpc<wbr>Host</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#saveimplantprofile" class="tsd-kind-icon">save<wbr>Implant<wbr>Profile</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#sessions" class="tsd-kind-icon">sessions</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#startdnslistener" class="tsd-kind-icon">startDNSListener</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#starthttplistener" class="tsd-kind-icon">startHTTPListener</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#starthttpslistener" class="tsd-kind-icon">startHTTPSListener</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#starthttpsstagerlistener" class="tsd-kind-icon">startHTTPSStager<wbr>Listener</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#starthttpstagerlistener" class="tsd-kind-icon">startHTTPStager<wbr>Listener</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#startmtlslistener" class="tsd-kind-icon">startMTLSListener</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#starttcpstagerlistener" class="tsd-kind-icon">startTCPStager<wbr>Listener</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#startwglistener" class="tsd-kind-icon">startWGListener</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#website" class="tsd-kind-icon">website</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#websiteaddcontent" class="tsd-kind-icon">website<wbr>Add<wbr>Content</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#websiteremove" class="tsd-kind-icon">website<wbr>Remove</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#websiteremovecontent" class="tsd-kind-icon">website<wbr>Remove<wbr>Content</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#websiteupdatecontent" class="tsd-kind-icon">website<wbr>Update<wbr>Content</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="client.sliverclient.html#websites" class="tsd-kind-icon">websites</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Sliver<wbr>Client<span class="tsd-signature-symbol">(</span>config<span class="tsd-signature-symbol">: </span><a href="../interfaces/config.sliverclientconfig.html" class="tsd-signature-type" data-tsd-kind="Interface">SliverClientConfig</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="client.sliverclient.html" class="tsd-signature-type" data-tsd-kind="Class">SliverClient</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L486">src/client.ts:486</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>config: <a href="../interfaces/config.sliverclientconfig.html" class="tsd-signature-type" data-tsd-kind="Interface">SliverClientConfig</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="client.sliverclient.html" class="tsd-signature-type" data-tsd-kind="Class">SliverClient</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_config" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _config</h3>
+					<div class="tsd-signature tsd-kind-icon">_config<span class="tsd-signature-symbol">:</span> <a href="../interfaces/config.sliverclientconfig.html" class="tsd-signature-type" data-tsd-kind="Interface">SliverClientConfig</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L469">src/client.ts:469</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_events" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _events</h3>
+					<div class="tsd-signature tsd-kind-icon">_events<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ClientReadableStream</span><span class="tsd-signature-symbol">&lt;</span><a href="pb_clientpb_client_pb.event-1.html" class="tsd-signature-type" data-tsd-kind="Class">Event</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = null</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L474">src/client.ts:474</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_rpc" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _rpc</h3>
+					<div class="tsd-signature tsd-kind-icon">_rpc<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><a href="pb_rpcpb_services_grpc_pb.sliverrpcclient.html" class="tsd-signature-type" data-tsd-kind="Class">SliverRPCClient</a><span class="tsd-signature-symbol"> = null</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L470">src/client.ts:470</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_tunnelstream" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _tunnel<wbr>Stream</h3>
+					<div class="tsd-signature tsd-kind-icon">_tunnel<wbr>Stream<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ClientDuplexStream</span><span class="tsd-signature-symbol">&lt;</span><a href="pb_sliverpb_sliver_pb.tunneldata-1.html" class="tsd-signature-type" data-tsd-kind="Class">TunnelData</a><span class="tsd-signature-symbol">, </span><a href="pb_sliverpb_sliver_pb.tunneldata-1.html" class="tsd-signature-type" data-tsd-kind="Class">TunnelData</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = null</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L486">src/client.ts:486</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="client_" class="tsd-anchor"></a>
+					<h3>client$</h3>
+					<div class="tsd-signature tsd-kind-icon">client$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="pb_clientpb_client_pb.event-1.html" class="tsd-signature-type" data-tsd-kind="Class">Event</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L479">src/client.ts:479</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="empty" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> empty</h3>
+					<div class="tsd-signature tsd-kind-icon">empty<span class="tsd-signature-symbol">:</span> <a href="pb_commonpb_common_pb.empty-1.html" class="tsd-signature-type" data-tsd-kind="Class">Empty</a><span class="tsd-signature-symbol"> = ...</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L471">src/client.ts:471</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="event_" class="tsd-anchor"></a>
+					<h3>event$</h3>
+					<div class="tsd-signature tsd-kind-icon">event$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Subject</span><span class="tsd-signature-symbol">&lt;</span><a href="pb_clientpb_client_pb.event-1.html" class="tsd-signature-type" data-tsd-kind="Class">Event</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L475">src/client.ts:475</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="job_" class="tsd-anchor"></a>
+					<h3>job$</h3>
+					<div class="tsd-signature tsd-kind-icon">job$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="pb_clientpb_client_pb.event-1.html" class="tsd-signature-type" data-tsd-kind="Class">Event</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L478">src/client.ts:478</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="loot_" class="tsd-anchor"></a>
+					<h3>loot$</h3>
+					<div class="tsd-signature tsd-kind-icon">loot$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="pb_clientpb_client_pb.event-1.html" class="tsd-signature-type" data-tsd-kind="Class">Event</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L482">src/client.ts:482</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="looteventtypes" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> loot<wbr>Event<wbr>Types</h3>
+					<div class="tsd-signature tsd-kind-icon">loot<wbr>Event<wbr>Types<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = ...</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L473">src/client.ts:473</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="session_" class="tsd-anchor"></a>
+					<h3>session$</h3>
+					<div class="tsd-signature tsd-kind-icon">session$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="pb_clientpb_client_pb.event-1.html" class="tsd-signature-type" data-tsd-kind="Class">Event</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L477">src/client.ts:477</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Accessors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="config" class="tsd-anchor"></a>
+					<h3>config</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> config<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/config.sliverclientconfig.html" class="tsd-signature-type" data-tsd-kind="Interface">SliverClientConfig</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L506">src/client.ts:506</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/config.sliverclientconfig.html" class="tsd-signature-type" data-tsd-kind="Interface">SliverClientConfig</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="isconnected" class="tsd-anchor"></a>
+					<h3>is<wbr>Connected</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> isConnected<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L524">src/client.ts:524</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="rpc" class="tsd-anchor"></a>
+					<h3>rpc</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> rpc<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="pb_rpcpb_services_grpc_pb.sliverrpcclient.html" class="tsd-signature-type" data-tsd-kind="Class">SliverRPCClient</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L510">src/client.ts:510</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="pb_rpcpb_services_grpc_pb.sliverrpcclient.html" class="tsd-signature-type" data-tsd-kind="Class">SliverRPCClient</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="tunnelstream" class="tsd-anchor"></a>
+					<h3>tunnel<wbr>Stream</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> tunnelStream<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ClientDuplexStream</span><span class="tsd-signature-symbol">&lt;</span><a href="pb_sliverpb_sliver_pb.tunneldata-1.html" class="tsd-signature-type" data-tsd-kind="Class">TunnelData</a><span class="tsd-signature-symbol">, </span><a href="pb_sliverpb_sliver_pb.tunneldata-1.html" class="tsd-signature-type" data-tsd-kind="Class">TunnelData</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L517">src/client.ts:517</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ClientDuplexStream</span><span class="tsd-signature-symbol">&lt;</span><a href="pb_sliverpb_sliver_pb.tunneldata-1.html" class="tsd-signature-type" data-tsd-kind="Class">TunnelData</a><span class="tsd-signature-symbol">, </span><a href="pb_sliverpb_sliver_pb.tunneldata-1.html" class="tsd-signature-type" data-tsd-kind="Class">TunnelData</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="canaries" class="tsd-anchor"></a>
+					<h3>canaries</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">canaries<span class="tsd-signature-symbol">(</span>timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.dnscanary-1.html" class="tsd-signature-type" data-tsd-kind="Class">DNSCanary</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L803">src/client.ts:803</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.dnscanary-1.html" class="tsd-signature-type" data-tsd-kind="Class">DNSCanary</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="connect" class="tsd-anchor"></a>
+					<h3>connect</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">connect<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="client.sliverclient.html" class="tsd-signature-type" data-tsd-kind="Class">SliverClient</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L528">src/client.ts:528</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="client.sliverclient.html" class="tsd-signature-type" data-tsd-kind="Class">SliverClient</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="deadline" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> deadline</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">deadline<span class="tsd-signature-symbol">(</span>timeout<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>deadline<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L572">src/client.ts:572</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{ </span>deadline<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span></h4>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter">
+									<h5>deadline<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="deleteimplantbuild" class="tsd-anchor"></a>
+					<h3>delete<wbr>Implant<wbr>Build</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">delete<wbr>Implant<wbr>Build<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L793">src/client.ts:793</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="deleteimplantprofile" class="tsd-anchor"></a>
+					<h3>delete<wbr>Implant<wbr>Profile</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">delete<wbr>Implant<wbr>Profile<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L827">src/client.ts:827</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="disconnect" class="tsd-anchor"></a>
+					<h3>disconnect</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">disconnect<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L559">src/client.ts:559</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="generate" class="tsd-anchor"></a>
+					<h3>generate</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">generate<span class="tsd-signature-symbol">(</span>config<span class="tsd-signature-symbol">: </span><a href="pb_clientpb_client_pb.implantconfig-1.html" class="tsd-signature-type" data-tsd-kind="Class">ImplantConfig</a>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_commonpb_common_pb.file-1.html" class="tsd-signature-type" data-tsd-kind="Class">File</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L765">src/client.ts:765</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>config: <a href="pb_clientpb_client_pb.implantconfig-1.html" class="tsd-signature-type" data-tsd-kind="Class">ImplantConfig</a></h5>
+								</li>
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_commonpb_common_pb.file-1.html" class="tsd-signature-type" data-tsd-kind="Class">File</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getoperators" class="tsd-anchor"></a>
+					<h3>get<wbr>Operators</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Operators<span class="tsd-signature-symbol">(</span>timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.operator-1.html" class="tsd-signature-type" data-tsd-kind="Class">Operator</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L590">src/client.ts:590</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.operator-1.html" class="tsd-signature-type" data-tsd-kind="Class">Operator</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getversion" class="tsd-anchor"></a>
+					<h3>get<wbr>Version</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Version<span class="tsd-signature-symbol">(</span>timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.version-1.html" class="tsd-signature-type" data-tsd-kind="Class">Version</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L580">src/client.ts:580</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.version-1.html" class="tsd-signature-type" data-tsd-kind="Class">Version</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="implantbuilds" class="tsd-anchor"></a>
+					<h3>implant<wbr>Builds</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">implant<wbr>Builds<span class="tsd-signature-symbol">(</span>timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.implantbuilds-1.html" class="tsd-signature-type" data-tsd-kind="Class">ImplantBuilds</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L785">src/client.ts:785</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.implantbuilds-1.html" class="tsd-signature-type" data-tsd-kind="Class">ImplantBuilds</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="implantprofiles" class="tsd-anchor"></a>
+					<h3>implant<wbr>Profiles</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">implant<wbr>Profiles<span class="tsd-signature-symbol">(</span>timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.implantprofile-1.html" class="tsd-signature-type" data-tsd-kind="Class">ImplantProfile</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L811">src/client.ts:811</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.implantprofile-1.html" class="tsd-signature-type" data-tsd-kind="Class">ImplantProfile</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="interact" class="tsd-anchor"></a>
+					<h3>interact</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">interact<span class="tsd-signature-symbol">(</span>sessionId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="client.interactivesession.html" class="tsd-signature-type" data-tsd-kind="Class">InteractiveSession</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L612">src/client.ts:612</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>sessionId: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="client.interactivesession.html" class="tsd-signature-type" data-tsd-kind="Class">InteractiveSession</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="interactwith" class="tsd-anchor"></a>
+					<h3>interact<wbr>With</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">interact<wbr>With<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="pb_clientpb_client_pb.session-1.html" class="tsd-signature-type" data-tsd-kind="Class">Session</a>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="client.interactivesession.html" class="tsd-signature-type" data-tsd-kind="Class">InteractiveSession</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L608">src/client.ts:608</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="pb_clientpb_client_pb.session-1.html" class="tsd-signature-type" data-tsd-kind="Class">Session</a></h5>
+								</li>
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="client.interactivesession.html" class="tsd-signature-type" data-tsd-kind="Class">InteractiveSession</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="jobs" class="tsd-anchor"></a>
+					<h3>jobs</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">jobs<span class="tsd-signature-symbol">(</span>timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.job-1.html" class="tsd-signature-type" data-tsd-kind="Class">Job</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L631">src/client.ts:631</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.job-1.html" class="tsd-signature-type" data-tsd-kind="Class">Job</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="killjob" class="tsd-anchor"></a>
+					<h3>kill<wbr>Job</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">kill<wbr>Job<span class="tsd-signature-symbol">(</span>jobId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.killjob-1.html" class="tsd-signature-type" data-tsd-kind="Class">KillJob</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L639">src/client.ts:639</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>jobId: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.killjob-1.html" class="tsd-signature-type" data-tsd-kind="Class">KillJob</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="killsession" class="tsd-anchor"></a>
+					<h3>kill<wbr>Session</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">kill<wbr>Session<span class="tsd-signature-symbol">(</span>sessionId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L616">src/client.ts:616</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>sessionId: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="lootadd" class="tsd-anchor"></a>
+					<h3>loot<wbr>Add</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">loot<wbr>Add<span class="tsd-signature-symbol">(</span>loot<span class="tsd-signature-symbol">: </span><a href="pb_clientpb_client_pb.loot-1.html" class="tsd-signature-type" data-tsd-kind="Class">Loot</a>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.loot-1.html" class="tsd-signature-type" data-tsd-kind="Class">Loot</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L876">src/client.ts:876</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>loot: <a href="pb_clientpb_client_pb.loot-1.html" class="tsd-signature-type" data-tsd-kind="Class">Loot</a></h5>
+								</li>
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.loot-1.html" class="tsd-signature-type" data-tsd-kind="Class">Loot</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="lootall" class="tsd-anchor"></a>
+					<h3>loot<wbr>All</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">loot<wbr>All<span class="tsd-signature-symbol">(</span>timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.loot-1.html" class="tsd-signature-type" data-tsd-kind="Class">Loot</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L838">src/client.ts:838</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.loot-1.html" class="tsd-signature-type" data-tsd-kind="Class">Loot</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="lootallof" class="tsd-anchor"></a>
+					<h3>loot<wbr>All<wbr>Of</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">loot<wbr>All<wbr>Of<span class="tsd-signature-symbol">(</span>lootType<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.loot-1.html" class="tsd-signature-type" data-tsd-kind="Class">Loot</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L846">src/client.ts:846</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>lootType: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.loot-1.html" class="tsd-signature-type" data-tsd-kind="Class">Loot</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="lootcontent" class="tsd-anchor"></a>
+					<h3>loot<wbr>Content</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">loot<wbr>Content<span class="tsd-signature-symbol">(</span>lootID<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.loot-1.html" class="tsd-signature-type" data-tsd-kind="Class">Loot</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L905">src/client.ts:905</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>lootID: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.loot-1.html" class="tsd-signature-type" data-tsd-kind="Class">Loot</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="lootremove" class="tsd-anchor"></a>
+					<h3>loot<wbr>Remove</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">loot<wbr>Remove<span class="tsd-signature-symbol">(</span>lootID<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L895">src/client.ts:895</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>lootID: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="lootupdate" class="tsd-anchor"></a>
+					<h3>loot<wbr>Update</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">loot<wbr>Update<span class="tsd-signature-symbol">(</span>lootID<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.loot-1.html" class="tsd-signature-type" data-tsd-kind="Class">Loot</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L884">src/client.ts:884</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>lootID: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.loot-1.html" class="tsd-signature-type" data-tsd-kind="Class">Loot</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="regenerate" class="tsd-anchor"></a>
+					<h3>regenerate</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">regenerate<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_commonpb_common_pb.file-1.html" class="tsd-signature-type" data-tsd-kind="Class">File</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L775">src/client.ts:775</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_commonpb_common_pb.file-1.html" class="tsd-signature-type" data-tsd-kind="Class">File</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="rpccredentials" class="tsd-anchor"></a>
+					<h3>rpc<wbr>Credentials</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">rpc<wbr>Credentials<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ChannelCredentials</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L496">src/client.ts:496</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ChannelCredentials</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="rpchost" class="tsd-anchor"></a>
+					<h3>rpc<wbr>Host</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">rpc<wbr>Host<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L492">src/client.ts:492</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="saveimplantprofile" class="tsd-anchor"></a>
+					<h3>save<wbr>Implant<wbr>Profile</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">save<wbr>Implant<wbr>Profile<span class="tsd-signature-symbol">(</span>profile<span class="tsd-signature-symbol">: </span><a href="pb_clientpb_client_pb.implantprofile-1.html" class="tsd-signature-type" data-tsd-kind="Class">ImplantProfile</a>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.implantprofile-1.html" class="tsd-signature-type" data-tsd-kind="Class">ImplantProfile</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L819">src/client.ts:819</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>profile: <a href="pb_clientpb_client_pb.implantprofile-1.html" class="tsd-signature-type" data-tsd-kind="Class">ImplantProfile</a></h5>
+								</li>
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.implantprofile-1.html" class="tsd-signature-type" data-tsd-kind="Class">ImplantProfile</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="sessions" class="tsd-anchor"></a>
+					<h3>sessions</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">sessions<span class="tsd-signature-symbol">(</span>timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.session-1.html" class="tsd-signature-type" data-tsd-kind="Class">Session</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L600">src/client.ts:600</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.session-1.html" class="tsd-signature-type" data-tsd-kind="Class">Session</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="startdnslistener" class="tsd-anchor"></a>
+					<h3>startDNSListener</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">startDNSListener<span class="tsd-signature-symbol">(</span>domains<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, canaries<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span>, host<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, port<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, persistent<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.dnslistener-1.html" class="tsd-signature-type" data-tsd-kind="Class">DNSListener</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L663">src/client.ts:663</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>domains: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li>
+									<h5>canaries: <span class="tsd-signature-type">boolean</span></h5>
+								</li>
+								<li>
+									<h5>host: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>port: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>persistent: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+								</li>
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.dnslistener-1.html" class="tsd-signature-type" data-tsd-kind="Class">DNSListener</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="starthttplistener" class="tsd-anchor"></a>
+					<h3>startHTTPListener</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">startHTTPListener<span class="tsd-signature-symbol">(</span>domain<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, host<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, port<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, website<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, persistent<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.httplistener-1.html" class="tsd-signature-type" data-tsd-kind="Class">HTTPListener</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L677">src/client.ts:677</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>domain: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>host: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>port: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>website: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &#x27;&#x27;</span></h5>
+								</li>
+								<li>
+									<h5>persistent: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+								</li>
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.httplistener-1.html" class="tsd-signature-type" data-tsd-kind="Class">HTTPListener</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="starthttpslistener" class="tsd-anchor"></a>
+					<h3>startHTTPSListener</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">startHTTPSListener<span class="tsd-signature-symbol">(</span>domain<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, host<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, port<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, acme<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, website<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, cert<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Buffer</span>, key<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Buffer</span>, persistent<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.httplistener-1.html" class="tsd-signature-type" data-tsd-kind="Class">HTTPListener</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L692">src/client.ts:692</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>domain: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>host: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>port: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>acme: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+								</li>
+								<li>
+									<h5>website: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &#x27;&#x27;</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> cert: <span class="tsd-signature-type">Buffer</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> key: <span class="tsd-signature-type">Buffer</span></h5>
+								</li>
+								<li>
+									<h5>persistent: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+								</li>
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.httplistener-1.html" class="tsd-signature-type" data-tsd-kind="Class">HTTPListener</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="starthttpsstagerlistener" class="tsd-anchor"></a>
+					<h3>startHTTPSStager<wbr>Listener</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">startHTTPSStager<wbr>Listener<span class="tsd-signature-symbol">(</span>host<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, port<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Buffer</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.stagerlistener-1.html" class="tsd-signature-type" data-tsd-kind="Class">StagerListener</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L750">src/client.ts:750</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>host: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>port: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>data: <span class="tsd-signature-type">Buffer</span></h5>
+								</li>
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.stagerlistener-1.html" class="tsd-signature-type" data-tsd-kind="Class">StagerListener</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="starthttpstagerlistener" class="tsd-anchor"></a>
+					<h3>startHTTPStager<wbr>Listener</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">startHTTPStager<wbr>Listener<span class="tsd-signature-symbol">(</span>host<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, port<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Buffer</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.stagerlistener-1.html" class="tsd-signature-type" data-tsd-kind="Class">StagerListener</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L737">src/client.ts:737</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>host: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>port: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>data: <span class="tsd-signature-type">Buffer</span></h5>
+								</li>
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.stagerlistener-1.html" class="tsd-signature-type" data-tsd-kind="Class">StagerListener</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="startmtlslistener" class="tsd-anchor"></a>
+					<h3>startMTLSListener</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">startMTLSListener<span class="tsd-signature-symbol">(</span>host<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, port<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, persistent<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.mtlslistener-1.html" class="tsd-signature-type" data-tsd-kind="Class">MTLSListener</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L651">src/client.ts:651</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>host: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>port: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>persistent: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+								</li>
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.mtlslistener-1.html" class="tsd-signature-type" data-tsd-kind="Class">MTLSListener</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="starttcpstagerlistener" class="tsd-anchor"></a>
+					<h3>startTCPStager<wbr>Listener</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">startTCPStager<wbr>Listener<span class="tsd-signature-symbol">(</span>host<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, port<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Buffer</span>, persistent<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.stagerlistener-1.html" class="tsd-signature-type" data-tsd-kind="Class">StagerListener</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L724">src/client.ts:724</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>host: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>port: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>data: <span class="tsd-signature-type">Buffer</span></h5>
+								</li>
+								<li>
+									<h5>persistent: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+								</li>
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.stagerlistener-1.html" class="tsd-signature-type" data-tsd-kind="Class">StagerListener</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="startwglistener" class="tsd-anchor"></a>
+					<h3>startWGListener</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">startWGListener<span class="tsd-signature-symbol">(</span>port<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, nPort<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, keyPort<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, persistent<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.wglistener-1.html" class="tsd-signature-type" data-tsd-kind="Class">WGListener</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L711">src/client.ts:711</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>port: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>nPort: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>keyPort: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>persistent: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+								</li>
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.wglistener-1.html" class="tsd-signature-type" data-tsd-kind="Class">WGListener</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="website" class="tsd-anchor"></a>
+					<h3>website</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">website<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.website-1.html" class="tsd-signature-type" data-tsd-kind="Class">Website</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L925">src/client.ts:925</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.website-1.html" class="tsd-signature-type" data-tsd-kind="Class">Website</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="websiteaddcontent" class="tsd-anchor"></a>
+					<h3>website<wbr>Add<wbr>Content</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">website<wbr>Add<wbr>Content<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, contents<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="pb_clientpb_client_pb.webcontent-1.html" class="tsd-signature-type" data-tsd-kind="Class">WebContent</a><span class="tsd-signature-symbol">&gt;</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.website-1.html" class="tsd-signature-type" data-tsd-kind="Class">Website</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L945">src/client.ts:945</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>contents: <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="pb_clientpb_client_pb.webcontent-1.html" class="tsd-signature-type" data-tsd-kind="Class">WebContent</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.website-1.html" class="tsd-signature-type" data-tsd-kind="Class">Website</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="websiteremove" class="tsd-anchor"></a>
+					<h3>website<wbr>Remove</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">website<wbr>Remove<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L935">src/client.ts:935</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="websiteremovecontent" class="tsd-anchor"></a>
+					<h3>website<wbr>Remove<wbr>Content</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">website<wbr>Remove<wbr>Content<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, paths<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.website-1.html" class="tsd-signature-type" data-tsd-kind="Class">Website</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L971">src/client.ts:971</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>paths: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.website-1.html" class="tsd-signature-type" data-tsd-kind="Class">Website</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="websiteupdatecontent" class="tsd-anchor"></a>
+					<h3>website<wbr>Update<wbr>Content</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">website<wbr>Update<wbr>Content<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, contents<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="pb_clientpb_client_pb.webcontent-1.html" class="tsd-signature-type" data-tsd-kind="Class">WebContent</a><span class="tsd-signature-symbol">&gt;</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.website-1.html" class="tsd-signature-type" data-tsd-kind="Class">Website</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L958">src/client.ts:958</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>contents: <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="pb_clientpb_client_pb.webcontent-1.html" class="tsd-signature-type" data-tsd-kind="Class">WebContent</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.website-1.html" class="tsd-signature-type" data-tsd-kind="Class">Website</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="websites" class="tsd-anchor"></a>
+					<h3>websites</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">websites<span class="tsd-signature-symbol">(</span>timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.website-1.html" class="tsd-signature-type" data-tsd-kind="Class">Website</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/moloch--/sliver-script/blob/cf08424/src/client.ts#L917">src/client.ts:917</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="pb_clientpb_client_pb.website-1.html" class="tsd-signature-type" data-tsd-kind="Class">Website</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="../modules.html">Exports</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/client.html">client</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/config.html">config</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/events.html">events</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/index.html">index</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/pb_clientpb_client_pb.html">pb/clientpb/client_<wbr>pb</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/pb_commonpb_common_pb.html">pb/commonpb/common_<wbr>pb</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/pb_rpcpb_services_grpc_pb.html">pb/rpcpb/services_<wbr>grpc_<wbr>pb</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/pb_rpcpb_services_pb.html">pb/rpcpb/services_<wbr>pb</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/pb_sliverpb_sliver_pb.html">pb/sliverpb/sliver_<wbr>pb</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class tsd-parent-kind-module">
+						<a href="client.interactivesession.html" class="tsd-kind-icon">Interactive<wbr>Session</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class tsd-parent-kind-module">
+						<a href="client.sliverclient.html" class="tsd-kind-icon">Sliver<wbr>Client</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="client.sliverclient.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="client.sliverclient.html#_config" class="tsd-kind-icon">_config</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="client.sliverclient.html#_events" class="tsd-kind-icon">_events</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="client.sliverclient.html#_rpc" class="tsd-kind-icon">_rpc</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="client.sliverclient.html#_tunnelstream" class="tsd-kind-icon">_tunnel<wbr>Stream</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="client.sliverclient.html#client_" class="tsd-kind-icon">client$</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="client.sliverclient.html#empty" class="tsd-kind-icon">empty</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="client.sliverclient.html#event_" class="tsd-kind-icon">event$</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="client.sliverclient.html#job_" class="tsd-kind-icon">job$</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="client.sliverclient.html#loot_" class="tsd-kind-icon">loot$</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="client.sliverclient.html#looteventtypes" class="tsd-kind-icon">loot<wbr>Event<wbr>Types</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="client.sliverclient.html#session_" class="tsd-kind-icon">session$</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="client.sliverclient.html#config" class="tsd-kind-icon">config</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="client.sliverclient.html#isconnected" class="tsd-kind-icon">is<wbr>Connected</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="client.sliverclient.html#rpc" class="tsd-kind-icon">rpc</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="client.sliverclient.html#tunnelstream" class="tsd-kind-icon">tunnel<wbr>Stream</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#canaries" class="tsd-kind-icon">canaries</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#connect" class="tsd-kind-icon">connect</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="client.sliverclient.html#deadline" class="tsd-kind-icon">deadline</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#deleteimplantbuild" class="tsd-kind-icon">delete<wbr>Implant<wbr>Build</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#deleteimplantprofile" class="tsd-kind-icon">delete<wbr>Implant<wbr>Profile</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#disconnect" class="tsd-kind-icon">disconnect</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#generate" class="tsd-kind-icon">generate</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#getoperators" class="tsd-kind-icon">get<wbr>Operators</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#getversion" class="tsd-kind-icon">get<wbr>Version</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#implantbuilds" class="tsd-kind-icon">implant<wbr>Builds</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#implantprofiles" class="tsd-kind-icon">implant<wbr>Profiles</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#interact" class="tsd-kind-icon">interact</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#interactwith" class="tsd-kind-icon">interact<wbr>With</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#jobs" class="tsd-kind-icon">jobs</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#killjob" class="tsd-kind-icon">kill<wbr>Job</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#killsession" class="tsd-kind-icon">kill<wbr>Session</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#lootadd" class="tsd-kind-icon">loot<wbr>Add</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#lootall" class="tsd-kind-icon">loot<wbr>All</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#lootallof" class="tsd-kind-icon">loot<wbr>All<wbr>Of</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#lootcontent" class="tsd-kind-icon">loot<wbr>Content</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#lootremove" class="tsd-kind-icon">loot<wbr>Remove</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#lootupdate" class="tsd-kind-icon">loot<wbr>Update</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#regenerate" class="tsd-kind-icon">regenerate</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#rpccredentials" class="tsd-kind-icon">rpc<wbr>Credentials</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#rpchost" class="tsd-kind-icon">rpc<wbr>Host</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#saveimplantprofile" class="tsd-kind-icon">save<wbr>Implant<wbr>Profile</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#sessions" class="tsd-kind-icon">sessions</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#startdnslistener" class="tsd-kind-icon">startDNSListener</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#starthttplistener" class="tsd-kind-icon">startHTTPListener</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#starthttpslistener" class="tsd-kind-icon">startHTTPSListener</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#starthttpsstagerlistener" class="tsd-kind-icon">startHTTPSStager<wbr>Listener</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#starthttpstagerlistener" class="tsd-kind-icon">startHTTPStager<wbr>Listener</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#startmtlslistener" class="tsd-kind-icon">startMTLSListener</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#starttcpstagerlistener" class="tsd-kind-icon">startTCPStager<wbr>Listener</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#startwglistener" class="tsd-kind-icon">startWGListener</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#website" class="tsd-kind-icon">website</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#websiteaddcontent" class="tsd-kind-icon">website<wbr>Add<wbr>Content</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#websiteremove" class="tsd-kind-icon">website<wbr>Remove</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#websiteremovecontent" class="tsd-kind-icon">website<wbr>Remove<wbr>Content</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#websiteupdatecontent" class="tsd-kind-icon">website<wbr>Update<wbr>Content</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="client.sliverclient.html#websites" class="tsd-kind-icon">websites</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="../interfaces/client.tunnel.html" class="tsd-kind-icon">Tunnel</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/client.html#gunzip" class="tsd-kind-icon">gunzip</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/client.html#gzip" class="tsd-kind-icon">gzip</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-namespace"><span class="tsd-kind-icon">Namespace</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
