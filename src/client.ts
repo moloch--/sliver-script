@@ -8,7 +8,7 @@ import * as commonpb from './pb/commonpb/common_pb';
 import * as sliverpb from './pb/sliverpb/sliver_pb';
 import * as clientpb from './pb/clientpb/client_pb';
 import * as rpcpb from './pb/rpcpb/services_grpc_pb';
-
+import { Events } from './events';
 import { SliverClientConfig } from './config';
 
 
@@ -470,13 +470,18 @@ export class SliverClient {
   private _rpc: rpcpb.SliverRPCClient | null = null;
   private empty = new commonpb.Empty();
 
-
+  private lootEventTypes: string[] = [Events.LootAddedEvent, Events.LootRemovedEvent];
   private _events: grpc.ClientReadableStream<clientpb.Event> | null = null;
   event$ = new Subject<clientpb.Event>();
 
   session$ = this.event$.pipe(filter(event => event.getSession() !== undefined));
   job$ = this.event$.pipe(filter(event => event.getJob() !== undefined));
   client$ = this.event$.pipe(filter(event => event.getClient() !== undefined));
+  
+  // Filter anything that doesn't match one of the loot event types
+  loot$ = this.event$.pipe(filter(event => this.lootEventTypes.some(lootEventType => { 
+    lootEventType === event.getEventtype() 
+  })));
 
   private _tunnelStream: grpc.ClientDuplexStream<sliverpb.TunnelData, sliverpb.TunnelData> | null = null;
 
@@ -643,31 +648,33 @@ export class SliverClient {
 
   // ---- Listeners ----
 
-  startMTLSListener(host: string, port: number, timeout = TIMEOUT): Promise<clientpb.MTLSListener|undefined> {
+  startMTLSListener(host: string, port: number, persistent = false, timeout = TIMEOUT): Promise<clientpb.MTLSListener|undefined> {
     return new Promise((resolve, reject) => {
       const mtls = new clientpb.MTLSListenerReq();
       mtls.setHost(host);
       mtls.setPort(port);
+      mtls.setPersistent(persistent);
       this.rpc.startMTLSListener(mtls, this.deadline(timeout), (err, listener) => {
         err ? reject(err) : resolve(listener);
       });
     });
   }
 
-  startDNSListener(domains: string[], canaries: boolean, host: string, port: number, timeout = TIMEOUT): Promise<clientpb.DNSListener|undefined> {
+  startDNSListener(domains: string[], canaries: boolean, host: string, port: number, persistent = false, timeout = TIMEOUT): Promise<clientpb.DNSListener|undefined> {
     return new Promise((resolve, reject) => {
       const dns = new clientpb.DNSListenerReq();
       dns.setDomainsList(domains);
       dns.setCanaries(canaries);
       dns.setHost(host);
       dns.setPort(port);
+      dns.setPersistent(persistent);
       this.rpc.startDNSListener(dns, this.deadline(timeout), (err, listener) => {
         err ? reject(err) : resolve(listener);
       });
     });
   }
 
-  startHTTPListener(domain: string, host: string, port: number, website = '', timeout = TIMEOUT): Promise<clientpb.HTTPListener|undefined> {
+  startHTTPListener(domain: string, host: string, port: number, website = '', persistent = false, timeout = TIMEOUT): Promise<clientpb.HTTPListener|undefined> {
     return new Promise((resolve, reject) => {
       const http = new clientpb.HTTPListenerReq();
       http.setDomain(domain);
@@ -675,6 +682,7 @@ export class SliverClient {
       http.setPort(port);
       http.setSecure(false);
       http.setWebsite(website);
+      http.setPersistent(persistent);
       this.rpc.startHTTPListener(http, this.deadline(timeout), (err, listener) => {
         err ? reject(err) : resolve(listener);
       });
@@ -682,7 +690,7 @@ export class SliverClient {
   }
 
   startHTTPSListener(domain: string, host: string, port: number, acme = false, website = '',
-    cert?: Buffer, key?: Buffer, timeout = TIMEOUT): Promise<clientpb.HTTPListener|undefined> {
+    cert?: Buffer, key?: Buffer, persistent = false,  timeout = TIMEOUT): Promise<clientpb.HTTPListener|undefined> {
     return new Promise((resolve, reject) => {
       const https = new clientpb.HTTPListenerReq();
       https.setDomain(domain);
@@ -693,13 +701,27 @@ export class SliverClient {
       key ? https.setKey(key) : null;
       https.setAcme(acme);
       https.setWebsite(website);
+      https.setPersistent(persistent);
       this.rpc.startHTTPSListener(https, this.deadline(timeout), (err, listener) => {
         err ? reject(err) : resolve(listener);
       });
     });
   }
 
-  startTCPStagerListener(host: string, port: number, data: Buffer, timeout = TIMEOUT): Promise<clientpb.StagerListener|undefined> {
+  startWGListener(port: number, nPort: number, keyPort: number, persistent = false, timeout = TIMEOUT): Promise<clientpb.WGListener|undefined> {
+    return new Promise((resolve, reject) => {
+      const req = new clientpb.WGListenerReq();
+      req.setPort(port);
+      req.setNport(nPort);
+      req.setKeyport(keyPort);
+      req.setPersistent(persistent);
+      this.rpc.startWGListener(req, this.deadline(timeout), (err, wgListener) => {
+        err ? reject(err) : resolve(wgListener);
+      });
+    });
+  }
+
+  startTCPStagerListener(host: string, port: number, data: Buffer, persistent = false, timeout = TIMEOUT): Promise<clientpb.StagerListener|undefined> {
     return new Promise((resolve, reject) => {
       const req = new clientpb.StagerListenerReq();
       req.setProtocol(clientpb.StageProtocol.TCP);
@@ -812,7 +834,86 @@ export class SliverClient {
     });
   }
 
+  // ---- Loot ----
+  lootAll(timeout = TIMEOUT): Promise<clientpb.Loot[]|undefined> {
+    return new Promise((resolve, reject) => {
+      this.rpc.lootAll(this.empty, this.deadline(timeout), (err, loot) => {
+        err ? reject(err) : resolve(loot?.getLootList());
+      });
+    });
+  }
+
+  lootAllOf(lootType: string, timeout = TIMEOUT): Promise<clientpb.Loot[]|undefined> {
+
+    // There doesn't seem to be a good way to strongly type this parameter
+    const loot = new clientpb.Loot();
+    switch (lootType.toLowerCase()) {
+      case 'c':
+      case 'cred':
+      case 'creds':
+      case 'credential':
+      case 'credentials':
+        loot.setType(clientpb.LootType.LOOT_CREDENTIAL);
+        break;
+
+      case 'f':
+      case 'file':
+      case 'files':
+        loot.setType(clientpb.LootType.LOOT_FILE);
+        break;
+
+      default:
+        throw new Error(`Unknown loot type: ${lootType}`);
+    }
+
+    return new Promise((resolve, reject) => {
+      this.rpc.lootAllOf(loot, this.deadline(timeout), (err, loot) => {
+        err ? reject(err) : resolve(loot?.getLootList());
+      });
+    });
+  }
+
+  lootAdd(loot: clientpb.Loot, timeout = TIMEOUT): Promise<clientpb.Loot|undefined> {
+    return new Promise((resolve, reject) => {
+      this.rpc.lootAdd(loot, this.deadline(timeout), (err, loot) => {
+        err ? reject(err) : resolve(loot);
+      });
+    });
+  }
+
+  lootUpdate(lootID: string, name: string, timeout = TIMEOUT): Promise<clientpb.Loot|undefined> {
+    const loot = new clientpb.Loot();
+    loot.setLootid(lootID);
+    loot.setName(name);
+    return new Promise((resolve, reject) => {
+      this.rpc.lootUpdate(loot, this.deadline(timeout), (err, loot) => {
+        err ? reject(err) : resolve(loot);
+      });
+    });
+  }
+
+  lootRemove(lootID: string, timeout = TIMEOUT): Promise<void> {
+    const loot = new clientpb.Loot();
+    loot.setLootid(lootID);
+    return new Promise((resolve, reject) => {
+      this.rpc.lootRm(loot, this.deadline(timeout), (err) => {
+        err ? reject(err) : resolve();
+      });
+    });
+  }
+
+  lootContent(lootID: string, timeout = TIMEOUT): Promise<clientpb.Loot|undefined> {
+    const loot = new clientpb.Loot();
+    loot.setLootid(lootID);
+    return new Promise((resolve, reject) => {
+      this.rpc.lootContent(loot, this.deadline(timeout), (err, loot) => {
+        err ? reject(err) : resolve(loot);
+      });
+    });
+  }
+
   // ---- Websites ----
+  
   websites(timeout = TIMEOUT): Promise<clientpb.Website[]|undefined> {
     return new Promise((resolve, reject) => {
       this.rpc.websites(this.empty, this.deadline(timeout), (err, websites) => {

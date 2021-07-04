@@ -10,5 +10,7 @@ export enum Events {
     Build = 'build',
     BuildCompleted = 'build-completed',
     Profile = 'profile',
-    Website = 'website'
+    Website = 'website',
+	LootAddedEvent = 'loot-added',
+	LootRemovedEvent = 'loot-removed',
 };
