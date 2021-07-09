@@ -772,6 +772,14 @@ export class SliverClient {
     });
   }
 
+  compilerInfo(timeout = TIMEOUT): Promise<clientpb.Compiler|undefined> {
+    return new Promise((resolve, reject) => {
+      this.rpc.getCompiler(new commonpb.Empty(), this.deadline(timeout), (err, info) => {
+        err ? reject(err) : resolve(info);
+      });
+    });
+  }
+
   regenerate(name: string, timeout = TIMEOUT): Promise<commonpb.File|undefined> {
     return new Promise((resolve, reject) => {
       const req = new clientpb.RegenerateReq();
