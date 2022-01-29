@@ -282,7 +282,8 @@ proto.commonpb.Request.toObject = function(includeInstance, msg) {
   var f, obj = {
     async: jspb.Message.getBooleanFieldWithDefault(msg, 1, false),
     timeout: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    sessionid: jspb.Message.getFieldWithDefault(msg, 9, 0)
+    beaconid: jspb.Message.getFieldWithDefault(msg, 8, ""),
+    sessionid: jspb.Message.getFieldWithDefault(msg, 9, "")
   };
 
   if (includeInstance) {
@@ -327,8 +328,12 @@ proto.commonpb.Request.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {number} */ (reader.readInt64());
       msg.setTimeout(value);
       break;
+    case 8:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setBeaconid(value);
+      break;
     case 9:
-      var value = /** @type {number} */ (reader.readUint32());
+      var value = /** @type {string} */ (reader.readString());
       msg.setSessionid(value);
       break;
     default:
@@ -374,9 +379,16 @@ proto.commonpb.Request.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getBeaconid();
+  if (f.length > 0) {
+    writer.writeString(
+      8,
+      f
+    );
+  }
   f = message.getSessionid();
-  if (f !== 0) {
-    writer.writeUint32(
+  if (f.length > 0) {
+    writer.writeString(
       9,
       f
     );
@@ -421,20 +433,38 @@ proto.commonpb.Request.prototype.setTimeout = function(value) {
 
 
 /**
- * optional uint32 SessionID = 9;
- * @return {number}
+ * optional string BeaconID = 8;
+ * @return {string}
  */
-proto.commonpb.Request.prototype.getSessionid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 9, 0));
+proto.commonpb.Request.prototype.getBeaconid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
 };
 
 
 /**
- * @param {number} value
+ * @param {string} value
+ * @return {!proto.commonpb.Request} returns this
+ */
+proto.commonpb.Request.prototype.setBeaconid = function(value) {
+  return jspb.Message.setProto3StringField(this, 8, value);
+};
+
+
+/**
+ * optional string SessionID = 9;
+ * @return {string}
+ */
+proto.commonpb.Request.prototype.getSessionid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
+};
+
+
+/**
+ * @param {string} value
  * @return {!proto.commonpb.Request} returns this
  */
 proto.commonpb.Request.prototype.setSessionid = function(value) {
-  return jspb.Message.setProto3IntField(this, 9, value);
+  return jspb.Message.setProto3StringField(this, 9, value);
 };
 
 
@@ -470,7 +500,10 @@ proto.commonpb.Response.prototype.toObject = function(opt_includeInstance) {
  */
 proto.commonpb.Response.toObject = function(includeInstance, msg) {
   var f, obj = {
-    err: jspb.Message.getFieldWithDefault(msg, 1, "")
+    err: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    async: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
+    beaconid: jspb.Message.getFieldWithDefault(msg, 8, ""),
+    taskid: jspb.Message.getFieldWithDefault(msg, 9, "")
   };
 
   if (includeInstance) {
@@ -511,6 +544,18 @@ proto.commonpb.Response.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {string} */ (reader.readString());
       msg.setErr(value);
       break;
+    case 2:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setAsync(value);
+      break;
+    case 8:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setBeaconid(value);
+      break;
+    case 9:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTaskid(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -547,6 +592,27 @@ proto.commonpb.Response.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getAsync();
+  if (f) {
+    writer.writeBool(
+      2,
+      f
+    );
+  }
+  f = message.getBeaconid();
+  if (f.length > 0) {
+    writer.writeString(
+      8,
+      f
+    );
+  }
+  f = message.getTaskid();
+  if (f.length > 0) {
+    writer.writeString(
+      9,
+      f
+    );
+  }
 };
 
 
@@ -565,6 +631,60 @@ proto.commonpb.Response.prototype.getErr = function() {
  */
 proto.commonpb.Response.prototype.setErr = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional bool Async = 2;
+ * @return {boolean}
+ */
+proto.commonpb.Response.prototype.getAsync = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 2, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.commonpb.Response} returns this
+ */
+proto.commonpb.Response.prototype.setAsync = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 2, value);
+};
+
+
+/**
+ * optional string BeaconID = 8;
+ * @return {string}
+ */
+proto.commonpb.Response.prototype.getBeaconid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.commonpb.Response} returns this
+ */
+proto.commonpb.Response.prototype.setBeaconid = function(value) {
+  return jspb.Message.setProto3StringField(this, 8, value);
+};
+
+
+/**
+ * optional string TaskID = 9;
+ * @return {string}
+ */
+proto.commonpb.Response.prototype.getTaskid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.commonpb.Response} returns this
+ */
+proto.commonpb.Response.prototype.setTaskid = function(value) {
+  return jspb.Message.setProto3StringField(this, 9, value);
 };
 
 

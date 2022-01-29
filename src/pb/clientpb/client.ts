@@ -262,7 +262,7 @@ export namespace clientpb {
     }
     export class Session extends pb_1.Message {
         constructor(data?: any[] | {
-            ID?: number;
+            ID?: string;
             Name?: string;
             Hostname?: string;
             UUID?: string;
@@ -275,18 +275,19 @@ export namespace clientpb {
             RemoteAddress?: string;
             PID?: number;
             Filename?: string;
-            LastCheckin?: string;
+            LastCheckin?: number;
             ActiveC2?: string;
             Version?: string;
             Evasion?: boolean;
             IsDead?: boolean;
             ReconnectInterval?: number;
             ProxyURL?: string;
-            PollInterval?: number;
             Burned?: boolean;
+            Extensions?: string[];
+            PeerID?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [23], []);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("ID" in data && data.ID != undefined) {
                     this.ID = data.ID;
@@ -348,18 +349,21 @@ export namespace clientpb {
                 if ("ProxyURL" in data && data.ProxyURL != undefined) {
                     this.ProxyURL = data.ProxyURL;
                 }
-                if ("PollInterval" in data && data.PollInterval != undefined) {
-                    this.PollInterval = data.PollInterval;
-                }
                 if ("Burned" in data && data.Burned != undefined) {
                     this.Burned = data.Burned;
+                }
+                if ("Extensions" in data && data.Extensions != undefined) {
+                    this.Extensions = data.Extensions;
+                }
+                if ("PeerID" in data && data.PeerID != undefined) {
+                    this.PeerID = data.PeerID;
                 }
             }
         }
         get ID() {
-            return pb_1.Message.getField(this, 1) as number;
+            return pb_1.Message.getField(this, 1) as string;
         }
-        set ID(value: number) {
+        set ID(value: string) {
             pb_1.Message.setField(this, 1, value);
         }
         get Name() {
@@ -435,9 +439,9 @@ export namespace clientpb {
             pb_1.Message.setField(this, 13, value);
         }
         get LastCheckin() {
-            return pb_1.Message.getField(this, 14) as string;
+            return pb_1.Message.getField(this, 14) as number;
         }
-        set LastCheckin(value: string) {
+        set LastCheckin(value: number) {
             pb_1.Message.setField(this, 14, value);
         }
         get ActiveC2() {
@@ -476,20 +480,26 @@ export namespace clientpb {
         set ProxyURL(value: string) {
             pb_1.Message.setField(this, 20, value);
         }
-        get PollInterval() {
-            return pb_1.Message.getField(this, 21) as number;
-        }
-        set PollInterval(value: number) {
-            pb_1.Message.setField(this, 21, value);
-        }
         get Burned() {
             return pb_1.Message.getField(this, 22) as boolean;
         }
         set Burned(value: boolean) {
             pb_1.Message.setField(this, 22, value);
         }
+        get Extensions() {
+            return pb_1.Message.getField(this, 23) as string[];
+        }
+        set Extensions(value: string[]) {
+            pb_1.Message.setField(this, 23, value);
+        }
+        get PeerID() {
+            return pb_1.Message.getField(this, 25) as number;
+        }
+        set PeerID(value: number) {
+            pb_1.Message.setField(this, 25, value);
+        }
         static fromObject(data: {
-            ID?: number;
+            ID?: string;
             Name?: string;
             Hostname?: string;
             UUID?: string;
@@ -502,15 +512,16 @@ export namespace clientpb {
             RemoteAddress?: string;
             PID?: number;
             Filename?: string;
-            LastCheckin?: string;
+            LastCheckin?: number;
             ActiveC2?: string;
             Version?: string;
             Evasion?: boolean;
             IsDead?: boolean;
             ReconnectInterval?: number;
             ProxyURL?: string;
-            PollInterval?: number;
             Burned?: boolean;
+            Extensions?: string[];
+            PeerID?: number;
         }) {
             const message = new Session({});
             if (data.ID != null) {
@@ -573,17 +584,20 @@ export namespace clientpb {
             if (data.ProxyURL != null) {
                 message.ProxyURL = data.ProxyURL;
             }
-            if (data.PollInterval != null) {
-                message.PollInterval = data.PollInterval;
-            }
             if (data.Burned != null) {
                 message.Burned = data.Burned;
+            }
+            if (data.Extensions != null) {
+                message.Extensions = data.Extensions;
+            }
+            if (data.PeerID != null) {
+                message.PeerID = data.PeerID;
             }
             return message;
         }
         toObject() {
             const data: {
-                ID?: number;
+                ID?: string;
                 Name?: string;
                 Hostname?: string;
                 UUID?: string;
@@ -596,15 +610,16 @@ export namespace clientpb {
                 RemoteAddress?: string;
                 PID?: number;
                 Filename?: string;
-                LastCheckin?: string;
+                LastCheckin?: number;
                 ActiveC2?: string;
                 Version?: string;
                 Evasion?: boolean;
                 IsDead?: boolean;
                 ReconnectInterval?: number;
                 ProxyURL?: string;
-                PollInterval?: number;
                 Burned?: boolean;
+                Extensions?: string[];
+                PeerID?: number;
             } = {};
             if (this.ID != null) {
                 data.ID = this.ID;
@@ -666,11 +681,14 @@ export namespace clientpb {
             if (this.ProxyURL != null) {
                 data.ProxyURL = this.ProxyURL;
             }
-            if (this.PollInterval != null) {
-                data.PollInterval = this.PollInterval;
-            }
             if (this.Burned != null) {
                 data.Burned = this.Burned;
+            }
+            if (this.Extensions != null) {
+                data.Extensions = this.Extensions;
+            }
+            if (this.PeerID != null) {
+                data.PeerID = this.PeerID;
             }
             return data;
         }
@@ -678,8 +696,8 @@ export namespace clientpb {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.ID !== undefined)
-                writer.writeUint32(1, this.ID);
+            if (typeof this.ID === "string" && this.ID.length)
+                writer.writeString(1, this.ID);
             if (typeof this.Name === "string" && this.Name.length)
                 writer.writeString(2, this.Name);
             if (typeof this.Hostname === "string" && this.Hostname.length)
@@ -704,8 +722,8 @@ export namespace clientpb {
                 writer.writeInt32(12, this.PID);
             if (typeof this.Filename === "string" && this.Filename.length)
                 writer.writeString(13, this.Filename);
-            if (typeof this.LastCheckin === "string" && this.LastCheckin.length)
-                writer.writeString(14, this.LastCheckin);
+            if (this.LastCheckin !== undefined)
+                writer.writeInt64(14, this.LastCheckin);
             if (typeof this.ActiveC2 === "string" && this.ActiveC2.length)
                 writer.writeString(15, this.ActiveC2);
             if (typeof this.Version === "string" && this.Version.length)
@@ -715,13 +733,15 @@ export namespace clientpb {
             if (this.IsDead !== undefined)
                 writer.writeBool(18, this.IsDead);
             if (this.ReconnectInterval !== undefined)
-                writer.writeUint32(19, this.ReconnectInterval);
+                writer.writeInt64(19, this.ReconnectInterval);
             if (typeof this.ProxyURL === "string" && this.ProxyURL.length)
                 writer.writeString(20, this.ProxyURL);
-            if (this.PollInterval !== undefined)
-                writer.writeUint32(21, this.PollInterval);
             if (this.Burned !== undefined)
                 writer.writeBool(22, this.Burned);
+            if (this.Extensions !== undefined)
+                writer.writeRepeatedString(23, this.Extensions);
+            if (this.PeerID !== undefined)
+                writer.writeInt64(25, this.PeerID);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -732,7 +752,7 @@ export namespace clientpb {
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        message.ID = reader.readUint32();
+                        message.ID = reader.readString();
                         break;
                     case 2:
                         message.Name = reader.readString();
@@ -771,7 +791,7 @@ export namespace clientpb {
                         message.Filename = reader.readString();
                         break;
                     case 14:
-                        message.LastCheckin = reader.readString();
+                        message.LastCheckin = reader.readInt64();
                         break;
                     case 15:
                         message.ActiveC2 = reader.readString();
@@ -786,16 +806,19 @@ export namespace clientpb {
                         message.IsDead = reader.readBool();
                         break;
                     case 19:
-                        message.ReconnectInterval = reader.readUint32();
+                        message.ReconnectInterval = reader.readInt64();
                         break;
                     case 20:
                         message.ProxyURL = reader.readString();
                         break;
-                    case 21:
-                        message.PollInterval = reader.readUint32();
-                        break;
                     case 22:
                         message.Burned = reader.readBool();
+                        break;
+                    case 23:
+                        pb_1.Message.addToRepeatedField(message, 23, reader.readString());
+                        break;
+                    case 25:
+                        message.PeerID = reader.readInt64();
                         break;
                     default: reader.skipField();
                 }
@@ -807,6 +830,1052 @@ export namespace clientpb {
         }
         static deserializeBinary(bytes: Uint8Array): Session {
             return Session.deserialize(bytes);
+        }
+    }
+    export class Beacon extends pb_1.Message {
+        constructor(data?: any[] | {
+            ID?: string;
+            Name?: string;
+            Hostname?: string;
+            UUID?: string;
+            Username?: string;
+            UID?: string;
+            GID?: string;
+            OS?: string;
+            Arch?: string;
+            Transport?: string;
+            RemoteAddress?: string;
+            PID?: number;
+            Filename?: string;
+            LastCheckin?: number;
+            ActiveC2?: string;
+            Version?: string;
+            Evasion?: boolean;
+            IsDead?: boolean;
+            ProxyURL?: string;
+            ReconnectInterval?: number;
+            Interval?: number;
+            Jitter?: number;
+            Burned?: boolean;
+            NextCheckin?: number;
+            TasksCount?: number;
+            TasksCountCompleted?: number;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("ID" in data && data.ID != undefined) {
+                    this.ID = data.ID;
+                }
+                if ("Name" in data && data.Name != undefined) {
+                    this.Name = data.Name;
+                }
+                if ("Hostname" in data && data.Hostname != undefined) {
+                    this.Hostname = data.Hostname;
+                }
+                if ("UUID" in data && data.UUID != undefined) {
+                    this.UUID = data.UUID;
+                }
+                if ("Username" in data && data.Username != undefined) {
+                    this.Username = data.Username;
+                }
+                if ("UID" in data && data.UID != undefined) {
+                    this.UID = data.UID;
+                }
+                if ("GID" in data && data.GID != undefined) {
+                    this.GID = data.GID;
+                }
+                if ("OS" in data && data.OS != undefined) {
+                    this.OS = data.OS;
+                }
+                if ("Arch" in data && data.Arch != undefined) {
+                    this.Arch = data.Arch;
+                }
+                if ("Transport" in data && data.Transport != undefined) {
+                    this.Transport = data.Transport;
+                }
+                if ("RemoteAddress" in data && data.RemoteAddress != undefined) {
+                    this.RemoteAddress = data.RemoteAddress;
+                }
+                if ("PID" in data && data.PID != undefined) {
+                    this.PID = data.PID;
+                }
+                if ("Filename" in data && data.Filename != undefined) {
+                    this.Filename = data.Filename;
+                }
+                if ("LastCheckin" in data && data.LastCheckin != undefined) {
+                    this.LastCheckin = data.LastCheckin;
+                }
+                if ("ActiveC2" in data && data.ActiveC2 != undefined) {
+                    this.ActiveC2 = data.ActiveC2;
+                }
+                if ("Version" in data && data.Version != undefined) {
+                    this.Version = data.Version;
+                }
+                if ("Evasion" in data && data.Evasion != undefined) {
+                    this.Evasion = data.Evasion;
+                }
+                if ("IsDead" in data && data.IsDead != undefined) {
+                    this.IsDead = data.IsDead;
+                }
+                if ("ProxyURL" in data && data.ProxyURL != undefined) {
+                    this.ProxyURL = data.ProxyURL;
+                }
+                if ("ReconnectInterval" in data && data.ReconnectInterval != undefined) {
+                    this.ReconnectInterval = data.ReconnectInterval;
+                }
+                if ("Interval" in data && data.Interval != undefined) {
+                    this.Interval = data.Interval;
+                }
+                if ("Jitter" in data && data.Jitter != undefined) {
+                    this.Jitter = data.Jitter;
+                }
+                if ("Burned" in data && data.Burned != undefined) {
+                    this.Burned = data.Burned;
+                }
+                if ("NextCheckin" in data && data.NextCheckin != undefined) {
+                    this.NextCheckin = data.NextCheckin;
+                }
+                if ("TasksCount" in data && data.TasksCount != undefined) {
+                    this.TasksCount = data.TasksCount;
+                }
+                if ("TasksCountCompleted" in data && data.TasksCountCompleted != undefined) {
+                    this.TasksCountCompleted = data.TasksCountCompleted;
+                }
+            }
+        }
+        get ID() {
+            return pb_1.Message.getField(this, 1) as string;
+        }
+        set ID(value: string) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        get Name() {
+            return pb_1.Message.getField(this, 2) as string;
+        }
+        set Name(value: string) {
+            pb_1.Message.setField(this, 2, value);
+        }
+        get Hostname() {
+            return pb_1.Message.getField(this, 3) as string;
+        }
+        set Hostname(value: string) {
+            pb_1.Message.setField(this, 3, value);
+        }
+        get UUID() {
+            return pb_1.Message.getField(this, 4) as string;
+        }
+        set UUID(value: string) {
+            pb_1.Message.setField(this, 4, value);
+        }
+        get Username() {
+            return pb_1.Message.getField(this, 5) as string;
+        }
+        set Username(value: string) {
+            pb_1.Message.setField(this, 5, value);
+        }
+        get UID() {
+            return pb_1.Message.getField(this, 6) as string;
+        }
+        set UID(value: string) {
+            pb_1.Message.setField(this, 6, value);
+        }
+        get GID() {
+            return pb_1.Message.getField(this, 7) as string;
+        }
+        set GID(value: string) {
+            pb_1.Message.setField(this, 7, value);
+        }
+        get OS() {
+            return pb_1.Message.getField(this, 8) as string;
+        }
+        set OS(value: string) {
+            pb_1.Message.setField(this, 8, value);
+        }
+        get Arch() {
+            return pb_1.Message.getField(this, 9) as string;
+        }
+        set Arch(value: string) {
+            pb_1.Message.setField(this, 9, value);
+        }
+        get Transport() {
+            return pb_1.Message.getField(this, 10) as string;
+        }
+        set Transport(value: string) {
+            pb_1.Message.setField(this, 10, value);
+        }
+        get RemoteAddress() {
+            return pb_1.Message.getField(this, 11) as string;
+        }
+        set RemoteAddress(value: string) {
+            pb_1.Message.setField(this, 11, value);
+        }
+        get PID() {
+            return pb_1.Message.getField(this, 12) as number;
+        }
+        set PID(value: number) {
+            pb_1.Message.setField(this, 12, value);
+        }
+        get Filename() {
+            return pb_1.Message.getField(this, 13) as string;
+        }
+        set Filename(value: string) {
+            pb_1.Message.setField(this, 13, value);
+        }
+        get LastCheckin() {
+            return pb_1.Message.getField(this, 14) as number;
+        }
+        set LastCheckin(value: number) {
+            pb_1.Message.setField(this, 14, value);
+        }
+        get ActiveC2() {
+            return pb_1.Message.getField(this, 15) as string;
+        }
+        set ActiveC2(value: string) {
+            pb_1.Message.setField(this, 15, value);
+        }
+        get Version() {
+            return pb_1.Message.getField(this, 16) as string;
+        }
+        set Version(value: string) {
+            pb_1.Message.setField(this, 16, value);
+        }
+        get Evasion() {
+            return pb_1.Message.getField(this, 17) as boolean;
+        }
+        set Evasion(value: boolean) {
+            pb_1.Message.setField(this, 17, value);
+        }
+        get IsDead() {
+            return pb_1.Message.getField(this, 18) as boolean;
+        }
+        set IsDead(value: boolean) {
+            pb_1.Message.setField(this, 18, value);
+        }
+        get ProxyURL() {
+            return pb_1.Message.getField(this, 20) as string;
+        }
+        set ProxyURL(value: string) {
+            pb_1.Message.setField(this, 20, value);
+        }
+        get ReconnectInterval() {
+            return pb_1.Message.getField(this, 21) as number;
+        }
+        set ReconnectInterval(value: number) {
+            pb_1.Message.setField(this, 21, value);
+        }
+        get Interval() {
+            return pb_1.Message.getField(this, 22) as number;
+        }
+        set Interval(value: number) {
+            pb_1.Message.setField(this, 22, value);
+        }
+        get Jitter() {
+            return pb_1.Message.getField(this, 23) as number;
+        }
+        set Jitter(value: number) {
+            pb_1.Message.setField(this, 23, value);
+        }
+        get Burned() {
+            return pb_1.Message.getField(this, 24) as boolean;
+        }
+        set Burned(value: boolean) {
+            pb_1.Message.setField(this, 24, value);
+        }
+        get NextCheckin() {
+            return pb_1.Message.getField(this, 25) as number;
+        }
+        set NextCheckin(value: number) {
+            pb_1.Message.setField(this, 25, value);
+        }
+        get TasksCount() {
+            return pb_1.Message.getField(this, 26) as number;
+        }
+        set TasksCount(value: number) {
+            pb_1.Message.setField(this, 26, value);
+        }
+        get TasksCountCompleted() {
+            return pb_1.Message.getField(this, 27) as number;
+        }
+        set TasksCountCompleted(value: number) {
+            pb_1.Message.setField(this, 27, value);
+        }
+        static fromObject(data: {
+            ID?: string;
+            Name?: string;
+            Hostname?: string;
+            UUID?: string;
+            Username?: string;
+            UID?: string;
+            GID?: string;
+            OS?: string;
+            Arch?: string;
+            Transport?: string;
+            RemoteAddress?: string;
+            PID?: number;
+            Filename?: string;
+            LastCheckin?: number;
+            ActiveC2?: string;
+            Version?: string;
+            Evasion?: boolean;
+            IsDead?: boolean;
+            ProxyURL?: string;
+            ReconnectInterval?: number;
+            Interval?: number;
+            Jitter?: number;
+            Burned?: boolean;
+            NextCheckin?: number;
+            TasksCount?: number;
+            TasksCountCompleted?: number;
+        }) {
+            const message = new Beacon({});
+            if (data.ID != null) {
+                message.ID = data.ID;
+            }
+            if (data.Name != null) {
+                message.Name = data.Name;
+            }
+            if (data.Hostname != null) {
+                message.Hostname = data.Hostname;
+            }
+            if (data.UUID != null) {
+                message.UUID = data.UUID;
+            }
+            if (data.Username != null) {
+                message.Username = data.Username;
+            }
+            if (data.UID != null) {
+                message.UID = data.UID;
+            }
+            if (data.GID != null) {
+                message.GID = data.GID;
+            }
+            if (data.OS != null) {
+                message.OS = data.OS;
+            }
+            if (data.Arch != null) {
+                message.Arch = data.Arch;
+            }
+            if (data.Transport != null) {
+                message.Transport = data.Transport;
+            }
+            if (data.RemoteAddress != null) {
+                message.RemoteAddress = data.RemoteAddress;
+            }
+            if (data.PID != null) {
+                message.PID = data.PID;
+            }
+            if (data.Filename != null) {
+                message.Filename = data.Filename;
+            }
+            if (data.LastCheckin != null) {
+                message.LastCheckin = data.LastCheckin;
+            }
+            if (data.ActiveC2 != null) {
+                message.ActiveC2 = data.ActiveC2;
+            }
+            if (data.Version != null) {
+                message.Version = data.Version;
+            }
+            if (data.Evasion != null) {
+                message.Evasion = data.Evasion;
+            }
+            if (data.IsDead != null) {
+                message.IsDead = data.IsDead;
+            }
+            if (data.ProxyURL != null) {
+                message.ProxyURL = data.ProxyURL;
+            }
+            if (data.ReconnectInterval != null) {
+                message.ReconnectInterval = data.ReconnectInterval;
+            }
+            if (data.Interval != null) {
+                message.Interval = data.Interval;
+            }
+            if (data.Jitter != null) {
+                message.Jitter = data.Jitter;
+            }
+            if (data.Burned != null) {
+                message.Burned = data.Burned;
+            }
+            if (data.NextCheckin != null) {
+                message.NextCheckin = data.NextCheckin;
+            }
+            if (data.TasksCount != null) {
+                message.TasksCount = data.TasksCount;
+            }
+            if (data.TasksCountCompleted != null) {
+                message.TasksCountCompleted = data.TasksCountCompleted;
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                ID?: string;
+                Name?: string;
+                Hostname?: string;
+                UUID?: string;
+                Username?: string;
+                UID?: string;
+                GID?: string;
+                OS?: string;
+                Arch?: string;
+                Transport?: string;
+                RemoteAddress?: string;
+                PID?: number;
+                Filename?: string;
+                LastCheckin?: number;
+                ActiveC2?: string;
+                Version?: string;
+                Evasion?: boolean;
+                IsDead?: boolean;
+                ProxyURL?: string;
+                ReconnectInterval?: number;
+                Interval?: number;
+                Jitter?: number;
+                Burned?: boolean;
+                NextCheckin?: number;
+                TasksCount?: number;
+                TasksCountCompleted?: number;
+            } = {};
+            if (this.ID != null) {
+                data.ID = this.ID;
+            }
+            if (this.Name != null) {
+                data.Name = this.Name;
+            }
+            if (this.Hostname != null) {
+                data.Hostname = this.Hostname;
+            }
+            if (this.UUID != null) {
+                data.UUID = this.UUID;
+            }
+            if (this.Username != null) {
+                data.Username = this.Username;
+            }
+            if (this.UID != null) {
+                data.UID = this.UID;
+            }
+            if (this.GID != null) {
+                data.GID = this.GID;
+            }
+            if (this.OS != null) {
+                data.OS = this.OS;
+            }
+            if (this.Arch != null) {
+                data.Arch = this.Arch;
+            }
+            if (this.Transport != null) {
+                data.Transport = this.Transport;
+            }
+            if (this.RemoteAddress != null) {
+                data.RemoteAddress = this.RemoteAddress;
+            }
+            if (this.PID != null) {
+                data.PID = this.PID;
+            }
+            if (this.Filename != null) {
+                data.Filename = this.Filename;
+            }
+            if (this.LastCheckin != null) {
+                data.LastCheckin = this.LastCheckin;
+            }
+            if (this.ActiveC2 != null) {
+                data.ActiveC2 = this.ActiveC2;
+            }
+            if (this.Version != null) {
+                data.Version = this.Version;
+            }
+            if (this.Evasion != null) {
+                data.Evasion = this.Evasion;
+            }
+            if (this.IsDead != null) {
+                data.IsDead = this.IsDead;
+            }
+            if (this.ProxyURL != null) {
+                data.ProxyURL = this.ProxyURL;
+            }
+            if (this.ReconnectInterval != null) {
+                data.ReconnectInterval = this.ReconnectInterval;
+            }
+            if (this.Interval != null) {
+                data.Interval = this.Interval;
+            }
+            if (this.Jitter != null) {
+                data.Jitter = this.Jitter;
+            }
+            if (this.Burned != null) {
+                data.Burned = this.Burned;
+            }
+            if (this.NextCheckin != null) {
+                data.NextCheckin = this.NextCheckin;
+            }
+            if (this.TasksCount != null) {
+                data.TasksCount = this.TasksCount;
+            }
+            if (this.TasksCountCompleted != null) {
+                data.TasksCountCompleted = this.TasksCountCompleted;
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (typeof this.ID === "string" && this.ID.length)
+                writer.writeString(1, this.ID);
+            if (typeof this.Name === "string" && this.Name.length)
+                writer.writeString(2, this.Name);
+            if (typeof this.Hostname === "string" && this.Hostname.length)
+                writer.writeString(3, this.Hostname);
+            if (typeof this.UUID === "string" && this.UUID.length)
+                writer.writeString(4, this.UUID);
+            if (typeof this.Username === "string" && this.Username.length)
+                writer.writeString(5, this.Username);
+            if (typeof this.UID === "string" && this.UID.length)
+                writer.writeString(6, this.UID);
+            if (typeof this.GID === "string" && this.GID.length)
+                writer.writeString(7, this.GID);
+            if (typeof this.OS === "string" && this.OS.length)
+                writer.writeString(8, this.OS);
+            if (typeof this.Arch === "string" && this.Arch.length)
+                writer.writeString(9, this.Arch);
+            if (typeof this.Transport === "string" && this.Transport.length)
+                writer.writeString(10, this.Transport);
+            if (typeof this.RemoteAddress === "string" && this.RemoteAddress.length)
+                writer.writeString(11, this.RemoteAddress);
+            if (this.PID !== undefined)
+                writer.writeInt32(12, this.PID);
+            if (typeof this.Filename === "string" && this.Filename.length)
+                writer.writeString(13, this.Filename);
+            if (this.LastCheckin !== undefined)
+                writer.writeInt64(14, this.LastCheckin);
+            if (typeof this.ActiveC2 === "string" && this.ActiveC2.length)
+                writer.writeString(15, this.ActiveC2);
+            if (typeof this.Version === "string" && this.Version.length)
+                writer.writeString(16, this.Version);
+            if (this.Evasion !== undefined)
+                writer.writeBool(17, this.Evasion);
+            if (this.IsDead !== undefined)
+                writer.writeBool(18, this.IsDead);
+            if (typeof this.ProxyURL === "string" && this.ProxyURL.length)
+                writer.writeString(20, this.ProxyURL);
+            if (this.ReconnectInterval !== undefined)
+                writer.writeInt64(21, this.ReconnectInterval);
+            if (this.Interval !== undefined)
+                writer.writeInt64(22, this.Interval);
+            if (this.Jitter !== undefined)
+                writer.writeInt64(23, this.Jitter);
+            if (this.Burned !== undefined)
+                writer.writeBool(24, this.Burned);
+            if (this.NextCheckin !== undefined)
+                writer.writeInt64(25, this.NextCheckin);
+            if (this.TasksCount !== undefined)
+                writer.writeInt64(26, this.TasksCount);
+            if (this.TasksCountCompleted !== undefined)
+                writer.writeInt64(27, this.TasksCountCompleted);
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): Beacon {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new Beacon();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.ID = reader.readString();
+                        break;
+                    case 2:
+                        message.Name = reader.readString();
+                        break;
+                    case 3:
+                        message.Hostname = reader.readString();
+                        break;
+                    case 4:
+                        message.UUID = reader.readString();
+                        break;
+                    case 5:
+                        message.Username = reader.readString();
+                        break;
+                    case 6:
+                        message.UID = reader.readString();
+                        break;
+                    case 7:
+                        message.GID = reader.readString();
+                        break;
+                    case 8:
+                        message.OS = reader.readString();
+                        break;
+                    case 9:
+                        message.Arch = reader.readString();
+                        break;
+                    case 10:
+                        message.Transport = reader.readString();
+                        break;
+                    case 11:
+                        message.RemoteAddress = reader.readString();
+                        break;
+                    case 12:
+                        message.PID = reader.readInt32();
+                        break;
+                    case 13:
+                        message.Filename = reader.readString();
+                        break;
+                    case 14:
+                        message.LastCheckin = reader.readInt64();
+                        break;
+                    case 15:
+                        message.ActiveC2 = reader.readString();
+                        break;
+                    case 16:
+                        message.Version = reader.readString();
+                        break;
+                    case 17:
+                        message.Evasion = reader.readBool();
+                        break;
+                    case 18:
+                        message.IsDead = reader.readBool();
+                        break;
+                    case 20:
+                        message.ProxyURL = reader.readString();
+                        break;
+                    case 21:
+                        message.ReconnectInterval = reader.readInt64();
+                        break;
+                    case 22:
+                        message.Interval = reader.readInt64();
+                        break;
+                    case 23:
+                        message.Jitter = reader.readInt64();
+                        break;
+                    case 24:
+                        message.Burned = reader.readBool();
+                        break;
+                    case 25:
+                        message.NextCheckin = reader.readInt64();
+                        break;
+                    case 26:
+                        message.TasksCount = reader.readInt64();
+                        break;
+                    case 27:
+                        message.TasksCountCompleted = reader.readInt64();
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): Beacon {
+            return Beacon.deserialize(bytes);
+        }
+    }
+    export class Beacons extends pb_1.Message {
+        constructor(data?: any[] | {
+            Beacons?: Beacon[];
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("Beacons" in data && data.Beacons != undefined) {
+                    this.Beacons = data.Beacons;
+                }
+            }
+        }
+        get Beacons() {
+            return pb_1.Message.getRepeatedWrapperField(this, Beacon, 2) as Beacon[];
+        }
+        set Beacons(value: Beacon[]) {
+            pb_1.Message.setRepeatedWrapperField(this, 2, value);
+        }
+        static fromObject(data: {
+            Beacons?: ReturnType<typeof Beacon.prototype.toObject>[];
+        }) {
+            const message = new Beacons({});
+            if (data.Beacons != null) {
+                message.Beacons = data.Beacons.map(item => Beacon.fromObject(item));
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                Beacons?: ReturnType<typeof Beacon.prototype.toObject>[];
+            } = {};
+            if (this.Beacons != null) {
+                data.Beacons = this.Beacons.map((item: Beacon) => item.toObject());
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.Beacons !== undefined)
+                writer.writeRepeatedMessage(2, this.Beacons, (item: Beacon) => item.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): Beacons {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new Beacons();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 2:
+                        reader.readMessage(message.Beacons, () => pb_1.Message.addToRepeatedWrapperField(message, 2, Beacon.deserialize(reader), Beacon));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): Beacons {
+            return Beacons.deserialize(bytes);
+        }
+    }
+    export class BeaconTask extends pb_1.Message {
+        constructor(data?: any[] | {
+            ID?: string;
+            BeaconID?: string;
+            CreatedAt?: number;
+            State?: string;
+            SentAt?: number;
+            CompletedAt?: number;
+            Request?: Uint8Array;
+            Response?: Uint8Array;
+            Description?: string;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("ID" in data && data.ID != undefined) {
+                    this.ID = data.ID;
+                }
+                if ("BeaconID" in data && data.BeaconID != undefined) {
+                    this.BeaconID = data.BeaconID;
+                }
+                if ("CreatedAt" in data && data.CreatedAt != undefined) {
+                    this.CreatedAt = data.CreatedAt;
+                }
+                if ("State" in data && data.State != undefined) {
+                    this.State = data.State;
+                }
+                if ("SentAt" in data && data.SentAt != undefined) {
+                    this.SentAt = data.SentAt;
+                }
+                if ("CompletedAt" in data && data.CompletedAt != undefined) {
+                    this.CompletedAt = data.CompletedAt;
+                }
+                if ("Request" in data && data.Request != undefined) {
+                    this.Request = data.Request;
+                }
+                if ("Response" in data && data.Response != undefined) {
+                    this.Response = data.Response;
+                }
+                if ("Description" in data && data.Description != undefined) {
+                    this.Description = data.Description;
+                }
+            }
+        }
+        get ID() {
+            return pb_1.Message.getField(this, 1) as string;
+        }
+        set ID(value: string) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        get BeaconID() {
+            return pb_1.Message.getField(this, 2) as string;
+        }
+        set BeaconID(value: string) {
+            pb_1.Message.setField(this, 2, value);
+        }
+        get CreatedAt() {
+            return pb_1.Message.getField(this, 3) as number;
+        }
+        set CreatedAt(value: number) {
+            pb_1.Message.setField(this, 3, value);
+        }
+        get State() {
+            return pb_1.Message.getField(this, 4) as string;
+        }
+        set State(value: string) {
+            pb_1.Message.setField(this, 4, value);
+        }
+        get SentAt() {
+            return pb_1.Message.getField(this, 5) as number;
+        }
+        set SentAt(value: number) {
+            pb_1.Message.setField(this, 5, value);
+        }
+        get CompletedAt() {
+            return pb_1.Message.getField(this, 6) as number;
+        }
+        set CompletedAt(value: number) {
+            pb_1.Message.setField(this, 6, value);
+        }
+        get Request() {
+            return pb_1.Message.getField(this, 7) as Uint8Array;
+        }
+        set Request(value: Uint8Array) {
+            pb_1.Message.setField(this, 7, value);
+        }
+        get Response() {
+            return pb_1.Message.getField(this, 8) as Uint8Array;
+        }
+        set Response(value: Uint8Array) {
+            pb_1.Message.setField(this, 8, value);
+        }
+        get Description() {
+            return pb_1.Message.getField(this, 9) as string;
+        }
+        set Description(value: string) {
+            pb_1.Message.setField(this, 9, value);
+        }
+        static fromObject(data: {
+            ID?: string;
+            BeaconID?: string;
+            CreatedAt?: number;
+            State?: string;
+            SentAt?: number;
+            CompletedAt?: number;
+            Request?: Uint8Array;
+            Response?: Uint8Array;
+            Description?: string;
+        }) {
+            const message = new BeaconTask({});
+            if (data.ID != null) {
+                message.ID = data.ID;
+            }
+            if (data.BeaconID != null) {
+                message.BeaconID = data.BeaconID;
+            }
+            if (data.CreatedAt != null) {
+                message.CreatedAt = data.CreatedAt;
+            }
+            if (data.State != null) {
+                message.State = data.State;
+            }
+            if (data.SentAt != null) {
+                message.SentAt = data.SentAt;
+            }
+            if (data.CompletedAt != null) {
+                message.CompletedAt = data.CompletedAt;
+            }
+            if (data.Request != null) {
+                message.Request = data.Request;
+            }
+            if (data.Response != null) {
+                message.Response = data.Response;
+            }
+            if (data.Description != null) {
+                message.Description = data.Description;
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                ID?: string;
+                BeaconID?: string;
+                CreatedAt?: number;
+                State?: string;
+                SentAt?: number;
+                CompletedAt?: number;
+                Request?: Uint8Array;
+                Response?: Uint8Array;
+                Description?: string;
+            } = {};
+            if (this.ID != null) {
+                data.ID = this.ID;
+            }
+            if (this.BeaconID != null) {
+                data.BeaconID = this.BeaconID;
+            }
+            if (this.CreatedAt != null) {
+                data.CreatedAt = this.CreatedAt;
+            }
+            if (this.State != null) {
+                data.State = this.State;
+            }
+            if (this.SentAt != null) {
+                data.SentAt = this.SentAt;
+            }
+            if (this.CompletedAt != null) {
+                data.CompletedAt = this.CompletedAt;
+            }
+            if (this.Request != null) {
+                data.Request = this.Request;
+            }
+            if (this.Response != null) {
+                data.Response = this.Response;
+            }
+            if (this.Description != null) {
+                data.Description = this.Description;
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (typeof this.ID === "string" && this.ID.length)
+                writer.writeString(1, this.ID);
+            if (typeof this.BeaconID === "string" && this.BeaconID.length)
+                writer.writeString(2, this.BeaconID);
+            if (this.CreatedAt !== undefined)
+                writer.writeInt64(3, this.CreatedAt);
+            if (typeof this.State === "string" && this.State.length)
+                writer.writeString(4, this.State);
+            if (this.SentAt !== undefined)
+                writer.writeInt64(5, this.SentAt);
+            if (this.CompletedAt !== undefined)
+                writer.writeInt64(6, this.CompletedAt);
+            if (this.Request !== undefined)
+                writer.writeBytes(7, this.Request);
+            if (this.Response !== undefined)
+                writer.writeBytes(8, this.Response);
+            if (typeof this.Description === "string" && this.Description.length)
+                writer.writeString(9, this.Description);
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): BeaconTask {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new BeaconTask();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.ID = reader.readString();
+                        break;
+                    case 2:
+                        message.BeaconID = reader.readString();
+                        break;
+                    case 3:
+                        message.CreatedAt = reader.readInt64();
+                        break;
+                    case 4:
+                        message.State = reader.readString();
+                        break;
+                    case 5:
+                        message.SentAt = reader.readInt64();
+                        break;
+                    case 6:
+                        message.CompletedAt = reader.readInt64();
+                        break;
+                    case 7:
+                        message.Request = reader.readBytes();
+                        break;
+                    case 8:
+                        message.Response = reader.readBytes();
+                        break;
+                    case 9:
+                        message.Description = reader.readString();
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): BeaconTask {
+            return BeaconTask.deserialize(bytes);
+        }
+    }
+    export class BeaconTasks extends pb_1.Message {
+        constructor(data?: any[] | {
+            BeaconID?: string;
+            Tasks?: BeaconTask[];
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("BeaconID" in data && data.BeaconID != undefined) {
+                    this.BeaconID = data.BeaconID;
+                }
+                if ("Tasks" in data && data.Tasks != undefined) {
+                    this.Tasks = data.Tasks;
+                }
+            }
+        }
+        get BeaconID() {
+            return pb_1.Message.getField(this, 1) as string;
+        }
+        set BeaconID(value: string) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        get Tasks() {
+            return pb_1.Message.getRepeatedWrapperField(this, BeaconTask, 2) as BeaconTask[];
+        }
+        set Tasks(value: BeaconTask[]) {
+            pb_1.Message.setRepeatedWrapperField(this, 2, value);
+        }
+        static fromObject(data: {
+            BeaconID?: string;
+            Tasks?: ReturnType<typeof BeaconTask.prototype.toObject>[];
+        }) {
+            const message = new BeaconTasks({});
+            if (data.BeaconID != null) {
+                message.BeaconID = data.BeaconID;
+            }
+            if (data.Tasks != null) {
+                message.Tasks = data.Tasks.map(item => BeaconTask.fromObject(item));
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                BeaconID?: string;
+                Tasks?: ReturnType<typeof BeaconTask.prototype.toObject>[];
+            } = {};
+            if (this.BeaconID != null) {
+                data.BeaconID = this.BeaconID;
+            }
+            if (this.Tasks != null) {
+                data.Tasks = this.Tasks.map((item: BeaconTask) => item.toObject());
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (typeof this.BeaconID === "string" && this.BeaconID.length)
+                writer.writeString(1, this.BeaconID);
+            if (this.Tasks !== undefined)
+                writer.writeRepeatedMessage(2, this.Tasks, (item: BeaconTask) => item.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): BeaconTasks {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new BeaconTasks();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.BeaconID = reader.readString();
+                        break;
+                    case 2:
+                        reader.readMessage(message.Tasks, () => pb_1.Message.addToRepeatedWrapperField(message, 2, BeaconTask.deserialize(reader), BeaconTask));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): BeaconTasks {
+            return BeaconTasks.deserialize(bytes);
         }
     }
     export class ImplantC2 extends pb_1.Message {
@@ -923,15 +1992,23 @@ export namespace clientpb {
     }
     export class ImplantConfig extends pb_1.Message {
         constructor(data?: any[] | {
+            ID?: string;
+            IsBeacon?: boolean;
+            BeaconInterval?: number;
+            BeaconJitter?: number;
             GOOS?: string;
             GOARCH?: string;
             Name?: string;
-            CACert?: string;
-            Cert?: string;
-            Key?: string;
             Debug?: boolean;
             Evasion?: boolean;
             ObfuscateSymbols?: boolean;
+            MtlsCACert?: string;
+            MtlsCert?: string;
+            MtlsKey?: string;
+            ECCPublicKey?: string;
+            ECCPrivateKey?: string;
+            ECCPublicKeySignature?: string;
+            MinisignServerPublicKey?: string;
             WGImplantPrivKey?: string;
             WGServerPubKey?: string;
             WGPeerTunIP?: string;
@@ -939,9 +2016,10 @@ export namespace clientpb {
             WGTcpCommsPort?: number;
             ReconnectInterval?: number;
             MaxConnectionErrors?: number;
-            PollInterval?: number;
+            PollTimeout?: number;
             C2?: ImplantC2[];
             CanaryDomains?: string[];
+            ConnectionStrategy?: string;
             LimitDomainJoined?: boolean;
             LimitDatetime?: string;
             LimitHostname?: string;
@@ -954,8 +2032,20 @@ export namespace clientpb {
             IsShellcode?: boolean;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [10, 11], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [50, 51], []);
             if (!Array.isArray(data) && typeof data == "object") {
+                if ("ID" in data && data.ID != undefined) {
+                    this.ID = data.ID;
+                }
+                if ("IsBeacon" in data && data.IsBeacon != undefined) {
+                    this.IsBeacon = data.IsBeacon;
+                }
+                if ("BeaconInterval" in data && data.BeaconInterval != undefined) {
+                    this.BeaconInterval = data.BeaconInterval;
+                }
+                if ("BeaconJitter" in data && data.BeaconJitter != undefined) {
+                    this.BeaconJitter = data.BeaconJitter;
+                }
                 if ("GOOS" in data && data.GOOS != undefined) {
                     this.GOOS = data.GOOS;
                 }
@@ -965,15 +2055,6 @@ export namespace clientpb {
                 if ("Name" in data && data.Name != undefined) {
                     this.Name = data.Name;
                 }
-                if ("CACert" in data && data.CACert != undefined) {
-                    this.CACert = data.CACert;
-                }
-                if ("Cert" in data && data.Cert != undefined) {
-                    this.Cert = data.Cert;
-                }
-                if ("Key" in data && data.Key != undefined) {
-                    this.Key = data.Key;
-                }
                 if ("Debug" in data && data.Debug != undefined) {
                     this.Debug = data.Debug;
                 }
@@ -982,6 +2063,27 @@ export namespace clientpb {
                 }
                 if ("ObfuscateSymbols" in data && data.ObfuscateSymbols != undefined) {
                     this.ObfuscateSymbols = data.ObfuscateSymbols;
+                }
+                if ("MtlsCACert" in data && data.MtlsCACert != undefined) {
+                    this.MtlsCACert = data.MtlsCACert;
+                }
+                if ("MtlsCert" in data && data.MtlsCert != undefined) {
+                    this.MtlsCert = data.MtlsCert;
+                }
+                if ("MtlsKey" in data && data.MtlsKey != undefined) {
+                    this.MtlsKey = data.MtlsKey;
+                }
+                if ("ECCPublicKey" in data && data.ECCPublicKey != undefined) {
+                    this.ECCPublicKey = data.ECCPublicKey;
+                }
+                if ("ECCPrivateKey" in data && data.ECCPrivateKey != undefined) {
+                    this.ECCPrivateKey = data.ECCPrivateKey;
+                }
+                if ("ECCPublicKeySignature" in data && data.ECCPublicKeySignature != undefined) {
+                    this.ECCPublicKeySignature = data.ECCPublicKeySignature;
+                }
+                if ("MinisignServerPublicKey" in data && data.MinisignServerPublicKey != undefined) {
+                    this.MinisignServerPublicKey = data.MinisignServerPublicKey;
                 }
                 if ("WGImplantPrivKey" in data && data.WGImplantPrivKey != undefined) {
                     this.WGImplantPrivKey = data.WGImplantPrivKey;
@@ -1004,14 +2106,17 @@ export namespace clientpb {
                 if ("MaxConnectionErrors" in data && data.MaxConnectionErrors != undefined) {
                     this.MaxConnectionErrors = data.MaxConnectionErrors;
                 }
-                if ("PollInterval" in data && data.PollInterval != undefined) {
-                    this.PollInterval = data.PollInterval;
+                if ("PollTimeout" in data && data.PollTimeout != undefined) {
+                    this.PollTimeout = data.PollTimeout;
                 }
                 if ("C2" in data && data.C2 != undefined) {
                     this.C2 = data.C2;
                 }
                 if ("CanaryDomains" in data && data.CanaryDomains != undefined) {
                     this.CanaryDomains = data.CanaryDomains;
+                }
+                if ("ConnectionStrategy" in data && data.ConnectionStrategy != undefined) {
+                    this.ConnectionStrategy = data.ConnectionStrategy;
                 }
                 if ("LimitDomainJoined" in data && data.LimitDomainJoined != undefined) {
                     this.LimitDomainJoined = data.LimitDomainJoined;
@@ -1045,190 +2150,252 @@ export namespace clientpb {
                 }
             }
         }
-        get GOOS() {
+        get ID() {
             return pb_1.Message.getField(this, 1) as string;
         }
-        set GOOS(value: string) {
+        set ID(value: string) {
             pb_1.Message.setField(this, 1, value);
         }
-        get GOARCH() {
-            return pb_1.Message.getField(this, 2) as string;
+        get IsBeacon() {
+            return pb_1.Message.getField(this, 2) as boolean;
         }
-        set GOARCH(value: string) {
+        set IsBeacon(value: boolean) {
             pb_1.Message.setField(this, 2, value);
         }
-        get Name() {
-            return pb_1.Message.getField(this, 3) as string;
+        get BeaconInterval() {
+            return pb_1.Message.getField(this, 3) as number;
         }
-        set Name(value: string) {
+        set BeaconInterval(value: number) {
             pb_1.Message.setField(this, 3, value);
         }
-        get CACert() {
-            return pb_1.Message.getField(this, 4) as string;
+        get BeaconJitter() {
+            return pb_1.Message.getField(this, 4) as number;
         }
-        set CACert(value: string) {
+        set BeaconJitter(value: number) {
             pb_1.Message.setField(this, 4, value);
         }
-        get Cert() {
+        get GOOS() {
             return pb_1.Message.getField(this, 5) as string;
         }
-        set Cert(value: string) {
+        set GOOS(value: string) {
             pb_1.Message.setField(this, 5, value);
         }
-        get Key() {
+        get GOARCH() {
             return pb_1.Message.getField(this, 6) as string;
         }
-        set Key(value: string) {
+        set GOARCH(value: string) {
             pb_1.Message.setField(this, 6, value);
         }
-        get Debug() {
-            return pb_1.Message.getField(this, 7) as boolean;
+        get Name() {
+            return pb_1.Message.getField(this, 7) as string;
         }
-        set Debug(value: boolean) {
+        set Name(value: string) {
             pb_1.Message.setField(this, 7, value);
         }
-        get Evasion() {
-            return pb_1.Message.getField(this, 31) as boolean;
+        get Debug() {
+            return pb_1.Message.getField(this, 8) as boolean;
         }
-        set Evasion(value: boolean) {
-            pb_1.Message.setField(this, 31, value);
-        }
-        get ObfuscateSymbols() {
-            return pb_1.Message.getField(this, 30) as boolean;
-        }
-        set ObfuscateSymbols(value: boolean) {
-            pb_1.Message.setField(this, 30, value);
-        }
-        get WGImplantPrivKey() {
-            return pb_1.Message.getField(this, 33) as string;
-        }
-        set WGImplantPrivKey(value: string) {
-            pb_1.Message.setField(this, 33, value);
-        }
-        get WGServerPubKey() {
-            return pb_1.Message.getField(this, 34) as string;
-        }
-        set WGServerPubKey(value: string) {
-            pb_1.Message.setField(this, 34, value);
-        }
-        get WGPeerTunIP() {
-            return pb_1.Message.getField(this, 35) as string;
-        }
-        set WGPeerTunIP(value: string) {
-            pb_1.Message.setField(this, 35, value);
-        }
-        get WGKeyExchangePort() {
-            return pb_1.Message.getField(this, 36) as number;
-        }
-        set WGKeyExchangePort(value: number) {
-            pb_1.Message.setField(this, 36, value);
-        }
-        get WGTcpCommsPort() {
-            return pb_1.Message.getField(this, 37) as number;
-        }
-        set WGTcpCommsPort(value: number) {
-            pb_1.Message.setField(this, 37, value);
-        }
-        get ReconnectInterval() {
-            return pb_1.Message.getField(this, 8) as number;
-        }
-        set ReconnectInterval(value: number) {
+        set Debug(value: boolean) {
             pb_1.Message.setField(this, 8, value);
         }
-        get MaxConnectionErrors() {
-            return pb_1.Message.getField(this, 9) as number;
+        get Evasion() {
+            return pb_1.Message.getField(this, 9) as boolean;
         }
-        set MaxConnectionErrors(value: number) {
+        set Evasion(value: boolean) {
             pb_1.Message.setField(this, 9, value);
         }
-        get PollInterval() {
-            return pb_1.Message.getField(this, 38) as number;
+        get ObfuscateSymbols() {
+            return pb_1.Message.getField(this, 10) as boolean;
         }
-        set PollInterval(value: number) {
-            pb_1.Message.setField(this, 38, value);
+        set ObfuscateSymbols(value: boolean) {
+            pb_1.Message.setField(this, 10, value);
         }
-        get C2() {
-            return pb_1.Message.getRepeatedWrapperField(this, ImplantC2, 10) as ImplantC2[];
+        get MtlsCACert() {
+            return pb_1.Message.getField(this, 20) as string;
         }
-        set C2(value: ImplantC2[]) {
-            pb_1.Message.setRepeatedWrapperField(this, 10, value);
-        }
-        get CanaryDomains() {
-            return pb_1.Message.getField(this, 11) as string[];
-        }
-        set CanaryDomains(value: string[]) {
-            pb_1.Message.setField(this, 11, value);
-        }
-        get LimitDomainJoined() {
-            return pb_1.Message.getField(this, 20) as boolean;
-        }
-        set LimitDomainJoined(value: boolean) {
+        set MtlsCACert(value: string) {
             pb_1.Message.setField(this, 20, value);
         }
-        get LimitDatetime() {
+        get MtlsCert() {
             return pb_1.Message.getField(this, 21) as string;
         }
-        set LimitDatetime(value: string) {
+        set MtlsCert(value: string) {
             pb_1.Message.setField(this, 21, value);
         }
-        get LimitHostname() {
+        get MtlsKey() {
             return pb_1.Message.getField(this, 22) as string;
         }
-        set LimitHostname(value: string) {
+        set MtlsKey(value: string) {
             pb_1.Message.setField(this, 22, value);
         }
-        get LimitUsername() {
+        get ECCPublicKey() {
             return pb_1.Message.getField(this, 23) as string;
         }
-        set LimitUsername(value: string) {
+        set ECCPublicKey(value: string) {
             pb_1.Message.setField(this, 23, value);
         }
-        get LimitFileExists() {
-            return pb_1.Message.getField(this, 32) as string;
+        get ECCPrivateKey() {
+            return pb_1.Message.getField(this, 24) as string;
         }
-        set LimitFileExists(value: string) {
-            pb_1.Message.setField(this, 32, value);
+        set ECCPrivateKey(value: string) {
+            pb_1.Message.setField(this, 24, value);
         }
-        get Format() {
-            return pb_1.Message.getField(this, 25) as OutputFormat;
+        get ECCPublicKeySignature() {
+            return pb_1.Message.getField(this, 25) as string;
         }
-        set Format(value: OutputFormat) {
+        set ECCPublicKeySignature(value: string) {
             pb_1.Message.setField(this, 25, value);
         }
-        get IsSharedLib() {
-            return pb_1.Message.getField(this, 26) as boolean;
+        get MinisignServerPublicKey() {
+            return pb_1.Message.getField(this, 26) as string;
         }
-        set IsSharedLib(value: boolean) {
+        set MinisignServerPublicKey(value: string) {
             pb_1.Message.setField(this, 26, value);
         }
+        get WGImplantPrivKey() {
+            return pb_1.Message.getField(this, 30) as string;
+        }
+        set WGImplantPrivKey(value: string) {
+            pb_1.Message.setField(this, 30, value);
+        }
+        get WGServerPubKey() {
+            return pb_1.Message.getField(this, 31) as string;
+        }
+        set WGServerPubKey(value: string) {
+            pb_1.Message.setField(this, 31, value);
+        }
+        get WGPeerTunIP() {
+            return pb_1.Message.getField(this, 32) as string;
+        }
+        set WGPeerTunIP(value: string) {
+            pb_1.Message.setField(this, 32, value);
+        }
+        get WGKeyExchangePort() {
+            return pb_1.Message.getField(this, 33) as number;
+        }
+        set WGKeyExchangePort(value: number) {
+            pb_1.Message.setField(this, 33, value);
+        }
+        get WGTcpCommsPort() {
+            return pb_1.Message.getField(this, 34) as number;
+        }
+        set WGTcpCommsPort(value: number) {
+            pb_1.Message.setField(this, 34, value);
+        }
+        get ReconnectInterval() {
+            return pb_1.Message.getField(this, 40) as number;
+        }
+        set ReconnectInterval(value: number) {
+            pb_1.Message.setField(this, 40, value);
+        }
+        get MaxConnectionErrors() {
+            return pb_1.Message.getField(this, 41) as number;
+        }
+        set MaxConnectionErrors(value: number) {
+            pb_1.Message.setField(this, 41, value);
+        }
+        get PollTimeout() {
+            return pb_1.Message.getField(this, 42) as number;
+        }
+        set PollTimeout(value: number) {
+            pb_1.Message.setField(this, 42, value);
+        }
+        get C2() {
+            return pb_1.Message.getRepeatedWrapperField(this, ImplantC2, 50) as ImplantC2[];
+        }
+        set C2(value: ImplantC2[]) {
+            pb_1.Message.setRepeatedWrapperField(this, 50, value);
+        }
+        get CanaryDomains() {
+            return pb_1.Message.getField(this, 51) as string[];
+        }
+        set CanaryDomains(value: string[]) {
+            pb_1.Message.setField(this, 51, value);
+        }
+        get ConnectionStrategy() {
+            return pb_1.Message.getField(this, 52) as string;
+        }
+        set ConnectionStrategy(value: string) {
+            pb_1.Message.setField(this, 52, value);
+        }
+        get LimitDomainJoined() {
+            return pb_1.Message.getField(this, 60) as boolean;
+        }
+        set LimitDomainJoined(value: boolean) {
+            pb_1.Message.setField(this, 60, value);
+        }
+        get LimitDatetime() {
+            return pb_1.Message.getField(this, 61) as string;
+        }
+        set LimitDatetime(value: string) {
+            pb_1.Message.setField(this, 61, value);
+        }
+        get LimitHostname() {
+            return pb_1.Message.getField(this, 62) as string;
+        }
+        set LimitHostname(value: string) {
+            pb_1.Message.setField(this, 62, value);
+        }
+        get LimitUsername() {
+            return pb_1.Message.getField(this, 63) as string;
+        }
+        set LimitUsername(value: string) {
+            pb_1.Message.setField(this, 63, value);
+        }
+        get LimitFileExists() {
+            return pb_1.Message.getField(this, 64) as string;
+        }
+        set LimitFileExists(value: string) {
+            pb_1.Message.setField(this, 64, value);
+        }
+        get Format() {
+            return pb_1.Message.getField(this, 100) as OutputFormat;
+        }
+        set Format(value: OutputFormat) {
+            pb_1.Message.setField(this, 100, value);
+        }
+        get IsSharedLib() {
+            return pb_1.Message.getField(this, 101) as boolean;
+        }
+        set IsSharedLib(value: boolean) {
+            pb_1.Message.setField(this, 101, value);
+        }
         get FileName() {
-            return pb_1.Message.getField(this, 27) as string;
+            return pb_1.Message.getField(this, 102) as string;
         }
         set FileName(value: string) {
-            pb_1.Message.setField(this, 27, value);
+            pb_1.Message.setField(this, 102, value);
         }
         get IsService() {
-            return pb_1.Message.getField(this, 28) as boolean;
+            return pb_1.Message.getField(this, 103) as boolean;
         }
         set IsService(value: boolean) {
-            pb_1.Message.setField(this, 28, value);
+            pb_1.Message.setField(this, 103, value);
         }
         get IsShellcode() {
-            return pb_1.Message.getField(this, 29) as boolean;
+            return pb_1.Message.getField(this, 104) as boolean;
         }
         set IsShellcode(value: boolean) {
-            pb_1.Message.setField(this, 29, value);
+            pb_1.Message.setField(this, 104, value);
         }
         static fromObject(data: {
+            ID?: string;
+            IsBeacon?: boolean;
+            BeaconInterval?: number;
+            BeaconJitter?: number;
             GOOS?: string;
             GOARCH?: string;
             Name?: string;
-            CACert?: string;
-            Cert?: string;
-            Key?: string;
             Debug?: boolean;
             Evasion?: boolean;
             ObfuscateSymbols?: boolean;
+            MtlsCACert?: string;
+            MtlsCert?: string;
+            MtlsKey?: string;
+            ECCPublicKey?: string;
+            ECCPrivateKey?: string;
+            ECCPublicKeySignature?: string;
+            MinisignServerPublicKey?: string;
             WGImplantPrivKey?: string;
             WGServerPubKey?: string;
             WGPeerTunIP?: string;
@@ -1236,9 +2403,10 @@ export namespace clientpb {
             WGTcpCommsPort?: number;
             ReconnectInterval?: number;
             MaxConnectionErrors?: number;
-            PollInterval?: number;
+            PollTimeout?: number;
             C2?: ReturnType<typeof ImplantC2.prototype.toObject>[];
             CanaryDomains?: string[];
+            ConnectionStrategy?: string;
             LimitDomainJoined?: boolean;
             LimitDatetime?: string;
             LimitHostname?: string;
@@ -1251,6 +2419,18 @@ export namespace clientpb {
             IsShellcode?: boolean;
         }) {
             const message = new ImplantConfig({});
+            if (data.ID != null) {
+                message.ID = data.ID;
+            }
+            if (data.IsBeacon != null) {
+                message.IsBeacon = data.IsBeacon;
+            }
+            if (data.BeaconInterval != null) {
+                message.BeaconInterval = data.BeaconInterval;
+            }
+            if (data.BeaconJitter != null) {
+                message.BeaconJitter = data.BeaconJitter;
+            }
             if (data.GOOS != null) {
                 message.GOOS = data.GOOS;
             }
@@ -1260,15 +2440,6 @@ export namespace clientpb {
             if (data.Name != null) {
                 message.Name = data.Name;
             }
-            if (data.CACert != null) {
-                message.CACert = data.CACert;
-            }
-            if (data.Cert != null) {
-                message.Cert = data.Cert;
-            }
-            if (data.Key != null) {
-                message.Key = data.Key;
-            }
             if (data.Debug != null) {
                 message.Debug = data.Debug;
             }
@@ -1277,6 +2448,27 @@ export namespace clientpb {
             }
             if (data.ObfuscateSymbols != null) {
                 message.ObfuscateSymbols = data.ObfuscateSymbols;
+            }
+            if (data.MtlsCACert != null) {
+                message.MtlsCACert = data.MtlsCACert;
+            }
+            if (data.MtlsCert != null) {
+                message.MtlsCert = data.MtlsCert;
+            }
+            if (data.MtlsKey != null) {
+                message.MtlsKey = data.MtlsKey;
+            }
+            if (data.ECCPublicKey != null) {
+                message.ECCPublicKey = data.ECCPublicKey;
+            }
+            if (data.ECCPrivateKey != null) {
+                message.ECCPrivateKey = data.ECCPrivateKey;
+            }
+            if (data.ECCPublicKeySignature != null) {
+                message.ECCPublicKeySignature = data.ECCPublicKeySignature;
+            }
+            if (data.MinisignServerPublicKey != null) {
+                message.MinisignServerPublicKey = data.MinisignServerPublicKey;
             }
             if (data.WGImplantPrivKey != null) {
                 message.WGImplantPrivKey = data.WGImplantPrivKey;
@@ -1299,14 +2491,17 @@ export namespace clientpb {
             if (data.MaxConnectionErrors != null) {
                 message.MaxConnectionErrors = data.MaxConnectionErrors;
             }
-            if (data.PollInterval != null) {
-                message.PollInterval = data.PollInterval;
+            if (data.PollTimeout != null) {
+                message.PollTimeout = data.PollTimeout;
             }
             if (data.C2 != null) {
                 message.C2 = data.C2.map(item => ImplantC2.fromObject(item));
             }
             if (data.CanaryDomains != null) {
                 message.CanaryDomains = data.CanaryDomains;
+            }
+            if (data.ConnectionStrategy != null) {
+                message.ConnectionStrategy = data.ConnectionStrategy;
             }
             if (data.LimitDomainJoined != null) {
                 message.LimitDomainJoined = data.LimitDomainJoined;
@@ -1342,15 +2537,23 @@ export namespace clientpb {
         }
         toObject() {
             const data: {
+                ID?: string;
+                IsBeacon?: boolean;
+                BeaconInterval?: number;
+                BeaconJitter?: number;
                 GOOS?: string;
                 GOARCH?: string;
                 Name?: string;
-                CACert?: string;
-                Cert?: string;
-                Key?: string;
                 Debug?: boolean;
                 Evasion?: boolean;
                 ObfuscateSymbols?: boolean;
+                MtlsCACert?: string;
+                MtlsCert?: string;
+                MtlsKey?: string;
+                ECCPublicKey?: string;
+                ECCPrivateKey?: string;
+                ECCPublicKeySignature?: string;
+                MinisignServerPublicKey?: string;
                 WGImplantPrivKey?: string;
                 WGServerPubKey?: string;
                 WGPeerTunIP?: string;
@@ -1358,9 +2561,10 @@ export namespace clientpb {
                 WGTcpCommsPort?: number;
                 ReconnectInterval?: number;
                 MaxConnectionErrors?: number;
-                PollInterval?: number;
+                PollTimeout?: number;
                 C2?: ReturnType<typeof ImplantC2.prototype.toObject>[];
                 CanaryDomains?: string[];
+                ConnectionStrategy?: string;
                 LimitDomainJoined?: boolean;
                 LimitDatetime?: string;
                 LimitHostname?: string;
@@ -1372,6 +2576,18 @@ export namespace clientpb {
                 IsService?: boolean;
                 IsShellcode?: boolean;
             } = {};
+            if (this.ID != null) {
+                data.ID = this.ID;
+            }
+            if (this.IsBeacon != null) {
+                data.IsBeacon = this.IsBeacon;
+            }
+            if (this.BeaconInterval != null) {
+                data.BeaconInterval = this.BeaconInterval;
+            }
+            if (this.BeaconJitter != null) {
+                data.BeaconJitter = this.BeaconJitter;
+            }
             if (this.GOOS != null) {
                 data.GOOS = this.GOOS;
             }
@@ -1381,15 +2597,6 @@ export namespace clientpb {
             if (this.Name != null) {
                 data.Name = this.Name;
             }
-            if (this.CACert != null) {
-                data.CACert = this.CACert;
-            }
-            if (this.Cert != null) {
-                data.Cert = this.Cert;
-            }
-            if (this.Key != null) {
-                data.Key = this.Key;
-            }
             if (this.Debug != null) {
                 data.Debug = this.Debug;
             }
@@ -1398,6 +2605,27 @@ export namespace clientpb {
             }
             if (this.ObfuscateSymbols != null) {
                 data.ObfuscateSymbols = this.ObfuscateSymbols;
+            }
+            if (this.MtlsCACert != null) {
+                data.MtlsCACert = this.MtlsCACert;
+            }
+            if (this.MtlsCert != null) {
+                data.MtlsCert = this.MtlsCert;
+            }
+            if (this.MtlsKey != null) {
+                data.MtlsKey = this.MtlsKey;
+            }
+            if (this.ECCPublicKey != null) {
+                data.ECCPublicKey = this.ECCPublicKey;
+            }
+            if (this.ECCPrivateKey != null) {
+                data.ECCPrivateKey = this.ECCPrivateKey;
+            }
+            if (this.ECCPublicKeySignature != null) {
+                data.ECCPublicKeySignature = this.ECCPublicKeySignature;
+            }
+            if (this.MinisignServerPublicKey != null) {
+                data.MinisignServerPublicKey = this.MinisignServerPublicKey;
             }
             if (this.WGImplantPrivKey != null) {
                 data.WGImplantPrivKey = this.WGImplantPrivKey;
@@ -1420,14 +2648,17 @@ export namespace clientpb {
             if (this.MaxConnectionErrors != null) {
                 data.MaxConnectionErrors = this.MaxConnectionErrors;
             }
-            if (this.PollInterval != null) {
-                data.PollInterval = this.PollInterval;
+            if (this.PollTimeout != null) {
+                data.PollTimeout = this.PollTimeout;
             }
             if (this.C2 != null) {
                 data.C2 = this.C2.map((item: ImplantC2) => item.toObject());
             }
             if (this.CanaryDomains != null) {
                 data.CanaryDomains = this.CanaryDomains;
+            }
+            if (this.ConnectionStrategy != null) {
+                data.ConnectionStrategy = this.ConnectionStrategy;
             }
             if (this.LimitDomainJoined != null) {
                 data.LimitDomainJoined = this.LimitDomainJoined;
@@ -1465,64 +2696,82 @@ export namespace clientpb {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
+            if (typeof this.ID === "string" && this.ID.length)
+                writer.writeString(1, this.ID);
+            if (this.IsBeacon !== undefined)
+                writer.writeBool(2, this.IsBeacon);
+            if (this.BeaconInterval !== undefined)
+                writer.writeInt64(3, this.BeaconInterval);
+            if (this.BeaconJitter !== undefined)
+                writer.writeInt64(4, this.BeaconJitter);
             if (typeof this.GOOS === "string" && this.GOOS.length)
-                writer.writeString(1, this.GOOS);
+                writer.writeString(5, this.GOOS);
             if (typeof this.GOARCH === "string" && this.GOARCH.length)
-                writer.writeString(2, this.GOARCH);
+                writer.writeString(6, this.GOARCH);
             if (typeof this.Name === "string" && this.Name.length)
-                writer.writeString(3, this.Name);
-            if (typeof this.CACert === "string" && this.CACert.length)
-                writer.writeString(4, this.CACert);
-            if (typeof this.Cert === "string" && this.Cert.length)
-                writer.writeString(5, this.Cert);
-            if (typeof this.Key === "string" && this.Key.length)
-                writer.writeString(6, this.Key);
+                writer.writeString(7, this.Name);
             if (this.Debug !== undefined)
-                writer.writeBool(7, this.Debug);
+                writer.writeBool(8, this.Debug);
             if (this.Evasion !== undefined)
-                writer.writeBool(31, this.Evasion);
+                writer.writeBool(9, this.Evasion);
             if (this.ObfuscateSymbols !== undefined)
-                writer.writeBool(30, this.ObfuscateSymbols);
+                writer.writeBool(10, this.ObfuscateSymbols);
+            if (typeof this.MtlsCACert === "string" && this.MtlsCACert.length)
+                writer.writeString(20, this.MtlsCACert);
+            if (typeof this.MtlsCert === "string" && this.MtlsCert.length)
+                writer.writeString(21, this.MtlsCert);
+            if (typeof this.MtlsKey === "string" && this.MtlsKey.length)
+                writer.writeString(22, this.MtlsKey);
+            if (typeof this.ECCPublicKey === "string" && this.ECCPublicKey.length)
+                writer.writeString(23, this.ECCPublicKey);
+            if (typeof this.ECCPrivateKey === "string" && this.ECCPrivateKey.length)
+                writer.writeString(24, this.ECCPrivateKey);
+            if (typeof this.ECCPublicKeySignature === "string" && this.ECCPublicKeySignature.length)
+                writer.writeString(25, this.ECCPublicKeySignature);
+            if (typeof this.MinisignServerPublicKey === "string" && this.MinisignServerPublicKey.length)
+                writer.writeString(26, this.MinisignServerPublicKey);
             if (typeof this.WGImplantPrivKey === "string" && this.WGImplantPrivKey.length)
-                writer.writeString(33, this.WGImplantPrivKey);
+                writer.writeString(30, this.WGImplantPrivKey);
             if (typeof this.WGServerPubKey === "string" && this.WGServerPubKey.length)
-                writer.writeString(34, this.WGServerPubKey);
+                writer.writeString(31, this.WGServerPubKey);
             if (typeof this.WGPeerTunIP === "string" && this.WGPeerTunIP.length)
-                writer.writeString(35, this.WGPeerTunIP);
+                writer.writeString(32, this.WGPeerTunIP);
             if (this.WGKeyExchangePort !== undefined)
-                writer.writeUint32(36, this.WGKeyExchangePort);
+                writer.writeUint32(33, this.WGKeyExchangePort);
             if (this.WGTcpCommsPort !== undefined)
-                writer.writeUint32(37, this.WGTcpCommsPort);
+                writer.writeUint32(34, this.WGTcpCommsPort);
             if (this.ReconnectInterval !== undefined)
-                writer.writeUint32(8, this.ReconnectInterval);
+                writer.writeInt64(40, this.ReconnectInterval);
             if (this.MaxConnectionErrors !== undefined)
-                writer.writeUint32(9, this.MaxConnectionErrors);
-            if (this.PollInterval !== undefined)
-                writer.writeUint32(38, this.PollInterval);
+                writer.writeUint32(41, this.MaxConnectionErrors);
+            if (this.PollTimeout !== undefined)
+                writer.writeInt64(42, this.PollTimeout);
             if (this.C2 !== undefined)
-                writer.writeRepeatedMessage(10, this.C2, (item: ImplantC2) => item.serialize(writer));
+                writer.writeRepeatedMessage(50, this.C2, (item: ImplantC2) => item.serialize(writer));
             if (this.CanaryDomains !== undefined)
-                writer.writeRepeatedString(11, this.CanaryDomains);
+                writer.writeRepeatedString(51, this.CanaryDomains);
+            if (typeof this.ConnectionStrategy === "string" && this.ConnectionStrategy.length)
+                writer.writeString(52, this.ConnectionStrategy);
             if (this.LimitDomainJoined !== undefined)
-                writer.writeBool(20, this.LimitDomainJoined);
+                writer.writeBool(60, this.LimitDomainJoined);
             if (typeof this.LimitDatetime === "string" && this.LimitDatetime.length)
-                writer.writeString(21, this.LimitDatetime);
+                writer.writeString(61, this.LimitDatetime);
             if (typeof this.LimitHostname === "string" && this.LimitHostname.length)
-                writer.writeString(22, this.LimitHostname);
+                writer.writeString(62, this.LimitHostname);
             if (typeof this.LimitUsername === "string" && this.LimitUsername.length)
-                writer.writeString(23, this.LimitUsername);
+                writer.writeString(63, this.LimitUsername);
             if (typeof this.LimitFileExists === "string" && this.LimitFileExists.length)
-                writer.writeString(32, this.LimitFileExists);
+                writer.writeString(64, this.LimitFileExists);
             if (this.Format !== undefined)
-                writer.writeEnum(25, this.Format);
+                writer.writeEnum(100, this.Format);
             if (this.IsSharedLib !== undefined)
-                writer.writeBool(26, this.IsSharedLib);
+                writer.writeBool(101, this.IsSharedLib);
             if (typeof this.FileName === "string" && this.FileName.length)
-                writer.writeString(27, this.FileName);
+                writer.writeString(102, this.FileName);
             if (this.IsService !== undefined)
-                writer.writeBool(28, this.IsService);
+                writer.writeBool(103, this.IsService);
             if (this.IsShellcode !== undefined)
-                writer.writeBool(29, this.IsShellcode);
+                writer.writeBool(104, this.IsShellcode);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -1533,90 +2782,117 @@ export namespace clientpb {
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        message.GOOS = reader.readString();
+                        message.ID = reader.readString();
                         break;
                     case 2:
-                        message.GOARCH = reader.readString();
+                        message.IsBeacon = reader.readBool();
                         break;
                     case 3:
-                        message.Name = reader.readString();
+                        message.BeaconInterval = reader.readInt64();
                         break;
                     case 4:
-                        message.CACert = reader.readString();
+                        message.BeaconJitter = reader.readInt64();
                         break;
                     case 5:
-                        message.Cert = reader.readString();
+                        message.GOOS = reader.readString();
                         break;
                     case 6:
-                        message.Key = reader.readString();
+                        message.GOARCH = reader.readString();
                         break;
                     case 7:
-                        message.Debug = reader.readBool();
-                        break;
-                    case 31:
-                        message.Evasion = reader.readBool();
-                        break;
-                    case 30:
-                        message.ObfuscateSymbols = reader.readBool();
-                        break;
-                    case 33:
-                        message.WGImplantPrivKey = reader.readString();
-                        break;
-                    case 34:
-                        message.WGServerPubKey = reader.readString();
-                        break;
-                    case 35:
-                        message.WGPeerTunIP = reader.readString();
-                        break;
-                    case 36:
-                        message.WGKeyExchangePort = reader.readUint32();
-                        break;
-                    case 37:
-                        message.WGTcpCommsPort = reader.readUint32();
+                        message.Name = reader.readString();
                         break;
                     case 8:
-                        message.ReconnectInterval = reader.readUint32();
+                        message.Debug = reader.readBool();
                         break;
                     case 9:
-                        message.MaxConnectionErrors = reader.readUint32();
-                        break;
-                    case 38:
-                        message.PollInterval = reader.readUint32();
+                        message.Evasion = reader.readBool();
                         break;
                     case 10:
-                        reader.readMessage(message.C2, () => pb_1.Message.addToRepeatedWrapperField(message, 10, ImplantC2.deserialize(reader), ImplantC2));
-                        break;
-                    case 11:
-                        pb_1.Message.addToRepeatedField(message, 11, reader.readString());
+                        message.ObfuscateSymbols = reader.readBool();
                         break;
                     case 20:
-                        message.LimitDomainJoined = reader.readBool();
+                        message.MtlsCACert = reader.readString();
                         break;
                     case 21:
-                        message.LimitDatetime = reader.readString();
+                        message.MtlsCert = reader.readString();
                         break;
                     case 22:
-                        message.LimitHostname = reader.readString();
+                        message.MtlsKey = reader.readString();
                         break;
                     case 23:
-                        message.LimitUsername = reader.readString();
+                        message.ECCPublicKey = reader.readString();
                         break;
-                    case 32:
-                        message.LimitFileExists = reader.readString();
+                    case 24:
+                        message.ECCPrivateKey = reader.readString();
                         break;
                     case 25:
-                        message.Format = reader.readEnum();
+                        message.ECCPublicKeySignature = reader.readString();
                         break;
                     case 26:
+                        message.MinisignServerPublicKey = reader.readString();
+                        break;
+                    case 30:
+                        message.WGImplantPrivKey = reader.readString();
+                        break;
+                    case 31:
+                        message.WGServerPubKey = reader.readString();
+                        break;
+                    case 32:
+                        message.WGPeerTunIP = reader.readString();
+                        break;
+                    case 33:
+                        message.WGKeyExchangePort = reader.readUint32();
+                        break;
+                    case 34:
+                        message.WGTcpCommsPort = reader.readUint32();
+                        break;
+                    case 40:
+                        message.ReconnectInterval = reader.readInt64();
+                        break;
+                    case 41:
+                        message.MaxConnectionErrors = reader.readUint32();
+                        break;
+                    case 42:
+                        message.PollTimeout = reader.readInt64();
+                        break;
+                    case 50:
+                        reader.readMessage(message.C2, () => pb_1.Message.addToRepeatedWrapperField(message, 50, ImplantC2.deserialize(reader), ImplantC2));
+                        break;
+                    case 51:
+                        pb_1.Message.addToRepeatedField(message, 51, reader.readString());
+                        break;
+                    case 52:
+                        message.ConnectionStrategy = reader.readString();
+                        break;
+                    case 60:
+                        message.LimitDomainJoined = reader.readBool();
+                        break;
+                    case 61:
+                        message.LimitDatetime = reader.readString();
+                        break;
+                    case 62:
+                        message.LimitHostname = reader.readString();
+                        break;
+                    case 63:
+                        message.LimitUsername = reader.readString();
+                        break;
+                    case 64:
+                        message.LimitFileExists = reader.readString();
+                        break;
+                    case 100:
+                        message.Format = reader.readEnum();
+                        break;
+                    case 101:
                         message.IsSharedLib = reader.readBool();
                         break;
-                    case 27:
+                    case 102:
                         message.FileName = reader.readString();
                         break;
-                    case 28:
+                    case 103:
                         message.IsService = reader.readBool();
                         break;
-                    case 29:
+                    case 104:
                         message.IsShellcode = reader.readBool();
                         break;
                     default: reader.skipField();
@@ -3298,6 +4574,7 @@ export namespace clientpb {
     }
     export class WGListenerReq extends pb_1.Message {
         constructor(data?: any[] | {
+            Host?: string;
             Port?: number;
             TunIP?: string;
             NPort?: number;
@@ -3307,6 +4584,9 @@ export namespace clientpb {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
             if (!Array.isArray(data) && typeof data == "object") {
+                if ("Host" in data && data.Host != undefined) {
+                    this.Host = data.Host;
+                }
                 if ("Port" in data && data.Port != undefined) {
                     this.Port = data.Port;
                 }
@@ -3323,6 +4603,12 @@ export namespace clientpb {
                     this.Persistent = data.Persistent;
                 }
             }
+        }
+        get Host() {
+            return pb_1.Message.getField(this, 6) as string;
+        }
+        set Host(value: string) {
+            pb_1.Message.setField(this, 6, value);
         }
         get Port() {
             return pb_1.Message.getField(this, 1) as number;
@@ -3355,6 +4641,7 @@ export namespace clientpb {
             pb_1.Message.setField(this, 5, value);
         }
         static fromObject(data: {
+            Host?: string;
             Port?: number;
             TunIP?: string;
             NPort?: number;
@@ -3362,6 +4649,9 @@ export namespace clientpb {
             Persistent?: boolean;
         }) {
             const message = new WGListenerReq({});
+            if (data.Host != null) {
+                message.Host = data.Host;
+            }
             if (data.Port != null) {
                 message.Port = data.Port;
             }
@@ -3381,12 +4671,16 @@ export namespace clientpb {
         }
         toObject() {
             const data: {
+                Host?: string;
                 Port?: number;
                 TunIP?: string;
                 NPort?: number;
                 KeyPort?: number;
                 Persistent?: boolean;
             } = {};
+            if (this.Host != null) {
+                data.Host = this.Host;
+            }
             if (this.Port != null) {
                 data.Port = this.Port;
             }
@@ -3408,6 +4702,8 @@ export namespace clientpb {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
+            if (typeof this.Host === "string" && this.Host.length)
+                writer.writeString(6, this.Host);
             if (this.Port !== undefined)
                 writer.writeUint32(1, this.Port);
             if (typeof this.TunIP === "string" && this.TunIP.length)
@@ -3427,6 +4723,9 @@ export namespace clientpb {
                 if (reader.isEndGroup())
                     break;
                 switch (reader.getFieldNumber()) {
+                    case 6:
+                        message.Host = reader.readString();
+                        break;
                     case 1:
                         message.Port = reader.readUint32();
                         break;
@@ -3755,6 +5054,9 @@ export namespace clientpb {
             Key?: Uint8Array;
             ACME?: boolean;
             Persistent?: boolean;
+            EnforceOTP?: boolean;
+            LongPollTimeout?: number;
+            LongPollJitter?: number;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
@@ -3785,6 +5087,15 @@ export namespace clientpb {
                 }
                 if ("Persistent" in data && data.Persistent != undefined) {
                     this.Persistent = data.Persistent;
+                }
+                if ("EnforceOTP" in data && data.EnforceOTP != undefined) {
+                    this.EnforceOTP = data.EnforceOTP;
+                }
+                if ("LongPollTimeout" in data && data.LongPollTimeout != undefined) {
+                    this.LongPollTimeout = data.LongPollTimeout;
+                }
+                if ("LongPollJitter" in data && data.LongPollJitter != undefined) {
+                    this.LongPollJitter = data.LongPollJitter;
                 }
             }
         }
@@ -3842,6 +5153,24 @@ export namespace clientpb {
         set Persistent(value: boolean) {
             pb_1.Message.setField(this, 9, value);
         }
+        get EnforceOTP() {
+            return pb_1.Message.getField(this, 10) as boolean;
+        }
+        set EnforceOTP(value: boolean) {
+            pb_1.Message.setField(this, 10, value);
+        }
+        get LongPollTimeout() {
+            return pb_1.Message.getField(this, 11) as number;
+        }
+        set LongPollTimeout(value: number) {
+            pb_1.Message.setField(this, 11, value);
+        }
+        get LongPollJitter() {
+            return pb_1.Message.getField(this, 12) as number;
+        }
+        set LongPollJitter(value: number) {
+            pb_1.Message.setField(this, 12, value);
+        }
         static fromObject(data: {
             Domain?: string;
             Host?: string;
@@ -3852,6 +5181,9 @@ export namespace clientpb {
             Key?: Uint8Array;
             ACME?: boolean;
             Persistent?: boolean;
+            EnforceOTP?: boolean;
+            LongPollTimeout?: number;
+            LongPollJitter?: number;
         }) {
             const message = new HTTPListenerReq({});
             if (data.Domain != null) {
@@ -3881,6 +5213,15 @@ export namespace clientpb {
             if (data.Persistent != null) {
                 message.Persistent = data.Persistent;
             }
+            if (data.EnforceOTP != null) {
+                message.EnforceOTP = data.EnforceOTP;
+            }
+            if (data.LongPollTimeout != null) {
+                message.LongPollTimeout = data.LongPollTimeout;
+            }
+            if (data.LongPollJitter != null) {
+                message.LongPollJitter = data.LongPollJitter;
+            }
             return message;
         }
         toObject() {
@@ -3894,6 +5235,9 @@ export namespace clientpb {
                 Key?: Uint8Array;
                 ACME?: boolean;
                 Persistent?: boolean;
+                EnforceOTP?: boolean;
+                LongPollTimeout?: number;
+                LongPollJitter?: number;
             } = {};
             if (this.Domain != null) {
                 data.Domain = this.Domain;
@@ -3922,6 +5266,15 @@ export namespace clientpb {
             if (this.Persistent != null) {
                 data.Persistent = this.Persistent;
             }
+            if (this.EnforceOTP != null) {
+                data.EnforceOTP = this.EnforceOTP;
+            }
+            if (this.LongPollTimeout != null) {
+                data.LongPollTimeout = this.LongPollTimeout;
+            }
+            if (this.LongPollJitter != null) {
+                data.LongPollJitter = this.LongPollJitter;
+            }
             return data;
         }
         serialize(): Uint8Array;
@@ -3946,6 +5299,12 @@ export namespace clientpb {
                 writer.writeBool(8, this.ACME);
             if (this.Persistent !== undefined)
                 writer.writeBool(9, this.Persistent);
+            if (this.EnforceOTP !== undefined)
+                writer.writeBool(10, this.EnforceOTP);
+            if (this.LongPollTimeout !== undefined)
+                writer.writeInt64(11, this.LongPollTimeout);
+            if (this.LongPollJitter !== undefined)
+                writer.writeInt64(12, this.LongPollJitter);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -3981,6 +5340,15 @@ export namespace clientpb {
                         break;
                     case 9:
                         message.Persistent = reader.readBool();
+                        break;
+                    case 10:
+                        message.EnforceOTP = reader.readBool();
+                        break;
+                    case 11:
+                        message.LongPollTimeout = reader.readInt64();
+                        break;
+                    case 12:
+                        message.LongPollJitter = reader.readInt64();
                         break;
                     default: reader.skipField();
                 }
@@ -4530,13 +5898,14 @@ export namespace clientpb {
     }
     export class UpdateSession extends pb_1.Message {
         constructor(data?: any[] | {
-            SessionID?: number;
+            SessionID?: string;
             Name?: string;
             ReconnectInterval?: number;
             PollInterval?: number;
+            Extensions?: string[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [5], []);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("SessionID" in data && data.SessionID != undefined) {
                     this.SessionID = data.SessionID;
@@ -4550,12 +5919,15 @@ export namespace clientpb {
                 if ("PollInterval" in data && data.PollInterval != undefined) {
                     this.PollInterval = data.PollInterval;
                 }
+                if ("Extensions" in data && data.Extensions != undefined) {
+                    this.Extensions = data.Extensions;
+                }
             }
         }
         get SessionID() {
-            return pb_1.Message.getField(this, 1) as number;
+            return pb_1.Message.getField(this, 1) as string;
         }
-        set SessionID(value: number) {
+        set SessionID(value: string) {
             pb_1.Message.setField(this, 1, value);
         }
         get Name() {
@@ -4576,11 +5948,18 @@ export namespace clientpb {
         set PollInterval(value: number) {
             pb_1.Message.setField(this, 4, value);
         }
+        get Extensions() {
+            return pb_1.Message.getField(this, 5) as string[];
+        }
+        set Extensions(value: string[]) {
+            pb_1.Message.setField(this, 5, value);
+        }
         static fromObject(data: {
-            SessionID?: number;
+            SessionID?: string;
             Name?: string;
             ReconnectInterval?: number;
             PollInterval?: number;
+            Extensions?: string[];
         }) {
             const message = new UpdateSession({});
             if (data.SessionID != null) {
@@ -4595,14 +5974,18 @@ export namespace clientpb {
             if (data.PollInterval != null) {
                 message.PollInterval = data.PollInterval;
             }
+            if (data.Extensions != null) {
+                message.Extensions = data.Extensions;
+            }
             return message;
         }
         toObject() {
             const data: {
-                SessionID?: number;
+                SessionID?: string;
                 Name?: string;
                 ReconnectInterval?: number;
                 PollInterval?: number;
+                Extensions?: string[];
             } = {};
             if (this.SessionID != null) {
                 data.SessionID = this.SessionID;
@@ -4616,20 +5999,25 @@ export namespace clientpb {
             if (this.PollInterval != null) {
                 data.PollInterval = this.PollInterval;
             }
+            if (this.Extensions != null) {
+                data.Extensions = this.Extensions;
+            }
             return data;
         }
         serialize(): Uint8Array;
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.SessionID !== undefined)
-                writer.writeUint32(1, this.SessionID);
+            if (typeof this.SessionID === "string" && this.SessionID.length)
+                writer.writeString(1, this.SessionID);
             if (typeof this.Name === "string" && this.Name.length)
                 writer.writeString(2, this.Name);
             if (this.ReconnectInterval !== undefined)
-                writer.writeInt32(3, this.ReconnectInterval);
+                writer.writeInt64(3, this.ReconnectInterval);
             if (this.PollInterval !== undefined)
-                writer.writeInt32(4, this.PollInterval);
+                writer.writeInt64(4, this.PollInterval);
+            if (this.Extensions !== undefined)
+                writer.writeRepeatedString(5, this.Extensions);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -4640,16 +6028,19 @@ export namespace clientpb {
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        message.SessionID = reader.readUint32();
+                        message.SessionID = reader.readString();
                         break;
                     case 2:
                         message.Name = reader.readString();
                         break;
                     case 3:
-                        message.ReconnectInterval = reader.readInt32();
+                        message.ReconnectInterval = reader.readInt64();
                         break;
                     case 4:
-                        message.PollInterval = reader.readInt32();
+                        message.PollInterval = reader.readInt64();
+                        break;
+                    case 5:
+                        pb_1.Message.addToRepeatedField(message, 5, reader.readString());
                         break;
                     default: reader.skipField();
                 }
@@ -6366,6 +7757,207 @@ export namespace clientpb {
             return CloseTunnelReq.deserialize(bytes);
         }
     }
+    export class PivotGraphEntry extends pb_1.Message {
+        constructor(data?: any[] | {
+            PeerID?: number;
+            Session?: Session;
+            Name?: string;
+            Children?: PivotGraphEntry[];
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], []);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("PeerID" in data && data.PeerID != undefined) {
+                    this.PeerID = data.PeerID;
+                }
+                if ("Session" in data && data.Session != undefined) {
+                    this.Session = data.Session;
+                }
+                if ("Name" in data && data.Name != undefined) {
+                    this.Name = data.Name;
+                }
+                if ("Children" in data && data.Children != undefined) {
+                    this.Children = data.Children;
+                }
+            }
+        }
+        get PeerID() {
+            return pb_1.Message.getField(this, 1) as number;
+        }
+        set PeerID(value: number) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        get Session() {
+            return pb_1.Message.getWrapperField(this, Session, 2) as Session;
+        }
+        set Session(value: Session) {
+            pb_1.Message.setWrapperField(this, 2, value);
+        }
+        get Name() {
+            return pb_1.Message.getField(this, 3) as string;
+        }
+        set Name(value: string) {
+            pb_1.Message.setField(this, 3, value);
+        }
+        get Children() {
+            return pb_1.Message.getRepeatedWrapperField(this, PivotGraphEntry, 4) as PivotGraphEntry[];
+        }
+        set Children(value: PivotGraphEntry[]) {
+            pb_1.Message.setRepeatedWrapperField(this, 4, value);
+        }
+        static fromObject(data: {
+            PeerID?: number;
+            Session?: ReturnType<typeof Session.prototype.toObject>;
+            Name?: string;
+            Children?: ReturnType<typeof PivotGraphEntry.prototype.toObject>[];
+        }) {
+            const message = new PivotGraphEntry({});
+            if (data.PeerID != null) {
+                message.PeerID = data.PeerID;
+            }
+            if (data.Session != null) {
+                message.Session = Session.fromObject(data.Session);
+            }
+            if (data.Name != null) {
+                message.Name = data.Name;
+            }
+            if (data.Children != null) {
+                message.Children = data.Children.map(item => PivotGraphEntry.fromObject(item));
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                PeerID?: number;
+                Session?: ReturnType<typeof Session.prototype.toObject>;
+                Name?: string;
+                Children?: ReturnType<typeof PivotGraphEntry.prototype.toObject>[];
+            } = {};
+            if (this.PeerID != null) {
+                data.PeerID = this.PeerID;
+            }
+            if (this.Session != null) {
+                data.Session = this.Session.toObject();
+            }
+            if (this.Name != null) {
+                data.Name = this.Name;
+            }
+            if (this.Children != null) {
+                data.Children = this.Children.map((item: PivotGraphEntry) => item.toObject());
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.PeerID !== undefined)
+                writer.writeInt64(1, this.PeerID);
+            if (this.Session !== undefined)
+                writer.writeMessage(2, this.Session, () => this.Session.serialize(writer));
+            if (typeof this.Name === "string" && this.Name.length)
+                writer.writeString(3, this.Name);
+            if (this.Children !== undefined)
+                writer.writeRepeatedMessage(4, this.Children, (item: PivotGraphEntry) => item.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): PivotGraphEntry {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new PivotGraphEntry();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.PeerID = reader.readInt64();
+                        break;
+                    case 2:
+                        reader.readMessage(message.Session, () => message.Session = Session.deserialize(reader));
+                        break;
+                    case 3:
+                        message.Name = reader.readString();
+                        break;
+                    case 4:
+                        reader.readMessage(message.Children, () => pb_1.Message.addToRepeatedWrapperField(message, 4, PivotGraphEntry.deserialize(reader), PivotGraphEntry));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): PivotGraphEntry {
+            return PivotGraphEntry.deserialize(bytes);
+        }
+    }
+    export class PivotGraph extends pb_1.Message {
+        constructor(data?: any[] | {
+            Children?: PivotGraphEntry[];
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("Children" in data && data.Children != undefined) {
+                    this.Children = data.Children;
+                }
+            }
+        }
+        get Children() {
+            return pb_1.Message.getRepeatedWrapperField(this, PivotGraphEntry, 1) as PivotGraphEntry[];
+        }
+        set Children(value: PivotGraphEntry[]) {
+            pb_1.Message.setRepeatedWrapperField(this, 1, value);
+        }
+        static fromObject(data: {
+            Children?: ReturnType<typeof PivotGraphEntry.prototype.toObject>[];
+        }) {
+            const message = new PivotGraph({});
+            if (data.Children != null) {
+                message.Children = data.Children.map(item => PivotGraphEntry.fromObject(item));
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                Children?: ReturnType<typeof PivotGraphEntry.prototype.toObject>[];
+            } = {};
+            if (this.Children != null) {
+                data.Children = this.Children.map((item: PivotGraphEntry) => item.toObject());
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.Children !== undefined)
+                writer.writeRepeatedMessage(1, this.Children, (item: PivotGraphEntry) => item.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): PivotGraph {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new PivotGraph();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        reader.readMessage(message.Children, () => pb_1.Message.addToRepeatedWrapperField(message, 1, PivotGraphEntry.deserialize(reader), PivotGraphEntry));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): PivotGraph {
+            return PivotGraph.deserialize(bytes);
+        }
+    }
     export class Client extends pb_1.Message {
         constructor(data?: any[] | {
             ID?: number;
@@ -7825,6 +9417,669 @@ export namespace clientpb {
         }
         static deserializeBinary(bytes: Uint8Array): AllLoot {
             return AllLoot.deserialize(bytes);
+        }
+    }
+    export class IOC extends pb_1.Message {
+        constructor(data?: any[] | {
+            Path?: string;
+            FileHash?: string;
+            ID?: string;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("Path" in data && data.Path != undefined) {
+                    this.Path = data.Path;
+                }
+                if ("FileHash" in data && data.FileHash != undefined) {
+                    this.FileHash = data.FileHash;
+                }
+                if ("ID" in data && data.ID != undefined) {
+                    this.ID = data.ID;
+                }
+            }
+        }
+        get Path() {
+            return pb_1.Message.getField(this, 1) as string;
+        }
+        set Path(value: string) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        get FileHash() {
+            return pb_1.Message.getField(this, 2) as string;
+        }
+        set FileHash(value: string) {
+            pb_1.Message.setField(this, 2, value);
+        }
+        get ID() {
+            return pb_1.Message.getField(this, 3) as string;
+        }
+        set ID(value: string) {
+            pb_1.Message.setField(this, 3, value);
+        }
+        static fromObject(data: {
+            Path?: string;
+            FileHash?: string;
+            ID?: string;
+        }) {
+            const message = new IOC({});
+            if (data.Path != null) {
+                message.Path = data.Path;
+            }
+            if (data.FileHash != null) {
+                message.FileHash = data.FileHash;
+            }
+            if (data.ID != null) {
+                message.ID = data.ID;
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                Path?: string;
+                FileHash?: string;
+                ID?: string;
+            } = {};
+            if (this.Path != null) {
+                data.Path = this.Path;
+            }
+            if (this.FileHash != null) {
+                data.FileHash = this.FileHash;
+            }
+            if (this.ID != null) {
+                data.ID = this.ID;
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (typeof this.Path === "string" && this.Path.length)
+                writer.writeString(1, this.Path);
+            if (typeof this.FileHash === "string" && this.FileHash.length)
+                writer.writeString(2, this.FileHash);
+            if (typeof this.ID === "string" && this.ID.length)
+                writer.writeString(3, this.ID);
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): IOC {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new IOC();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.Path = reader.readString();
+                        break;
+                    case 2:
+                        message.FileHash = reader.readString();
+                        break;
+                    case 3:
+                        message.ID = reader.readString();
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): IOC {
+            return IOC.deserialize(bytes);
+        }
+    }
+    export class ExtensionData extends pb_1.Message {
+        constructor(data?: any[] | {
+            Output?: string;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("Output" in data && data.Output != undefined) {
+                    this.Output = data.Output;
+                }
+            }
+        }
+        get Output() {
+            return pb_1.Message.getField(this, 1) as string;
+        }
+        set Output(value: string) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        static fromObject(data: {
+            Output?: string;
+        }) {
+            const message = new ExtensionData({});
+            if (data.Output != null) {
+                message.Output = data.Output;
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                Output?: string;
+            } = {};
+            if (this.Output != null) {
+                data.Output = this.Output;
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (typeof this.Output === "string" && this.Output.length)
+                writer.writeString(1, this.Output);
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): ExtensionData {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new ExtensionData();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.Output = reader.readString();
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): ExtensionData {
+            return ExtensionData.deserialize(bytes);
+        }
+    }
+    export class Host extends pb_1.Message {
+        constructor(data?: any[] | {
+            Hostname?: string;
+            HostUUID?: string;
+            OSVersion?: string;
+            IOCs?: IOC[];
+            ExtensionData?: Map<string, ExtensionData>;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], []);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("Hostname" in data && data.Hostname != undefined) {
+                    this.Hostname = data.Hostname;
+                }
+                if ("HostUUID" in data && data.HostUUID != undefined) {
+                    this.HostUUID = data.HostUUID;
+                }
+                if ("OSVersion" in data && data.OSVersion != undefined) {
+                    this.OSVersion = data.OSVersion;
+                }
+                if ("IOCs" in data && data.IOCs != undefined) {
+                    this.IOCs = data.IOCs;
+                }
+                if ("ExtensionData" in data && data.ExtensionData != undefined) {
+                    this.ExtensionData = data.ExtensionData;
+                }
+            }
+            if (!this.ExtensionData)
+                this.ExtensionData = new Map()
+        }
+        get Hostname() {
+            return pb_1.Message.getField(this, 1) as string;
+        }
+        set Hostname(value: string) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        get HostUUID() {
+            return pb_1.Message.getField(this, 2) as string;
+        }
+        set HostUUID(value: string) {
+            pb_1.Message.setField(this, 2, value);
+        }
+        get OSVersion() {
+            return pb_1.Message.getField(this, 3) as string;
+        }
+        set OSVersion(value: string) {
+            pb_1.Message.setField(this, 3, value);
+        }
+        get IOCs() {
+            return pb_1.Message.getRepeatedWrapperField(this, IOC, 4) as IOC[];
+        }
+        set IOCs(value: IOC[]) {
+            pb_1.Message.setRepeatedWrapperField(this, 4, value);
+        }
+        get ExtensionData() {
+            return pb_1.Message.getField(this, 5) as any as Map<string, ExtensionData>;
+        }
+        set ExtensionData(value: Map<string, ExtensionData>) {
+            pb_1.Message.setField(this, 5, value as any);
+        }
+        static fromObject(data: {
+            Hostname?: string;
+            HostUUID?: string;
+            OSVersion?: string;
+            IOCs?: ReturnType<typeof IOC.prototype.toObject>[];
+            ExtensionData?: {
+                [key: string]: ReturnType<typeof ExtensionData.prototype.toObject>;
+            };
+        }) {
+            const message = new Host({});
+            if (data.Hostname != null) {
+                message.Hostname = data.Hostname;
+            }
+            if (data.HostUUID != null) {
+                message.HostUUID = data.HostUUID;
+            }
+            if (data.OSVersion != null) {
+                message.OSVersion = data.OSVersion;
+            }
+            if (data.IOCs != null) {
+                message.IOCs = data.IOCs.map(item => IOC.fromObject(item));
+            }
+            if (typeof data.ExtensionData == "object") {
+                message.ExtensionData = new Map(Object.entries(data.ExtensionData).map(([key, value]) => [key, ExtensionData.fromObject(value)]));
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                Hostname?: string;
+                HostUUID?: string;
+                OSVersion?: string;
+                IOCs?: ReturnType<typeof IOC.prototype.toObject>[];
+                ExtensionData?: {
+                    [key: string]: ReturnType<typeof ExtensionData.prototype.toObject>;
+                };
+            } = {};
+            if (this.Hostname != null) {
+                data.Hostname = this.Hostname;
+            }
+            if (this.HostUUID != null) {
+                data.HostUUID = this.HostUUID;
+            }
+            if (this.OSVersion != null) {
+                data.OSVersion = this.OSVersion;
+            }
+            if (this.IOCs != null) {
+                data.IOCs = this.IOCs.map((item: IOC) => item.toObject());
+            }
+            if (this.ExtensionData.size > 0) {
+                data.ExtensionData = Object.fromEntries(Array.from(this.ExtensionData).map(([key, value]) => [key, value.toObject()]));
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (typeof this.Hostname === "string" && this.Hostname.length)
+                writer.writeString(1, this.Hostname);
+            if (typeof this.HostUUID === "string" && this.HostUUID.length)
+                writer.writeString(2, this.HostUUID);
+            if (typeof this.OSVersion === "string" && this.OSVersion.length)
+                writer.writeString(3, this.OSVersion);
+            if (this.IOCs !== undefined)
+                writer.writeRepeatedMessage(4, this.IOCs, (item: IOC) => item.serialize(writer));
+            for (const [key, value] of this.ExtensionData) {
+                writer.writeMessage(5, this.ExtensionData, () => {
+                    writer.writeString(1, key);
+                    writer.writeMessage(2, value, () => value.serialize(writer));
+                })
+            }
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): Host {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new Host();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.Hostname = reader.readString();
+                        break;
+                    case 2:
+                        message.HostUUID = reader.readString();
+                        break;
+                    case 3:
+                        message.OSVersion = reader.readString();
+                        break;
+                    case 4:
+                        reader.readMessage(message.IOCs, () => pb_1.Message.addToRepeatedWrapperField(message, 4, IOC.deserialize(reader), IOC));
+                        break;
+                    case 5:
+                        reader.readMessage(message, () => pb_1.Map.deserializeBinary(message.ExtensionData as any, reader, reader.readString, () => {
+                            let value;
+                            reader.readMessage(message, () => value = ExtensionData.deserialize(reader))
+                            return value;
+                        }));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): Host {
+            return Host.deserialize(bytes);
+        }
+    }
+    export class AllHosts extends pb_1.Message {
+        constructor(data?: any[] | {
+            Hosts?: Host[];
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("Hosts" in data && data.Hosts != undefined) {
+                    this.Hosts = data.Hosts;
+                }
+            }
+        }
+        get Hosts() {
+            return pb_1.Message.getRepeatedWrapperField(this, Host, 1) as Host[];
+        }
+        set Hosts(value: Host[]) {
+            pb_1.Message.setRepeatedWrapperField(this, 1, value);
+        }
+        static fromObject(data: {
+            Hosts?: ReturnType<typeof Host.prototype.toObject>[];
+        }) {
+            const message = new AllHosts({});
+            if (data.Hosts != null) {
+                message.Hosts = data.Hosts.map(item => Host.fromObject(item));
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                Hosts?: ReturnType<typeof Host.prototype.toObject>[];
+            } = {};
+            if (this.Hosts != null) {
+                data.Hosts = this.Hosts.map((item: Host) => item.toObject());
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.Hosts !== undefined)
+                writer.writeRepeatedMessage(1, this.Hosts, (item: Host) => item.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): AllHosts {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new AllHosts();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        reader.readMessage(message.Hosts, () => pb_1.Message.addToRepeatedWrapperField(message, 1, Host.deserialize(reader), Host));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): AllHosts {
+            return AllHosts.deserialize(bytes);
+        }
+    }
+    export class DllHijackReq extends pb_1.Message {
+        constructor(data?: any[] | {
+            ReferenceDLLPath?: string;
+            TargetLocation?: string;
+            ReferenceDLL?: Uint8Array;
+            TargetDLL?: Uint8Array;
+            ProfileName?: string;
+            Request?: dependency_1.commonpb.Request;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("ReferenceDLLPath" in data && data.ReferenceDLLPath != undefined) {
+                    this.ReferenceDLLPath = data.ReferenceDLLPath;
+                }
+                if ("TargetLocation" in data && data.TargetLocation != undefined) {
+                    this.TargetLocation = data.TargetLocation;
+                }
+                if ("ReferenceDLL" in data && data.ReferenceDLL != undefined) {
+                    this.ReferenceDLL = data.ReferenceDLL;
+                }
+                if ("TargetDLL" in data && data.TargetDLL != undefined) {
+                    this.TargetDLL = data.TargetDLL;
+                }
+                if ("ProfileName" in data && data.ProfileName != undefined) {
+                    this.ProfileName = data.ProfileName;
+                }
+                if ("Request" in data && data.Request != undefined) {
+                    this.Request = data.Request;
+                }
+            }
+        }
+        get ReferenceDLLPath() {
+            return pb_1.Message.getField(this, 1) as string;
+        }
+        set ReferenceDLLPath(value: string) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        get TargetLocation() {
+            return pb_1.Message.getField(this, 2) as string;
+        }
+        set TargetLocation(value: string) {
+            pb_1.Message.setField(this, 2, value);
+        }
+        get ReferenceDLL() {
+            return pb_1.Message.getField(this, 3) as Uint8Array;
+        }
+        set ReferenceDLL(value: Uint8Array) {
+            pb_1.Message.setField(this, 3, value);
+        }
+        get TargetDLL() {
+            return pb_1.Message.getField(this, 4) as Uint8Array;
+        }
+        set TargetDLL(value: Uint8Array) {
+            pb_1.Message.setField(this, 4, value);
+        }
+        get ProfileName() {
+            return pb_1.Message.getField(this, 5) as string;
+        }
+        set ProfileName(value: string) {
+            pb_1.Message.setField(this, 5, value);
+        }
+        get Request() {
+            return pb_1.Message.getWrapperField(this, dependency_1.commonpb.Request, 9) as dependency_1.commonpb.Request;
+        }
+        set Request(value: dependency_1.commonpb.Request) {
+            pb_1.Message.setWrapperField(this, 9, value);
+        }
+        static fromObject(data: {
+            ReferenceDLLPath?: string;
+            TargetLocation?: string;
+            ReferenceDLL?: Uint8Array;
+            TargetDLL?: Uint8Array;
+            ProfileName?: string;
+            Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
+        }) {
+            const message = new DllHijackReq({});
+            if (data.ReferenceDLLPath != null) {
+                message.ReferenceDLLPath = data.ReferenceDLLPath;
+            }
+            if (data.TargetLocation != null) {
+                message.TargetLocation = data.TargetLocation;
+            }
+            if (data.ReferenceDLL != null) {
+                message.ReferenceDLL = data.ReferenceDLL;
+            }
+            if (data.TargetDLL != null) {
+                message.TargetDLL = data.TargetDLL;
+            }
+            if (data.ProfileName != null) {
+                message.ProfileName = data.ProfileName;
+            }
+            if (data.Request != null) {
+                message.Request = dependency_1.commonpb.Request.fromObject(data.Request);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                ReferenceDLLPath?: string;
+                TargetLocation?: string;
+                ReferenceDLL?: Uint8Array;
+                TargetDLL?: Uint8Array;
+                ProfileName?: string;
+                Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
+            } = {};
+            if (this.ReferenceDLLPath != null) {
+                data.ReferenceDLLPath = this.ReferenceDLLPath;
+            }
+            if (this.TargetLocation != null) {
+                data.TargetLocation = this.TargetLocation;
+            }
+            if (this.ReferenceDLL != null) {
+                data.ReferenceDLL = this.ReferenceDLL;
+            }
+            if (this.TargetDLL != null) {
+                data.TargetDLL = this.TargetDLL;
+            }
+            if (this.ProfileName != null) {
+                data.ProfileName = this.ProfileName;
+            }
+            if (this.Request != null) {
+                data.Request = this.Request.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (typeof this.ReferenceDLLPath === "string" && this.ReferenceDLLPath.length)
+                writer.writeString(1, this.ReferenceDLLPath);
+            if (typeof this.TargetLocation === "string" && this.TargetLocation.length)
+                writer.writeString(2, this.TargetLocation);
+            if (this.ReferenceDLL !== undefined)
+                writer.writeBytes(3, this.ReferenceDLL);
+            if (this.TargetDLL !== undefined)
+                writer.writeBytes(4, this.TargetDLL);
+            if (typeof this.ProfileName === "string" && this.ProfileName.length)
+                writer.writeString(5, this.ProfileName);
+            if (this.Request !== undefined)
+                writer.writeMessage(9, this.Request, () => this.Request.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): DllHijackReq {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new DllHijackReq();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.ReferenceDLLPath = reader.readString();
+                        break;
+                    case 2:
+                        message.TargetLocation = reader.readString();
+                        break;
+                    case 3:
+                        message.ReferenceDLL = reader.readBytes();
+                        break;
+                    case 4:
+                        message.TargetDLL = reader.readBytes();
+                        break;
+                    case 5:
+                        message.ProfileName = reader.readString();
+                        break;
+                    case 9:
+                        reader.readMessage(message.Request, () => message.Request = dependency_1.commonpb.Request.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): DllHijackReq {
+            return DllHijackReq.deserialize(bytes);
+        }
+    }
+    export class DllHijack extends pb_1.Message {
+        constructor(data?: any[] | {
+            Response?: dependency_1.commonpb.Response;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("Response" in data && data.Response != undefined) {
+                    this.Response = data.Response;
+                }
+            }
+        }
+        get Response() {
+            return pb_1.Message.getWrapperField(this, dependency_1.commonpb.Response, 9) as dependency_1.commonpb.Response;
+        }
+        set Response(value: dependency_1.commonpb.Response) {
+            pb_1.Message.setWrapperField(this, 9, value);
+        }
+        static fromObject(data: {
+            Response?: ReturnType<typeof dependency_1.commonpb.Response.prototype.toObject>;
+        }) {
+            const message = new DllHijack({});
+            if (data.Response != null) {
+                message.Response = dependency_1.commonpb.Response.fromObject(data.Response);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                Response?: ReturnType<typeof dependency_1.commonpb.Response.prototype.toObject>;
+            } = {};
+            if (this.Response != null) {
+                data.Response = this.Response.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.Response !== undefined)
+                writer.writeMessage(9, this.Response, () => this.Response.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): DllHijack {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new DllHijack();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 9:
+                        reader.readMessage(message.Response, () => message.Response = dependency_1.commonpb.Response.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): DllHijack {
+            return DllHijack.deserialize(bytes);
         }
     }
 }

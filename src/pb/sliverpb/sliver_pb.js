@@ -19,7 +19,12 @@ var commonpb_common_pb = require('../commonpb/common_pb.js');
 goog.object.extend(proto, commonpb_common_pb);
 goog.exportSymbol('proto.sliverpb.Backdoor', null, global);
 goog.exportSymbol('proto.sliverpb.BackdoorReq', null, global);
+goog.exportSymbol('proto.sliverpb.BeaconRegister', null, global);
+goog.exportSymbol('proto.sliverpb.BeaconTasks', null, global);
+goog.exportSymbol('proto.sliverpb.CallExtension', null, global);
+goog.exportSymbol('proto.sliverpb.CallExtensionReq', null, global);
 goog.exportSymbol('proto.sliverpb.CdReq', null, global);
+goog.exportSymbol('proto.sliverpb.CloseSession', null, global);
 goog.exportSymbol('proto.sliverpb.DNSBlockHeader', null, global);
 goog.exportSymbol('proto.sliverpb.DNSPoll', null, global);
 goog.exportSymbol('proto.sliverpb.DNSSessionInit', null, global);
@@ -34,6 +39,8 @@ goog.exportSymbol('proto.sliverpb.ExecuteAssemblyReq', null, global);
 goog.exportSymbol('proto.sliverpb.ExecuteReq', null, global);
 goog.exportSymbol('proto.sliverpb.ExecuteTokenReq', null, global);
 goog.exportSymbol('proto.sliverpb.FileInfo', null, global);
+goog.exportSymbol('proto.sliverpb.GetPrivs', null, global);
+goog.exportSymbol('proto.sliverpb.GetPrivsReq', null, global);
 goog.exportSymbol('proto.sliverpb.GetSystem', null, global);
 goog.exportSymbol('proto.sliverpb.HTTPSessionInit', null, global);
 goog.exportSymbol('proto.sliverpb.Ifconfig', null, global);
@@ -44,7 +51,9 @@ goog.exportSymbol('proto.sliverpb.InvokeExecuteAssemblyReq', null, global);
 goog.exportSymbol('proto.sliverpb.InvokeGetSystemReq', null, global);
 goog.exportSymbol('proto.sliverpb.InvokeMigrateReq', null, global);
 goog.exportSymbol('proto.sliverpb.InvokeSpawnDllReq', null, global);
-goog.exportSymbol('proto.sliverpb.KillSessionReq', null, global);
+goog.exportSymbol('proto.sliverpb.KillReq', null, global);
+goog.exportSymbol('proto.sliverpb.ListExtensions', null, global);
+goog.exportSymbol('proto.sliverpb.ListExtensionsReq', null, global);
 goog.exportSymbol('proto.sliverpb.Ls', null, global);
 goog.exportSymbol('proto.sliverpb.LsReq', null, global);
 goog.exportSymbol('proto.sliverpb.MakeToken', null, global);
@@ -52,18 +61,25 @@ goog.exportSymbol('proto.sliverpb.MakeTokenReq', null, global);
 goog.exportSymbol('proto.sliverpb.Migrate', null, global);
 goog.exportSymbol('proto.sliverpb.Mkdir', null, global);
 goog.exportSymbol('proto.sliverpb.MkdirReq', null, global);
-goog.exportSymbol('proto.sliverpb.NamedPipes', null, global);
-goog.exportSymbol('proto.sliverpb.NamedPipesReq', null, global);
+goog.exportSymbol('proto.sliverpb.NetConnPivot', null, global);
 goog.exportSymbol('proto.sliverpb.NetInterface', null, global);
 goog.exportSymbol('proto.sliverpb.Netstat', null, global);
 goog.exportSymbol('proto.sliverpb.NetstatReq', null, global);
+goog.exportSymbol('proto.sliverpb.OpenSession', null, global);
+goog.exportSymbol('proto.sliverpb.PeerFailureType', null, global);
 goog.exportSymbol('proto.sliverpb.Ping', null, global);
-goog.exportSymbol('proto.sliverpb.PivotClose', null, global);
-goog.exportSymbol('proto.sliverpb.PivotData', null, global);
-goog.exportSymbol('proto.sliverpb.PivotEntry', null, global);
-goog.exportSymbol('proto.sliverpb.PivotList', null, global);
-goog.exportSymbol('proto.sliverpb.PivotListReq', null, global);
-goog.exportSymbol('proto.sliverpb.PivotOpen', null, global);
+goog.exportSymbol('proto.sliverpb.PivotHello', null, global);
+goog.exportSymbol('proto.sliverpb.PivotListener', null, global);
+goog.exportSymbol('proto.sliverpb.PivotListeners', null, global);
+goog.exportSymbol('proto.sliverpb.PivotListenersReq', null, global);
+goog.exportSymbol('proto.sliverpb.PivotPeer', null, global);
+goog.exportSymbol('proto.sliverpb.PivotPeerEnvelope', null, global);
+goog.exportSymbol('proto.sliverpb.PivotPeerFailure', null, global);
+goog.exportSymbol('proto.sliverpb.PivotPing', null, global);
+goog.exportSymbol('proto.sliverpb.PivotServerKeyExchange', null, global);
+goog.exportSymbol('proto.sliverpb.PivotStartListenerReq', null, global);
+goog.exportSymbol('proto.sliverpb.PivotStopListenerReq', null, global);
+goog.exportSymbol('proto.sliverpb.PivotType', null, global);
 goog.exportSymbol('proto.sliverpb.PollInterval', null, global);
 goog.exportSymbol('proto.sliverpb.PollIntervalReq', null, global);
 goog.exportSymbol('proto.sliverpb.Portfwd', null, global);
@@ -77,10 +93,18 @@ goog.exportSymbol('proto.sliverpb.PwdReq', null, global);
 goog.exportSymbol('proto.sliverpb.ReconnectInterval', null, global);
 goog.exportSymbol('proto.sliverpb.ReconnectIntervalReq', null, global);
 goog.exportSymbol('proto.sliverpb.Register', null, global);
+goog.exportSymbol('proto.sliverpb.RegisterExtension', null, global);
+goog.exportSymbol('proto.sliverpb.RegisterExtensionReq', null, global);
 goog.exportSymbol('proto.sliverpb.RegistryCreateKey', null, global);
 goog.exportSymbol('proto.sliverpb.RegistryCreateKeyReq', null, global);
+goog.exportSymbol('proto.sliverpb.RegistryDeleteKey', null, global);
+goog.exportSymbol('proto.sliverpb.RegistryDeleteKeyReq', null, global);
+goog.exportSymbol('proto.sliverpb.RegistryListValuesReq', null, global);
 goog.exportSymbol('proto.sliverpb.RegistryRead', null, global);
 goog.exportSymbol('proto.sliverpb.RegistryReadReq', null, global);
+goog.exportSymbol('proto.sliverpb.RegistrySubKeyList', null, global);
+goog.exportSymbol('proto.sliverpb.RegistrySubKeyListReq', null, global);
+goog.exportSymbol('proto.sliverpb.RegistryValuesList', null, global);
 goog.exportSymbol('proto.sliverpb.RegistryWrite', null, global);
 goog.exportSymbol('proto.sliverpb.RegistryWriteReq', null, global);
 goog.exportSymbol('proto.sliverpb.RemoveServiceReq', null, global);
@@ -96,6 +120,7 @@ goog.exportSymbol('proto.sliverpb.Screenshot', null, global);
 goog.exportSymbol('proto.sliverpb.ScreenshotReq', null, global);
 goog.exportSymbol('proto.sliverpb.ServiceInfo', null, global);
 goog.exportSymbol('proto.sliverpb.ServiceInfoReq', null, global);
+goog.exportSymbol('proto.sliverpb.SessionRegister', null, global);
 goog.exportSymbol('proto.sliverpb.SetEnv', null, global);
 goog.exportSymbol('proto.sliverpb.SetEnvReq', null, global);
 goog.exportSymbol('proto.sliverpb.Shell', null, global);
@@ -104,12 +129,12 @@ goog.exportSymbol('proto.sliverpb.Sideload', null, global);
 goog.exportSymbol('proto.sliverpb.SideloadReq', null, global);
 goog.exportSymbol('proto.sliverpb.SockTabEntry', null, global);
 goog.exportSymbol('proto.sliverpb.SockTabEntry.SockAddr', null, global);
+goog.exportSymbol('proto.sliverpb.Socks', null, global);
+goog.exportSymbol('proto.sliverpb.SocksData', null, global);
 goog.exportSymbol('proto.sliverpb.SpawnDll', null, global);
 goog.exportSymbol('proto.sliverpb.SpawnDllReq', null, global);
 goog.exportSymbol('proto.sliverpb.StartServiceReq', null, global);
 goog.exportSymbol('proto.sliverpb.StopServiceReq', null, global);
-goog.exportSymbol('proto.sliverpb.TCPPivot', null, global);
-goog.exportSymbol('proto.sliverpb.TCPPivotReq', null, global);
 goog.exportSymbol('proto.sliverpb.Task', null, global);
 goog.exportSymbol('proto.sliverpb.TaskReq', null, global);
 goog.exportSymbol('proto.sliverpb.Terminate', null, global);
@@ -132,6 +157,7 @@ goog.exportSymbol('proto.sliverpb.WGSocksStopReq', null, global);
 goog.exportSymbol('proto.sliverpb.WGTCPForwarder', null, global);
 goog.exportSymbol('proto.sliverpb.WGTCPForwarders', null, global);
 goog.exportSymbol('proto.sliverpb.WGTCPForwardersReq', null, global);
+goog.exportSymbol('proto.sliverpb.WindowsPrivilegeEntry', null, global);
 /**
  * Generated by JsPbCodeGenerator.
  * @param {Array=} opt_data Optional initial data array, typically from a
@@ -152,6 +178,27 @@ if (goog.DEBUG && !COMPILED) {
    * @override
    */
   proto.sliverpb.Envelope.displayName = 'proto.sliverpb.Envelope';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sliverpb.BeaconTasks = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sliverpb.BeaconTasks.repeatedFields_, null);
+};
+goog.inherits(proto.sliverpb.BeaconTasks, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sliverpb.BeaconTasks.displayName = 'proto.sliverpb.BeaconTasks';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -184,6 +231,90 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
+proto.sliverpb.BeaconRegister = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sliverpb.BeaconRegister, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sliverpb.BeaconRegister.displayName = 'proto.sliverpb.BeaconRegister';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sliverpb.SessionRegister = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sliverpb.SessionRegister, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sliverpb.SessionRegister.displayName = 'proto.sliverpb.SessionRegister';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sliverpb.OpenSession = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sliverpb.OpenSession.repeatedFields_, null);
+};
+goog.inherits(proto.sliverpb.OpenSession, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sliverpb.OpenSession.displayName = 'proto.sliverpb.OpenSession';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sliverpb.CloseSession = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sliverpb.CloseSession, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sliverpb.CloseSession.displayName = 'proto.sliverpb.CloseSession';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
 proto.sliverpb.Ping = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
@@ -205,16 +336,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sliverpb.KillSessionReq = function(opt_data) {
+proto.sliverpb.KillReq = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.sliverpb.KillSessionReq, jspb.Message);
+goog.inherits(proto.sliverpb.KillReq, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.sliverpb.KillSessionReq.displayName = 'proto.sliverpb.KillSessionReq';
+  proto.sliverpb.KillReq.displayName = 'proto.sliverpb.KillReq';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -1843,6 +1974,132 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
+proto.sliverpb.RegistryDeleteKeyReq = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sliverpb.RegistryDeleteKeyReq, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sliverpb.RegistryDeleteKeyReq.displayName = 'proto.sliverpb.RegistryDeleteKeyReq';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sliverpb.RegistryDeleteKey = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sliverpb.RegistryDeleteKey, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sliverpb.RegistryDeleteKey.displayName = 'proto.sliverpb.RegistryDeleteKey';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sliverpb.RegistrySubKeyListReq = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sliverpb.RegistrySubKeyListReq, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sliverpb.RegistrySubKeyListReq.displayName = 'proto.sliverpb.RegistrySubKeyListReq';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sliverpb.RegistrySubKeyList = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sliverpb.RegistrySubKeyList.repeatedFields_, null);
+};
+goog.inherits(proto.sliverpb.RegistrySubKeyList, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sliverpb.RegistrySubKeyList.displayName = 'proto.sliverpb.RegistrySubKeyList';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sliverpb.RegistryListValuesReq = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sliverpb.RegistryListValuesReq, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sliverpb.RegistryListValuesReq.displayName = 'proto.sliverpb.RegistryListValuesReq';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sliverpb.RegistryValuesList = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sliverpb.RegistryValuesList.repeatedFields_, null);
+};
+goog.inherits(proto.sliverpb.RegistryValuesList, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sliverpb.RegistryValuesList.displayName = 'proto.sliverpb.RegistryValuesList';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
 proto.sliverpb.Tunnel = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
@@ -1969,16 +2226,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sliverpb.NamedPipesReq = function(opt_data) {
+proto.sliverpb.Socks = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.sliverpb.NamedPipesReq, jspb.Message);
+goog.inherits(proto.sliverpb.Socks, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.sliverpb.NamedPipesReq.displayName = 'proto.sliverpb.NamedPipesReq';
+  proto.sliverpb.Socks.displayName = 'proto.sliverpb.Socks';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -1990,16 +2247,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sliverpb.NamedPipes = function(opt_data) {
+proto.sliverpb.SocksData = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.sliverpb.NamedPipes, jspb.Message);
+goog.inherits(proto.sliverpb.SocksData, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.sliverpb.NamedPipes.displayName = 'proto.sliverpb.NamedPipes';
+  proto.sliverpb.SocksData.displayName = 'proto.sliverpb.SocksData';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -2011,16 +2268,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sliverpb.TCPPivotReq = function(opt_data) {
+proto.sliverpb.PivotStartListenerReq = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.sliverpb.TCPPivotReq, jspb.Message);
+goog.inherits(proto.sliverpb.PivotStartListenerReq, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.sliverpb.TCPPivotReq.displayName = 'proto.sliverpb.TCPPivotReq';
+  proto.sliverpb.PivotStartListenerReq.displayName = 'proto.sliverpb.PivotStartListenerReq';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -2032,16 +2289,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sliverpb.TCPPivot = function(opt_data) {
+proto.sliverpb.PivotStopListenerReq = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.sliverpb.TCPPivot, jspb.Message);
+goog.inherits(proto.sliverpb.PivotStopListenerReq, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.sliverpb.TCPPivot.displayName = 'proto.sliverpb.TCPPivot';
+  proto.sliverpb.PivotStopListenerReq.displayName = 'proto.sliverpb.PivotStopListenerReq';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -2053,16 +2310,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sliverpb.PivotOpen = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+proto.sliverpb.PivotListener = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sliverpb.PivotListener.repeatedFields_, null);
 };
-goog.inherits(proto.sliverpb.PivotOpen, jspb.Message);
+goog.inherits(proto.sliverpb.PivotListener, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.sliverpb.PivotOpen.displayName = 'proto.sliverpb.PivotOpen';
+  proto.sliverpb.PivotListener.displayName = 'proto.sliverpb.PivotListener';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -2074,16 +2331,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sliverpb.PivotClose = function(opt_data) {
+proto.sliverpb.PivotHello = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.sliverpb.PivotClose, jspb.Message);
+goog.inherits(proto.sliverpb.PivotHello, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.sliverpb.PivotClose.displayName = 'proto.sliverpb.PivotClose';
+  proto.sliverpb.PivotHello.displayName = 'proto.sliverpb.PivotHello';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -2095,16 +2352,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sliverpb.PivotData = function(opt_data) {
+proto.sliverpb.PivotServerKeyExchange = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.sliverpb.PivotData, jspb.Message);
+goog.inherits(proto.sliverpb.PivotServerKeyExchange, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.sliverpb.PivotData.displayName = 'proto.sliverpb.PivotData';
+  proto.sliverpb.PivotServerKeyExchange.displayName = 'proto.sliverpb.PivotServerKeyExchange';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -2116,16 +2373,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sliverpb.PivotEntry = function(opt_data) {
+proto.sliverpb.PivotPeer = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.sliverpb.PivotEntry, jspb.Message);
+goog.inherits(proto.sliverpb.PivotPeer, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.sliverpb.PivotEntry.displayName = 'proto.sliverpb.PivotEntry';
+  proto.sliverpb.PivotPeer.displayName = 'proto.sliverpb.PivotPeer';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -2137,16 +2394,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sliverpb.PivotListReq = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+proto.sliverpb.PivotPeerEnvelope = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sliverpb.PivotPeerEnvelope.repeatedFields_, null);
 };
-goog.inherits(proto.sliverpb.PivotListReq, jspb.Message);
+goog.inherits(proto.sliverpb.PivotPeerEnvelope, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.sliverpb.PivotListReq.displayName = 'proto.sliverpb.PivotListReq';
+  proto.sliverpb.PivotPeerEnvelope.displayName = 'proto.sliverpb.PivotPeerEnvelope';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -2158,16 +2415,100 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sliverpb.PivotList = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.sliverpb.PivotList.repeatedFields_, null);
+proto.sliverpb.PivotPing = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.sliverpb.PivotList, jspb.Message);
+goog.inherits(proto.sliverpb.PivotPing, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.sliverpb.PivotList.displayName = 'proto.sliverpb.PivotList';
+  proto.sliverpb.PivotPing.displayName = 'proto.sliverpb.PivotPing';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sliverpb.NetConnPivot = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sliverpb.NetConnPivot, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sliverpb.NetConnPivot.displayName = 'proto.sliverpb.NetConnPivot';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sliverpb.PivotPeerFailure = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sliverpb.PivotPeerFailure, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sliverpb.PivotPeerFailure.displayName = 'proto.sliverpb.PivotPeerFailure';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sliverpb.PivotListenersReq = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sliverpb.PivotListenersReq, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sliverpb.PivotListenersReq.displayName = 'proto.sliverpb.PivotListenersReq';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sliverpb.PivotListeners = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sliverpb.PivotListeners.repeatedFields_, null);
+};
+goog.inherits(proto.sliverpb.PivotListeners, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sliverpb.PivotListeners.displayName = 'proto.sliverpb.PivotListeners';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -2547,6 +2888,195 @@ if (goog.DEBUG && !COMPILED) {
    */
   proto.sliverpb.SSHCommand.displayName = 'proto.sliverpb.SSHCommand';
 }
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sliverpb.GetPrivsReq = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sliverpb.GetPrivsReq, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sliverpb.GetPrivsReq.displayName = 'proto.sliverpb.GetPrivsReq';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sliverpb.WindowsPrivilegeEntry = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sliverpb.WindowsPrivilegeEntry, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sliverpb.WindowsPrivilegeEntry.displayName = 'proto.sliverpb.WindowsPrivilegeEntry';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sliverpb.GetPrivs = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sliverpb.GetPrivs.repeatedFields_, null);
+};
+goog.inherits(proto.sliverpb.GetPrivs, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sliverpb.GetPrivs.displayName = 'proto.sliverpb.GetPrivs';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sliverpb.RegisterExtensionReq = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sliverpb.RegisterExtensionReq, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sliverpb.RegisterExtensionReq.displayName = 'proto.sliverpb.RegisterExtensionReq';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sliverpb.RegisterExtension = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sliverpb.RegisterExtension, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sliverpb.RegisterExtension.displayName = 'proto.sliverpb.RegisterExtension';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sliverpb.CallExtensionReq = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sliverpb.CallExtensionReq, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sliverpb.CallExtensionReq.displayName = 'proto.sliverpb.CallExtensionReq';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sliverpb.CallExtension = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sliverpb.CallExtension, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sliverpb.CallExtension.displayName = 'proto.sliverpb.CallExtension';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sliverpb.ListExtensionsReq = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sliverpb.ListExtensionsReq, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sliverpb.ListExtensionsReq.displayName = 'proto.sliverpb.ListExtensionsReq';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sliverpb.ListExtensions = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sliverpb.ListExtensions.repeatedFields_, null);
+};
+goog.inherits(proto.sliverpb.ListExtensions, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.sliverpb.ListExtensions.displayName = 'proto.sliverpb.ListExtensions';
+}
 
 
 
@@ -2620,7 +3150,7 @@ proto.sliverpb.Envelope.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readUint64());
+      var value = /** @type {number} */ (reader.readInt64());
       msg.setId(value);
       break;
     case 2:
@@ -2666,7 +3196,7 @@ proto.sliverpb.Envelope.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getId();
   if (f !== 0) {
-    writer.writeUint64(
+    writer.writeInt64(
       1,
       f
     );
@@ -2696,7 +3226,7 @@ proto.sliverpb.Envelope.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional uint64 ID = 1;
+ * optional int64 ID = 1;
  * @return {number}
  */
 proto.sliverpb.Envelope.prototype.getId = function() {
@@ -2792,6 +3322,226 @@ proto.sliverpb.Envelope.prototype.setUnknownmessagetype = function(value) {
 
 
 
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.sliverpb.BeaconTasks.repeatedFields_ = [2];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sliverpb.BeaconTasks.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.BeaconTasks.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sliverpb.BeaconTasks} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.BeaconTasks.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    id: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    tasksList: jspb.Message.toObjectList(msg.getTasksList(),
+    proto.sliverpb.Envelope.toObject, includeInstance),
+    nextcheckin: jspb.Message.getFieldWithDefault(msg, 3, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sliverpb.BeaconTasks}
+ */
+proto.sliverpb.BeaconTasks.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sliverpb.BeaconTasks;
+  return proto.sliverpb.BeaconTasks.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sliverpb.BeaconTasks} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sliverpb.BeaconTasks}
+ */
+proto.sliverpb.BeaconTasks.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setId(value);
+      break;
+    case 2:
+      var value = new proto.sliverpb.Envelope;
+      reader.readMessage(value,proto.sliverpb.Envelope.deserializeBinaryFromReader);
+      msg.addTasks(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setNextcheckin(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.BeaconTasks.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sliverpb.BeaconTasks.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sliverpb.BeaconTasks} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.BeaconTasks.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getId();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getTasksList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      2,
+      f,
+      proto.sliverpb.Envelope.serializeBinaryToWriter
+    );
+  }
+  f = message.getNextcheckin();
+  if (f !== 0) {
+    writer.writeInt64(
+      3,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string ID = 1;
+ * @return {string}
+ */
+proto.sliverpb.BeaconTasks.prototype.getId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.BeaconTasks} returns this
+ */
+proto.sliverpb.BeaconTasks.prototype.setId = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * repeated Envelope Tasks = 2;
+ * @return {!Array<!proto.sliverpb.Envelope>}
+ */
+proto.sliverpb.BeaconTasks.prototype.getTasksList = function() {
+  return /** @type{!Array<!proto.sliverpb.Envelope>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.sliverpb.Envelope, 2));
+};
+
+
+/**
+ * @param {!Array<!proto.sliverpb.Envelope>} value
+ * @return {!proto.sliverpb.BeaconTasks} returns this
+*/
+proto.sliverpb.BeaconTasks.prototype.setTasksList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 2, value);
+};
+
+
+/**
+ * @param {!proto.sliverpb.Envelope=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.sliverpb.Envelope}
+ */
+proto.sliverpb.BeaconTasks.prototype.addTasks = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.sliverpb.Envelope, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.sliverpb.BeaconTasks} returns this
+ */
+proto.sliverpb.BeaconTasks.prototype.clearTasksList = function() {
+  return this.setTasksList([]);
+};
+
+
+/**
+ * optional int64 NextCheckin = 3;
+ * @return {number}
+ */
+proto.sliverpb.BeaconTasks.prototype.getNextcheckin = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sliverpb.BeaconTasks} returns this
+ */
+proto.sliverpb.BeaconTasks.prototype.setNextcheckin = function(value) {
+  return jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -2837,7 +3587,8 @@ proto.sliverpb.Register.toObject = function(includeInstance, msg) {
     version: jspb.Message.getFieldWithDefault(msg, 12, ""),
     reconnectinterval: jspb.Message.getFieldWithDefault(msg, 13, 0),
     proxyurl: jspb.Message.getFieldWithDefault(msg, 14, ""),
-    pollinterval: jspb.Message.getFieldWithDefault(msg, 15, 0)
+    configid: jspb.Message.getFieldWithDefault(msg, 16, ""),
+    peerid: jspb.Message.getFieldWithDefault(msg, 17, 0)
   };
 
   if (includeInstance) {
@@ -2923,16 +3674,20 @@ proto.sliverpb.Register.deserializeBinaryFromReader = function(msg, reader) {
       msg.setVersion(value);
       break;
     case 13:
-      var value = /** @type {number} */ (reader.readUint32());
+      var value = /** @type {number} */ (reader.readInt64());
       msg.setReconnectinterval(value);
       break;
     case 14:
       var value = /** @type {string} */ (reader.readString());
       msg.setProxyurl(value);
       break;
-    case 15:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setPollinterval(value);
+    case 16:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setConfigid(value);
+      break;
+    case 17:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setPeerid(value);
       break;
     default:
       reader.skipField();
@@ -3049,7 +3804,7 @@ proto.sliverpb.Register.serializeBinaryToWriter = function(message, writer) {
   }
   f = message.getReconnectinterval();
   if (f !== 0) {
-    writer.writeUint32(
+    writer.writeInt64(
       13,
       f
     );
@@ -3061,10 +3816,17 @@ proto.sliverpb.Register.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getPollinterval();
+  f = message.getConfigid();
+  if (f.length > 0) {
+    writer.writeString(
+      16,
+      f
+    );
+  }
+  f = message.getPeerid();
   if (f !== 0) {
-    writer.writeUint32(
-      15,
+    writer.writeInt64(
+      17,
       f
     );
   }
@@ -3288,7 +4050,7 @@ proto.sliverpb.Register.prototype.setVersion = function(value) {
 
 
 /**
- * optional uint32 ReconnectInterval = 13;
+ * optional int64 ReconnectInterval = 13;
  * @return {number}
  */
 proto.sliverpb.Register.prototype.getReconnectinterval = function() {
@@ -3324,11 +4086,29 @@ proto.sliverpb.Register.prototype.setProxyurl = function(value) {
 
 
 /**
- * optional uint32 PollInterval = 15;
+ * optional string ConfigID = 16;
+ * @return {string}
+ */
+proto.sliverpb.Register.prototype.getConfigid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 16, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.Register} returns this
+ */
+proto.sliverpb.Register.prototype.setConfigid = function(value) {
+  return jspb.Message.setProto3StringField(this, 16, value);
+};
+
+
+/**
+ * optional int64 PeerID = 17;
  * @return {number}
  */
-proto.sliverpb.Register.prototype.getPollinterval = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 15, 0));
+proto.sliverpb.Register.prototype.getPeerid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 17, 0));
 };
 
 
@@ -3336,8 +4116,950 @@ proto.sliverpb.Register.prototype.getPollinterval = function() {
  * @param {number} value
  * @return {!proto.sliverpb.Register} returns this
  */
-proto.sliverpb.Register.prototype.setPollinterval = function(value) {
-  return jspb.Message.setProto3IntField(this, 15, value);
+proto.sliverpb.Register.prototype.setPeerid = function(value) {
+  return jspb.Message.setProto3IntField(this, 17, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sliverpb.BeaconRegister.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.BeaconRegister.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sliverpb.BeaconRegister} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.BeaconRegister.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    id: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    interval: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    jitter: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    register: (f = msg.getRegister()) && proto.sliverpb.Register.toObject(includeInstance, f),
+    nextcheckin: jspb.Message.getFieldWithDefault(msg, 5, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sliverpb.BeaconRegister}
+ */
+proto.sliverpb.BeaconRegister.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sliverpb.BeaconRegister;
+  return proto.sliverpb.BeaconRegister.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sliverpb.BeaconRegister} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sliverpb.BeaconRegister}
+ */
+proto.sliverpb.BeaconRegister.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setId(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setInterval(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setJitter(value);
+      break;
+    case 4:
+      var value = new proto.sliverpb.Register;
+      reader.readMessage(value,proto.sliverpb.Register.deserializeBinaryFromReader);
+      msg.setRegister(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setNextcheckin(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.BeaconRegister.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sliverpb.BeaconRegister.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sliverpb.BeaconRegister} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.BeaconRegister.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getId();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getInterval();
+  if (f !== 0) {
+    writer.writeInt64(
+      2,
+      f
+    );
+  }
+  f = message.getJitter();
+  if (f !== 0) {
+    writer.writeInt64(
+      3,
+      f
+    );
+  }
+  f = message.getRegister();
+  if (f != null) {
+    writer.writeMessage(
+      4,
+      f,
+      proto.sliverpb.Register.serializeBinaryToWriter
+    );
+  }
+  f = message.getNextcheckin();
+  if (f !== 0) {
+    writer.writeInt64(
+      5,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string ID = 1;
+ * @return {string}
+ */
+proto.sliverpb.BeaconRegister.prototype.getId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.BeaconRegister} returns this
+ */
+proto.sliverpb.BeaconRegister.prototype.setId = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional int64 Interval = 2;
+ * @return {number}
+ */
+proto.sliverpb.BeaconRegister.prototype.getInterval = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sliverpb.BeaconRegister} returns this
+ */
+proto.sliverpb.BeaconRegister.prototype.setInterval = function(value) {
+  return jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * optional int64 Jitter = 3;
+ * @return {number}
+ */
+proto.sliverpb.BeaconRegister.prototype.getJitter = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sliverpb.BeaconRegister} returns this
+ */
+proto.sliverpb.BeaconRegister.prototype.setJitter = function(value) {
+  return jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+/**
+ * optional Register Register = 4;
+ * @return {?proto.sliverpb.Register}
+ */
+proto.sliverpb.BeaconRegister.prototype.getRegister = function() {
+  return /** @type{?proto.sliverpb.Register} */ (
+    jspb.Message.getWrapperField(this, proto.sliverpb.Register, 4));
+};
+
+
+/**
+ * @param {?proto.sliverpb.Register|undefined} value
+ * @return {!proto.sliverpb.BeaconRegister} returns this
+*/
+proto.sliverpb.BeaconRegister.prototype.setRegister = function(value) {
+  return jspb.Message.setWrapperField(this, 4, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sliverpb.BeaconRegister} returns this
+ */
+proto.sliverpb.BeaconRegister.prototype.clearRegister = function() {
+  return this.setRegister(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sliverpb.BeaconRegister.prototype.hasRegister = function() {
+  return jspb.Message.getField(this, 4) != null;
+};
+
+
+/**
+ * optional int64 NextCheckin = 5;
+ * @return {number}
+ */
+proto.sliverpb.BeaconRegister.prototype.getNextcheckin = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sliverpb.BeaconRegister} returns this
+ */
+proto.sliverpb.BeaconRegister.prototype.setNextcheckin = function(value) {
+  return jspb.Message.setProto3IntField(this, 5, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sliverpb.SessionRegister.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.SessionRegister.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sliverpb.SessionRegister} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.SessionRegister.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    id: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    register: (f = msg.getRegister()) && proto.sliverpb.Register.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sliverpb.SessionRegister}
+ */
+proto.sliverpb.SessionRegister.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sliverpb.SessionRegister;
+  return proto.sliverpb.SessionRegister.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sliverpb.SessionRegister} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sliverpb.SessionRegister}
+ */
+proto.sliverpb.SessionRegister.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setId(value);
+      break;
+    case 2:
+      var value = new proto.sliverpb.Register;
+      reader.readMessage(value,proto.sliverpb.Register.deserializeBinaryFromReader);
+      msg.setRegister(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.SessionRegister.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sliverpb.SessionRegister.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sliverpb.SessionRegister} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.SessionRegister.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getId();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getRegister();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      proto.sliverpb.Register.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional string ID = 1;
+ * @return {string}
+ */
+proto.sliverpb.SessionRegister.prototype.getId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.SessionRegister} returns this
+ */
+proto.sliverpb.SessionRegister.prototype.setId = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional Register Register = 2;
+ * @return {?proto.sliverpb.Register}
+ */
+proto.sliverpb.SessionRegister.prototype.getRegister = function() {
+  return /** @type{?proto.sliverpb.Register} */ (
+    jspb.Message.getWrapperField(this, proto.sliverpb.Register, 2));
+};
+
+
+/**
+ * @param {?proto.sliverpb.Register|undefined} value
+ * @return {!proto.sliverpb.SessionRegister} returns this
+*/
+proto.sliverpb.SessionRegister.prototype.setRegister = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sliverpb.SessionRegister} returns this
+ */
+proto.sliverpb.SessionRegister.prototype.clearRegister = function() {
+  return this.setRegister(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sliverpb.SessionRegister.prototype.hasRegister = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.sliverpb.OpenSession.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sliverpb.OpenSession.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.OpenSession.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sliverpb.OpenSession} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.OpenSession.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    c2sList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f,
+    delay: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    response: (f = msg.getResponse()) && commonpb_common_pb.Response.toObject(includeInstance, f),
+    request: (f = msg.getRequest()) && commonpb_common_pb.Request.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sliverpb.OpenSession}
+ */
+proto.sliverpb.OpenSession.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sliverpb.OpenSession;
+  return proto.sliverpb.OpenSession.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sliverpb.OpenSession} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sliverpb.OpenSession}
+ */
+proto.sliverpb.OpenSession.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addC2s(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setDelay(value);
+      break;
+    case 8:
+      var value = new commonpb_common_pb.Response;
+      reader.readMessage(value,commonpb_common_pb.Response.deserializeBinaryFromReader);
+      msg.setResponse(value);
+      break;
+    case 9:
+      var value = new commonpb_common_pb.Request;
+      reader.readMessage(value,commonpb_common_pb.Request.deserializeBinaryFromReader);
+      msg.setRequest(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.OpenSession.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sliverpb.OpenSession.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sliverpb.OpenSession} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.OpenSession.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getC2sList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      1,
+      f
+    );
+  }
+  f = message.getDelay();
+  if (f !== 0) {
+    writer.writeInt64(
+      2,
+      f
+    );
+  }
+  f = message.getResponse();
+  if (f != null) {
+    writer.writeMessage(
+      8,
+      f,
+      commonpb_common_pb.Response.serializeBinaryToWriter
+    );
+  }
+  f = message.getRequest();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      commonpb_common_pb.Request.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * repeated string C2s = 1;
+ * @return {!Array<string>}
+ */
+proto.sliverpb.OpenSession.prototype.getC2sList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 1));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.sliverpb.OpenSession} returns this
+ */
+proto.sliverpb.OpenSession.prototype.setC2sList = function(value) {
+  return jspb.Message.setField(this, 1, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.sliverpb.OpenSession} returns this
+ */
+proto.sliverpb.OpenSession.prototype.addC2s = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 1, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.sliverpb.OpenSession} returns this
+ */
+proto.sliverpb.OpenSession.prototype.clearC2sList = function() {
+  return this.setC2sList([]);
+};
+
+
+/**
+ * optional int64 Delay = 2;
+ * @return {number}
+ */
+proto.sliverpb.OpenSession.prototype.getDelay = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sliverpb.OpenSession} returns this
+ */
+proto.sliverpb.OpenSession.prototype.setDelay = function(value) {
+  return jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * optional commonpb.Response Response = 8;
+ * @return {?proto.commonpb.Response}
+ */
+proto.sliverpb.OpenSession.prototype.getResponse = function() {
+  return /** @type{?proto.commonpb.Response} */ (
+    jspb.Message.getWrapperField(this, commonpb_common_pb.Response, 8));
+};
+
+
+/**
+ * @param {?proto.commonpb.Response|undefined} value
+ * @return {!proto.sliverpb.OpenSession} returns this
+*/
+proto.sliverpb.OpenSession.prototype.setResponse = function(value) {
+  return jspb.Message.setWrapperField(this, 8, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sliverpb.OpenSession} returns this
+ */
+proto.sliverpb.OpenSession.prototype.clearResponse = function() {
+  return this.setResponse(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sliverpb.OpenSession.prototype.hasResponse = function() {
+  return jspb.Message.getField(this, 8) != null;
+};
+
+
+/**
+ * optional commonpb.Request Request = 9;
+ * @return {?proto.commonpb.Request}
+ */
+proto.sliverpb.OpenSession.prototype.getRequest = function() {
+  return /** @type{?proto.commonpb.Request} */ (
+    jspb.Message.getWrapperField(this, commonpb_common_pb.Request, 9));
+};
+
+
+/**
+ * @param {?proto.commonpb.Request|undefined} value
+ * @return {!proto.sliverpb.OpenSession} returns this
+*/
+proto.sliverpb.OpenSession.prototype.setRequest = function(value) {
+  return jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sliverpb.OpenSession} returns this
+ */
+proto.sliverpb.OpenSession.prototype.clearRequest = function() {
+  return this.setRequest(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sliverpb.OpenSession.prototype.hasRequest = function() {
+  return jspb.Message.getField(this, 9) != null;
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sliverpb.CloseSession.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.CloseSession.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sliverpb.CloseSession} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.CloseSession.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    response: (f = msg.getResponse()) && commonpb_common_pb.Response.toObject(includeInstance, f),
+    request: (f = msg.getRequest()) && commonpb_common_pb.Request.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sliverpb.CloseSession}
+ */
+proto.sliverpb.CloseSession.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sliverpb.CloseSession;
+  return proto.sliverpb.CloseSession.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sliverpb.CloseSession} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sliverpb.CloseSession}
+ */
+proto.sliverpb.CloseSession.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 8:
+      var value = new commonpb_common_pb.Response;
+      reader.readMessage(value,commonpb_common_pb.Response.deserializeBinaryFromReader);
+      msg.setResponse(value);
+      break;
+    case 9:
+      var value = new commonpb_common_pb.Request;
+      reader.readMessage(value,commonpb_common_pb.Request.deserializeBinaryFromReader);
+      msg.setRequest(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.CloseSession.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sliverpb.CloseSession.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sliverpb.CloseSession} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.CloseSession.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getResponse();
+  if (f != null) {
+    writer.writeMessage(
+      8,
+      f,
+      commonpb_common_pb.Response.serializeBinaryToWriter
+    );
+  }
+  f = message.getRequest();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      commonpb_common_pb.Request.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional commonpb.Response Response = 8;
+ * @return {?proto.commonpb.Response}
+ */
+proto.sliverpb.CloseSession.prototype.getResponse = function() {
+  return /** @type{?proto.commonpb.Response} */ (
+    jspb.Message.getWrapperField(this, commonpb_common_pb.Response, 8));
+};
+
+
+/**
+ * @param {?proto.commonpb.Response|undefined} value
+ * @return {!proto.sliverpb.CloseSession} returns this
+*/
+proto.sliverpb.CloseSession.prototype.setResponse = function(value) {
+  return jspb.Message.setWrapperField(this, 8, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sliverpb.CloseSession} returns this
+ */
+proto.sliverpb.CloseSession.prototype.clearResponse = function() {
+  return this.setResponse(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sliverpb.CloseSession.prototype.hasResponse = function() {
+  return jspb.Message.getField(this, 8) != null;
+};
+
+
+/**
+ * optional commonpb.Request Request = 9;
+ * @return {?proto.commonpb.Request}
+ */
+proto.sliverpb.CloseSession.prototype.getRequest = function() {
+  return /** @type{?proto.commonpb.Request} */ (
+    jspb.Message.getWrapperField(this, commonpb_common_pb.Request, 9));
+};
+
+
+/**
+ * @param {?proto.commonpb.Request|undefined} value
+ * @return {!proto.sliverpb.CloseSession} returns this
+*/
+proto.sliverpb.CloseSession.prototype.setRequest = function(value) {
+  return jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sliverpb.CloseSession} returns this
+ */
+proto.sliverpb.CloseSession.prototype.clearRequest = function() {
+  return this.setRequest(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sliverpb.CloseSession.prototype.hasRequest = function() {
+  return jspb.Message.getField(this, 9) != null;
 };
 
 
@@ -3589,8 +5311,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.sliverpb.KillSessionReq.prototype.toObject = function(opt_includeInstance) {
-  return proto.sliverpb.KillSessionReq.toObject(opt_includeInstance, this);
+proto.sliverpb.KillReq.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.KillReq.toObject(opt_includeInstance, this);
 };
 
 
@@ -3599,11 +5321,11 @@ proto.sliverpb.KillSessionReq.prototype.toObject = function(opt_includeInstance)
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.sliverpb.KillSessionReq} msg The msg instance to transform.
+ * @param {!proto.sliverpb.KillReq} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sliverpb.KillSessionReq.toObject = function(includeInstance, msg) {
+proto.sliverpb.KillReq.toObject = function(includeInstance, msg) {
   var f, obj = {
     force: jspb.Message.getBooleanFieldWithDefault(msg, 1, false),
     request: (f = msg.getRequest()) && commonpb_common_pb.Request.toObject(includeInstance, f)
@@ -3620,23 +5342,23 @@ proto.sliverpb.KillSessionReq.toObject = function(includeInstance, msg) {
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.sliverpb.KillSessionReq}
+ * @return {!proto.sliverpb.KillReq}
  */
-proto.sliverpb.KillSessionReq.deserializeBinary = function(bytes) {
+proto.sliverpb.KillReq.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sliverpb.KillSessionReq;
-  return proto.sliverpb.KillSessionReq.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.sliverpb.KillReq;
+  return proto.sliverpb.KillReq.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.sliverpb.KillSessionReq} msg The message object to deserialize into.
+ * @param {!proto.sliverpb.KillReq} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.sliverpb.KillSessionReq}
+ * @return {!proto.sliverpb.KillReq}
  */
-proto.sliverpb.KillSessionReq.deserializeBinaryFromReader = function(msg, reader) {
+proto.sliverpb.KillReq.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -3665,9 +5387,9 @@ proto.sliverpb.KillSessionReq.deserializeBinaryFromReader = function(msg, reader
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sliverpb.KillSessionReq.prototype.serializeBinary = function() {
+proto.sliverpb.KillReq.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.sliverpb.KillSessionReq.serializeBinaryToWriter(this, writer);
+  proto.sliverpb.KillReq.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -3675,11 +5397,11 @@ proto.sliverpb.KillSessionReq.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.sliverpb.KillSessionReq} message
+ * @param {!proto.sliverpb.KillReq} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sliverpb.KillSessionReq.serializeBinaryToWriter = function(message, writer) {
+proto.sliverpb.KillReq.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getForce();
   if (f) {
@@ -3703,16 +5425,16 @@ proto.sliverpb.KillSessionReq.serializeBinaryToWriter = function(message, writer
  * optional bool Force = 1;
  * @return {boolean}
  */
-proto.sliverpb.KillSessionReq.prototype.getForce = function() {
+proto.sliverpb.KillReq.prototype.getForce = function() {
   return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 1, false));
 };
 
 
 /**
  * @param {boolean} value
- * @return {!proto.sliverpb.KillSessionReq} returns this
+ * @return {!proto.sliverpb.KillReq} returns this
  */
-proto.sliverpb.KillSessionReq.prototype.setForce = function(value) {
+proto.sliverpb.KillReq.prototype.setForce = function(value) {
   return jspb.Message.setProto3BooleanField(this, 1, value);
 };
 
@@ -3721,7 +5443,7 @@ proto.sliverpb.KillSessionReq.prototype.setForce = function(value) {
  * optional commonpb.Request Request = 9;
  * @return {?proto.commonpb.Request}
  */
-proto.sliverpb.KillSessionReq.prototype.getRequest = function() {
+proto.sliverpb.KillReq.prototype.getRequest = function() {
   return /** @type{?proto.commonpb.Request} */ (
     jspb.Message.getWrapperField(this, commonpb_common_pb.Request, 9));
 };
@@ -3729,18 +5451,18 @@ proto.sliverpb.KillSessionReq.prototype.getRequest = function() {
 
 /**
  * @param {?proto.commonpb.Request|undefined} value
- * @return {!proto.sliverpb.KillSessionReq} returns this
+ * @return {!proto.sliverpb.KillReq} returns this
 */
-proto.sliverpb.KillSessionReq.prototype.setRequest = function(value) {
+proto.sliverpb.KillReq.prototype.setRequest = function(value) {
   return jspb.Message.setWrapperField(this, 9, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.sliverpb.KillSessionReq} returns this
+ * @return {!proto.sliverpb.KillReq} returns this
  */
-proto.sliverpb.KillSessionReq.prototype.clearRequest = function() {
+proto.sliverpb.KillReq.prototype.clearRequest = function() {
   return this.setRequest(undefined);
 };
 
@@ -3749,7 +5471,7 @@ proto.sliverpb.KillSessionReq.prototype.clearRequest = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.sliverpb.KillSessionReq.prototype.hasRequest = function() {
+proto.sliverpb.KillReq.prototype.hasRequest = function() {
   return jspb.Message.getField(this, 9) != null;
 };
 
@@ -5340,6 +7062,8 @@ proto.sliverpb.Ls.toObject = function(includeInstance, msg) {
     exists: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
     filesList: jspb.Message.toObjectList(msg.getFilesList(),
     proto.sliverpb.FileInfo.toObject, includeInstance),
+    timezone: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    timezoneoffset: jspb.Message.getFieldWithDefault(msg, 5, 0),
     response: (f = msg.getResponse()) && commonpb_common_pb.Response.toObject(includeInstance, f)
   };
 
@@ -5389,6 +7113,14 @@ proto.sliverpb.Ls.deserializeBinaryFromReader = function(msg, reader) {
       var value = new proto.sliverpb.FileInfo;
       reader.readMessage(value,proto.sliverpb.FileInfo.deserializeBinaryFromReader);
       msg.addFiles(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTimezone(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setTimezoneoffset(value);
       break;
     case 9:
       var value = new commonpb_common_pb.Response;
@@ -5444,6 +7176,20 @@ proto.sliverpb.Ls.serializeBinaryToWriter = function(message, writer) {
       3,
       f,
       proto.sliverpb.FileInfo.serializeBinaryToWriter
+    );
+  }
+  f = message.getTimezone();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+  f = message.getTimezoneoffset();
+  if (f !== 0) {
+    writer.writeInt32(
+      5,
+      f
     );
   }
   f = message.getResponse();
@@ -5532,6 +7278,42 @@ proto.sliverpb.Ls.prototype.clearFilesList = function() {
 
 
 /**
+ * optional string timezone = 4;
+ * @return {string}
+ */
+proto.sliverpb.Ls.prototype.getTimezone = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.Ls} returns this
+ */
+proto.sliverpb.Ls.prototype.setTimezone = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional int32 timezoneOffset = 5;
+ * @return {number}
+ */
+proto.sliverpb.Ls.prototype.getTimezoneoffset = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sliverpb.Ls} returns this
+ */
+proto.sliverpb.Ls.prototype.setTimezoneoffset = function(value) {
+  return jspb.Message.setProto3IntField(this, 5, value);
+};
+
+
+/**
  * optional commonpb.Response Response = 9;
  * @return {?proto.commonpb.Response}
  */
@@ -5602,7 +7384,9 @@ proto.sliverpb.FileInfo.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
     isdir: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
-    size: jspb.Message.getFieldWithDefault(msg, 3, 0)
+    size: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    modtime: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    mode: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
   if (includeInstance) {
@@ -5651,6 +7435,14 @@ proto.sliverpb.FileInfo.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {number} */ (reader.readInt64());
       msg.setSize(value);
       break;
+    case 4:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setModtime(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setMode(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -5698,6 +7490,20 @@ proto.sliverpb.FileInfo.serializeBinaryToWriter = function(message, writer) {
   if (f !== 0) {
     writer.writeInt64(
       3,
+      f
+    );
+  }
+  f = message.getModtime();
+  if (f !== 0) {
+    writer.writeInt64(
+      4,
+      f
+    );
+  }
+  f = message.getMode();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
       f
     );
   }
@@ -5755,6 +7561,42 @@ proto.sliverpb.FileInfo.prototype.getSize = function() {
  */
 proto.sliverpb.FileInfo.prototype.setSize = function(value) {
   return jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+/**
+ * optional int64 ModTime = 4;
+ * @return {number}
+ */
+proto.sliverpb.FileInfo.prototype.getModtime = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sliverpb.FileInfo} returns this
+ */
+proto.sliverpb.FileInfo.prototype.setModtime = function(value) {
+  return jspb.Message.setProto3IntField(this, 4, value);
+};
+
+
+/**
+ * optional string Mode = 5;
+ * @return {string}
+ */
+proto.sliverpb.FileInfo.prototype.getMode = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.FileInfo} returns this
+ */
+proto.sliverpb.FileInfo.prototype.setMode = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
@@ -7088,6 +8930,8 @@ proto.sliverpb.DownloadReq.prototype.toObject = function(opt_includeInstance) {
 proto.sliverpb.DownloadReq.toObject = function(includeInstance, msg) {
   var f, obj = {
     path: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    start: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    stop: jspb.Message.getFieldWithDefault(msg, 3, 0),
     request: (f = msg.getRequest()) && commonpb_common_pb.Request.toObject(includeInstance, f)
   };
 
@@ -7128,6 +8972,14 @@ proto.sliverpb.DownloadReq.deserializeBinaryFromReader = function(msg, reader) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
       msg.setPath(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setStart(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setStop(value);
       break;
     case 9:
       var value = new commonpb_common_pb.Request;
@@ -7170,6 +9022,20 @@ proto.sliverpb.DownloadReq.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getStart();
+  if (f !== 0) {
+    writer.writeInt64(
+      2,
+      f
+    );
+  }
+  f = message.getStop();
+  if (f !== 0) {
+    writer.writeInt64(
+      3,
+      f
+    );
+  }
   f = message.getRequest();
   if (f != null) {
     writer.writeMessage(
@@ -7196,6 +9062,42 @@ proto.sliverpb.DownloadReq.prototype.getPath = function() {
  */
 proto.sliverpb.DownloadReq.prototype.setPath = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional int64 Start = 2;
+ * @return {number}
+ */
+proto.sliverpb.DownloadReq.prototype.getStart = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sliverpb.DownloadReq} returns this
+ */
+proto.sliverpb.DownloadReq.prototype.setStart = function(value) {
+  return jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * optional int64 Stop = 3;
+ * @return {number}
+ */
+proto.sliverpb.DownloadReq.prototype.getStop = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sliverpb.DownloadReq} returns this
+ */
+proto.sliverpb.DownloadReq.prototype.setStop = function(value) {
+  return jspb.Message.setProto3IntField(this, 3, value);
 };
 
 
@@ -7271,6 +9173,8 @@ proto.sliverpb.Download.toObject = function(includeInstance, msg) {
     path: jspb.Message.getFieldWithDefault(msg, 1, ""),
     encoder: jspb.Message.getFieldWithDefault(msg, 2, ""),
     exists: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
+    start: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    stop: jspb.Message.getFieldWithDefault(msg, 5, 0),
     data: msg.getData_asB64(),
     response: (f = msg.getResponse()) && commonpb_common_pb.Response.toObject(includeInstance, f)
   };
@@ -7322,6 +9226,14 @@ proto.sliverpb.Download.deserializeBinaryFromReader = function(msg, reader) {
       msg.setExists(value);
       break;
     case 4:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setStart(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setStop(value);
+      break;
+    case 6:
       var value = /** @type {!Uint8Array} */ (reader.readBytes());
       msg.setData(value);
       break;
@@ -7380,10 +9292,24 @@ proto.sliverpb.Download.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getStart();
+  if (f !== 0) {
+    writer.writeInt64(
+      4,
+      f
+    );
+  }
+  f = message.getStop();
+  if (f !== 0) {
+    writer.writeInt64(
+      5,
+      f
+    );
+  }
   f = message.getData_asU8();
   if (f.length > 0) {
     writer.writeBytes(
-      4,
+      6,
       f
     );
   }
@@ -7453,16 +9379,52 @@ proto.sliverpb.Download.prototype.setExists = function(value) {
 
 
 /**
- * optional bytes Data = 4;
- * @return {!(string|Uint8Array)}
+ * optional int64 Start = 4;
+ * @return {number}
  */
-proto.sliverpb.Download.prototype.getData = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+proto.sliverpb.Download.prototype.getStart = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
 };
 
 
 /**
- * optional bytes Data = 4;
+ * @param {number} value
+ * @return {!proto.sliverpb.Download} returns this
+ */
+proto.sliverpb.Download.prototype.setStart = function(value) {
+  return jspb.Message.setProto3IntField(this, 4, value);
+};
+
+
+/**
+ * optional int64 Stop = 5;
+ * @return {number}
+ */
+proto.sliverpb.Download.prototype.getStop = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sliverpb.Download} returns this
+ */
+proto.sliverpb.Download.prototype.setStop = function(value) {
+  return jspb.Message.setProto3IntField(this, 5, value);
+};
+
+
+/**
+ * optional bytes Data = 6;
+ * @return {!(string|Uint8Array)}
+ */
+proto.sliverpb.Download.prototype.getData = function() {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/**
+ * optional bytes Data = 6;
  * This is a type-conversion wrapper around `getData()`
  * @return {string}
  */
@@ -7473,7 +9435,7 @@ proto.sliverpb.Download.prototype.getData_asB64 = function() {
 
 
 /**
- * optional bytes Data = 4;
+ * optional bytes Data = 6;
  * Note that Uint8Array is not supported on all browsers.
  * @see http://caniuse.com/Uint8Array
  * This is a type-conversion wrapper around `getData()`
@@ -7490,7 +9452,7 @@ proto.sliverpb.Download.prototype.getData_asU8 = function() {
  * @return {!proto.sliverpb.Download} returns this
  */
 proto.sliverpb.Download.prototype.setData = function(value) {
-  return jspb.Message.setProto3BytesField(this, 4, value);
+  return jspb.Message.setProto3BytesField(this, 6, value);
 };
 
 
@@ -7566,6 +9528,7 @@ proto.sliverpb.UploadReq.toObject = function(includeInstance, msg) {
     path: jspb.Message.getFieldWithDefault(msg, 1, ""),
     encoder: jspb.Message.getFieldWithDefault(msg, 2, ""),
     data: msg.getData_asB64(),
+    isioc: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
     request: (f = msg.getRequest()) && commonpb_common_pb.Request.toObject(includeInstance, f)
   };
 
@@ -7614,6 +9577,10 @@ proto.sliverpb.UploadReq.deserializeBinaryFromReader = function(msg, reader) {
     case 3:
       var value = /** @type {!Uint8Array} */ (reader.readBytes());
       msg.setData(value);
+      break;
+    case 4:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIsioc(value);
       break;
     case 9:
       var value = new commonpb_common_pb.Request;
@@ -7667,6 +9634,13 @@ proto.sliverpb.UploadReq.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeBytes(
       3,
+      f
+    );
+  }
+  f = message.getIsioc();
+  if (f) {
+    writer.writeBool(
+      4,
       f
     );
   }
@@ -7756,6 +9730,24 @@ proto.sliverpb.UploadReq.prototype.getData_asU8 = function() {
  */
 proto.sliverpb.UploadReq.prototype.setData = function(value) {
   return jspb.Message.setProto3BytesField(this, 3, value);
+};
+
+
+/**
+ * optional bool IsIOC = 4;
+ * @return {boolean}
+ */
+proto.sliverpb.UploadReq.prototype.getIsioc = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 4, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.sliverpb.UploadReq} returns this
+ */
+proto.sliverpb.UploadReq.prototype.setIsioc = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 4, value);
 };
 
 
@@ -11986,6 +13978,8 @@ proto.sliverpb.ExecuteReq.toObject = function(includeInstance, msg) {
     path: jspb.Message.getFieldWithDefault(msg, 1, ""),
     argsList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f,
     output: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
+    stdout: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    stderr: jspb.Message.getFieldWithDefault(msg, 5, ""),
     request: (f = msg.getRequest()) && commonpb_common_pb.Request.toObject(includeInstance, f)
   };
 
@@ -12034,6 +14028,14 @@ proto.sliverpb.ExecuteReq.deserializeBinaryFromReader = function(msg, reader) {
     case 3:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setOutput(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setStdout(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setStderr(value);
       break;
     case 9:
       var value = new commonpb_common_pb.Request;
@@ -12087,6 +14089,20 @@ proto.sliverpb.ExecuteReq.serializeBinaryToWriter = function(message, writer) {
   if (f) {
     writer.writeBool(
       3,
+      f
+    );
+  }
+  f = message.getStdout();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+  f = message.getStderr();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
       f
     );
   }
@@ -12175,6 +14191,42 @@ proto.sliverpb.ExecuteReq.prototype.setOutput = function(value) {
 
 
 /**
+ * optional string Stdout = 4;
+ * @return {string}
+ */
+proto.sliverpb.ExecuteReq.prototype.getStdout = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.ExecuteReq} returns this
+ */
+proto.sliverpb.ExecuteReq.prototype.setStdout = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional string Stderr = 5;
+ * @return {string}
+ */
+proto.sliverpb.ExecuteReq.prototype.getStderr = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.ExecuteReq} returns this
+ */
+proto.sliverpb.ExecuteReq.prototype.setStderr = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
+};
+
+
+/**
  * optional commonpb.Request Request = 9;
  * @return {?proto.commonpb.Request}
  */
@@ -12253,6 +14305,8 @@ proto.sliverpb.ExecuteTokenReq.toObject = function(includeInstance, msg) {
     path: jspb.Message.getFieldWithDefault(msg, 1, ""),
     argsList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f,
     output: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
+    stdout: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    stderr: jspb.Message.getFieldWithDefault(msg, 5, ""),
     request: (f = msg.getRequest()) && commonpb_common_pb.Request.toObject(includeInstance, f)
   };
 
@@ -12301,6 +14355,14 @@ proto.sliverpb.ExecuteTokenReq.deserializeBinaryFromReader = function(msg, reade
     case 3:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setOutput(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setStdout(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setStderr(value);
       break;
     case 9:
       var value = new commonpb_common_pb.Request;
@@ -12354,6 +14416,20 @@ proto.sliverpb.ExecuteTokenReq.serializeBinaryToWriter = function(message, write
   if (f) {
     writer.writeBool(
       3,
+      f
+    );
+  }
+  f = message.getStdout();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+  f = message.getStderr();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
       f
     );
   }
@@ -12442,6 +14518,42 @@ proto.sliverpb.ExecuteTokenReq.prototype.setOutput = function(value) {
 
 
 /**
+ * optional string Stdout = 4;
+ * @return {string}
+ */
+proto.sliverpb.ExecuteTokenReq.prototype.getStdout = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.ExecuteTokenReq} returns this
+ */
+proto.sliverpb.ExecuteTokenReq.prototype.setStdout = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional string Stderr = 5;
+ * @return {string}
+ */
+proto.sliverpb.ExecuteTokenReq.prototype.getStderr = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.ExecuteTokenReq} returns this
+ */
+proto.sliverpb.ExecuteTokenReq.prototype.setStderr = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
+};
+
+
+/**
  * optional commonpb.Request Request = 9;
  * @return {?proto.commonpb.Request}
  */
@@ -12510,8 +14622,10 @@ proto.sliverpb.Execute.prototype.toObject = function(opt_includeInstance) {
  */
 proto.sliverpb.Execute.toObject = function(includeInstance, msg) {
   var f, obj = {
-    result: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    status: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    status: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    stdout: msg.getStdout_asB64(),
+    stderr: msg.getStderr_asB64(),
+    pid: jspb.Message.getFieldWithDefault(msg, 4, 0),
     response: (f = msg.getResponse()) && commonpb_common_pb.Response.toObject(includeInstance, f)
   };
 
@@ -12550,12 +14664,20 @@ proto.sliverpb.Execute.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setResult(value);
-      break;
-    case 2:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setStatus(value);
+      break;
+    case 2:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.setStdout(value);
+      break;
+    case 3:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.setStderr(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setPid(value);
       break;
     case 9:
       var value = new commonpb_common_pb.Response;
@@ -12591,17 +14713,31 @@ proto.sliverpb.Execute.prototype.serializeBinary = function() {
  */
 proto.sliverpb.Execute.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getResult();
-  if (f.length > 0) {
-    writer.writeString(
+  f = message.getStatus();
+  if (f !== 0) {
+    writer.writeUint32(
       1,
       f
     );
   }
-  f = message.getStatus();
+  f = message.getStdout_asU8();
+  if (f.length > 0) {
+    writer.writeBytes(
+      2,
+      f
+    );
+  }
+  f = message.getStderr_asU8();
+  if (f.length > 0) {
+    writer.writeBytes(
+      3,
+      f
+    );
+  }
+  f = message.getPid();
   if (f !== 0) {
     writer.writeUint32(
-      2,
+      4,
       f
     );
   }
@@ -12617,29 +14753,11 @@ proto.sliverpb.Execute.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional string Result = 1;
- * @return {string}
- */
-proto.sliverpb.Execute.prototype.getResult = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.sliverpb.Execute} returns this
- */
-proto.sliverpb.Execute.prototype.setResult = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-/**
- * optional uint32 Status = 2;
+ * optional uint32 Status = 1;
  * @return {number}
  */
 proto.sliverpb.Execute.prototype.getStatus = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
@@ -12648,7 +14766,109 @@ proto.sliverpb.Execute.prototype.getStatus = function() {
  * @return {!proto.sliverpb.Execute} returns this
  */
 proto.sliverpb.Execute.prototype.setStatus = function(value) {
-  return jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional bytes Stdout = 2;
+ * @return {!(string|Uint8Array)}
+ */
+proto.sliverpb.Execute.prototype.getStdout = function() {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * optional bytes Stdout = 2;
+ * This is a type-conversion wrapper around `getStdout()`
+ * @return {string}
+ */
+proto.sliverpb.Execute.prototype.getStdout_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getStdout()));
+};
+
+
+/**
+ * optional bytes Stdout = 2;
+ * Note that Uint8Array is not supported on all browsers.
+ * @see http://caniuse.com/Uint8Array
+ * This is a type-conversion wrapper around `getStdout()`
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.Execute.prototype.getStdout_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getStdout()));
+};
+
+
+/**
+ * @param {!(string|Uint8Array)} value
+ * @return {!proto.sliverpb.Execute} returns this
+ */
+proto.sliverpb.Execute.prototype.setStdout = function(value) {
+  return jspb.Message.setProto3BytesField(this, 2, value);
+};
+
+
+/**
+ * optional bytes Stderr = 3;
+ * @return {!(string|Uint8Array)}
+ */
+proto.sliverpb.Execute.prototype.getStderr = function() {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * optional bytes Stderr = 3;
+ * This is a type-conversion wrapper around `getStderr()`
+ * @return {string}
+ */
+proto.sliverpb.Execute.prototype.getStderr_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getStderr()));
+};
+
+
+/**
+ * optional bytes Stderr = 3;
+ * Note that Uint8Array is not supported on all browsers.
+ * @see http://caniuse.com/Uint8Array
+ * This is a type-conversion wrapper around `getStderr()`
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.Execute.prototype.getStderr_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getStderr()));
+};
+
+
+/**
+ * @param {!(string|Uint8Array)} value
+ * @return {!proto.sliverpb.Execute} returns this
+ */
+proto.sliverpb.Execute.prototype.setStderr = function(value) {
+  return jspb.Message.setProto3BytesField(this, 3, value);
+};
+
+
+/**
+ * optional uint32 Pid = 4;
+ * @return {number}
+ */
+proto.sliverpb.Execute.prototype.getPid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sliverpb.Execute} returns this
+ */
+proto.sliverpb.Execute.prototype.setPid = function(value) {
+  return jspb.Message.setProto3IntField(this, 4, value);
 };
 
 
@@ -12726,6 +14946,7 @@ proto.sliverpb.SideloadReq.toObject = function(includeInstance, msg) {
     args: jspb.Message.getFieldWithDefault(msg, 3, ""),
     entrypoint: jspb.Message.getFieldWithDefault(msg, 4, ""),
     kill: jspb.Message.getBooleanFieldWithDefault(msg, 5, false),
+    isdll: jspb.Message.getBooleanFieldWithDefault(msg, 6, false),
     request: (f = msg.getRequest()) && commonpb_common_pb.Request.toObject(includeInstance, f)
   };
 
@@ -12782,6 +15003,10 @@ proto.sliverpb.SideloadReq.deserializeBinaryFromReader = function(msg, reader) {
     case 5:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setKill(value);
+      break;
+    case 6:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIsdll(value);
       break;
     case 9:
       var value = new commonpb_common_pb.Request;
@@ -12849,6 +15074,13 @@ proto.sliverpb.SideloadReq.serializeBinaryToWriter = function(message, writer) {
   if (f) {
     writer.writeBool(
       5,
+      f
+    );
+  }
+  f = message.getIsdll();
+  if (f) {
+    writer.writeBool(
+      6,
       f
     );
   }
@@ -12974,6 +15206,24 @@ proto.sliverpb.SideloadReq.prototype.getKill = function() {
  */
 proto.sliverpb.SideloadReq.prototype.setKill = function(value) {
   return jspb.Message.setProto3BooleanField(this, 5, value);
+};
+
+
+/**
+ * optional bool isDLL = 6;
+ * @return {boolean}
+ */
+proto.sliverpb.SideloadReq.prototype.getIsdll = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 6, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.sliverpb.SideloadReq} returns this
+ */
+proto.sliverpb.SideloadReq.prototype.setIsdll = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 6, value);
 };
 
 
@@ -19966,6 +22216,1324 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
+proto.sliverpb.RegistryDeleteKeyReq.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.RegistryDeleteKeyReq.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sliverpb.RegistryDeleteKeyReq} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.RegistryDeleteKeyReq.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    hive: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    path: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    key: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    hostname: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    request: (f = msg.getRequest()) && commonpb_common_pb.Request.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sliverpb.RegistryDeleteKeyReq}
+ */
+proto.sliverpb.RegistryDeleteKeyReq.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sliverpb.RegistryDeleteKeyReq;
+  return proto.sliverpb.RegistryDeleteKeyReq.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sliverpb.RegistryDeleteKeyReq} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sliverpb.RegistryDeleteKeyReq}
+ */
+proto.sliverpb.RegistryDeleteKeyReq.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setHive(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPath(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setKey(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setHostname(value);
+      break;
+    case 9:
+      var value = new commonpb_common_pb.Request;
+      reader.readMessage(value,commonpb_common_pb.Request.deserializeBinaryFromReader);
+      msg.setRequest(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.RegistryDeleteKeyReq.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sliverpb.RegistryDeleteKeyReq.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sliverpb.RegistryDeleteKeyReq} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.RegistryDeleteKeyReq.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getHive();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getPath();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getKey();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getHostname();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+  f = message.getRequest();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      commonpb_common_pb.Request.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional string Hive = 1;
+ * @return {string}
+ */
+proto.sliverpb.RegistryDeleteKeyReq.prototype.getHive = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.RegistryDeleteKeyReq} returns this
+ */
+proto.sliverpb.RegistryDeleteKeyReq.prototype.setHive = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string Path = 2;
+ * @return {string}
+ */
+proto.sliverpb.RegistryDeleteKeyReq.prototype.getPath = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.RegistryDeleteKeyReq} returns this
+ */
+proto.sliverpb.RegistryDeleteKeyReq.prototype.setPath = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string Key = 3;
+ * @return {string}
+ */
+proto.sliverpb.RegistryDeleteKeyReq.prototype.getKey = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.RegistryDeleteKeyReq} returns this
+ */
+proto.sliverpb.RegistryDeleteKeyReq.prototype.setKey = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional string Hostname = 4;
+ * @return {string}
+ */
+proto.sliverpb.RegistryDeleteKeyReq.prototype.getHostname = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.RegistryDeleteKeyReq} returns this
+ */
+proto.sliverpb.RegistryDeleteKeyReq.prototype.setHostname = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional commonpb.Request Request = 9;
+ * @return {?proto.commonpb.Request}
+ */
+proto.sliverpb.RegistryDeleteKeyReq.prototype.getRequest = function() {
+  return /** @type{?proto.commonpb.Request} */ (
+    jspb.Message.getWrapperField(this, commonpb_common_pb.Request, 9));
+};
+
+
+/**
+ * @param {?proto.commonpb.Request|undefined} value
+ * @return {!proto.sliverpb.RegistryDeleteKeyReq} returns this
+*/
+proto.sliverpb.RegistryDeleteKeyReq.prototype.setRequest = function(value) {
+  return jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sliverpb.RegistryDeleteKeyReq} returns this
+ */
+proto.sliverpb.RegistryDeleteKeyReq.prototype.clearRequest = function() {
+  return this.setRequest(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sliverpb.RegistryDeleteKeyReq.prototype.hasRequest = function() {
+  return jspb.Message.getField(this, 9) != null;
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sliverpb.RegistryDeleteKey.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.RegistryDeleteKey.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sliverpb.RegistryDeleteKey} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.RegistryDeleteKey.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    response: (f = msg.getResponse()) && commonpb_common_pb.Response.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sliverpb.RegistryDeleteKey}
+ */
+proto.sliverpb.RegistryDeleteKey.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sliverpb.RegistryDeleteKey;
+  return proto.sliverpb.RegistryDeleteKey.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sliverpb.RegistryDeleteKey} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sliverpb.RegistryDeleteKey}
+ */
+proto.sliverpb.RegistryDeleteKey.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 9:
+      var value = new commonpb_common_pb.Response;
+      reader.readMessage(value,commonpb_common_pb.Response.deserializeBinaryFromReader);
+      msg.setResponse(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.RegistryDeleteKey.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sliverpb.RegistryDeleteKey.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sliverpb.RegistryDeleteKey} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.RegistryDeleteKey.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getResponse();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      commonpb_common_pb.Response.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional commonpb.Response Response = 9;
+ * @return {?proto.commonpb.Response}
+ */
+proto.sliverpb.RegistryDeleteKey.prototype.getResponse = function() {
+  return /** @type{?proto.commonpb.Response} */ (
+    jspb.Message.getWrapperField(this, commonpb_common_pb.Response, 9));
+};
+
+
+/**
+ * @param {?proto.commonpb.Response|undefined} value
+ * @return {!proto.sliverpb.RegistryDeleteKey} returns this
+*/
+proto.sliverpb.RegistryDeleteKey.prototype.setResponse = function(value) {
+  return jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sliverpb.RegistryDeleteKey} returns this
+ */
+proto.sliverpb.RegistryDeleteKey.prototype.clearResponse = function() {
+  return this.setResponse(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sliverpb.RegistryDeleteKey.prototype.hasResponse = function() {
+  return jspb.Message.getField(this, 9) != null;
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sliverpb.RegistrySubKeyListReq.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.RegistrySubKeyListReq.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sliverpb.RegistrySubKeyListReq} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.RegistrySubKeyListReq.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    hive: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    path: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    hostname: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    request: (f = msg.getRequest()) && commonpb_common_pb.Request.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sliverpb.RegistrySubKeyListReq}
+ */
+proto.sliverpb.RegistrySubKeyListReq.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sliverpb.RegistrySubKeyListReq;
+  return proto.sliverpb.RegistrySubKeyListReq.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sliverpb.RegistrySubKeyListReq} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sliverpb.RegistrySubKeyListReq}
+ */
+proto.sliverpb.RegistrySubKeyListReq.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setHive(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPath(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setHostname(value);
+      break;
+    case 9:
+      var value = new commonpb_common_pb.Request;
+      reader.readMessage(value,commonpb_common_pb.Request.deserializeBinaryFromReader);
+      msg.setRequest(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.RegistrySubKeyListReq.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sliverpb.RegistrySubKeyListReq.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sliverpb.RegistrySubKeyListReq} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.RegistrySubKeyListReq.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getHive();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getPath();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getHostname();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+  f = message.getRequest();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      commonpb_common_pb.Request.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional string Hive = 1;
+ * @return {string}
+ */
+proto.sliverpb.RegistrySubKeyListReq.prototype.getHive = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.RegistrySubKeyListReq} returns this
+ */
+proto.sliverpb.RegistrySubKeyListReq.prototype.setHive = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string Path = 2;
+ * @return {string}
+ */
+proto.sliverpb.RegistrySubKeyListReq.prototype.getPath = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.RegistrySubKeyListReq} returns this
+ */
+proto.sliverpb.RegistrySubKeyListReq.prototype.setPath = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string Hostname = 4;
+ * @return {string}
+ */
+proto.sliverpb.RegistrySubKeyListReq.prototype.getHostname = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.RegistrySubKeyListReq} returns this
+ */
+proto.sliverpb.RegistrySubKeyListReq.prototype.setHostname = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional commonpb.Request Request = 9;
+ * @return {?proto.commonpb.Request}
+ */
+proto.sliverpb.RegistrySubKeyListReq.prototype.getRequest = function() {
+  return /** @type{?proto.commonpb.Request} */ (
+    jspb.Message.getWrapperField(this, commonpb_common_pb.Request, 9));
+};
+
+
+/**
+ * @param {?proto.commonpb.Request|undefined} value
+ * @return {!proto.sliverpb.RegistrySubKeyListReq} returns this
+*/
+proto.sliverpb.RegistrySubKeyListReq.prototype.setRequest = function(value) {
+  return jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sliverpb.RegistrySubKeyListReq} returns this
+ */
+proto.sliverpb.RegistrySubKeyListReq.prototype.clearRequest = function() {
+  return this.setRequest(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sliverpb.RegistrySubKeyListReq.prototype.hasRequest = function() {
+  return jspb.Message.getField(this, 9) != null;
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.sliverpb.RegistrySubKeyList.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sliverpb.RegistrySubKeyList.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.RegistrySubKeyList.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sliverpb.RegistrySubKeyList} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.RegistrySubKeyList.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    subkeysList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f,
+    response: (f = msg.getResponse()) && commonpb_common_pb.Response.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sliverpb.RegistrySubKeyList}
+ */
+proto.sliverpb.RegistrySubKeyList.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sliverpb.RegistrySubKeyList;
+  return proto.sliverpb.RegistrySubKeyList.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sliverpb.RegistrySubKeyList} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sliverpb.RegistrySubKeyList}
+ */
+proto.sliverpb.RegistrySubKeyList.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addSubkeys(value);
+      break;
+    case 9:
+      var value = new commonpb_common_pb.Response;
+      reader.readMessage(value,commonpb_common_pb.Response.deserializeBinaryFromReader);
+      msg.setResponse(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.RegistrySubKeyList.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sliverpb.RegistrySubKeyList.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sliverpb.RegistrySubKeyList} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.RegistrySubKeyList.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getSubkeysList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      1,
+      f
+    );
+  }
+  f = message.getResponse();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      commonpb_common_pb.Response.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * repeated string Subkeys = 1;
+ * @return {!Array<string>}
+ */
+proto.sliverpb.RegistrySubKeyList.prototype.getSubkeysList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 1));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.sliverpb.RegistrySubKeyList} returns this
+ */
+proto.sliverpb.RegistrySubKeyList.prototype.setSubkeysList = function(value) {
+  return jspb.Message.setField(this, 1, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.sliverpb.RegistrySubKeyList} returns this
+ */
+proto.sliverpb.RegistrySubKeyList.prototype.addSubkeys = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 1, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.sliverpb.RegistrySubKeyList} returns this
+ */
+proto.sliverpb.RegistrySubKeyList.prototype.clearSubkeysList = function() {
+  return this.setSubkeysList([]);
+};
+
+
+/**
+ * optional commonpb.Response Response = 9;
+ * @return {?proto.commonpb.Response}
+ */
+proto.sliverpb.RegistrySubKeyList.prototype.getResponse = function() {
+  return /** @type{?proto.commonpb.Response} */ (
+    jspb.Message.getWrapperField(this, commonpb_common_pb.Response, 9));
+};
+
+
+/**
+ * @param {?proto.commonpb.Response|undefined} value
+ * @return {!proto.sliverpb.RegistrySubKeyList} returns this
+*/
+proto.sliverpb.RegistrySubKeyList.prototype.setResponse = function(value) {
+  return jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sliverpb.RegistrySubKeyList} returns this
+ */
+proto.sliverpb.RegistrySubKeyList.prototype.clearResponse = function() {
+  return this.setResponse(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sliverpb.RegistrySubKeyList.prototype.hasResponse = function() {
+  return jspb.Message.getField(this, 9) != null;
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sliverpb.RegistryListValuesReq.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.RegistryListValuesReq.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sliverpb.RegistryListValuesReq} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.RegistryListValuesReq.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    hive: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    path: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    hostname: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    request: (f = msg.getRequest()) && commonpb_common_pb.Request.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sliverpb.RegistryListValuesReq}
+ */
+proto.sliverpb.RegistryListValuesReq.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sliverpb.RegistryListValuesReq;
+  return proto.sliverpb.RegistryListValuesReq.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sliverpb.RegistryListValuesReq} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sliverpb.RegistryListValuesReq}
+ */
+proto.sliverpb.RegistryListValuesReq.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setHive(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPath(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setHostname(value);
+      break;
+    case 9:
+      var value = new commonpb_common_pb.Request;
+      reader.readMessage(value,commonpb_common_pb.Request.deserializeBinaryFromReader);
+      msg.setRequest(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.RegistryListValuesReq.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sliverpb.RegistryListValuesReq.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sliverpb.RegistryListValuesReq} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.RegistryListValuesReq.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getHive();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getPath();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getHostname();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+  f = message.getRequest();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      commonpb_common_pb.Request.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional string Hive = 1;
+ * @return {string}
+ */
+proto.sliverpb.RegistryListValuesReq.prototype.getHive = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.RegistryListValuesReq} returns this
+ */
+proto.sliverpb.RegistryListValuesReq.prototype.setHive = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string Path = 2;
+ * @return {string}
+ */
+proto.sliverpb.RegistryListValuesReq.prototype.getPath = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.RegistryListValuesReq} returns this
+ */
+proto.sliverpb.RegistryListValuesReq.prototype.setPath = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string Hostname = 4;
+ * @return {string}
+ */
+proto.sliverpb.RegistryListValuesReq.prototype.getHostname = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.RegistryListValuesReq} returns this
+ */
+proto.sliverpb.RegistryListValuesReq.prototype.setHostname = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional commonpb.Request Request = 9;
+ * @return {?proto.commonpb.Request}
+ */
+proto.sliverpb.RegistryListValuesReq.prototype.getRequest = function() {
+  return /** @type{?proto.commonpb.Request} */ (
+    jspb.Message.getWrapperField(this, commonpb_common_pb.Request, 9));
+};
+
+
+/**
+ * @param {?proto.commonpb.Request|undefined} value
+ * @return {!proto.sliverpb.RegistryListValuesReq} returns this
+*/
+proto.sliverpb.RegistryListValuesReq.prototype.setRequest = function(value) {
+  return jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sliverpb.RegistryListValuesReq} returns this
+ */
+proto.sliverpb.RegistryListValuesReq.prototype.clearRequest = function() {
+  return this.setRequest(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sliverpb.RegistryListValuesReq.prototype.hasRequest = function() {
+  return jspb.Message.getField(this, 9) != null;
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.sliverpb.RegistryValuesList.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sliverpb.RegistryValuesList.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.RegistryValuesList.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sliverpb.RegistryValuesList} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.RegistryValuesList.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    valuenamesList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f,
+    response: (f = msg.getResponse()) && commonpb_common_pb.Response.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sliverpb.RegistryValuesList}
+ */
+proto.sliverpb.RegistryValuesList.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sliverpb.RegistryValuesList;
+  return proto.sliverpb.RegistryValuesList.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sliverpb.RegistryValuesList} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sliverpb.RegistryValuesList}
+ */
+proto.sliverpb.RegistryValuesList.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addValuenames(value);
+      break;
+    case 9:
+      var value = new commonpb_common_pb.Response;
+      reader.readMessage(value,commonpb_common_pb.Response.deserializeBinaryFromReader);
+      msg.setResponse(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.RegistryValuesList.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sliverpb.RegistryValuesList.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sliverpb.RegistryValuesList} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.RegistryValuesList.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getValuenamesList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      1,
+      f
+    );
+  }
+  f = message.getResponse();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      commonpb_common_pb.Response.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * repeated string ValueNames = 1;
+ * @return {!Array<string>}
+ */
+proto.sliverpb.RegistryValuesList.prototype.getValuenamesList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 1));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.sliverpb.RegistryValuesList} returns this
+ */
+proto.sliverpb.RegistryValuesList.prototype.setValuenamesList = function(value) {
+  return jspb.Message.setField(this, 1, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.sliverpb.RegistryValuesList} returns this
+ */
+proto.sliverpb.RegistryValuesList.prototype.addValuenames = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 1, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.sliverpb.RegistryValuesList} returns this
+ */
+proto.sliverpb.RegistryValuesList.prototype.clearValuenamesList = function() {
+  return this.setValuenamesList([]);
+};
+
+
+/**
+ * optional commonpb.Response Response = 9;
+ * @return {?proto.commonpb.Response}
+ */
+proto.sliverpb.RegistryValuesList.prototype.getResponse = function() {
+  return /** @type{?proto.commonpb.Response} */ (
+    jspb.Message.getWrapperField(this, commonpb_common_pb.Response, 9));
+};
+
+
+/**
+ * @param {?proto.commonpb.Response|undefined} value
+ * @return {!proto.sliverpb.RegistryValuesList} returns this
+*/
+proto.sliverpb.RegistryValuesList.prototype.setResponse = function(value) {
+  return jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sliverpb.RegistryValuesList} returns this
+ */
+proto.sliverpb.RegistryValuesList.prototype.clearResponse = function() {
+  return this.setResponse(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sliverpb.RegistryValuesList.prototype.hasResponse = function() {
+  return jspb.Message.getField(this, 9) != null;
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
 proto.sliverpb.Tunnel.prototype.toObject = function(opt_includeInstance) {
   return proto.sliverpb.Tunnel.toObject(opt_includeInstance, this);
 };
@@ -19983,7 +23551,7 @@ proto.sliverpb.Tunnel.prototype.toObject = function(opt_includeInstance) {
 proto.sliverpb.Tunnel.toObject = function(includeInstance, msg) {
   var f, obj = {
     tunnelid: jspb.Message.getFieldWithDefault(msg, 8, "0"),
-    sessionid: jspb.Message.getFieldWithDefault(msg, 9, 0)
+    sessionid: jspb.Message.getFieldWithDefault(msg, 9, "")
   };
 
   if (includeInstance) {
@@ -20025,7 +23593,7 @@ proto.sliverpb.Tunnel.deserializeBinaryFromReader = function(msg, reader) {
       msg.setTunnelid(value);
       break;
     case 9:
-      var value = /** @type {number} */ (reader.readUint32());
+      var value = /** @type {string} */ (reader.readString());
       msg.setSessionid(value);
       break;
     default:
@@ -20065,8 +23633,8 @@ proto.sliverpb.Tunnel.serializeBinaryToWriter = function(message, writer) {
     );
   }
   f = message.getSessionid();
-  if (f !== 0) {
-    writer.writeUint32(
+  if (f.length > 0) {
+    writer.writeString(
       9,
       f
     );
@@ -20093,20 +23661,20 @@ proto.sliverpb.Tunnel.prototype.setTunnelid = function(value) {
 
 
 /**
- * optional uint32 SessionID = 9;
- * @return {number}
+ * optional string SessionID = 9;
+ * @return {string}
  */
 proto.sliverpb.Tunnel.prototype.getSessionid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 9, 0));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
 };
 
 
 /**
- * @param {number} value
+ * @param {string} value
  * @return {!proto.sliverpb.Tunnel} returns this
  */
 proto.sliverpb.Tunnel.prototype.setSessionid = function(value) {
-  return jspb.Message.setProto3IntField(this, 9, value);
+  return jspb.Message.setProto3StringField(this, 9, value);
 };
 
 
@@ -20148,7 +23716,7 @@ proto.sliverpb.TunnelData.toObject = function(includeInstance, msg) {
     ack: jspb.Message.getFieldWithDefault(msg, 4, 0),
     resend: jspb.Message.getBooleanFieldWithDefault(msg, 5, false),
     tunnelid: jspb.Message.getFieldWithDefault(msg, 8, "0"),
-    sessionid: jspb.Message.getFieldWithDefault(msg, 9, 0)
+    sessionid: jspb.Message.getFieldWithDefault(msg, 9, "")
   };
 
   if (includeInstance) {
@@ -20210,7 +23778,7 @@ proto.sliverpb.TunnelData.deserializeBinaryFromReader = function(msg, reader) {
       msg.setTunnelid(value);
       break;
     case 9:
-      var value = /** @type {number} */ (reader.readUint32());
+      var value = /** @type {string} */ (reader.readString());
       msg.setSessionid(value);
       break;
     default:
@@ -20285,8 +23853,8 @@ proto.sliverpb.TunnelData.serializeBinaryToWriter = function(message, writer) {
     );
   }
   f = message.getSessionid();
-  if (f !== 0) {
-    writer.writeUint32(
+  if (f.length > 0) {
+    writer.writeString(
       9,
       f
     );
@@ -20427,20 +23995,20 @@ proto.sliverpb.TunnelData.prototype.setTunnelid = function(value) {
 
 
 /**
- * optional uint32 SessionID = 9;
- * @return {number}
+ * optional string SessionID = 9;
+ * @return {string}
  */
 proto.sliverpb.TunnelData.prototype.getSessionid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 9, 0));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
 };
 
 
 /**
- * @param {number} value
+ * @param {string} value
  * @return {!proto.sliverpb.TunnelData} returns this
  */
 proto.sliverpb.TunnelData.prototype.setSessionid = function(value) {
-  return jspb.Message.setProto3IntField(this, 9, value);
+  return jspb.Message.setProto3StringField(this, 9, value);
 };
 
 
@@ -21544,8 +25112,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.sliverpb.NamedPipesReq.prototype.toObject = function(opt_includeInstance) {
-  return proto.sliverpb.NamedPipesReq.toObject(opt_includeInstance, this);
+proto.sliverpb.Socks.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.Socks.toObject(opt_includeInstance, this);
 };
 
 
@@ -21554,13 +25122,178 @@ proto.sliverpb.NamedPipesReq.prototype.toObject = function(opt_includeInstance) 
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.sliverpb.NamedPipesReq} msg The msg instance to transform.
+ * @param {!proto.sliverpb.Socks} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sliverpb.NamedPipesReq.toObject = function(includeInstance, msg) {
+proto.sliverpb.Socks.toObject = function(includeInstance, msg) {
   var f, obj = {
-    pipename: jspb.Message.getFieldWithDefault(msg, 16, ""),
+    tunnelid: jspb.Message.getFieldWithDefault(msg, 8, "0"),
+    sessionid: jspb.Message.getFieldWithDefault(msg, 9, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sliverpb.Socks}
+ */
+proto.sliverpb.Socks.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sliverpb.Socks;
+  return proto.sliverpb.Socks.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sliverpb.Socks} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sliverpb.Socks}
+ */
+proto.sliverpb.Socks.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 8:
+      var value = /** @type {string} */ (reader.readUint64String());
+      msg.setTunnelid(value);
+      break;
+    case 9:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSessionid(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.Socks.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sliverpb.Socks.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sliverpb.Socks} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.Socks.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getTunnelid();
+  if (parseInt(f, 10) !== 0) {
+    writer.writeUint64String(
+      8,
+      f
+    );
+  }
+  f = message.getSessionid();
+  if (f.length > 0) {
+    writer.writeString(
+      9,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional uint64 TunnelID = 8;
+ * @return {string}
+ */
+proto.sliverpb.Socks.prototype.getTunnelid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, "0"));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.Socks} returns this
+ */
+proto.sliverpb.Socks.prototype.setTunnelid = function(value) {
+  return jspb.Message.setProto3StringIntField(this, 8, value);
+};
+
+
+/**
+ * optional string SessionID = 9;
+ * @return {string}
+ */
+proto.sliverpb.Socks.prototype.getSessionid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.Socks} returns this
+ */
+proto.sliverpb.Socks.prototype.setSessionid = function(value) {
+  return jspb.Message.setProto3StringField(this, 9, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sliverpb.SocksData.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.SocksData.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sliverpb.SocksData} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.SocksData.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    data: msg.getData_asB64(),
+    closeconn: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
+    username: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    password: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    sequence: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    tunnelid: jspb.Message.getFieldWithDefault(msg, 8, "0"),
     request: (f = msg.getRequest()) && commonpb_common_pb.Request.toObject(includeInstance, f)
   };
 
@@ -21575,204 +25308,23 @@ proto.sliverpb.NamedPipesReq.toObject = function(includeInstance, msg) {
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.sliverpb.NamedPipesReq}
+ * @return {!proto.sliverpb.SocksData}
  */
-proto.sliverpb.NamedPipesReq.deserializeBinary = function(bytes) {
+proto.sliverpb.SocksData.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sliverpb.NamedPipesReq;
-  return proto.sliverpb.NamedPipesReq.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.sliverpb.SocksData;
+  return proto.sliverpb.SocksData.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.sliverpb.NamedPipesReq} msg The message object to deserialize into.
+ * @param {!proto.sliverpb.SocksData} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.sliverpb.NamedPipesReq}
+ * @return {!proto.sliverpb.SocksData}
  */
-proto.sliverpb.NamedPipesReq.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 16:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setPipename(value);
-      break;
-    case 9:
-      var value = new commonpb_common_pb.Request;
-      reader.readMessage(value,commonpb_common_pb.Request.deserializeBinaryFromReader);
-      msg.setRequest(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.sliverpb.NamedPipesReq.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.sliverpb.NamedPipesReq.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.sliverpb.NamedPipesReq} message
- * @param {!jspb.BinaryWriter} writer
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.sliverpb.NamedPipesReq.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getPipename();
-  if (f.length > 0) {
-    writer.writeString(
-      16,
-      f
-    );
-  }
-  f = message.getRequest();
-  if (f != null) {
-    writer.writeMessage(
-      9,
-      f,
-      commonpb_common_pb.Request.serializeBinaryToWriter
-    );
-  }
-};
-
-
-/**
- * optional string PipeName = 16;
- * @return {string}
- */
-proto.sliverpb.NamedPipesReq.prototype.getPipename = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 16, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.sliverpb.NamedPipesReq} returns this
- */
-proto.sliverpb.NamedPipesReq.prototype.setPipename = function(value) {
-  return jspb.Message.setProto3StringField(this, 16, value);
-};
-
-
-/**
- * optional commonpb.Request Request = 9;
- * @return {?proto.commonpb.Request}
- */
-proto.sliverpb.NamedPipesReq.prototype.getRequest = function() {
-  return /** @type{?proto.commonpb.Request} */ (
-    jspb.Message.getWrapperField(this, commonpb_common_pb.Request, 9));
-};
-
-
-/**
- * @param {?proto.commonpb.Request|undefined} value
- * @return {!proto.sliverpb.NamedPipesReq} returns this
-*/
-proto.sliverpb.NamedPipesReq.prototype.setRequest = function(value) {
-  return jspb.Message.setWrapperField(this, 9, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.sliverpb.NamedPipesReq} returns this
- */
-proto.sliverpb.NamedPipesReq.prototype.clearRequest = function() {
-  return this.setRequest(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.sliverpb.NamedPipesReq.prototype.hasRequest = function() {
-  return jspb.Message.getField(this, 9) != null;
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.sliverpb.NamedPipes.prototype.toObject = function(opt_includeInstance) {
-  return proto.sliverpb.NamedPipes.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.sliverpb.NamedPipes} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.sliverpb.NamedPipes.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    success: jspb.Message.getBooleanFieldWithDefault(msg, 1, false),
-    response: (f = msg.getResponse()) && commonpb_common_pb.Response.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.sliverpb.NamedPipes}
- */
-proto.sliverpb.NamedPipes.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sliverpb.NamedPipes;
-  return proto.sliverpb.NamedPipes.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.sliverpb.NamedPipes} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.sliverpb.NamedPipes}
- */
-proto.sliverpb.NamedPipes.deserializeBinaryFromReader = function(msg, reader) {
+proto.sliverpb.SocksData.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -21780,565 +25332,33 @@ proto.sliverpb.NamedPipes.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setSuccess(value);
-      break;
-    case 9:
-      var value = new commonpb_common_pb.Response;
-      reader.readMessage(value,commonpb_common_pb.Response.deserializeBinaryFromReader);
-      msg.setResponse(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.sliverpb.NamedPipes.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.sliverpb.NamedPipes.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.sliverpb.NamedPipes} message
- * @param {!jspb.BinaryWriter} writer
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.sliverpb.NamedPipes.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getSuccess();
-  if (f) {
-    writer.writeBool(
-      1,
-      f
-    );
-  }
-  f = message.getResponse();
-  if (f != null) {
-    writer.writeMessage(
-      9,
-      f,
-      commonpb_common_pb.Response.serializeBinaryToWriter
-    );
-  }
-};
-
-
-/**
- * optional bool Success = 1;
- * @return {boolean}
- */
-proto.sliverpb.NamedPipes.prototype.getSuccess = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 1, false));
-};
-
-
-/**
- * @param {boolean} value
- * @return {!proto.sliverpb.NamedPipes} returns this
- */
-proto.sliverpb.NamedPipes.prototype.setSuccess = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 1, value);
-};
-
-
-/**
- * optional commonpb.Response Response = 9;
- * @return {?proto.commonpb.Response}
- */
-proto.sliverpb.NamedPipes.prototype.getResponse = function() {
-  return /** @type{?proto.commonpb.Response} */ (
-    jspb.Message.getWrapperField(this, commonpb_common_pb.Response, 9));
-};
-
-
-/**
- * @param {?proto.commonpb.Response|undefined} value
- * @return {!proto.sliverpb.NamedPipes} returns this
-*/
-proto.sliverpb.NamedPipes.prototype.setResponse = function(value) {
-  return jspb.Message.setWrapperField(this, 9, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.sliverpb.NamedPipes} returns this
- */
-proto.sliverpb.NamedPipes.prototype.clearResponse = function() {
-  return this.setResponse(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.sliverpb.NamedPipes.prototype.hasResponse = function() {
-  return jspb.Message.getField(this, 9) != null;
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.sliverpb.TCPPivotReq.prototype.toObject = function(opt_includeInstance) {
-  return proto.sliverpb.TCPPivotReq.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.sliverpb.TCPPivotReq} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.sliverpb.TCPPivotReq.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    address: jspb.Message.getFieldWithDefault(msg, 16, ""),
-    request: (f = msg.getRequest()) && commonpb_common_pb.Request.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.sliverpb.TCPPivotReq}
- */
-proto.sliverpb.TCPPivotReq.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sliverpb.TCPPivotReq;
-  return proto.sliverpb.TCPPivotReq.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.sliverpb.TCPPivotReq} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.sliverpb.TCPPivotReq}
- */
-proto.sliverpb.TCPPivotReq.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 16:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAddress(value);
-      break;
-    case 9:
-      var value = new commonpb_common_pb.Request;
-      reader.readMessage(value,commonpb_common_pb.Request.deserializeBinaryFromReader);
-      msg.setRequest(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.sliverpb.TCPPivotReq.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.sliverpb.TCPPivotReq.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.sliverpb.TCPPivotReq} message
- * @param {!jspb.BinaryWriter} writer
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.sliverpb.TCPPivotReq.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAddress();
-  if (f.length > 0) {
-    writer.writeString(
-      16,
-      f
-    );
-  }
-  f = message.getRequest();
-  if (f != null) {
-    writer.writeMessage(
-      9,
-      f,
-      commonpb_common_pb.Request.serializeBinaryToWriter
-    );
-  }
-};
-
-
-/**
- * optional string Address = 16;
- * @return {string}
- */
-proto.sliverpb.TCPPivotReq.prototype.getAddress = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 16, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.sliverpb.TCPPivotReq} returns this
- */
-proto.sliverpb.TCPPivotReq.prototype.setAddress = function(value) {
-  return jspb.Message.setProto3StringField(this, 16, value);
-};
-
-
-/**
- * optional commonpb.Request Request = 9;
- * @return {?proto.commonpb.Request}
- */
-proto.sliverpb.TCPPivotReq.prototype.getRequest = function() {
-  return /** @type{?proto.commonpb.Request} */ (
-    jspb.Message.getWrapperField(this, commonpb_common_pb.Request, 9));
-};
-
-
-/**
- * @param {?proto.commonpb.Request|undefined} value
- * @return {!proto.sliverpb.TCPPivotReq} returns this
-*/
-proto.sliverpb.TCPPivotReq.prototype.setRequest = function(value) {
-  return jspb.Message.setWrapperField(this, 9, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.sliverpb.TCPPivotReq} returns this
- */
-proto.sliverpb.TCPPivotReq.prototype.clearRequest = function() {
-  return this.setRequest(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.sliverpb.TCPPivotReq.prototype.hasRequest = function() {
-  return jspb.Message.getField(this, 9) != null;
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.sliverpb.TCPPivot.prototype.toObject = function(opt_includeInstance) {
-  return proto.sliverpb.TCPPivot.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.sliverpb.TCPPivot} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.sliverpb.TCPPivot.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    success: jspb.Message.getBooleanFieldWithDefault(msg, 1, false),
-    response: (f = msg.getResponse()) && commonpb_common_pb.Response.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.sliverpb.TCPPivot}
- */
-proto.sliverpb.TCPPivot.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sliverpb.TCPPivot;
-  return proto.sliverpb.TCPPivot.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.sliverpb.TCPPivot} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.sliverpb.TCPPivot}
- */
-proto.sliverpb.TCPPivot.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setSuccess(value);
-      break;
-    case 9:
-      var value = new commonpb_common_pb.Response;
-      reader.readMessage(value,commonpb_common_pb.Response.deserializeBinaryFromReader);
-      msg.setResponse(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.sliverpb.TCPPivot.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.sliverpb.TCPPivot.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.sliverpb.TCPPivot} message
- * @param {!jspb.BinaryWriter} writer
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.sliverpb.TCPPivot.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getSuccess();
-  if (f) {
-    writer.writeBool(
-      1,
-      f
-    );
-  }
-  f = message.getResponse();
-  if (f != null) {
-    writer.writeMessage(
-      9,
-      f,
-      commonpb_common_pb.Response.serializeBinaryToWriter
-    );
-  }
-};
-
-
-/**
- * optional bool Success = 1;
- * @return {boolean}
- */
-proto.sliverpb.TCPPivot.prototype.getSuccess = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 1, false));
-};
-
-
-/**
- * @param {boolean} value
- * @return {!proto.sliverpb.TCPPivot} returns this
- */
-proto.sliverpb.TCPPivot.prototype.setSuccess = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 1, value);
-};
-
-
-/**
- * optional commonpb.Response Response = 9;
- * @return {?proto.commonpb.Response}
- */
-proto.sliverpb.TCPPivot.prototype.getResponse = function() {
-  return /** @type{?proto.commonpb.Response} */ (
-    jspb.Message.getWrapperField(this, commonpb_common_pb.Response, 9));
-};
-
-
-/**
- * @param {?proto.commonpb.Response|undefined} value
- * @return {!proto.sliverpb.TCPPivot} returns this
-*/
-proto.sliverpb.TCPPivot.prototype.setResponse = function(value) {
-  return jspb.Message.setWrapperField(this, 9, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.sliverpb.TCPPivot} returns this
- */
-proto.sliverpb.TCPPivot.prototype.clearResponse = function() {
-  return this.setResponse(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.sliverpb.TCPPivot.prototype.hasResponse = function() {
-  return jspb.Message.getField(this, 9) != null;
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.sliverpb.PivotOpen.prototype.toObject = function(opt_includeInstance) {
-  return proto.sliverpb.PivotOpen.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.sliverpb.PivotOpen} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.sliverpb.PivotOpen.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    pivotid: jspb.Message.getFieldWithDefault(msg, 12, 0),
-    pivottype: jspb.Message.getFieldWithDefault(msg, 13, ""),
-    remoteaddress: jspb.Message.getFieldWithDefault(msg, 14, ""),
-    registermsg: msg.getRegistermsg_asB64()
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.sliverpb.PivotOpen}
- */
-proto.sliverpb.PivotOpen.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sliverpb.PivotOpen;
-  return proto.sliverpb.PivotOpen.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.sliverpb.PivotOpen} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.sliverpb.PivotOpen}
- */
-proto.sliverpb.PivotOpen.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 12:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setPivotid(value);
-      break;
-    case 13:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setPivottype(value);
-      break;
-    case 14:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setRemoteaddress(value);
-      break;
-    case 15:
       var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setRegistermsg(value);
+      msg.setData(value);
+      break;
+    case 2:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setCloseconn(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setUsername(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPassword(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.setSequence(value);
+      break;
+    case 8:
+      var value = /** @type {string} */ (reader.readUint64String());
+      msg.setTunnelid(value);
+      break;
+    case 9:
+      var value = new commonpb_common_pb.Request;
+      reader.readMessage(value,commonpb_common_pb.Request.deserializeBinaryFromReader);
+      msg.setRequest(value);
       break;
     default:
       reader.skipField();
@@ -22353,9 +25373,9 @@ proto.sliverpb.PivotOpen.deserializeBinaryFromReader = function(msg, reader) {
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sliverpb.PivotOpen.prototype.serializeBinary = function() {
+proto.sliverpb.SocksData.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.sliverpb.PivotOpen.serializeBinaryToWriter(this, writer);
+  proto.sliverpb.SocksData.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -22363,136 +25383,231 @@ proto.sliverpb.PivotOpen.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.sliverpb.PivotOpen} message
+ * @param {!proto.sliverpb.SocksData} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sliverpb.PivotOpen.serializeBinaryToWriter = function(message, writer) {
+proto.sliverpb.SocksData.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getPivotid();
-  if (f !== 0) {
-    writer.writeUint32(
-      12,
-      f
-    );
-  }
-  f = message.getPivottype();
-  if (f.length > 0) {
-    writer.writeString(
-      13,
-      f
-    );
-  }
-  f = message.getRemoteaddress();
-  if (f.length > 0) {
-    writer.writeString(
-      14,
-      f
-    );
-  }
-  f = message.getRegistermsg_asU8();
+  f = message.getData_asU8();
   if (f.length > 0) {
     writer.writeBytes(
-      15,
+      1,
       f
+    );
+  }
+  f = message.getCloseconn();
+  if (f) {
+    writer.writeBool(
+      2,
+      f
+    );
+  }
+  f = message.getUsername();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getPassword();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+  f = message.getSequence();
+  if (f !== 0) {
+    writer.writeUint64(
+      5,
+      f
+    );
+  }
+  f = message.getTunnelid();
+  if (parseInt(f, 10) !== 0) {
+    writer.writeUint64String(
+      8,
+      f
+    );
+  }
+  f = message.getRequest();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      commonpb_common_pb.Request.serializeBinaryToWriter
     );
   }
 };
 
 
 /**
- * optional uint32 PivotID = 12;
- * @return {number}
- */
-proto.sliverpb.PivotOpen.prototype.getPivotid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 12, 0));
-};
-
-
-/**
- * @param {number} value
- * @return {!proto.sliverpb.PivotOpen} returns this
- */
-proto.sliverpb.PivotOpen.prototype.setPivotid = function(value) {
-  return jspb.Message.setProto3IntField(this, 12, value);
-};
-
-
-/**
- * optional string PivotType = 13;
- * @return {string}
- */
-proto.sliverpb.PivotOpen.prototype.getPivottype = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 13, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.sliverpb.PivotOpen} returns this
- */
-proto.sliverpb.PivotOpen.prototype.setPivottype = function(value) {
-  return jspb.Message.setProto3StringField(this, 13, value);
-};
-
-
-/**
- * optional string RemoteAddress = 14;
- * @return {string}
- */
-proto.sliverpb.PivotOpen.prototype.getRemoteaddress = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 14, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.sliverpb.PivotOpen} returns this
- */
-proto.sliverpb.PivotOpen.prototype.setRemoteaddress = function(value) {
-  return jspb.Message.setProto3StringField(this, 14, value);
-};
-
-
-/**
- * optional bytes RegisterMsg = 15;
+ * optional bytes Data = 1;
  * @return {!(string|Uint8Array)}
  */
-proto.sliverpb.PivotOpen.prototype.getRegistermsg = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 15, ""));
+proto.sliverpb.SocksData.prototype.getData = function() {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
- * optional bytes RegisterMsg = 15;
- * This is a type-conversion wrapper around `getRegistermsg()`
+ * optional bytes Data = 1;
+ * This is a type-conversion wrapper around `getData()`
  * @return {string}
  */
-proto.sliverpb.PivotOpen.prototype.getRegistermsg_asB64 = function() {
+proto.sliverpb.SocksData.prototype.getData_asB64 = function() {
   return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getRegistermsg()));
+      this.getData()));
 };
 
 
 /**
- * optional bytes RegisterMsg = 15;
+ * optional bytes Data = 1;
  * Note that Uint8Array is not supported on all browsers.
  * @see http://caniuse.com/Uint8Array
- * This is a type-conversion wrapper around `getRegistermsg()`
+ * This is a type-conversion wrapper around `getData()`
  * @return {!Uint8Array}
  */
-proto.sliverpb.PivotOpen.prototype.getRegistermsg_asU8 = function() {
+proto.sliverpb.SocksData.prototype.getData_asU8 = function() {
   return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getRegistermsg()));
+      this.getData()));
 };
 
 
 /**
  * @param {!(string|Uint8Array)} value
- * @return {!proto.sliverpb.PivotOpen} returns this
+ * @return {!proto.sliverpb.SocksData} returns this
  */
-proto.sliverpb.PivotOpen.prototype.setRegistermsg = function(value) {
-  return jspb.Message.setProto3BytesField(this, 15, value);
+proto.sliverpb.SocksData.prototype.setData = function(value) {
+  return jspb.Message.setProto3BytesField(this, 1, value);
+};
+
+
+/**
+ * optional bool CloseConn = 2;
+ * @return {boolean}
+ */
+proto.sliverpb.SocksData.prototype.getCloseconn = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 2, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.sliverpb.SocksData} returns this
+ */
+proto.sliverpb.SocksData.prototype.setCloseconn = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 2, value);
+};
+
+
+/**
+ * optional string Username = 3;
+ * @return {string}
+ */
+proto.sliverpb.SocksData.prototype.getUsername = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.SocksData} returns this
+ */
+proto.sliverpb.SocksData.prototype.setUsername = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional string Password = 4;
+ * @return {string}
+ */
+proto.sliverpb.SocksData.prototype.getPassword = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.SocksData} returns this
+ */
+proto.sliverpb.SocksData.prototype.setPassword = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional uint64 Sequence = 5;
+ * @return {number}
+ */
+proto.sliverpb.SocksData.prototype.getSequence = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sliverpb.SocksData} returns this
+ */
+proto.sliverpb.SocksData.prototype.setSequence = function(value) {
+  return jspb.Message.setProto3IntField(this, 5, value);
+};
+
+
+/**
+ * optional uint64 TunnelID = 8;
+ * @return {string}
+ */
+proto.sliverpb.SocksData.prototype.getTunnelid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, "0"));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.SocksData} returns this
+ */
+proto.sliverpb.SocksData.prototype.setTunnelid = function(value) {
+  return jspb.Message.setProto3StringIntField(this, 8, value);
+};
+
+
+/**
+ * optional commonpb.Request Request = 9;
+ * @return {?proto.commonpb.Request}
+ */
+proto.sliverpb.SocksData.prototype.getRequest = function() {
+  return /** @type{?proto.commonpb.Request} */ (
+    jspb.Message.getWrapperField(this, commonpb_common_pb.Request, 9));
+};
+
+
+/**
+ * @param {?proto.commonpb.Request|undefined} value
+ * @return {!proto.sliverpb.SocksData} returns this
+*/
+proto.sliverpb.SocksData.prototype.setRequest = function(value) {
+  return jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sliverpb.SocksData} returns this
+ */
+proto.sliverpb.SocksData.prototype.clearRequest = function() {
+  return this.setRequest(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sliverpb.SocksData.prototype.hasRequest = function() {
+  return jspb.Message.getField(this, 9) != null;
 };
 
 
@@ -22512,8 +25627,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.sliverpb.PivotClose.prototype.toObject = function(opt_includeInstance) {
-  return proto.sliverpb.PivotClose.toObject(opt_includeInstance, this);
+proto.sliverpb.PivotStartListenerReq.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.PivotStartListenerReq.toObject(opt_includeInstance, this);
 };
 
 
@@ -22522,14 +25637,15 @@ proto.sliverpb.PivotClose.prototype.toObject = function(opt_includeInstance) {
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.sliverpb.PivotClose} msg The msg instance to transform.
+ * @param {!proto.sliverpb.PivotStartListenerReq} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sliverpb.PivotClose.toObject = function(includeInstance, msg) {
+proto.sliverpb.PivotStartListenerReq.toObject = function(includeInstance, msg) {
   var f, obj = {
-    pivotid: jspb.Message.getFieldWithDefault(msg, 12, 0),
-    err: jspb.Message.getFieldWithDefault(msg, 2, "")
+    type: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    bindaddress: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    request: (f = msg.getRequest()) && commonpb_common_pb.Request.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -22543,36 +25659,41 @@ proto.sliverpb.PivotClose.toObject = function(includeInstance, msg) {
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.sliverpb.PivotClose}
+ * @return {!proto.sliverpb.PivotStartListenerReq}
  */
-proto.sliverpb.PivotClose.deserializeBinary = function(bytes) {
+proto.sliverpb.PivotStartListenerReq.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sliverpb.PivotClose;
-  return proto.sliverpb.PivotClose.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.sliverpb.PivotStartListenerReq;
+  return proto.sliverpb.PivotStartListenerReq.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.sliverpb.PivotClose} msg The message object to deserialize into.
+ * @param {!proto.sliverpb.PivotStartListenerReq} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.sliverpb.PivotClose}
+ * @return {!proto.sliverpb.PivotStartListenerReq}
  */
-proto.sliverpb.PivotClose.deserializeBinaryFromReader = function(msg, reader) {
+proto.sliverpb.PivotStartListenerReq.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-    case 12:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setPivotid(value);
+    case 1:
+      var value = /** @type {!proto.sliverpb.PivotType} */ (reader.readEnum());
+      msg.setType(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setErr(value);
+      msg.setBindaddress(value);
+      break;
+    case 9:
+      var value = new commonpb_common_pb.Request;
+      reader.readMessage(value,commonpb_common_pb.Request.deserializeBinaryFromReader);
+      msg.setRequest(value);
       break;
     default:
       reader.skipField();
@@ -22587,9 +25708,9 @@ proto.sliverpb.PivotClose.deserializeBinaryFromReader = function(msg, reader) {
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sliverpb.PivotClose.prototype.serializeBinary = function() {
+proto.sliverpb.PivotStartListenerReq.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.sliverpb.PivotClose.serializeBinaryToWriter(this, writer);
+  proto.sliverpb.PivotStartListenerReq.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -22597,62 +25718,107 @@ proto.sliverpb.PivotClose.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.sliverpb.PivotClose} message
+ * @param {!proto.sliverpb.PivotStartListenerReq} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sliverpb.PivotClose.serializeBinaryToWriter = function(message, writer) {
+proto.sliverpb.PivotStartListenerReq.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getPivotid();
-  if (f !== 0) {
-    writer.writeUint32(
-      12,
+  f = message.getType();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      1,
       f
     );
   }
-  f = message.getErr();
+  f = message.getBindaddress();
   if (f.length > 0) {
     writer.writeString(
       2,
       f
     );
   }
+  f = message.getRequest();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      commonpb_common_pb.Request.serializeBinaryToWriter
+    );
+  }
 };
 
 
 /**
- * optional uint32 PivotID = 12;
- * @return {number}
+ * optional PivotType Type = 1;
+ * @return {!proto.sliverpb.PivotType}
  */
-proto.sliverpb.PivotClose.prototype.getPivotid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 12, 0));
+proto.sliverpb.PivotStartListenerReq.prototype.getType = function() {
+  return /** @type {!proto.sliverpb.PivotType} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /**
- * @param {number} value
- * @return {!proto.sliverpb.PivotClose} returns this
+ * @param {!proto.sliverpb.PivotType} value
+ * @return {!proto.sliverpb.PivotStartListenerReq} returns this
  */
-proto.sliverpb.PivotClose.prototype.setPivotid = function(value) {
-  return jspb.Message.setProto3IntField(this, 12, value);
+proto.sliverpb.PivotStartListenerReq.prototype.setType = function(value) {
+  return jspb.Message.setProto3EnumField(this, 1, value);
 };
 
 
 /**
- * optional string Err = 2;
+ * optional string BindAddress = 2;
  * @return {string}
  */
-proto.sliverpb.PivotClose.prototype.getErr = function() {
+proto.sliverpb.PivotStartListenerReq.prototype.getBindaddress = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.sliverpb.PivotClose} returns this
+ * @return {!proto.sliverpb.PivotStartListenerReq} returns this
  */
-proto.sliverpb.PivotClose.prototype.setErr = function(value) {
+proto.sliverpb.PivotStartListenerReq.prototype.setBindaddress = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional commonpb.Request Request = 9;
+ * @return {?proto.commonpb.Request}
+ */
+proto.sliverpb.PivotStartListenerReq.prototype.getRequest = function() {
+  return /** @type{?proto.commonpb.Request} */ (
+    jspb.Message.getWrapperField(this, commonpb_common_pb.Request, 9));
+};
+
+
+/**
+ * @param {?proto.commonpb.Request|undefined} value
+ * @return {!proto.sliverpb.PivotStartListenerReq} returns this
+*/
+proto.sliverpb.PivotStartListenerReq.prototype.setRequest = function(value) {
+  return jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sliverpb.PivotStartListenerReq} returns this
+ */
+proto.sliverpb.PivotStartListenerReq.prototype.clearRequest = function() {
+  return this.setRequest(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sliverpb.PivotStartListenerReq.prototype.hasRequest = function() {
+  return jspb.Message.getField(this, 9) != null;
 };
 
 
@@ -22672,8 +25838,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.sliverpb.PivotData.prototype.toObject = function(opt_includeInstance) {
-  return proto.sliverpb.PivotData.toObject(opt_includeInstance, this);
+proto.sliverpb.PivotStopListenerReq.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.PivotStopListenerReq.toObject(opt_includeInstance, this);
 };
 
 
@@ -22682,14 +25848,14 @@ proto.sliverpb.PivotData.prototype.toObject = function(opt_includeInstance) {
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.sliverpb.PivotData} msg The msg instance to transform.
+ * @param {!proto.sliverpb.PivotStopListenerReq} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sliverpb.PivotData.toObject = function(includeInstance, msg) {
+proto.sliverpb.PivotStopListenerReq.toObject = function(includeInstance, msg) {
   var f, obj = {
-    pivotid: jspb.Message.getFieldWithDefault(msg, 12, 0),
-    data: msg.getData_asB64()
+    id: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    request: (f = msg.getRequest()) && commonpb_common_pb.Request.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -22703,36 +25869,37 @@ proto.sliverpb.PivotData.toObject = function(includeInstance, msg) {
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.sliverpb.PivotData}
+ * @return {!proto.sliverpb.PivotStopListenerReq}
  */
-proto.sliverpb.PivotData.deserializeBinary = function(bytes) {
+proto.sliverpb.PivotStopListenerReq.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sliverpb.PivotData;
-  return proto.sliverpb.PivotData.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.sliverpb.PivotStopListenerReq;
+  return proto.sliverpb.PivotStopListenerReq.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.sliverpb.PivotData} msg The message object to deserialize into.
+ * @param {!proto.sliverpb.PivotStopListenerReq} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.sliverpb.PivotData}
+ * @return {!proto.sliverpb.PivotStopListenerReq}
  */
-proto.sliverpb.PivotData.deserializeBinaryFromReader = function(msg, reader) {
+proto.sliverpb.PivotStopListenerReq.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-    case 12:
+    case 1:
       var value = /** @type {number} */ (reader.readUint32());
-      msg.setPivotid(value);
+      msg.setId(value);
       break;
-    case 2:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setData(value);
+    case 9:
+      var value = new commonpb_common_pb.Request;
+      reader.readMessage(value,commonpb_common_pb.Request.deserializeBinaryFromReader);
+      msg.setRequest(value);
       break;
     default:
       reader.skipField();
@@ -22747,9 +25914,9 @@ proto.sliverpb.PivotData.deserializeBinaryFromReader = function(msg, reader) {
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sliverpb.PivotData.prototype.serializeBinary = function() {
+proto.sliverpb.PivotStopListenerReq.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.sliverpb.PivotData.serializeBinaryToWriter(this, writer);
+  proto.sliverpb.PivotStopListenerReq.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -22757,20 +25924,769 @@ proto.sliverpb.PivotData.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.sliverpb.PivotData} message
+ * @param {!proto.sliverpb.PivotStopListenerReq} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sliverpb.PivotData.serializeBinaryToWriter = function(message, writer) {
+proto.sliverpb.PivotStopListenerReq.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getPivotid();
+  f = message.getId();
   if (f !== 0) {
     writer.writeUint32(
-      12,
+      1,
       f
     );
   }
-  f = message.getData_asU8();
+  f = message.getRequest();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      commonpb_common_pb.Request.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional uint32 ID = 1;
+ * @return {number}
+ */
+proto.sliverpb.PivotStopListenerReq.prototype.getId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sliverpb.PivotStopListenerReq} returns this
+ */
+proto.sliverpb.PivotStopListenerReq.prototype.setId = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional commonpb.Request Request = 9;
+ * @return {?proto.commonpb.Request}
+ */
+proto.sliverpb.PivotStopListenerReq.prototype.getRequest = function() {
+  return /** @type{?proto.commonpb.Request} */ (
+    jspb.Message.getWrapperField(this, commonpb_common_pb.Request, 9));
+};
+
+
+/**
+ * @param {?proto.commonpb.Request|undefined} value
+ * @return {!proto.sliverpb.PivotStopListenerReq} returns this
+*/
+proto.sliverpb.PivotStopListenerReq.prototype.setRequest = function(value) {
+  return jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sliverpb.PivotStopListenerReq} returns this
+ */
+proto.sliverpb.PivotStopListenerReq.prototype.clearRequest = function() {
+  return this.setRequest(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sliverpb.PivotStopListenerReq.prototype.hasRequest = function() {
+  return jspb.Message.getField(this, 9) != null;
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.sliverpb.PivotListener.repeatedFields_ = [4];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sliverpb.PivotListener.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.PivotListener.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sliverpb.PivotListener} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.PivotListener.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    id: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    type: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    bindaddress: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    pivotsList: jspb.Message.toObjectList(msg.getPivotsList(),
+    proto.sliverpb.NetConnPivot.toObject, includeInstance),
+    response: (f = msg.getResponse()) && commonpb_common_pb.Response.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sliverpb.PivotListener}
+ */
+proto.sliverpb.PivotListener.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sliverpb.PivotListener;
+  return proto.sliverpb.PivotListener.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sliverpb.PivotListener} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sliverpb.PivotListener}
+ */
+proto.sliverpb.PivotListener.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setId(value);
+      break;
+    case 2:
+      var value = /** @type {!proto.sliverpb.PivotType} */ (reader.readEnum());
+      msg.setType(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setBindaddress(value);
+      break;
+    case 4:
+      var value = new proto.sliverpb.NetConnPivot;
+      reader.readMessage(value,proto.sliverpb.NetConnPivot.deserializeBinaryFromReader);
+      msg.addPivots(value);
+      break;
+    case 9:
+      var value = new commonpb_common_pb.Response;
+      reader.readMessage(value,commonpb_common_pb.Response.deserializeBinaryFromReader);
+      msg.setResponse(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.PivotListener.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sliverpb.PivotListener.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sliverpb.PivotListener} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.PivotListener.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getId();
+  if (f !== 0) {
+    writer.writeUint32(
+      1,
+      f
+    );
+  }
+  f = message.getType();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      2,
+      f
+    );
+  }
+  f = message.getBindaddress();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getPivotsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      4,
+      f,
+      proto.sliverpb.NetConnPivot.serializeBinaryToWriter
+    );
+  }
+  f = message.getResponse();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      commonpb_common_pb.Response.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional uint32 ID = 1;
+ * @return {number}
+ */
+proto.sliverpb.PivotListener.prototype.getId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sliverpb.PivotListener} returns this
+ */
+proto.sliverpb.PivotListener.prototype.setId = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional PivotType Type = 2;
+ * @return {!proto.sliverpb.PivotType}
+ */
+proto.sliverpb.PivotListener.prototype.getType = function() {
+  return /** @type {!proto.sliverpb.PivotType} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/**
+ * @param {!proto.sliverpb.PivotType} value
+ * @return {!proto.sliverpb.PivotListener} returns this
+ */
+proto.sliverpb.PivotListener.prototype.setType = function(value) {
+  return jspb.Message.setProto3EnumField(this, 2, value);
+};
+
+
+/**
+ * optional string BindAddress = 3;
+ * @return {string}
+ */
+proto.sliverpb.PivotListener.prototype.getBindaddress = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.PivotListener} returns this
+ */
+proto.sliverpb.PivotListener.prototype.setBindaddress = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * repeated NetConnPivot Pivots = 4;
+ * @return {!Array<!proto.sliverpb.NetConnPivot>}
+ */
+proto.sliverpb.PivotListener.prototype.getPivotsList = function() {
+  return /** @type{!Array<!proto.sliverpb.NetConnPivot>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.sliverpb.NetConnPivot, 4));
+};
+
+
+/**
+ * @param {!Array<!proto.sliverpb.NetConnPivot>} value
+ * @return {!proto.sliverpb.PivotListener} returns this
+*/
+proto.sliverpb.PivotListener.prototype.setPivotsList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 4, value);
+};
+
+
+/**
+ * @param {!proto.sliverpb.NetConnPivot=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.sliverpb.NetConnPivot}
+ */
+proto.sliverpb.PivotListener.prototype.addPivots = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.sliverpb.NetConnPivot, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.sliverpb.PivotListener} returns this
+ */
+proto.sliverpb.PivotListener.prototype.clearPivotsList = function() {
+  return this.setPivotsList([]);
+};
+
+
+/**
+ * optional commonpb.Response Response = 9;
+ * @return {?proto.commonpb.Response}
+ */
+proto.sliverpb.PivotListener.prototype.getResponse = function() {
+  return /** @type{?proto.commonpb.Response} */ (
+    jspb.Message.getWrapperField(this, commonpb_common_pb.Response, 9));
+};
+
+
+/**
+ * @param {?proto.commonpb.Response|undefined} value
+ * @return {!proto.sliverpb.PivotListener} returns this
+*/
+proto.sliverpb.PivotListener.prototype.setResponse = function(value) {
+  return jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sliverpb.PivotListener} returns this
+ */
+proto.sliverpb.PivotListener.prototype.clearResponse = function() {
+  return this.setResponse(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sliverpb.PivotListener.prototype.hasResponse = function() {
+  return jspb.Message.getField(this, 9) != null;
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sliverpb.PivotHello.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.PivotHello.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sliverpb.PivotHello} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.PivotHello.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    publickey: msg.getPublickey_asB64(),
+    peerid: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    publickeysignature: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    sessionkey: msg.getSessionkey_asB64()
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sliverpb.PivotHello}
+ */
+proto.sliverpb.PivotHello.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sliverpb.PivotHello;
+  return proto.sliverpb.PivotHello.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sliverpb.PivotHello} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sliverpb.PivotHello}
+ */
+proto.sliverpb.PivotHello.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.setPublickey(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setPeerid(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPublickeysignature(value);
+      break;
+    case 4:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.setSessionkey(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.PivotHello.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sliverpb.PivotHello.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sliverpb.PivotHello} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.PivotHello.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getPublickey_asU8();
+  if (f.length > 0) {
+    writer.writeBytes(
+      1,
+      f
+    );
+  }
+  f = message.getPeerid();
+  if (f !== 0) {
+    writer.writeInt64(
+      2,
+      f
+    );
+  }
+  f = message.getPublickeysignature();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getSessionkey_asU8();
+  if (f.length > 0) {
+    writer.writeBytes(
+      4,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional bytes PublicKey = 1;
+ * @return {!(string|Uint8Array)}
+ */
+proto.sliverpb.PivotHello.prototype.getPublickey = function() {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * optional bytes PublicKey = 1;
+ * This is a type-conversion wrapper around `getPublickey()`
+ * @return {string}
+ */
+proto.sliverpb.PivotHello.prototype.getPublickey_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getPublickey()));
+};
+
+
+/**
+ * optional bytes PublicKey = 1;
+ * Note that Uint8Array is not supported on all browsers.
+ * @see http://caniuse.com/Uint8Array
+ * This is a type-conversion wrapper around `getPublickey()`
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.PivotHello.prototype.getPublickey_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getPublickey()));
+};
+
+
+/**
+ * @param {!(string|Uint8Array)} value
+ * @return {!proto.sliverpb.PivotHello} returns this
+ */
+proto.sliverpb.PivotHello.prototype.setPublickey = function(value) {
+  return jspb.Message.setProto3BytesField(this, 1, value);
+};
+
+
+/**
+ * optional int64 PeerID = 2;
+ * @return {number}
+ */
+proto.sliverpb.PivotHello.prototype.getPeerid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sliverpb.PivotHello} returns this
+ */
+proto.sliverpb.PivotHello.prototype.setPeerid = function(value) {
+  return jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * optional string PublicKeySignature = 3;
+ * @return {string}
+ */
+proto.sliverpb.PivotHello.prototype.getPublickeysignature = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.PivotHello} returns this
+ */
+proto.sliverpb.PivotHello.prototype.setPublickeysignature = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional bytes SessionKey = 4;
+ * @return {!(string|Uint8Array)}
+ */
+proto.sliverpb.PivotHello.prototype.getSessionkey = function() {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * optional bytes SessionKey = 4;
+ * This is a type-conversion wrapper around `getSessionkey()`
+ * @return {string}
+ */
+proto.sliverpb.PivotHello.prototype.getSessionkey_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getSessionkey()));
+};
+
+
+/**
+ * optional bytes SessionKey = 4;
+ * Note that Uint8Array is not supported on all browsers.
+ * @see http://caniuse.com/Uint8Array
+ * This is a type-conversion wrapper around `getSessionkey()`
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.PivotHello.prototype.getSessionkey_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getSessionkey()));
+};
+
+
+/**
+ * @param {!(string|Uint8Array)} value
+ * @return {!proto.sliverpb.PivotHello} returns this
+ */
+proto.sliverpb.PivotHello.prototype.setSessionkey = function(value) {
+  return jspb.Message.setProto3BytesField(this, 4, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sliverpb.PivotServerKeyExchange.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.PivotServerKeyExchange.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sliverpb.PivotServerKeyExchange} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.PivotServerKeyExchange.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    originid: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    sessionkey: msg.getSessionkey_asB64()
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sliverpb.PivotServerKeyExchange}
+ */
+proto.sliverpb.PivotServerKeyExchange.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sliverpb.PivotServerKeyExchange;
+  return proto.sliverpb.PivotServerKeyExchange.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sliverpb.PivotServerKeyExchange} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sliverpb.PivotServerKeyExchange}
+ */
+proto.sliverpb.PivotServerKeyExchange.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setOriginid(value);
+      break;
+    case 2:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.setSessionkey(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.PivotServerKeyExchange.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sliverpb.PivotServerKeyExchange.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sliverpb.PivotServerKeyExchange} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.PivotServerKeyExchange.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getOriginid();
+  if (f !== 0) {
+    writer.writeInt64(
+      1,
+      f
+    );
+  }
+  f = message.getSessionkey_asU8();
   if (f.length > 0) {
     writer.writeBytes(
       2,
@@ -22781,61 +26697,61 @@ proto.sliverpb.PivotData.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional uint32 PivotID = 12;
+ * optional int64 OriginID = 1;
  * @return {number}
  */
-proto.sliverpb.PivotData.prototype.getPivotid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 12, 0));
+proto.sliverpb.PivotServerKeyExchange.prototype.getOriginid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /**
  * @param {number} value
- * @return {!proto.sliverpb.PivotData} returns this
+ * @return {!proto.sliverpb.PivotServerKeyExchange} returns this
  */
-proto.sliverpb.PivotData.prototype.setPivotid = function(value) {
-  return jspb.Message.setProto3IntField(this, 12, value);
+proto.sliverpb.PivotServerKeyExchange.prototype.setOriginid = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
 };
 
 
 /**
- * optional bytes Data = 2;
+ * optional bytes SessionKey = 2;
  * @return {!(string|Uint8Array)}
  */
-proto.sliverpb.PivotData.prototype.getData = function() {
+proto.sliverpb.PivotServerKeyExchange.prototype.getSessionkey = function() {
   return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
- * optional bytes Data = 2;
- * This is a type-conversion wrapper around `getData()`
+ * optional bytes SessionKey = 2;
+ * This is a type-conversion wrapper around `getSessionkey()`
  * @return {string}
  */
-proto.sliverpb.PivotData.prototype.getData_asB64 = function() {
+proto.sliverpb.PivotServerKeyExchange.prototype.getSessionkey_asB64 = function() {
   return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getData()));
+      this.getSessionkey()));
 };
 
 
 /**
- * optional bytes Data = 2;
+ * optional bytes SessionKey = 2;
  * Note that Uint8Array is not supported on all browsers.
  * @see http://caniuse.com/Uint8Array
- * This is a type-conversion wrapper around `getData()`
+ * This is a type-conversion wrapper around `getSessionkey()`
  * @return {!Uint8Array}
  */
-proto.sliverpb.PivotData.prototype.getData_asU8 = function() {
+proto.sliverpb.PivotServerKeyExchange.prototype.getSessionkey_asU8 = function() {
   return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getData()));
+      this.getSessionkey()));
 };
 
 
 /**
  * @param {!(string|Uint8Array)} value
- * @return {!proto.sliverpb.PivotData} returns this
+ * @return {!proto.sliverpb.PivotServerKeyExchange} returns this
  */
-proto.sliverpb.PivotData.prototype.setData = function(value) {
+proto.sliverpb.PivotServerKeyExchange.prototype.setSessionkey = function(value) {
   return jspb.Message.setProto3BytesField(this, 2, value);
 };
 
@@ -22856,8 +26772,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.sliverpb.PivotEntry.prototype.toObject = function(opt_includeInstance) {
-  return proto.sliverpb.PivotEntry.toObject(opt_includeInstance, this);
+proto.sliverpb.PivotPeer.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.PivotPeer.toObject(opt_includeInstance, this);
 };
 
 
@@ -22866,14 +26782,14 @@ proto.sliverpb.PivotEntry.prototype.toObject = function(opt_includeInstance) {
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.sliverpb.PivotEntry} msg The msg instance to transform.
+ * @param {!proto.sliverpb.PivotPeer} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sliverpb.PivotEntry.toObject = function(includeInstance, msg) {
+proto.sliverpb.PivotPeer.toObject = function(includeInstance, msg) {
   var f, obj = {
-    type: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    remote: jspb.Message.getFieldWithDefault(msg, 2, "")
+    peerid: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    name: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -22887,23 +26803,23 @@ proto.sliverpb.PivotEntry.toObject = function(includeInstance, msg) {
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.sliverpb.PivotEntry}
+ * @return {!proto.sliverpb.PivotPeer}
  */
-proto.sliverpb.PivotEntry.deserializeBinary = function(bytes) {
+proto.sliverpb.PivotPeer.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sliverpb.PivotEntry;
-  return proto.sliverpb.PivotEntry.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.sliverpb.PivotPeer;
+  return proto.sliverpb.PivotPeer.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.sliverpb.PivotEntry} msg The message object to deserialize into.
+ * @param {!proto.sliverpb.PivotPeer} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.sliverpb.PivotEntry}
+ * @return {!proto.sliverpb.PivotPeer}
  */
-proto.sliverpb.PivotEntry.deserializeBinaryFromReader = function(msg, reader) {
+proto.sliverpb.PivotPeer.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -22911,12 +26827,12 @@ proto.sliverpb.PivotEntry.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setType(value);
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setPeerid(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setRemote(value);
+      msg.setName(value);
       break;
     default:
       reader.skipField();
@@ -22931,9 +26847,9 @@ proto.sliverpb.PivotEntry.deserializeBinaryFromReader = function(msg, reader) {
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sliverpb.PivotEntry.prototype.serializeBinary = function() {
+proto.sliverpb.PivotPeer.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.sliverpb.PivotEntry.serializeBinaryToWriter(this, writer);
+  proto.sliverpb.PivotPeer.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -22941,20 +26857,20 @@ proto.sliverpb.PivotEntry.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.sliverpb.PivotEntry} message
+ * @param {!proto.sliverpb.PivotPeer} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sliverpb.PivotEntry.serializeBinaryToWriter = function(message, writer) {
+proto.sliverpb.PivotPeer.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getType();
-  if (f.length > 0) {
-    writer.writeString(
+  f = message.getPeerid();
+  if (f !== 0) {
+    writer.writeInt64(
       1,
       f
     );
   }
-  f = message.getRemote();
+  f = message.getName();
   if (f.length > 0) {
     writer.writeString(
       2,
@@ -22965,37 +26881,655 @@ proto.sliverpb.PivotEntry.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional string Type = 1;
- * @return {string}
+ * optional int64 PeerID = 1;
+ * @return {number}
  */
-proto.sliverpb.PivotEntry.prototype.getType = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+proto.sliverpb.PivotPeer.prototype.getPeerid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /**
- * @param {string} value
- * @return {!proto.sliverpb.PivotEntry} returns this
+ * @param {number} value
+ * @return {!proto.sliverpb.PivotPeer} returns this
  */
-proto.sliverpb.PivotEntry.prototype.setType = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
+proto.sliverpb.PivotPeer.prototype.setPeerid = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
 };
 
 
 /**
- * optional string Remote = 2;
+ * optional string Name = 2;
  * @return {string}
  */
-proto.sliverpb.PivotEntry.prototype.getRemote = function() {
+proto.sliverpb.PivotPeer.prototype.getName = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.sliverpb.PivotEntry} returns this
+ * @return {!proto.sliverpb.PivotPeer} returns this
  */
-proto.sliverpb.PivotEntry.prototype.setRemote = function(value) {
+proto.sliverpb.PivotPeer.prototype.setName = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.sliverpb.PivotPeerEnvelope.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sliverpb.PivotPeerEnvelope.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.PivotPeerEnvelope.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sliverpb.PivotPeerEnvelope} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.PivotPeerEnvelope.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    peersList: jspb.Message.toObjectList(msg.getPeersList(),
+    proto.sliverpb.PivotPeer.toObject, includeInstance),
+    type: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    pivotsessionid: msg.getPivotsessionid_asB64(),
+    data: msg.getData_asB64(),
+    peerfailureat: jspb.Message.getFieldWithDefault(msg, 5, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sliverpb.PivotPeerEnvelope}
+ */
+proto.sliverpb.PivotPeerEnvelope.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sliverpb.PivotPeerEnvelope;
+  return proto.sliverpb.PivotPeerEnvelope.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sliverpb.PivotPeerEnvelope} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sliverpb.PivotPeerEnvelope}
+ */
+proto.sliverpb.PivotPeerEnvelope.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.sliverpb.PivotPeer;
+      reader.readMessage(value,proto.sliverpb.PivotPeer.deserializeBinaryFromReader);
+      msg.addPeers(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setType(value);
+      break;
+    case 3:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.setPivotsessionid(value);
+      break;
+    case 4:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.setData(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setPeerfailureat(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.PivotPeerEnvelope.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sliverpb.PivotPeerEnvelope.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sliverpb.PivotPeerEnvelope} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.PivotPeerEnvelope.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getPeersList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.sliverpb.PivotPeer.serializeBinaryToWriter
+    );
+  }
+  f = message.getType();
+  if (f !== 0) {
+    writer.writeUint32(
+      2,
+      f
+    );
+  }
+  f = message.getPivotsessionid_asU8();
+  if (f.length > 0) {
+    writer.writeBytes(
+      3,
+      f
+    );
+  }
+  f = message.getData_asU8();
+  if (f.length > 0) {
+    writer.writeBytes(
+      4,
+      f
+    );
+  }
+  f = message.getPeerfailureat();
+  if (f !== 0) {
+    writer.writeInt64(
+      5,
+      f
+    );
+  }
+};
+
+
+/**
+ * repeated PivotPeer Peers = 1;
+ * @return {!Array<!proto.sliverpb.PivotPeer>}
+ */
+proto.sliverpb.PivotPeerEnvelope.prototype.getPeersList = function() {
+  return /** @type{!Array<!proto.sliverpb.PivotPeer>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.sliverpb.PivotPeer, 1));
+};
+
+
+/**
+ * @param {!Array<!proto.sliverpb.PivotPeer>} value
+ * @return {!proto.sliverpb.PivotPeerEnvelope} returns this
+*/
+proto.sliverpb.PivotPeerEnvelope.prototype.setPeersList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.sliverpb.PivotPeer=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.sliverpb.PivotPeer}
+ */
+proto.sliverpb.PivotPeerEnvelope.prototype.addPeers = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.sliverpb.PivotPeer, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.sliverpb.PivotPeerEnvelope} returns this
+ */
+proto.sliverpb.PivotPeerEnvelope.prototype.clearPeersList = function() {
+  return this.setPeersList([]);
+};
+
+
+/**
+ * optional uint32 Type = 2;
+ * @return {number}
+ */
+proto.sliverpb.PivotPeerEnvelope.prototype.getType = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sliverpb.PivotPeerEnvelope} returns this
+ */
+proto.sliverpb.PivotPeerEnvelope.prototype.setType = function(value) {
+  return jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * optional bytes PivotSessionID = 3;
+ * @return {!(string|Uint8Array)}
+ */
+proto.sliverpb.PivotPeerEnvelope.prototype.getPivotsessionid = function() {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * optional bytes PivotSessionID = 3;
+ * This is a type-conversion wrapper around `getPivotsessionid()`
+ * @return {string}
+ */
+proto.sliverpb.PivotPeerEnvelope.prototype.getPivotsessionid_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getPivotsessionid()));
+};
+
+
+/**
+ * optional bytes PivotSessionID = 3;
+ * Note that Uint8Array is not supported on all browsers.
+ * @see http://caniuse.com/Uint8Array
+ * This is a type-conversion wrapper around `getPivotsessionid()`
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.PivotPeerEnvelope.prototype.getPivotsessionid_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getPivotsessionid()));
+};
+
+
+/**
+ * @param {!(string|Uint8Array)} value
+ * @return {!proto.sliverpb.PivotPeerEnvelope} returns this
+ */
+proto.sliverpb.PivotPeerEnvelope.prototype.setPivotsessionid = function(value) {
+  return jspb.Message.setProto3BytesField(this, 3, value);
+};
+
+
+/**
+ * optional bytes Data = 4;
+ * @return {!(string|Uint8Array)}
+ */
+proto.sliverpb.PivotPeerEnvelope.prototype.getData = function() {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * optional bytes Data = 4;
+ * This is a type-conversion wrapper around `getData()`
+ * @return {string}
+ */
+proto.sliverpb.PivotPeerEnvelope.prototype.getData_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getData()));
+};
+
+
+/**
+ * optional bytes Data = 4;
+ * Note that Uint8Array is not supported on all browsers.
+ * @see http://caniuse.com/Uint8Array
+ * This is a type-conversion wrapper around `getData()`
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.PivotPeerEnvelope.prototype.getData_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getData()));
+};
+
+
+/**
+ * @param {!(string|Uint8Array)} value
+ * @return {!proto.sliverpb.PivotPeerEnvelope} returns this
+ */
+proto.sliverpb.PivotPeerEnvelope.prototype.setData = function(value) {
+  return jspb.Message.setProto3BytesField(this, 4, value);
+};
+
+
+/**
+ * optional int64 PeerFailureAt = 5;
+ * @return {number}
+ */
+proto.sliverpb.PivotPeerEnvelope.prototype.getPeerfailureat = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sliverpb.PivotPeerEnvelope} returns this
+ */
+proto.sliverpb.PivotPeerEnvelope.prototype.setPeerfailureat = function(value) {
+  return jspb.Message.setProto3IntField(this, 5, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sliverpb.PivotPing.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.PivotPing.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sliverpb.PivotPing} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.PivotPing.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    nonce: jspb.Message.getFieldWithDefault(msg, 1, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sliverpb.PivotPing}
+ */
+proto.sliverpb.PivotPing.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sliverpb.PivotPing;
+  return proto.sliverpb.PivotPing.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sliverpb.PivotPing} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sliverpb.PivotPing}
+ */
+proto.sliverpb.PivotPing.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setNonce(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.PivotPing.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sliverpb.PivotPing.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sliverpb.PivotPing} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.PivotPing.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getNonce();
+  if (f !== 0) {
+    writer.writeUint32(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional uint32 Nonce = 1;
+ * @return {number}
+ */
+proto.sliverpb.PivotPing.prototype.getNonce = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sliverpb.PivotPing} returns this
+ */
+proto.sliverpb.PivotPing.prototype.setNonce = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sliverpb.NetConnPivot.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.NetConnPivot.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sliverpb.NetConnPivot} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.NetConnPivot.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    peerid: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    remoteaddress: jspb.Message.getFieldWithDefault(msg, 2, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sliverpb.NetConnPivot}
+ */
+proto.sliverpb.NetConnPivot.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sliverpb.NetConnPivot;
+  return proto.sliverpb.NetConnPivot.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sliverpb.NetConnPivot} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sliverpb.NetConnPivot}
+ */
+proto.sliverpb.NetConnPivot.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setPeerid(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setRemoteaddress(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.NetConnPivot.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sliverpb.NetConnPivot.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sliverpb.NetConnPivot} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.NetConnPivot.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getPeerid();
+  if (f !== 0) {
+    writer.writeInt64(
+      1,
+      f
+    );
+  }
+  f = message.getRemoteaddress();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional int64 PeerID = 1;
+ * @return {number}
+ */
+proto.sliverpb.NetConnPivot.prototype.getPeerid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sliverpb.NetConnPivot} returns this
+ */
+proto.sliverpb.NetConnPivot.prototype.setPeerid = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional string RemoteAddress = 2;
+ * @return {string}
+ */
+proto.sliverpb.NetConnPivot.prototype.getRemoteaddress = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.NetConnPivot} returns this
+ */
+proto.sliverpb.NetConnPivot.prototype.setRemoteaddress = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
 
@@ -23016,8 +27550,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.sliverpb.PivotListReq.prototype.toObject = function(opt_includeInstance) {
-  return proto.sliverpb.PivotListReq.toObject(opt_includeInstance, this);
+proto.sliverpb.PivotPeerFailure.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.PivotPeerFailure.toObject(opt_includeInstance, this);
 };
 
 
@@ -23026,11 +27560,201 @@ proto.sliverpb.PivotListReq.prototype.toObject = function(opt_includeInstance) {
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.sliverpb.PivotListReq} msg The msg instance to transform.
+ * @param {!proto.sliverpb.PivotPeerFailure} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sliverpb.PivotListReq.toObject = function(includeInstance, msg) {
+proto.sliverpb.PivotPeerFailure.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    peerid: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    type: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    err: jspb.Message.getFieldWithDefault(msg, 3, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sliverpb.PivotPeerFailure}
+ */
+proto.sliverpb.PivotPeerFailure.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sliverpb.PivotPeerFailure;
+  return proto.sliverpb.PivotPeerFailure.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sliverpb.PivotPeerFailure} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sliverpb.PivotPeerFailure}
+ */
+proto.sliverpb.PivotPeerFailure.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setPeerid(value);
+      break;
+    case 2:
+      var value = /** @type {!proto.sliverpb.PeerFailureType} */ (reader.readEnum());
+      msg.setType(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setErr(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.PivotPeerFailure.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sliverpb.PivotPeerFailure.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sliverpb.PivotPeerFailure} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.PivotPeerFailure.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getPeerid();
+  if (f !== 0) {
+    writer.writeInt64(
+      1,
+      f
+    );
+  }
+  f = message.getType();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      2,
+      f
+    );
+  }
+  f = message.getErr();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional int64 PeerID = 1;
+ * @return {number}
+ */
+proto.sliverpb.PivotPeerFailure.prototype.getPeerid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sliverpb.PivotPeerFailure} returns this
+ */
+proto.sliverpb.PivotPeerFailure.prototype.setPeerid = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional PeerFailureType Type = 2;
+ * @return {!proto.sliverpb.PeerFailureType}
+ */
+proto.sliverpb.PivotPeerFailure.prototype.getType = function() {
+  return /** @type {!proto.sliverpb.PeerFailureType} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/**
+ * @param {!proto.sliverpb.PeerFailureType} value
+ * @return {!proto.sliverpb.PivotPeerFailure} returns this
+ */
+proto.sliverpb.PivotPeerFailure.prototype.setType = function(value) {
+  return jspb.Message.setProto3EnumField(this, 2, value);
+};
+
+
+/**
+ * optional string Err = 3;
+ * @return {string}
+ */
+proto.sliverpb.PivotPeerFailure.prototype.getErr = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.PivotPeerFailure} returns this
+ */
+proto.sliverpb.PivotPeerFailure.prototype.setErr = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sliverpb.PivotListenersReq.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.PivotListenersReq.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sliverpb.PivotListenersReq} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.PivotListenersReq.toObject = function(includeInstance, msg) {
   var f, obj = {
     request: (f = msg.getRequest()) && commonpb_common_pb.Request.toObject(includeInstance, f)
   };
@@ -23046,23 +27770,23 @@ proto.sliverpb.PivotListReq.toObject = function(includeInstance, msg) {
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.sliverpb.PivotListReq}
+ * @return {!proto.sliverpb.PivotListenersReq}
  */
-proto.sliverpb.PivotListReq.deserializeBinary = function(bytes) {
+proto.sliverpb.PivotListenersReq.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sliverpb.PivotListReq;
-  return proto.sliverpb.PivotListReq.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.sliverpb.PivotListenersReq;
+  return proto.sliverpb.PivotListenersReq.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.sliverpb.PivotListReq} msg The message object to deserialize into.
+ * @param {!proto.sliverpb.PivotListenersReq} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.sliverpb.PivotListReq}
+ * @return {!proto.sliverpb.PivotListenersReq}
  */
-proto.sliverpb.PivotListReq.deserializeBinaryFromReader = function(msg, reader) {
+proto.sliverpb.PivotListenersReq.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -23087,9 +27811,9 @@ proto.sliverpb.PivotListReq.deserializeBinaryFromReader = function(msg, reader) 
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sliverpb.PivotListReq.prototype.serializeBinary = function() {
+proto.sliverpb.PivotListenersReq.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.sliverpb.PivotListReq.serializeBinaryToWriter(this, writer);
+  proto.sliverpb.PivotListenersReq.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -23097,11 +27821,11 @@ proto.sliverpb.PivotListReq.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.sliverpb.PivotListReq} message
+ * @param {!proto.sliverpb.PivotListenersReq} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sliverpb.PivotListReq.serializeBinaryToWriter = function(message, writer) {
+proto.sliverpb.PivotListenersReq.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getRequest();
   if (f != null) {
@@ -23118,7 +27842,7 @@ proto.sliverpb.PivotListReq.serializeBinaryToWriter = function(message, writer) 
  * optional commonpb.Request Request = 9;
  * @return {?proto.commonpb.Request}
  */
-proto.sliverpb.PivotListReq.prototype.getRequest = function() {
+proto.sliverpb.PivotListenersReq.prototype.getRequest = function() {
   return /** @type{?proto.commonpb.Request} */ (
     jspb.Message.getWrapperField(this, commonpb_common_pb.Request, 9));
 };
@@ -23126,18 +27850,18 @@ proto.sliverpb.PivotListReq.prototype.getRequest = function() {
 
 /**
  * @param {?proto.commonpb.Request|undefined} value
- * @return {!proto.sliverpb.PivotListReq} returns this
+ * @return {!proto.sliverpb.PivotListenersReq} returns this
 */
-proto.sliverpb.PivotListReq.prototype.setRequest = function(value) {
+proto.sliverpb.PivotListenersReq.prototype.setRequest = function(value) {
   return jspb.Message.setWrapperField(this, 9, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.sliverpb.PivotListReq} returns this
+ * @return {!proto.sliverpb.PivotListenersReq} returns this
  */
-proto.sliverpb.PivotListReq.prototype.clearRequest = function() {
+proto.sliverpb.PivotListenersReq.prototype.clearRequest = function() {
   return this.setRequest(undefined);
 };
 
@@ -23146,7 +27870,7 @@ proto.sliverpb.PivotListReq.prototype.clearRequest = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.sliverpb.PivotListReq.prototype.hasRequest = function() {
+proto.sliverpb.PivotListenersReq.prototype.hasRequest = function() {
   return jspb.Message.getField(this, 9) != null;
 };
 
@@ -23157,7 +27881,7 @@ proto.sliverpb.PivotListReq.prototype.hasRequest = function() {
  * @private {!Array<number>}
  * @const
  */
-proto.sliverpb.PivotList.repeatedFields_ = [1];
+proto.sliverpb.PivotListeners.repeatedFields_ = [1];
 
 
 
@@ -23174,8 +27898,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.sliverpb.PivotList.prototype.toObject = function(opt_includeInstance) {
-  return proto.sliverpb.PivotList.toObject(opt_includeInstance, this);
+proto.sliverpb.PivotListeners.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.PivotListeners.toObject(opt_includeInstance, this);
 };
 
 
@@ -23184,14 +27908,14 @@ proto.sliverpb.PivotList.prototype.toObject = function(opt_includeInstance) {
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.sliverpb.PivotList} msg The msg instance to transform.
+ * @param {!proto.sliverpb.PivotListeners} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sliverpb.PivotList.toObject = function(includeInstance, msg) {
+proto.sliverpb.PivotListeners.toObject = function(includeInstance, msg) {
   var f, obj = {
-    entriesList: jspb.Message.toObjectList(msg.getEntriesList(),
-    proto.sliverpb.PivotEntry.toObject, includeInstance),
+    listenersList: jspb.Message.toObjectList(msg.getListenersList(),
+    proto.sliverpb.PivotListener.toObject, includeInstance),
     response: (f = msg.getResponse()) && commonpb_common_pb.Response.toObject(includeInstance, f)
   };
 
@@ -23206,23 +27930,23 @@ proto.sliverpb.PivotList.toObject = function(includeInstance, msg) {
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.sliverpb.PivotList}
+ * @return {!proto.sliverpb.PivotListeners}
  */
-proto.sliverpb.PivotList.deserializeBinary = function(bytes) {
+proto.sliverpb.PivotListeners.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sliverpb.PivotList;
-  return proto.sliverpb.PivotList.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.sliverpb.PivotListeners;
+  return proto.sliverpb.PivotListeners.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.sliverpb.PivotList} msg The message object to deserialize into.
+ * @param {!proto.sliverpb.PivotListeners} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.sliverpb.PivotList}
+ * @return {!proto.sliverpb.PivotListeners}
  */
-proto.sliverpb.PivotList.deserializeBinaryFromReader = function(msg, reader) {
+proto.sliverpb.PivotListeners.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -23230,9 +27954,9 @@ proto.sliverpb.PivotList.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new proto.sliverpb.PivotEntry;
-      reader.readMessage(value,proto.sliverpb.PivotEntry.deserializeBinaryFromReader);
-      msg.addEntries(value);
+      var value = new proto.sliverpb.PivotListener;
+      reader.readMessage(value,proto.sliverpb.PivotListener.deserializeBinaryFromReader);
+      msg.addListeners(value);
       break;
     case 9:
       var value = new commonpb_common_pb.Response;
@@ -23252,9 +27976,9 @@ proto.sliverpb.PivotList.deserializeBinaryFromReader = function(msg, reader) {
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sliverpb.PivotList.prototype.serializeBinary = function() {
+proto.sliverpb.PivotListeners.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.sliverpb.PivotList.serializeBinaryToWriter(this, writer);
+  proto.sliverpb.PivotListeners.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -23262,18 +27986,18 @@ proto.sliverpb.PivotList.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.sliverpb.PivotList} message
+ * @param {!proto.sliverpb.PivotListeners} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sliverpb.PivotList.serializeBinaryToWriter = function(message, writer) {
+proto.sliverpb.PivotListeners.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getEntriesList();
+  f = message.getListenersList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       1,
       f,
-      proto.sliverpb.PivotEntry.serializeBinaryToWriter
+      proto.sliverpb.PivotListener.serializeBinaryToWriter
     );
   }
   f = message.getResponse();
@@ -23288,40 +28012,40 @@ proto.sliverpb.PivotList.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * repeated PivotEntry Entries = 1;
- * @return {!Array<!proto.sliverpb.PivotEntry>}
+ * repeated PivotListener Listeners = 1;
+ * @return {!Array<!proto.sliverpb.PivotListener>}
  */
-proto.sliverpb.PivotList.prototype.getEntriesList = function() {
-  return /** @type{!Array<!proto.sliverpb.PivotEntry>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.sliverpb.PivotEntry, 1));
+proto.sliverpb.PivotListeners.prototype.getListenersList = function() {
+  return /** @type{!Array<!proto.sliverpb.PivotListener>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.sliverpb.PivotListener, 1));
 };
 
 
 /**
- * @param {!Array<!proto.sliverpb.PivotEntry>} value
- * @return {!proto.sliverpb.PivotList} returns this
+ * @param {!Array<!proto.sliverpb.PivotListener>} value
+ * @return {!proto.sliverpb.PivotListeners} returns this
 */
-proto.sliverpb.PivotList.prototype.setEntriesList = function(value) {
+proto.sliverpb.PivotListeners.prototype.setListenersList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
 
 
 /**
- * @param {!proto.sliverpb.PivotEntry=} opt_value
+ * @param {!proto.sliverpb.PivotListener=} opt_value
  * @param {number=} opt_index
- * @return {!proto.sliverpb.PivotEntry}
+ * @return {!proto.sliverpb.PivotListener}
  */
-proto.sliverpb.PivotList.prototype.addEntries = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.sliverpb.PivotEntry, opt_index);
+proto.sliverpb.PivotListeners.prototype.addListeners = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.sliverpb.PivotListener, opt_index);
 };
 
 
 /**
  * Clears the list making it empty but non-null.
- * @return {!proto.sliverpb.PivotList} returns this
+ * @return {!proto.sliverpb.PivotListeners} returns this
  */
-proto.sliverpb.PivotList.prototype.clearEntriesList = function() {
-  return this.setEntriesList([]);
+proto.sliverpb.PivotListeners.prototype.clearListenersList = function() {
+  return this.setListenersList([]);
 };
 
 
@@ -23329,7 +28053,7 @@ proto.sliverpb.PivotList.prototype.clearEntriesList = function() {
  * optional commonpb.Response Response = 9;
  * @return {?proto.commonpb.Response}
  */
-proto.sliverpb.PivotList.prototype.getResponse = function() {
+proto.sliverpb.PivotListeners.prototype.getResponse = function() {
   return /** @type{?proto.commonpb.Response} */ (
     jspb.Message.getWrapperField(this, commonpb_common_pb.Response, 9));
 };
@@ -23337,18 +28061,18 @@ proto.sliverpb.PivotList.prototype.getResponse = function() {
 
 /**
  * @param {?proto.commonpb.Response|undefined} value
- * @return {!proto.sliverpb.PivotList} returns this
+ * @return {!proto.sliverpb.PivotListeners} returns this
 */
-proto.sliverpb.PivotList.prototype.setResponse = function(value) {
+proto.sliverpb.PivotListeners.prototype.setResponse = function(value) {
   return jspb.Message.setWrapperField(this, 9, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.sliverpb.PivotList} returns this
+ * @return {!proto.sliverpb.PivotListeners} returns this
  */
-proto.sliverpb.PivotList.prototype.clearResponse = function() {
+proto.sliverpb.PivotListeners.prototype.clearResponse = function() {
   return this.setResponse(undefined);
 };
 
@@ -23357,7 +28081,7 @@ proto.sliverpb.PivotList.prototype.clearResponse = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.sliverpb.PivotList.prototype.hasResponse = function() {
+proto.sliverpb.PivotListeners.prototype.hasResponse = function() {
   return jspb.Message.getField(this, 9) != null;
 };
 
@@ -25626,7 +30350,7 @@ proto.sliverpb.ReconnectIntervalReq.prototype.toObject = function(opt_includeIns
  */
 proto.sliverpb.ReconnectIntervalReq.toObject = function(includeInstance, msg) {
   var f, obj = {
-    reconnectintervalseconds: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    reconnectinterval: jspb.Message.getFieldWithDefault(msg, 1, 0),
     request: (f = msg.getRequest()) && commonpb_common_pb.Request.toObject(includeInstance, f)
   };
 
@@ -25665,8 +30389,8 @@ proto.sliverpb.ReconnectIntervalReq.deserializeBinaryFromReader = function(msg, 
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setReconnectintervalseconds(value);
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setReconnectinterval(value);
       break;
     case 9:
       var value = new commonpb_common_pb.Request;
@@ -25702,9 +30426,9 @@ proto.sliverpb.ReconnectIntervalReq.prototype.serializeBinary = function() {
  */
 proto.sliverpb.ReconnectIntervalReq.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getReconnectintervalseconds();
+  f = message.getReconnectinterval();
   if (f !== 0) {
-    writer.writeUint32(
+    writer.writeInt64(
       1,
       f
     );
@@ -25721,10 +30445,10 @@ proto.sliverpb.ReconnectIntervalReq.serializeBinaryToWriter = function(message, 
 
 
 /**
- * optional uint32 ReconnectIntervalSeconds = 1;
+ * optional int64 ReconnectInterval = 1;
  * @return {number}
  */
-proto.sliverpb.ReconnectIntervalReq.prototype.getReconnectintervalseconds = function() {
+proto.sliverpb.ReconnectIntervalReq.prototype.getReconnectinterval = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
@@ -25733,7 +30457,7 @@ proto.sliverpb.ReconnectIntervalReq.prototype.getReconnectintervalseconds = func
  * @param {number} value
  * @return {!proto.sliverpb.ReconnectIntervalReq} returns this
  */
-proto.sliverpb.ReconnectIntervalReq.prototype.setReconnectintervalseconds = function(value) {
+proto.sliverpb.ReconnectIntervalReq.prototype.setReconnectinterval = function(value) {
   return jspb.Message.setProto3IntField(this, 1, value);
 };
 
@@ -25958,7 +30682,7 @@ proto.sliverpb.PollIntervalReq.prototype.toObject = function(opt_includeInstance
  */
 proto.sliverpb.PollIntervalReq.toObject = function(includeInstance, msg) {
   var f, obj = {
-    pollintervalseconds: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    pollinterval: jspb.Message.getFieldWithDefault(msg, 1, 0),
     request: (f = msg.getRequest()) && commonpb_common_pb.Request.toObject(includeInstance, f)
   };
 
@@ -25997,8 +30721,8 @@ proto.sliverpb.PollIntervalReq.deserializeBinaryFromReader = function(msg, reade
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setPollintervalseconds(value);
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setPollinterval(value);
       break;
     case 9:
       var value = new commonpb_common_pb.Request;
@@ -26034,9 +30758,9 @@ proto.sliverpb.PollIntervalReq.prototype.serializeBinary = function() {
  */
 proto.sliverpb.PollIntervalReq.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getPollintervalseconds();
+  f = message.getPollinterval();
   if (f !== 0) {
-    writer.writeUint32(
+    writer.writeInt64(
       1,
       f
     );
@@ -26053,10 +30777,10 @@ proto.sliverpb.PollIntervalReq.serializeBinaryToWriter = function(message, write
 
 
 /**
- * optional uint32 PollIntervalSeconds = 1;
+ * optional int64 PollInterval = 1;
  * @return {number}
  */
-proto.sliverpb.PollIntervalReq.prototype.getPollintervalseconds = function() {
+proto.sliverpb.PollIntervalReq.prototype.getPollinterval = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
@@ -26065,7 +30789,7 @@ proto.sliverpb.PollIntervalReq.prototype.getPollintervalseconds = function() {
  * @param {number} value
  * @return {!proto.sliverpb.PollIntervalReq} returns this
  */
-proto.sliverpb.PollIntervalReq.prototype.setPollintervalseconds = function(value) {
+proto.sliverpb.PollIntervalReq.prototype.setPollinterval = function(value) {
   return jspb.Message.setProto3IntField(this, 1, value);
 };
 
@@ -26823,5 +31547,2058 @@ proto.sliverpb.SSHCommand.prototype.hasResponse = function() {
   return jspb.Message.getField(this, 9) != null;
 };
 
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sliverpb.GetPrivsReq.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.GetPrivsReq.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sliverpb.GetPrivsReq} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.GetPrivsReq.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    request: (f = msg.getRequest()) && commonpb_common_pb.Request.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sliverpb.GetPrivsReq}
+ */
+proto.sliverpb.GetPrivsReq.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sliverpb.GetPrivsReq;
+  return proto.sliverpb.GetPrivsReq.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sliverpb.GetPrivsReq} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sliverpb.GetPrivsReq}
+ */
+proto.sliverpb.GetPrivsReq.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 9:
+      var value = new commonpb_common_pb.Request;
+      reader.readMessage(value,commonpb_common_pb.Request.deserializeBinaryFromReader);
+      msg.setRequest(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.GetPrivsReq.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sliverpb.GetPrivsReq.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sliverpb.GetPrivsReq} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.GetPrivsReq.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getRequest();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      commonpb_common_pb.Request.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional commonpb.Request Request = 9;
+ * @return {?proto.commonpb.Request}
+ */
+proto.sliverpb.GetPrivsReq.prototype.getRequest = function() {
+  return /** @type{?proto.commonpb.Request} */ (
+    jspb.Message.getWrapperField(this, commonpb_common_pb.Request, 9));
+};
+
+
+/**
+ * @param {?proto.commonpb.Request|undefined} value
+ * @return {!proto.sliverpb.GetPrivsReq} returns this
+*/
+proto.sliverpb.GetPrivsReq.prototype.setRequest = function(value) {
+  return jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sliverpb.GetPrivsReq} returns this
+ */
+proto.sliverpb.GetPrivsReq.prototype.clearRequest = function() {
+  return this.setRequest(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sliverpb.GetPrivsReq.prototype.hasRequest = function() {
+  return jspb.Message.getField(this, 9) != null;
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sliverpb.WindowsPrivilegeEntry.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.WindowsPrivilegeEntry.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sliverpb.WindowsPrivilegeEntry} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.WindowsPrivilegeEntry.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    description: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    enabled: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
+    enabledbydefault: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
+    removed: jspb.Message.getBooleanFieldWithDefault(msg, 5, false),
+    usedforaccess: jspb.Message.getBooleanFieldWithDefault(msg, 6, false)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sliverpb.WindowsPrivilegeEntry}
+ */
+proto.sliverpb.WindowsPrivilegeEntry.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sliverpb.WindowsPrivilegeEntry;
+  return proto.sliverpb.WindowsPrivilegeEntry.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sliverpb.WindowsPrivilegeEntry} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sliverpb.WindowsPrivilegeEntry}
+ */
+proto.sliverpb.WindowsPrivilegeEntry.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDescription(value);
+      break;
+    case 3:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setEnabled(value);
+      break;
+    case 4:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setEnabledbydefault(value);
+      break;
+    case 5:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setRemoved(value);
+      break;
+    case 6:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setUsedforaccess(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.WindowsPrivilegeEntry.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sliverpb.WindowsPrivilegeEntry.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sliverpb.WindowsPrivilegeEntry} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.WindowsPrivilegeEntry.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getDescription();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getEnabled();
+  if (f) {
+    writer.writeBool(
+      3,
+      f
+    );
+  }
+  f = message.getEnabledbydefault();
+  if (f) {
+    writer.writeBool(
+      4,
+      f
+    );
+  }
+  f = message.getRemoved();
+  if (f) {
+    writer.writeBool(
+      5,
+      f
+    );
+  }
+  f = message.getUsedforaccess();
+  if (f) {
+    writer.writeBool(
+      6,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string Name = 1;
+ * @return {string}
+ */
+proto.sliverpb.WindowsPrivilegeEntry.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.WindowsPrivilegeEntry} returns this
+ */
+proto.sliverpb.WindowsPrivilegeEntry.prototype.setName = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string Description = 2;
+ * @return {string}
+ */
+proto.sliverpb.WindowsPrivilegeEntry.prototype.getDescription = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.WindowsPrivilegeEntry} returns this
+ */
+proto.sliverpb.WindowsPrivilegeEntry.prototype.setDescription = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional bool Enabled = 3;
+ * @return {boolean}
+ */
+proto.sliverpb.WindowsPrivilegeEntry.prototype.getEnabled = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 3, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.sliverpb.WindowsPrivilegeEntry} returns this
+ */
+proto.sliverpb.WindowsPrivilegeEntry.prototype.setEnabled = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 3, value);
+};
+
+
+/**
+ * optional bool EnabledByDefault = 4;
+ * @return {boolean}
+ */
+proto.sliverpb.WindowsPrivilegeEntry.prototype.getEnabledbydefault = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 4, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.sliverpb.WindowsPrivilegeEntry} returns this
+ */
+proto.sliverpb.WindowsPrivilegeEntry.prototype.setEnabledbydefault = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 4, value);
+};
+
+
+/**
+ * optional bool Removed = 5;
+ * @return {boolean}
+ */
+proto.sliverpb.WindowsPrivilegeEntry.prototype.getRemoved = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 5, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.sliverpb.WindowsPrivilegeEntry} returns this
+ */
+proto.sliverpb.WindowsPrivilegeEntry.prototype.setRemoved = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 5, value);
+};
+
+
+/**
+ * optional bool UsedForAccess = 6;
+ * @return {boolean}
+ */
+proto.sliverpb.WindowsPrivilegeEntry.prototype.getUsedforaccess = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 6, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.sliverpb.WindowsPrivilegeEntry} returns this
+ */
+proto.sliverpb.WindowsPrivilegeEntry.prototype.setUsedforaccess = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 6, value);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.sliverpb.GetPrivs.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sliverpb.GetPrivs.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.GetPrivs.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sliverpb.GetPrivs} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.GetPrivs.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    privinfoList: jspb.Message.toObjectList(msg.getPrivinfoList(),
+    proto.sliverpb.WindowsPrivilegeEntry.toObject, includeInstance),
+    processintegrity: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    processname: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    response: (f = msg.getResponse()) && commonpb_common_pb.Response.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sliverpb.GetPrivs}
+ */
+proto.sliverpb.GetPrivs.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sliverpb.GetPrivs;
+  return proto.sliverpb.GetPrivs.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sliverpb.GetPrivs} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sliverpb.GetPrivs}
+ */
+proto.sliverpb.GetPrivs.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.sliverpb.WindowsPrivilegeEntry;
+      reader.readMessage(value,proto.sliverpb.WindowsPrivilegeEntry.deserializeBinaryFromReader);
+      msg.addPrivinfo(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setProcessintegrity(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setProcessname(value);
+      break;
+    case 9:
+      var value = new commonpb_common_pb.Response;
+      reader.readMessage(value,commonpb_common_pb.Response.deserializeBinaryFromReader);
+      msg.setResponse(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.GetPrivs.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sliverpb.GetPrivs.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sliverpb.GetPrivs} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.GetPrivs.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getPrivinfoList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.sliverpb.WindowsPrivilegeEntry.serializeBinaryToWriter
+    );
+  }
+  f = message.getProcessintegrity();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getProcessname();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getResponse();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      commonpb_common_pb.Response.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * repeated WindowsPrivilegeEntry PrivInfo = 1;
+ * @return {!Array<!proto.sliverpb.WindowsPrivilegeEntry>}
+ */
+proto.sliverpb.GetPrivs.prototype.getPrivinfoList = function() {
+  return /** @type{!Array<!proto.sliverpb.WindowsPrivilegeEntry>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.sliverpb.WindowsPrivilegeEntry, 1));
+};
+
+
+/**
+ * @param {!Array<!proto.sliverpb.WindowsPrivilegeEntry>} value
+ * @return {!proto.sliverpb.GetPrivs} returns this
+*/
+proto.sliverpb.GetPrivs.prototype.setPrivinfoList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.sliverpb.WindowsPrivilegeEntry=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.sliverpb.WindowsPrivilegeEntry}
+ */
+proto.sliverpb.GetPrivs.prototype.addPrivinfo = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.sliverpb.WindowsPrivilegeEntry, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.sliverpb.GetPrivs} returns this
+ */
+proto.sliverpb.GetPrivs.prototype.clearPrivinfoList = function() {
+  return this.setPrivinfoList([]);
+};
+
+
+/**
+ * optional string ProcessIntegrity = 2;
+ * @return {string}
+ */
+proto.sliverpb.GetPrivs.prototype.getProcessintegrity = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.GetPrivs} returns this
+ */
+proto.sliverpb.GetPrivs.prototype.setProcessintegrity = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string ProcessName = 3;
+ * @return {string}
+ */
+proto.sliverpb.GetPrivs.prototype.getProcessname = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.GetPrivs} returns this
+ */
+proto.sliverpb.GetPrivs.prototype.setProcessname = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional commonpb.Response Response = 9;
+ * @return {?proto.commonpb.Response}
+ */
+proto.sliverpb.GetPrivs.prototype.getResponse = function() {
+  return /** @type{?proto.commonpb.Response} */ (
+    jspb.Message.getWrapperField(this, commonpb_common_pb.Response, 9));
+};
+
+
+/**
+ * @param {?proto.commonpb.Response|undefined} value
+ * @return {!proto.sliverpb.GetPrivs} returns this
+*/
+proto.sliverpb.GetPrivs.prototype.setResponse = function(value) {
+  return jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sliverpb.GetPrivs} returns this
+ */
+proto.sliverpb.GetPrivs.prototype.clearResponse = function() {
+  return this.setResponse(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sliverpb.GetPrivs.prototype.hasResponse = function() {
+  return jspb.Message.getField(this, 9) != null;
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sliverpb.RegisterExtensionReq.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.RegisterExtensionReq.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sliverpb.RegisterExtensionReq} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.RegisterExtensionReq.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    data: msg.getData_asB64(),
+    os: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    init: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    request: (f = msg.getRequest()) && commonpb_common_pb.Request.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sliverpb.RegisterExtensionReq}
+ */
+proto.sliverpb.RegisterExtensionReq.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sliverpb.RegisterExtensionReq;
+  return proto.sliverpb.RegisterExtensionReq.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sliverpb.RegisterExtensionReq} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sliverpb.RegisterExtensionReq}
+ */
+proto.sliverpb.RegisterExtensionReq.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
+    case 2:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.setData(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setOs(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setInit(value);
+      break;
+    case 9:
+      var value = new commonpb_common_pb.Request;
+      reader.readMessage(value,commonpb_common_pb.Request.deserializeBinaryFromReader);
+      msg.setRequest(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.RegisterExtensionReq.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sliverpb.RegisterExtensionReq.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sliverpb.RegisterExtensionReq} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.RegisterExtensionReq.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getData_asU8();
+  if (f.length > 0) {
+    writer.writeBytes(
+      2,
+      f
+    );
+  }
+  f = message.getOs();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getInit();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+  f = message.getRequest();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      commonpb_common_pb.Request.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional string Name = 1;
+ * @return {string}
+ */
+proto.sliverpb.RegisterExtensionReq.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.RegisterExtensionReq} returns this
+ */
+proto.sliverpb.RegisterExtensionReq.prototype.setName = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional bytes Data = 2;
+ * @return {!(string|Uint8Array)}
+ */
+proto.sliverpb.RegisterExtensionReq.prototype.getData = function() {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * optional bytes Data = 2;
+ * This is a type-conversion wrapper around `getData()`
+ * @return {string}
+ */
+proto.sliverpb.RegisterExtensionReq.prototype.getData_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getData()));
+};
+
+
+/**
+ * optional bytes Data = 2;
+ * Note that Uint8Array is not supported on all browsers.
+ * @see http://caniuse.com/Uint8Array
+ * This is a type-conversion wrapper around `getData()`
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.RegisterExtensionReq.prototype.getData_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getData()));
+};
+
+
+/**
+ * @param {!(string|Uint8Array)} value
+ * @return {!proto.sliverpb.RegisterExtensionReq} returns this
+ */
+proto.sliverpb.RegisterExtensionReq.prototype.setData = function(value) {
+  return jspb.Message.setProto3BytesField(this, 2, value);
+};
+
+
+/**
+ * optional string OS = 3;
+ * @return {string}
+ */
+proto.sliverpb.RegisterExtensionReq.prototype.getOs = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.RegisterExtensionReq} returns this
+ */
+proto.sliverpb.RegisterExtensionReq.prototype.setOs = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional string Init = 4;
+ * @return {string}
+ */
+proto.sliverpb.RegisterExtensionReq.prototype.getInit = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.RegisterExtensionReq} returns this
+ */
+proto.sliverpb.RegisterExtensionReq.prototype.setInit = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional commonpb.Request Request = 9;
+ * @return {?proto.commonpb.Request}
+ */
+proto.sliverpb.RegisterExtensionReq.prototype.getRequest = function() {
+  return /** @type{?proto.commonpb.Request} */ (
+    jspb.Message.getWrapperField(this, commonpb_common_pb.Request, 9));
+};
+
+
+/**
+ * @param {?proto.commonpb.Request|undefined} value
+ * @return {!proto.sliverpb.RegisterExtensionReq} returns this
+*/
+proto.sliverpb.RegisterExtensionReq.prototype.setRequest = function(value) {
+  return jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sliverpb.RegisterExtensionReq} returns this
+ */
+proto.sliverpb.RegisterExtensionReq.prototype.clearRequest = function() {
+  return this.setRequest(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sliverpb.RegisterExtensionReq.prototype.hasRequest = function() {
+  return jspb.Message.getField(this, 9) != null;
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sliverpb.RegisterExtension.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.RegisterExtension.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sliverpb.RegisterExtension} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.RegisterExtension.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    response: (f = msg.getResponse()) && commonpb_common_pb.Response.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sliverpb.RegisterExtension}
+ */
+proto.sliverpb.RegisterExtension.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sliverpb.RegisterExtension;
+  return proto.sliverpb.RegisterExtension.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sliverpb.RegisterExtension} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sliverpb.RegisterExtension}
+ */
+proto.sliverpb.RegisterExtension.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 9:
+      var value = new commonpb_common_pb.Response;
+      reader.readMessage(value,commonpb_common_pb.Response.deserializeBinaryFromReader);
+      msg.setResponse(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.RegisterExtension.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sliverpb.RegisterExtension.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sliverpb.RegisterExtension} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.RegisterExtension.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getResponse();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      commonpb_common_pb.Response.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional commonpb.Response Response = 9;
+ * @return {?proto.commonpb.Response}
+ */
+proto.sliverpb.RegisterExtension.prototype.getResponse = function() {
+  return /** @type{?proto.commonpb.Response} */ (
+    jspb.Message.getWrapperField(this, commonpb_common_pb.Response, 9));
+};
+
+
+/**
+ * @param {?proto.commonpb.Response|undefined} value
+ * @return {!proto.sliverpb.RegisterExtension} returns this
+*/
+proto.sliverpb.RegisterExtension.prototype.setResponse = function(value) {
+  return jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sliverpb.RegisterExtension} returns this
+ */
+proto.sliverpb.RegisterExtension.prototype.clearResponse = function() {
+  return this.setResponse(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sliverpb.RegisterExtension.prototype.hasResponse = function() {
+  return jspb.Message.getField(this, 9) != null;
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sliverpb.CallExtensionReq.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.CallExtensionReq.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sliverpb.CallExtensionReq} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.CallExtensionReq.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    serverstore: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
+    args: msg.getArgs_asB64(),
+    pb_export: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    request: (f = msg.getRequest()) && commonpb_common_pb.Request.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sliverpb.CallExtensionReq}
+ */
+proto.sliverpb.CallExtensionReq.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sliverpb.CallExtensionReq;
+  return proto.sliverpb.CallExtensionReq.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sliverpb.CallExtensionReq} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sliverpb.CallExtensionReq}
+ */
+proto.sliverpb.CallExtensionReq.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
+    case 2:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setServerstore(value);
+      break;
+    case 3:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.setArgs(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setExport(value);
+      break;
+    case 9:
+      var value = new commonpb_common_pb.Request;
+      reader.readMessage(value,commonpb_common_pb.Request.deserializeBinaryFromReader);
+      msg.setRequest(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.CallExtensionReq.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sliverpb.CallExtensionReq.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sliverpb.CallExtensionReq} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.CallExtensionReq.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getServerstore();
+  if (f) {
+    writer.writeBool(
+      2,
+      f
+    );
+  }
+  f = message.getArgs_asU8();
+  if (f.length > 0) {
+    writer.writeBytes(
+      3,
+      f
+    );
+  }
+  f = message.getExport();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+  f = message.getRequest();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      commonpb_common_pb.Request.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional string Name = 1;
+ * @return {string}
+ */
+proto.sliverpb.CallExtensionReq.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.CallExtensionReq} returns this
+ */
+proto.sliverpb.CallExtensionReq.prototype.setName = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional bool ServerStore = 2;
+ * @return {boolean}
+ */
+proto.sliverpb.CallExtensionReq.prototype.getServerstore = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 2, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.sliverpb.CallExtensionReq} returns this
+ */
+proto.sliverpb.CallExtensionReq.prototype.setServerstore = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 2, value);
+};
+
+
+/**
+ * optional bytes Args = 3;
+ * @return {!(string|Uint8Array)}
+ */
+proto.sliverpb.CallExtensionReq.prototype.getArgs = function() {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * optional bytes Args = 3;
+ * This is a type-conversion wrapper around `getArgs()`
+ * @return {string}
+ */
+proto.sliverpb.CallExtensionReq.prototype.getArgs_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getArgs()));
+};
+
+
+/**
+ * optional bytes Args = 3;
+ * Note that Uint8Array is not supported on all browsers.
+ * @see http://caniuse.com/Uint8Array
+ * This is a type-conversion wrapper around `getArgs()`
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.CallExtensionReq.prototype.getArgs_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getArgs()));
+};
+
+
+/**
+ * @param {!(string|Uint8Array)} value
+ * @return {!proto.sliverpb.CallExtensionReq} returns this
+ */
+proto.sliverpb.CallExtensionReq.prototype.setArgs = function(value) {
+  return jspb.Message.setProto3BytesField(this, 3, value);
+};
+
+
+/**
+ * optional string Export = 4;
+ * @return {string}
+ */
+proto.sliverpb.CallExtensionReq.prototype.getExport = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sliverpb.CallExtensionReq} returns this
+ */
+proto.sliverpb.CallExtensionReq.prototype.setExport = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional commonpb.Request Request = 9;
+ * @return {?proto.commonpb.Request}
+ */
+proto.sliverpb.CallExtensionReq.prototype.getRequest = function() {
+  return /** @type{?proto.commonpb.Request} */ (
+    jspb.Message.getWrapperField(this, commonpb_common_pb.Request, 9));
+};
+
+
+/**
+ * @param {?proto.commonpb.Request|undefined} value
+ * @return {!proto.sliverpb.CallExtensionReq} returns this
+*/
+proto.sliverpb.CallExtensionReq.prototype.setRequest = function(value) {
+  return jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sliverpb.CallExtensionReq} returns this
+ */
+proto.sliverpb.CallExtensionReq.prototype.clearRequest = function() {
+  return this.setRequest(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sliverpb.CallExtensionReq.prototype.hasRequest = function() {
+  return jspb.Message.getField(this, 9) != null;
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sliverpb.CallExtension.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.CallExtension.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sliverpb.CallExtension} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.CallExtension.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    output: msg.getOutput_asB64(),
+    serverstore: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
+    response: (f = msg.getResponse()) && commonpb_common_pb.Response.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sliverpb.CallExtension}
+ */
+proto.sliverpb.CallExtension.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sliverpb.CallExtension;
+  return proto.sliverpb.CallExtension.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sliverpb.CallExtension} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sliverpb.CallExtension}
+ */
+proto.sliverpb.CallExtension.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.setOutput(value);
+      break;
+    case 2:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setServerstore(value);
+      break;
+    case 9:
+      var value = new commonpb_common_pb.Response;
+      reader.readMessage(value,commonpb_common_pb.Response.deserializeBinaryFromReader);
+      msg.setResponse(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.CallExtension.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sliverpb.CallExtension.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sliverpb.CallExtension} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.CallExtension.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getOutput_asU8();
+  if (f.length > 0) {
+    writer.writeBytes(
+      1,
+      f
+    );
+  }
+  f = message.getServerstore();
+  if (f) {
+    writer.writeBool(
+      2,
+      f
+    );
+  }
+  f = message.getResponse();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      commonpb_common_pb.Response.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional bytes Output = 1;
+ * @return {!(string|Uint8Array)}
+ */
+proto.sliverpb.CallExtension.prototype.getOutput = function() {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * optional bytes Output = 1;
+ * This is a type-conversion wrapper around `getOutput()`
+ * @return {string}
+ */
+proto.sliverpb.CallExtension.prototype.getOutput_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getOutput()));
+};
+
+
+/**
+ * optional bytes Output = 1;
+ * Note that Uint8Array is not supported on all browsers.
+ * @see http://caniuse.com/Uint8Array
+ * This is a type-conversion wrapper around `getOutput()`
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.CallExtension.prototype.getOutput_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getOutput()));
+};
+
+
+/**
+ * @param {!(string|Uint8Array)} value
+ * @return {!proto.sliverpb.CallExtension} returns this
+ */
+proto.sliverpb.CallExtension.prototype.setOutput = function(value) {
+  return jspb.Message.setProto3BytesField(this, 1, value);
+};
+
+
+/**
+ * optional bool ServerStore = 2;
+ * @return {boolean}
+ */
+proto.sliverpb.CallExtension.prototype.getServerstore = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 2, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.sliverpb.CallExtension} returns this
+ */
+proto.sliverpb.CallExtension.prototype.setServerstore = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 2, value);
+};
+
+
+/**
+ * optional commonpb.Response Response = 9;
+ * @return {?proto.commonpb.Response}
+ */
+proto.sliverpb.CallExtension.prototype.getResponse = function() {
+  return /** @type{?proto.commonpb.Response} */ (
+    jspb.Message.getWrapperField(this, commonpb_common_pb.Response, 9));
+};
+
+
+/**
+ * @param {?proto.commonpb.Response|undefined} value
+ * @return {!proto.sliverpb.CallExtension} returns this
+*/
+proto.sliverpb.CallExtension.prototype.setResponse = function(value) {
+  return jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sliverpb.CallExtension} returns this
+ */
+proto.sliverpb.CallExtension.prototype.clearResponse = function() {
+  return this.setResponse(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sliverpb.CallExtension.prototype.hasResponse = function() {
+  return jspb.Message.getField(this, 9) != null;
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sliverpb.ListExtensionsReq.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.ListExtensionsReq.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sliverpb.ListExtensionsReq} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.ListExtensionsReq.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    request: (f = msg.getRequest()) && commonpb_common_pb.Request.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sliverpb.ListExtensionsReq}
+ */
+proto.sliverpb.ListExtensionsReq.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sliverpb.ListExtensionsReq;
+  return proto.sliverpb.ListExtensionsReq.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sliverpb.ListExtensionsReq} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sliverpb.ListExtensionsReq}
+ */
+proto.sliverpb.ListExtensionsReq.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 9:
+      var value = new commonpb_common_pb.Request;
+      reader.readMessage(value,commonpb_common_pb.Request.deserializeBinaryFromReader);
+      msg.setRequest(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.ListExtensionsReq.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sliverpb.ListExtensionsReq.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sliverpb.ListExtensionsReq} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.ListExtensionsReq.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getRequest();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      commonpb_common_pb.Request.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional commonpb.Request Request = 9;
+ * @return {?proto.commonpb.Request}
+ */
+proto.sliverpb.ListExtensionsReq.prototype.getRequest = function() {
+  return /** @type{?proto.commonpb.Request} */ (
+    jspb.Message.getWrapperField(this, commonpb_common_pb.Request, 9));
+};
+
+
+/**
+ * @param {?proto.commonpb.Request|undefined} value
+ * @return {!proto.sliverpb.ListExtensionsReq} returns this
+*/
+proto.sliverpb.ListExtensionsReq.prototype.setRequest = function(value) {
+  return jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sliverpb.ListExtensionsReq} returns this
+ */
+proto.sliverpb.ListExtensionsReq.prototype.clearRequest = function() {
+  return this.setRequest(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sliverpb.ListExtensionsReq.prototype.hasRequest = function() {
+  return jspb.Message.getField(this, 9) != null;
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.sliverpb.ListExtensions.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sliverpb.ListExtensions.prototype.toObject = function(opt_includeInstance) {
+  return proto.sliverpb.ListExtensions.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sliverpb.ListExtensions} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.ListExtensions.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    namesList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f,
+    response: (f = msg.getResponse()) && commonpb_common_pb.Response.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sliverpb.ListExtensions}
+ */
+proto.sliverpb.ListExtensions.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sliverpb.ListExtensions;
+  return proto.sliverpb.ListExtensions.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sliverpb.ListExtensions} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sliverpb.ListExtensions}
+ */
+proto.sliverpb.ListExtensions.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addNames(value);
+      break;
+    case 9:
+      var value = new commonpb_common_pb.Response;
+      reader.readMessage(value,commonpb_common_pb.Response.deserializeBinaryFromReader);
+      msg.setResponse(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sliverpb.ListExtensions.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sliverpb.ListExtensions.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sliverpb.ListExtensions} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sliverpb.ListExtensions.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getNamesList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      1,
+      f
+    );
+  }
+  f = message.getResponse();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      commonpb_common_pb.Response.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * repeated string Names = 1;
+ * @return {!Array<string>}
+ */
+proto.sliverpb.ListExtensions.prototype.getNamesList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 1));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.sliverpb.ListExtensions} returns this
+ */
+proto.sliverpb.ListExtensions.prototype.setNamesList = function(value) {
+  return jspb.Message.setField(this, 1, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.sliverpb.ListExtensions} returns this
+ */
+proto.sliverpb.ListExtensions.prototype.addNames = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 1, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.sliverpb.ListExtensions} returns this
+ */
+proto.sliverpb.ListExtensions.prototype.clearNamesList = function() {
+  return this.setNamesList([]);
+};
+
+
+/**
+ * optional commonpb.Response Response = 9;
+ * @return {?proto.commonpb.Response}
+ */
+proto.sliverpb.ListExtensions.prototype.getResponse = function() {
+  return /** @type{?proto.commonpb.Response} */ (
+    jspb.Message.getWrapperField(this, commonpb_common_pb.Response, 9));
+};
+
+
+/**
+ * @param {?proto.commonpb.Response|undefined} value
+ * @return {!proto.sliverpb.ListExtensions} returns this
+*/
+proto.sliverpb.ListExtensions.prototype.setResponse = function(value) {
+  return jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sliverpb.ListExtensions} returns this
+ */
+proto.sliverpb.ListExtensions.prototype.clearResponse = function() {
+  return this.setResponse(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sliverpb.ListExtensions.prototype.hasResponse = function() {
+  return jspb.Message.getField(this, 9) != null;
+};
+
+
+/**
+ * @enum {number}
+ */
+proto.sliverpb.PivotType = {
+  TCP: 0,
+  UDP: 1,
+  NAMEDPIPE: 2
+};
+
+/**
+ * @enum {number}
+ */
+proto.sliverpb.PeerFailureType = {
+  SEND_FAILURE: 0,
+  DISCONNECT: 1
+};
 
 goog.object.extend(exports, proto.sliverpb);

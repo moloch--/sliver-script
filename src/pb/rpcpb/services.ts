@@ -53,6 +53,15 @@ export namespace rpcpb {
                 responseSerialize: (message: dependency_3.clientpb.Operators) => Buffer.from(message.serialize()),
                 responseDeserialize: (bytes: Buffer) => dependency_3.clientpb.Operators.deserialize(new Uint8Array(bytes))
             },
+            Kill: {
+                path: "/rpcpb.SliverRPC/Kill",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: dependency_2.sliverpb.KillReq) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_2.sliverpb.KillReq.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_1.commonpb.Empty) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_1.commonpb.Empty.deserialize(new Uint8Array(bytes))
+            },
             GetSessions: {
                 path: "/rpcpb.SliverRPC/GetSessions",
                 requestStream: false,
@@ -62,15 +71,6 @@ export namespace rpcpb {
                 responseSerialize: (message: dependency_3.clientpb.Sessions) => Buffer.from(message.serialize()),
                 responseDeserialize: (bytes: Buffer) => dependency_3.clientpb.Sessions.deserialize(new Uint8Array(bytes))
             },
-            KillSession: {
-                path: "/rpcpb.SliverRPC/KillSession",
-                requestStream: false,
-                responseStream: false,
-                requestSerialize: (message: dependency_2.sliverpb.KillSessionReq) => Buffer.from(message.serialize()),
-                requestDeserialize: (bytes: Buffer) => dependency_2.sliverpb.KillSessionReq.deserialize(new Uint8Array(bytes)),
-                responseSerialize: (message: dependency_1.commonpb.Empty) => Buffer.from(message.serialize()),
-                responseDeserialize: (bytes: Buffer) => dependency_1.commonpb.Empty.deserialize(new Uint8Array(bytes))
-            },
             UpdateSession: {
                 path: "/rpcpb.SliverRPC/UpdateSession",
                 requestStream: false,
@@ -79,6 +79,51 @@ export namespace rpcpb {
                 requestDeserialize: (bytes: Buffer) => dependency_3.clientpb.UpdateSession.deserialize(new Uint8Array(bytes)),
                 responseSerialize: (message: dependency_3.clientpb.Session) => Buffer.from(message.serialize()),
                 responseDeserialize: (bytes: Buffer) => dependency_3.clientpb.Session.deserialize(new Uint8Array(bytes))
+            },
+            GetBeacons: {
+                path: "/rpcpb.SliverRPC/GetBeacons",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: dependency_1.commonpb.Empty) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_1.commonpb.Empty.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_3.clientpb.Beacons) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_3.clientpb.Beacons.deserialize(new Uint8Array(bytes))
+            },
+            GetBeacon: {
+                path: "/rpcpb.SliverRPC/GetBeacon",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: dependency_3.clientpb.Beacon) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_3.clientpb.Beacon.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_3.clientpb.Beacon) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_3.clientpb.Beacon.deserialize(new Uint8Array(bytes))
+            },
+            RmBeacon: {
+                path: "/rpcpb.SliverRPC/RmBeacon",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: dependency_3.clientpb.Beacon) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_3.clientpb.Beacon.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_1.commonpb.Empty) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_1.commonpb.Empty.deserialize(new Uint8Array(bytes))
+            },
+            GetBeaconTasks: {
+                path: "/rpcpb.SliverRPC/GetBeaconTasks",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: dependency_3.clientpb.Beacon) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_3.clientpb.Beacon.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_3.clientpb.BeaconTasks) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_3.clientpb.BeaconTasks.deserialize(new Uint8Array(bytes))
+            },
+            GetBeaconTaskContent: {
+                path: "/rpcpb.SliverRPC/GetBeaconTaskContent",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: dependency_3.clientpb.BeaconTask) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_3.clientpb.BeaconTask.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_3.clientpb.BeaconTask) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_3.clientpb.BeaconTask.deserialize(new Uint8Array(bytes))
             },
             MonitorStart: {
                 path: "/rpcpb.SliverRPC/MonitorStart",
@@ -232,6 +277,42 @@ export namespace rpcpb {
                 requestDeserialize: (bytes: Buffer) => dependency_3.clientpb.Loot.deserialize(new Uint8Array(bytes)),
                 responseSerialize: (message: dependency_3.clientpb.AllLoot) => Buffer.from(message.serialize()),
                 responseDeserialize: (bytes: Buffer) => dependency_3.clientpb.AllLoot.deserialize(new Uint8Array(bytes))
+            },
+            Hosts: {
+                path: "/rpcpb.SliverRPC/Hosts",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: dependency_1.commonpb.Empty) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_1.commonpb.Empty.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_3.clientpb.AllHosts) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_3.clientpb.AllHosts.deserialize(new Uint8Array(bytes))
+            },
+            Host: {
+                path: "/rpcpb.SliverRPC/Host",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: dependency_3.clientpb.Host) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_3.clientpb.Host.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_3.clientpb.Host) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_3.clientpb.Host.deserialize(new Uint8Array(bytes))
+            },
+            HostRm: {
+                path: "/rpcpb.SliverRPC/HostRm",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: dependency_3.clientpb.Host) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_3.clientpb.Host.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_1.commonpb.Empty) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_1.commonpb.Empty.deserialize(new Uint8Array(bytes))
+            },
+            HostIOCRm: {
+                path: "/rpcpb.SliverRPC/HostIOCRm",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: dependency_3.clientpb.IOC) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_3.clientpb.IOC.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_1.commonpb.Empty) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_1.commonpb.Empty.deserialize(new Uint8Array(bytes))
             },
             Generate: {
                 path: "/rpcpb.SliverRPC/Generate",
@@ -572,8 +653,8 @@ export namespace rpcpb {
                 responseStream: false,
                 requestSerialize: (message: dependency_3.clientpb.MSFReq) => Buffer.from(message.serialize()),
                 requestDeserialize: (bytes: Buffer) => dependency_3.clientpb.MSFReq.deserialize(new Uint8Array(bytes)),
-                responseSerialize: (message: dependency_1.commonpb.Empty) => Buffer.from(message.serialize()),
-                responseDeserialize: (bytes: Buffer) => dependency_1.commonpb.Empty.deserialize(new Uint8Array(bytes))
+                responseSerialize: (message: dependency_2.sliverpb.Task) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_2.sliverpb.Task.deserialize(new Uint8Array(bytes))
             },
             MsfRemote: {
                 path: "/rpcpb.SliverRPC/MsfRemote",
@@ -581,8 +662,8 @@ export namespace rpcpb {
                 responseStream: false,
                 requestSerialize: (message: dependency_3.clientpb.MSFRemoteReq) => Buffer.from(message.serialize()),
                 requestDeserialize: (bytes: Buffer) => dependency_3.clientpb.MSFRemoteReq.deserialize(new Uint8Array(bytes)),
-                responseSerialize: (message: dependency_1.commonpb.Empty) => Buffer.from(message.serialize()),
-                responseDeserialize: (bytes: Buffer) => dependency_1.commonpb.Empty.deserialize(new Uint8Array(bytes))
+                responseSerialize: (message: dependency_2.sliverpb.Task) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_2.sliverpb.Task.deserialize(new Uint8Array(bytes))
             },
             ExecuteAssembly: {
                 path: "/rpcpb.SliverRPC/ExecuteAssembly",
@@ -647,32 +728,41 @@ export namespace rpcpb {
                 responseSerialize: (message: dependency_2.sliverpb.Screenshot) => Buffer.from(message.serialize()),
                 responseDeserialize: (bytes: Buffer) => dependency_2.sliverpb.Screenshot.deserialize(new Uint8Array(bytes))
             },
-            NamedPipes: {
-                path: "/rpcpb.SliverRPC/NamedPipes",
+            PivotStartListener: {
+                path: "/rpcpb.SliverRPC/PivotStartListener",
                 requestStream: false,
                 responseStream: false,
-                requestSerialize: (message: dependency_2.sliverpb.NamedPipesReq) => Buffer.from(message.serialize()),
-                requestDeserialize: (bytes: Buffer) => dependency_2.sliverpb.NamedPipesReq.deserialize(new Uint8Array(bytes)),
-                responseSerialize: (message: dependency_2.sliverpb.NamedPipes) => Buffer.from(message.serialize()),
-                responseDeserialize: (bytes: Buffer) => dependency_2.sliverpb.NamedPipes.deserialize(new Uint8Array(bytes))
+                requestSerialize: (message: dependency_2.sliverpb.PivotStartListenerReq) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_2.sliverpb.PivotStartListenerReq.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_2.sliverpb.PivotListener) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_2.sliverpb.PivotListener.deserialize(new Uint8Array(bytes))
             },
-            TCPListener: {
-                path: "/rpcpb.SliverRPC/TCPListener",
+            PivotStopListener: {
+                path: "/rpcpb.SliverRPC/PivotStopListener",
                 requestStream: false,
                 responseStream: false,
-                requestSerialize: (message: dependency_2.sliverpb.TCPPivotReq) => Buffer.from(message.serialize()),
-                requestDeserialize: (bytes: Buffer) => dependency_2.sliverpb.TCPPivotReq.deserialize(new Uint8Array(bytes)),
-                responseSerialize: (message: dependency_2.sliverpb.TCPPivot) => Buffer.from(message.serialize()),
-                responseDeserialize: (bytes: Buffer) => dependency_2.sliverpb.TCPPivot.deserialize(new Uint8Array(bytes))
+                requestSerialize: (message: dependency_2.sliverpb.PivotStopListenerReq) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_2.sliverpb.PivotStopListenerReq.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_1.commonpb.Empty) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_1.commonpb.Empty.deserialize(new Uint8Array(bytes))
             },
-            ListPivots: {
-                path: "/rpcpb.SliverRPC/ListPivots",
+            PivotSessionListeners: {
+                path: "/rpcpb.SliverRPC/PivotSessionListeners",
                 requestStream: false,
                 responseStream: false,
-                requestSerialize: (message: dependency_2.sliverpb.PivotListReq) => Buffer.from(message.serialize()),
-                requestDeserialize: (bytes: Buffer) => dependency_2.sliverpb.PivotListReq.deserialize(new Uint8Array(bytes)),
-                responseSerialize: (message: dependency_2.sliverpb.PivotList) => Buffer.from(message.serialize()),
-                responseDeserialize: (bytes: Buffer) => dependency_2.sliverpb.PivotList.deserialize(new Uint8Array(bytes))
+                requestSerialize: (message: dependency_2.sliverpb.PivotListenersReq) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_2.sliverpb.PivotListenersReq.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_2.sliverpb.PivotListeners) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_2.sliverpb.PivotListeners.deserialize(new Uint8Array(bytes))
+            },
+            PivotGraph: {
+                path: "/rpcpb.SliverRPC/PivotGraph",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: dependency_1.commonpb.Empty) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_1.commonpb.Empty.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_3.clientpb.PivotGraph) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_3.clientpb.PivotGraph.deserialize(new Uint8Array(bytes))
             },
             StartService: {
                 path: "/rpcpb.SliverRPC/StartService",
@@ -773,6 +863,33 @@ export namespace rpcpb {
                 responseSerialize: (message: dependency_2.sliverpb.RegistryCreateKey) => Buffer.from(message.serialize()),
                 responseDeserialize: (bytes: Buffer) => dependency_2.sliverpb.RegistryCreateKey.deserialize(new Uint8Array(bytes))
             },
+            RegistryDeleteKey: {
+                path: "/rpcpb.SliverRPC/RegistryDeleteKey",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: dependency_2.sliverpb.RegistryDeleteKeyReq) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_2.sliverpb.RegistryDeleteKeyReq.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_2.sliverpb.RegistryDeleteKey) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_2.sliverpb.RegistryDeleteKey.deserialize(new Uint8Array(bytes))
+            },
+            RegistryListSubKeys: {
+                path: "/rpcpb.SliverRPC/RegistryListSubKeys",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: dependency_2.sliverpb.RegistrySubKeyListReq) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_2.sliverpb.RegistrySubKeyListReq.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_2.sliverpb.RegistrySubKeyList) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_2.sliverpb.RegistrySubKeyList.deserialize(new Uint8Array(bytes))
+            },
+            RegistryListValues: {
+                path: "/rpcpb.SliverRPC/RegistryListValues",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: dependency_2.sliverpb.RegistryListValuesReq) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_2.sliverpb.RegistryListValuesReq.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_2.sliverpb.RegistryValuesList) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_2.sliverpb.RegistryValuesList.deserialize(new Uint8Array(bytes))
+            },
             RunSSHCommand: {
                 path: "/rpcpb.SliverRPC/RunSSHCommand",
                 requestStream: false,
@@ -781,6 +898,69 @@ export namespace rpcpb {
                 requestDeserialize: (bytes: Buffer) => dependency_2.sliverpb.SSHCommandReq.deserialize(new Uint8Array(bytes)),
                 responseSerialize: (message: dependency_2.sliverpb.SSHCommand) => Buffer.from(message.serialize()),
                 responseDeserialize: (bytes: Buffer) => dependency_2.sliverpb.SSHCommand.deserialize(new Uint8Array(bytes))
+            },
+            HijackDLL: {
+                path: "/rpcpb.SliverRPC/HijackDLL",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: dependency_3.clientpb.DllHijackReq) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_3.clientpb.DllHijackReq.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_3.clientpb.DllHijack) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_3.clientpb.DllHijack.deserialize(new Uint8Array(bytes))
+            },
+            GetPrivs: {
+                path: "/rpcpb.SliverRPC/GetPrivs",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: dependency_2.sliverpb.GetPrivsReq) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_2.sliverpb.GetPrivsReq.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_2.sliverpb.GetPrivs) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_2.sliverpb.GetPrivs.deserialize(new Uint8Array(bytes))
+            },
+            OpenSession: {
+                path: "/rpcpb.SliverRPC/OpenSession",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: dependency_2.sliverpb.OpenSession) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_2.sliverpb.OpenSession.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_2.sliverpb.OpenSession) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_2.sliverpb.OpenSession.deserialize(new Uint8Array(bytes))
+            },
+            CloseSession: {
+                path: "/rpcpb.SliverRPC/CloseSession",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: dependency_2.sliverpb.CloseSession) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_2.sliverpb.CloseSession.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_1.commonpb.Empty) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_1.commonpb.Empty.deserialize(new Uint8Array(bytes))
+            },
+            RegisterExtension: {
+                path: "/rpcpb.SliverRPC/RegisterExtension",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: dependency_2.sliverpb.RegisterExtensionReq) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_2.sliverpb.RegisterExtensionReq.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_2.sliverpb.RegisterExtension) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_2.sliverpb.RegisterExtension.deserialize(new Uint8Array(bytes))
+            },
+            CallExtension: {
+                path: "/rpcpb.SliverRPC/CallExtension",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: dependency_2.sliverpb.CallExtensionReq) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_2.sliverpb.CallExtensionReq.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_2.sliverpb.CallExtension) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_2.sliverpb.CallExtension.deserialize(new Uint8Array(bytes))
+            },
+            ListExtensions: {
+                path: "/rpcpb.SliverRPC/ListExtensions",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: dependency_2.sliverpb.ListExtensionsReq) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_2.sliverpb.ListExtensionsReq.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_2.sliverpb.ListExtensions) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_2.sliverpb.ListExtensions.deserialize(new Uint8Array(bytes))
             },
             WGStartPortForward: {
                 path: "/rpcpb.SliverRPC/WGStartPortForward",
@@ -854,6 +1034,33 @@ export namespace rpcpb {
                 responseSerialize: (message: dependency_2.sliverpb.Portfwd) => Buffer.from(message.serialize()),
                 responseDeserialize: (bytes: Buffer) => dependency_2.sliverpb.Portfwd.deserialize(new Uint8Array(bytes))
             },
+            CreateSocks: {
+                path: "/rpcpb.SliverRPC/CreateSocks",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: dependency_2.sliverpb.Socks) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_2.sliverpb.Socks.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_2.sliverpb.Socks) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_2.sliverpb.Socks.deserialize(new Uint8Array(bytes))
+            },
+            CloseSocks: {
+                path: "/rpcpb.SliverRPC/CloseSocks",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: dependency_2.sliverpb.Socks) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_2.sliverpb.Socks.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_1.commonpb.Empty) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_1.commonpb.Empty.deserialize(new Uint8Array(bytes))
+            },
+            SocksProxy: {
+                path: "/rpcpb.SliverRPC/SocksProxy",
+                requestStream: true,
+                responseStream: true,
+                requestSerialize: (message: dependency_2.sliverpb.SocksData) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_2.sliverpb.SocksData.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_2.sliverpb.SocksData) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_2.sliverpb.SocksData.deserialize(new Uint8Array(bytes))
+            },
             CreateTunnel: {
                 path: "/rpcpb.SliverRPC/CreateTunnel",
                 requestStream: false,
@@ -894,9 +1101,14 @@ export namespace rpcpb {
         [method: string]: grpc_1.UntypedHandleCall;
         abstract GetVersion(call: grpc_1.ServerUnaryCall<dependency_1.commonpb.Empty, dependency_3.clientpb.Version>, callback: grpc_1.sendUnaryData<dependency_3.clientpb.Version>): void;
         abstract GetOperators(call: grpc_1.ServerUnaryCall<dependency_1.commonpb.Empty, dependency_3.clientpb.Operators>, callback: grpc_1.sendUnaryData<dependency_3.clientpb.Operators>): void;
+        abstract Kill(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.KillReq, dependency_1.commonpb.Empty>, callback: grpc_1.sendUnaryData<dependency_1.commonpb.Empty>): void;
         abstract GetSessions(call: grpc_1.ServerUnaryCall<dependency_1.commonpb.Empty, dependency_3.clientpb.Sessions>, callback: grpc_1.sendUnaryData<dependency_3.clientpb.Sessions>): void;
-        abstract KillSession(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.KillSessionReq, dependency_1.commonpb.Empty>, callback: grpc_1.sendUnaryData<dependency_1.commonpb.Empty>): void;
         abstract UpdateSession(call: grpc_1.ServerUnaryCall<dependency_3.clientpb.UpdateSession, dependency_3.clientpb.Session>, callback: grpc_1.sendUnaryData<dependency_3.clientpb.Session>): void;
+        abstract GetBeacons(call: grpc_1.ServerUnaryCall<dependency_1.commonpb.Empty, dependency_3.clientpb.Beacons>, callback: grpc_1.sendUnaryData<dependency_3.clientpb.Beacons>): void;
+        abstract GetBeacon(call: grpc_1.ServerUnaryCall<dependency_3.clientpb.Beacon, dependency_3.clientpb.Beacon>, callback: grpc_1.sendUnaryData<dependency_3.clientpb.Beacon>): void;
+        abstract RmBeacon(call: grpc_1.ServerUnaryCall<dependency_3.clientpb.Beacon, dependency_1.commonpb.Empty>, callback: grpc_1.sendUnaryData<dependency_1.commonpb.Empty>): void;
+        abstract GetBeaconTasks(call: grpc_1.ServerUnaryCall<dependency_3.clientpb.Beacon, dependency_3.clientpb.BeaconTasks>, callback: grpc_1.sendUnaryData<dependency_3.clientpb.BeaconTasks>): void;
+        abstract GetBeaconTaskContent(call: grpc_1.ServerUnaryCall<dependency_3.clientpb.BeaconTask, dependency_3.clientpb.BeaconTask>, callback: grpc_1.sendUnaryData<dependency_3.clientpb.BeaconTask>): void;
         abstract MonitorStart(call: grpc_1.ServerUnaryCall<dependency_1.commonpb.Empty, dependency_1.commonpb.Response>, callback: grpc_1.sendUnaryData<dependency_1.commonpb.Response>): void;
         abstract MonitorStop(call: grpc_1.ServerUnaryCall<dependency_1.commonpb.Empty, dependency_1.commonpb.Empty>, callback: grpc_1.sendUnaryData<dependency_1.commonpb.Empty>): void;
         abstract GetJobs(call: grpc_1.ServerUnaryCall<dependency_1.commonpb.Empty, dependency_3.clientpb.Jobs>, callback: grpc_1.sendUnaryData<dependency_3.clientpb.Jobs>): void;
@@ -914,6 +1126,10 @@ export namespace rpcpb {
         abstract LootContent(call: grpc_1.ServerUnaryCall<dependency_3.clientpb.Loot, dependency_3.clientpb.Loot>, callback: grpc_1.sendUnaryData<dependency_3.clientpb.Loot>): void;
         abstract LootAll(call: grpc_1.ServerUnaryCall<dependency_1.commonpb.Empty, dependency_3.clientpb.AllLoot>, callback: grpc_1.sendUnaryData<dependency_3.clientpb.AllLoot>): void;
         abstract LootAllOf(call: grpc_1.ServerUnaryCall<dependency_3.clientpb.Loot, dependency_3.clientpb.AllLoot>, callback: grpc_1.sendUnaryData<dependency_3.clientpb.AllLoot>): void;
+        abstract Hosts(call: grpc_1.ServerUnaryCall<dependency_1.commonpb.Empty, dependency_3.clientpb.AllHosts>, callback: grpc_1.sendUnaryData<dependency_3.clientpb.AllHosts>): void;
+        abstract Host(call: grpc_1.ServerUnaryCall<dependency_3.clientpb.Host, dependency_3.clientpb.Host>, callback: grpc_1.sendUnaryData<dependency_3.clientpb.Host>): void;
+        abstract HostRm(call: grpc_1.ServerUnaryCall<dependency_3.clientpb.Host, dependency_1.commonpb.Empty>, callback: grpc_1.sendUnaryData<dependency_1.commonpb.Empty>): void;
+        abstract HostIOCRm(call: grpc_1.ServerUnaryCall<dependency_3.clientpb.IOC, dependency_1.commonpb.Empty>, callback: grpc_1.sendUnaryData<dependency_1.commonpb.Empty>): void;
         abstract Generate(call: grpc_1.ServerUnaryCall<dependency_3.clientpb.GenerateReq, dependency_3.clientpb.Generate>, callback: grpc_1.sendUnaryData<dependency_3.clientpb.Generate>): void;
         abstract Regenerate(call: grpc_1.ServerUnaryCall<dependency_3.clientpb.RegenerateReq, dependency_3.clientpb.Generate>, callback: grpc_1.sendUnaryData<dependency_3.clientpb.Generate>): void;
         abstract ImplantBuilds(call: grpc_1.ServerUnaryCall<dependency_1.commonpb.Empty, dependency_3.clientpb.ImplantBuilds>, callback: grpc_1.sendUnaryData<dependency_3.clientpb.ImplantBuilds>): void;
@@ -951,8 +1167,8 @@ export namespace rpcpb {
         abstract RevToSelf(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.RevToSelfReq, dependency_2.sliverpb.RevToSelf>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.RevToSelf>): void;
         abstract GetSystem(call: grpc_1.ServerUnaryCall<dependency_3.clientpb.GetSystemReq, dependency_2.sliverpb.GetSystem>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.GetSystem>): void;
         abstract Task(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.TaskReq, dependency_2.sliverpb.Task>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.Task>): void;
-        abstract Msf(call: grpc_1.ServerUnaryCall<dependency_3.clientpb.MSFReq, dependency_1.commonpb.Empty>, callback: grpc_1.sendUnaryData<dependency_1.commonpb.Empty>): void;
-        abstract MsfRemote(call: grpc_1.ServerUnaryCall<dependency_3.clientpb.MSFRemoteReq, dependency_1.commonpb.Empty>, callback: grpc_1.sendUnaryData<dependency_1.commonpb.Empty>): void;
+        abstract Msf(call: grpc_1.ServerUnaryCall<dependency_3.clientpb.MSFReq, dependency_2.sliverpb.Task>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.Task>): void;
+        abstract MsfRemote(call: grpc_1.ServerUnaryCall<dependency_3.clientpb.MSFRemoteReq, dependency_2.sliverpb.Task>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.Task>): void;
         abstract ExecuteAssembly(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.ExecuteAssemblyReq, dependency_2.sliverpb.ExecuteAssembly>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.ExecuteAssembly>): void;
         abstract Migrate(call: grpc_1.ServerUnaryCall<dependency_3.clientpb.MigrateReq, dependency_2.sliverpb.Migrate>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.Migrate>): void;
         abstract Execute(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.ExecuteReq, dependency_2.sliverpb.Execute>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.Execute>): void;
@@ -960,9 +1176,10 @@ export namespace rpcpb {
         abstract Sideload(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.SideloadReq, dependency_2.sliverpb.Sideload>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.Sideload>): void;
         abstract SpawnDll(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.InvokeSpawnDllReq, dependency_2.sliverpb.SpawnDll>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.SpawnDll>): void;
         abstract Screenshot(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.ScreenshotReq, dependency_2.sliverpb.Screenshot>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.Screenshot>): void;
-        abstract NamedPipes(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.NamedPipesReq, dependency_2.sliverpb.NamedPipes>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.NamedPipes>): void;
-        abstract TCPListener(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.TCPPivotReq, dependency_2.sliverpb.TCPPivot>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.TCPPivot>): void;
-        abstract ListPivots(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.PivotListReq, dependency_2.sliverpb.PivotList>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.PivotList>): void;
+        abstract PivotStartListener(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.PivotStartListenerReq, dependency_2.sliverpb.PivotListener>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.PivotListener>): void;
+        abstract PivotStopListener(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.PivotStopListenerReq, dependency_1.commonpb.Empty>, callback: grpc_1.sendUnaryData<dependency_1.commonpb.Empty>): void;
+        abstract PivotSessionListeners(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.PivotListenersReq, dependency_2.sliverpb.PivotListeners>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.PivotListeners>): void;
+        abstract PivotGraph(call: grpc_1.ServerUnaryCall<dependency_1.commonpb.Empty, dependency_3.clientpb.PivotGraph>, callback: grpc_1.sendUnaryData<dependency_3.clientpb.PivotGraph>): void;
         abstract StartService(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.StartServiceReq, dependency_2.sliverpb.ServiceInfo>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.ServiceInfo>): void;
         abstract StopService(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.StopServiceReq, dependency_2.sliverpb.ServiceInfo>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.ServiceInfo>): void;
         abstract RemoveService(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.RemoveServiceReq, dependency_2.sliverpb.ServiceInfo>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.ServiceInfo>): void;
@@ -974,7 +1191,17 @@ export namespace rpcpb {
         abstract RegistryRead(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.RegistryReadReq, dependency_2.sliverpb.RegistryRead>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.RegistryRead>): void;
         abstract RegistryWrite(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.RegistryWriteReq, dependency_2.sliverpb.RegistryWrite>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.RegistryWrite>): void;
         abstract RegistryCreateKey(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.RegistryCreateKeyReq, dependency_2.sliverpb.RegistryCreateKey>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.RegistryCreateKey>): void;
+        abstract RegistryDeleteKey(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.RegistryDeleteKeyReq, dependency_2.sliverpb.RegistryDeleteKey>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.RegistryDeleteKey>): void;
+        abstract RegistryListSubKeys(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.RegistrySubKeyListReq, dependency_2.sliverpb.RegistrySubKeyList>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.RegistrySubKeyList>): void;
+        abstract RegistryListValues(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.RegistryListValuesReq, dependency_2.sliverpb.RegistryValuesList>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.RegistryValuesList>): void;
         abstract RunSSHCommand(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.SSHCommandReq, dependency_2.sliverpb.SSHCommand>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.SSHCommand>): void;
+        abstract HijackDLL(call: grpc_1.ServerUnaryCall<dependency_3.clientpb.DllHijackReq, dependency_3.clientpb.DllHijack>, callback: grpc_1.sendUnaryData<dependency_3.clientpb.DllHijack>): void;
+        abstract GetPrivs(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.GetPrivsReq, dependency_2.sliverpb.GetPrivs>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.GetPrivs>): void;
+        abstract OpenSession(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.OpenSession, dependency_2.sliverpb.OpenSession>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.OpenSession>): void;
+        abstract CloseSession(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.CloseSession, dependency_1.commonpb.Empty>, callback: grpc_1.sendUnaryData<dependency_1.commonpb.Empty>): void;
+        abstract RegisterExtension(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.RegisterExtensionReq, dependency_2.sliverpb.RegisterExtension>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.RegisterExtension>): void;
+        abstract CallExtension(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.CallExtensionReq, dependency_2.sliverpb.CallExtension>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.CallExtension>): void;
+        abstract ListExtensions(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.ListExtensionsReq, dependency_2.sliverpb.ListExtensions>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.ListExtensions>): void;
         abstract WGStartPortForward(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.WGPortForwardStartReq, dependency_2.sliverpb.WGPortForward>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.WGPortForward>): void;
         abstract WGStopPortForward(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.WGPortForwardStopReq, dependency_2.sliverpb.WGPortForward>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.WGPortForward>): void;
         abstract WGStartSocks(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.WGSocksStartReq, dependency_2.sliverpb.WGSocks>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.WGSocks>): void;
@@ -983,6 +1210,9 @@ export namespace rpcpb {
         abstract WGListSocksServers(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.WGSocksServersReq, dependency_2.sliverpb.WGSocksServers>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.WGSocksServers>): void;
         abstract Shell(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.ShellReq, dependency_2.sliverpb.Shell>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.Shell>): void;
         abstract Portfwd(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.PortfwdReq, dependency_2.sliverpb.Portfwd>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.Portfwd>): void;
+        abstract CreateSocks(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.Socks, dependency_2.sliverpb.Socks>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.Socks>): void;
+        abstract CloseSocks(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.Socks, dependency_1.commonpb.Empty>, callback: grpc_1.sendUnaryData<dependency_1.commonpb.Empty>): void;
+        abstract SocksProxy(call: grpc_1.ServerDuplexStream<dependency_2.sliverpb.SocksData, dependency_2.sliverpb.SocksData>): void;
         abstract CreateTunnel(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.Tunnel, dependency_2.sliverpb.Tunnel>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.Tunnel>): void;
         abstract CloseTunnel(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.Tunnel, dependency_1.commonpb.Empty>, callback: grpc_1.sendUnaryData<dependency_1.commonpb.Empty>): void;
         abstract TunnelData(call: grpc_1.ServerDuplexStream<dependency_2.sliverpb.TunnelData, dependency_2.sliverpb.TunnelData>): void;
@@ -998,14 +1228,29 @@ export namespace rpcpb {
         GetOperators: GrpcUnaryServiceInterface<dependency_1.commonpb.Empty, dependency_3.clientpb.Operators> = (message: dependency_1.commonpb.Empty, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.Operators>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.Operators>, callback?: grpc_1.requestCallback<dependency_3.clientpb.Operators>): grpc_1.ClientUnaryCall => {
             return super.GetOperators(message, metadata, options, callback);
         };
+        Kill: GrpcUnaryServiceInterface<dependency_2.sliverpb.KillReq, dependency_1.commonpb.Empty> = (message: dependency_2.sliverpb.KillReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_1.commonpb.Empty>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_1.commonpb.Empty>, callback?: grpc_1.requestCallback<dependency_1.commonpb.Empty>): grpc_1.ClientUnaryCall => {
+            return super.Kill(message, metadata, options, callback);
+        };
         GetSessions: GrpcUnaryServiceInterface<dependency_1.commonpb.Empty, dependency_3.clientpb.Sessions> = (message: dependency_1.commonpb.Empty, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.Sessions>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.Sessions>, callback?: grpc_1.requestCallback<dependency_3.clientpb.Sessions>): grpc_1.ClientUnaryCall => {
             return super.GetSessions(message, metadata, options, callback);
         };
-        KillSession: GrpcUnaryServiceInterface<dependency_2.sliverpb.KillSessionReq, dependency_1.commonpb.Empty> = (message: dependency_2.sliverpb.KillSessionReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_1.commonpb.Empty>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_1.commonpb.Empty>, callback?: grpc_1.requestCallback<dependency_1.commonpb.Empty>): grpc_1.ClientUnaryCall => {
-            return super.KillSession(message, metadata, options, callback);
-        };
         UpdateSession: GrpcUnaryServiceInterface<dependency_3.clientpb.UpdateSession, dependency_3.clientpb.Session> = (message: dependency_3.clientpb.UpdateSession, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.Session>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.Session>, callback?: grpc_1.requestCallback<dependency_3.clientpb.Session>): grpc_1.ClientUnaryCall => {
             return super.UpdateSession(message, metadata, options, callback);
+        };
+        GetBeacons: GrpcUnaryServiceInterface<dependency_1.commonpb.Empty, dependency_3.clientpb.Beacons> = (message: dependency_1.commonpb.Empty, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.Beacons>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.Beacons>, callback?: grpc_1.requestCallback<dependency_3.clientpb.Beacons>): grpc_1.ClientUnaryCall => {
+            return super.GetBeacons(message, metadata, options, callback);
+        };
+        GetBeacon: GrpcUnaryServiceInterface<dependency_3.clientpb.Beacon, dependency_3.clientpb.Beacon> = (message: dependency_3.clientpb.Beacon, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.Beacon>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.Beacon>, callback?: grpc_1.requestCallback<dependency_3.clientpb.Beacon>): grpc_1.ClientUnaryCall => {
+            return super.GetBeacon(message, metadata, options, callback);
+        };
+        RmBeacon: GrpcUnaryServiceInterface<dependency_3.clientpb.Beacon, dependency_1.commonpb.Empty> = (message: dependency_3.clientpb.Beacon, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_1.commonpb.Empty>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_1.commonpb.Empty>, callback?: grpc_1.requestCallback<dependency_1.commonpb.Empty>): grpc_1.ClientUnaryCall => {
+            return super.RmBeacon(message, metadata, options, callback);
+        };
+        GetBeaconTasks: GrpcUnaryServiceInterface<dependency_3.clientpb.Beacon, dependency_3.clientpb.BeaconTasks> = (message: dependency_3.clientpb.Beacon, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.BeaconTasks>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.BeaconTasks>, callback?: grpc_1.requestCallback<dependency_3.clientpb.BeaconTasks>): grpc_1.ClientUnaryCall => {
+            return super.GetBeaconTasks(message, metadata, options, callback);
+        };
+        GetBeaconTaskContent: GrpcUnaryServiceInterface<dependency_3.clientpb.BeaconTask, dependency_3.clientpb.BeaconTask> = (message: dependency_3.clientpb.BeaconTask, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.BeaconTask>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.BeaconTask>, callback?: grpc_1.requestCallback<dependency_3.clientpb.BeaconTask>): grpc_1.ClientUnaryCall => {
+            return super.GetBeaconTaskContent(message, metadata, options, callback);
         };
         MonitorStart: GrpcUnaryServiceInterface<dependency_1.commonpb.Empty, dependency_1.commonpb.Response> = (message: dependency_1.commonpb.Empty, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_1.commonpb.Response>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_1.commonpb.Response>, callback?: grpc_1.requestCallback<dependency_1.commonpb.Response>): grpc_1.ClientUnaryCall => {
             return super.MonitorStart(message, metadata, options, callback);
@@ -1057,6 +1302,18 @@ export namespace rpcpb {
         };
         LootAllOf: GrpcUnaryServiceInterface<dependency_3.clientpb.Loot, dependency_3.clientpb.AllLoot> = (message: dependency_3.clientpb.Loot, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.AllLoot>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.AllLoot>, callback?: grpc_1.requestCallback<dependency_3.clientpb.AllLoot>): grpc_1.ClientUnaryCall => {
             return super.LootAllOf(message, metadata, options, callback);
+        };
+        Hosts: GrpcUnaryServiceInterface<dependency_1.commonpb.Empty, dependency_3.clientpb.AllHosts> = (message: dependency_1.commonpb.Empty, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.AllHosts>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.AllHosts>, callback?: grpc_1.requestCallback<dependency_3.clientpb.AllHosts>): grpc_1.ClientUnaryCall => {
+            return super.Hosts(message, metadata, options, callback);
+        };
+        Host: GrpcUnaryServiceInterface<dependency_3.clientpb.Host, dependency_3.clientpb.Host> = (message: dependency_3.clientpb.Host, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.Host>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.Host>, callback?: grpc_1.requestCallback<dependency_3.clientpb.Host>): grpc_1.ClientUnaryCall => {
+            return super.Host(message, metadata, options, callback);
+        };
+        HostRm: GrpcUnaryServiceInterface<dependency_3.clientpb.Host, dependency_1.commonpb.Empty> = (message: dependency_3.clientpb.Host, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_1.commonpb.Empty>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_1.commonpb.Empty>, callback?: grpc_1.requestCallback<dependency_1.commonpb.Empty>): grpc_1.ClientUnaryCall => {
+            return super.HostRm(message, metadata, options, callback);
+        };
+        HostIOCRm: GrpcUnaryServiceInterface<dependency_3.clientpb.IOC, dependency_1.commonpb.Empty> = (message: dependency_3.clientpb.IOC, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_1.commonpb.Empty>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_1.commonpb.Empty>, callback?: grpc_1.requestCallback<dependency_1.commonpb.Empty>): grpc_1.ClientUnaryCall => {
+            return super.HostIOCRm(message, metadata, options, callback);
         };
         Generate: GrpcUnaryServiceInterface<dependency_3.clientpb.GenerateReq, dependency_3.clientpb.Generate> = (message: dependency_3.clientpb.GenerateReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.Generate>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.Generate>, callback?: grpc_1.requestCallback<dependency_3.clientpb.Generate>): grpc_1.ClientUnaryCall => {
             return super.Generate(message, metadata, options, callback);
@@ -1169,10 +1426,10 @@ export namespace rpcpb {
         Task: GrpcUnaryServiceInterface<dependency_2.sliverpb.TaskReq, dependency_2.sliverpb.Task> = (message: dependency_2.sliverpb.TaskReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.Task>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.Task>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.Task>): grpc_1.ClientUnaryCall => {
             return super.Task(message, metadata, options, callback);
         };
-        Msf: GrpcUnaryServiceInterface<dependency_3.clientpb.MSFReq, dependency_1.commonpb.Empty> = (message: dependency_3.clientpb.MSFReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_1.commonpb.Empty>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_1.commonpb.Empty>, callback?: grpc_1.requestCallback<dependency_1.commonpb.Empty>): grpc_1.ClientUnaryCall => {
+        Msf: GrpcUnaryServiceInterface<dependency_3.clientpb.MSFReq, dependency_2.sliverpb.Task> = (message: dependency_3.clientpb.MSFReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.Task>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.Task>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.Task>): grpc_1.ClientUnaryCall => {
             return super.Msf(message, metadata, options, callback);
         };
-        MsfRemote: GrpcUnaryServiceInterface<dependency_3.clientpb.MSFRemoteReq, dependency_1.commonpb.Empty> = (message: dependency_3.clientpb.MSFRemoteReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_1.commonpb.Empty>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_1.commonpb.Empty>, callback?: grpc_1.requestCallback<dependency_1.commonpb.Empty>): grpc_1.ClientUnaryCall => {
+        MsfRemote: GrpcUnaryServiceInterface<dependency_3.clientpb.MSFRemoteReq, dependency_2.sliverpb.Task> = (message: dependency_3.clientpb.MSFRemoteReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.Task>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.Task>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.Task>): grpc_1.ClientUnaryCall => {
             return super.MsfRemote(message, metadata, options, callback);
         };
         ExecuteAssembly: GrpcUnaryServiceInterface<dependency_2.sliverpb.ExecuteAssemblyReq, dependency_2.sliverpb.ExecuteAssembly> = (message: dependency_2.sliverpb.ExecuteAssemblyReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.ExecuteAssembly>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.ExecuteAssembly>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.ExecuteAssembly>): grpc_1.ClientUnaryCall => {
@@ -1196,14 +1453,17 @@ export namespace rpcpb {
         Screenshot: GrpcUnaryServiceInterface<dependency_2.sliverpb.ScreenshotReq, dependency_2.sliverpb.Screenshot> = (message: dependency_2.sliverpb.ScreenshotReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.Screenshot>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.Screenshot>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.Screenshot>): grpc_1.ClientUnaryCall => {
             return super.Screenshot(message, metadata, options, callback);
         };
-        NamedPipes: GrpcUnaryServiceInterface<dependency_2.sliverpb.NamedPipesReq, dependency_2.sliverpb.NamedPipes> = (message: dependency_2.sliverpb.NamedPipesReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.NamedPipes>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.NamedPipes>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.NamedPipes>): grpc_1.ClientUnaryCall => {
-            return super.NamedPipes(message, metadata, options, callback);
+        PivotStartListener: GrpcUnaryServiceInterface<dependency_2.sliverpb.PivotStartListenerReq, dependency_2.sliverpb.PivotListener> = (message: dependency_2.sliverpb.PivotStartListenerReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.PivotListener>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.PivotListener>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.PivotListener>): grpc_1.ClientUnaryCall => {
+            return super.PivotStartListener(message, metadata, options, callback);
         };
-        TCPListener: GrpcUnaryServiceInterface<dependency_2.sliverpb.TCPPivotReq, dependency_2.sliverpb.TCPPivot> = (message: dependency_2.sliverpb.TCPPivotReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.TCPPivot>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.TCPPivot>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.TCPPivot>): grpc_1.ClientUnaryCall => {
-            return super.TCPListener(message, metadata, options, callback);
+        PivotStopListener: GrpcUnaryServiceInterface<dependency_2.sliverpb.PivotStopListenerReq, dependency_1.commonpb.Empty> = (message: dependency_2.sliverpb.PivotStopListenerReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_1.commonpb.Empty>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_1.commonpb.Empty>, callback?: grpc_1.requestCallback<dependency_1.commonpb.Empty>): grpc_1.ClientUnaryCall => {
+            return super.PivotStopListener(message, metadata, options, callback);
         };
-        ListPivots: GrpcUnaryServiceInterface<dependency_2.sliverpb.PivotListReq, dependency_2.sliverpb.PivotList> = (message: dependency_2.sliverpb.PivotListReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.PivotList>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.PivotList>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.PivotList>): grpc_1.ClientUnaryCall => {
-            return super.ListPivots(message, metadata, options, callback);
+        PivotSessionListeners: GrpcUnaryServiceInterface<dependency_2.sliverpb.PivotListenersReq, dependency_2.sliverpb.PivotListeners> = (message: dependency_2.sliverpb.PivotListenersReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.PivotListeners>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.PivotListeners>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.PivotListeners>): grpc_1.ClientUnaryCall => {
+            return super.PivotSessionListeners(message, metadata, options, callback);
+        };
+        PivotGraph: GrpcUnaryServiceInterface<dependency_1.commonpb.Empty, dependency_3.clientpb.PivotGraph> = (message: dependency_1.commonpb.Empty, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.PivotGraph>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.PivotGraph>, callback?: grpc_1.requestCallback<dependency_3.clientpb.PivotGraph>): grpc_1.ClientUnaryCall => {
+            return super.PivotGraph(message, metadata, options, callback);
         };
         StartService: GrpcUnaryServiceInterface<dependency_2.sliverpb.StartServiceReq, dependency_2.sliverpb.ServiceInfo> = (message: dependency_2.sliverpb.StartServiceReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.ServiceInfo>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.ServiceInfo>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.ServiceInfo>): grpc_1.ClientUnaryCall => {
             return super.StartService(message, metadata, options, callback);
@@ -1238,8 +1498,38 @@ export namespace rpcpb {
         RegistryCreateKey: GrpcUnaryServiceInterface<dependency_2.sliverpb.RegistryCreateKeyReq, dependency_2.sliverpb.RegistryCreateKey> = (message: dependency_2.sliverpb.RegistryCreateKeyReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.RegistryCreateKey>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.RegistryCreateKey>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.RegistryCreateKey>): grpc_1.ClientUnaryCall => {
             return super.RegistryCreateKey(message, metadata, options, callback);
         };
+        RegistryDeleteKey: GrpcUnaryServiceInterface<dependency_2.sliverpb.RegistryDeleteKeyReq, dependency_2.sliverpb.RegistryDeleteKey> = (message: dependency_2.sliverpb.RegistryDeleteKeyReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.RegistryDeleteKey>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.RegistryDeleteKey>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.RegistryDeleteKey>): grpc_1.ClientUnaryCall => {
+            return super.RegistryDeleteKey(message, metadata, options, callback);
+        };
+        RegistryListSubKeys: GrpcUnaryServiceInterface<dependency_2.sliverpb.RegistrySubKeyListReq, dependency_2.sliverpb.RegistrySubKeyList> = (message: dependency_2.sliverpb.RegistrySubKeyListReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.RegistrySubKeyList>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.RegistrySubKeyList>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.RegistrySubKeyList>): grpc_1.ClientUnaryCall => {
+            return super.RegistryListSubKeys(message, metadata, options, callback);
+        };
+        RegistryListValues: GrpcUnaryServiceInterface<dependency_2.sliverpb.RegistryListValuesReq, dependency_2.sliverpb.RegistryValuesList> = (message: dependency_2.sliverpb.RegistryListValuesReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.RegistryValuesList>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.RegistryValuesList>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.RegistryValuesList>): grpc_1.ClientUnaryCall => {
+            return super.RegistryListValues(message, metadata, options, callback);
+        };
         RunSSHCommand: GrpcUnaryServiceInterface<dependency_2.sliverpb.SSHCommandReq, dependency_2.sliverpb.SSHCommand> = (message: dependency_2.sliverpb.SSHCommandReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.SSHCommand>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.SSHCommand>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.SSHCommand>): grpc_1.ClientUnaryCall => {
             return super.RunSSHCommand(message, metadata, options, callback);
+        };
+        HijackDLL: GrpcUnaryServiceInterface<dependency_3.clientpb.DllHijackReq, dependency_3.clientpb.DllHijack> = (message: dependency_3.clientpb.DllHijackReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.DllHijack>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.DllHijack>, callback?: grpc_1.requestCallback<dependency_3.clientpb.DllHijack>): grpc_1.ClientUnaryCall => {
+            return super.HijackDLL(message, metadata, options, callback);
+        };
+        GetPrivs: GrpcUnaryServiceInterface<dependency_2.sliverpb.GetPrivsReq, dependency_2.sliverpb.GetPrivs> = (message: dependency_2.sliverpb.GetPrivsReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.GetPrivs>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.GetPrivs>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.GetPrivs>): grpc_1.ClientUnaryCall => {
+            return super.GetPrivs(message, metadata, options, callback);
+        };
+        OpenSession: GrpcUnaryServiceInterface<dependency_2.sliverpb.OpenSession, dependency_2.sliverpb.OpenSession> = (message: dependency_2.sliverpb.OpenSession, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.OpenSession>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.OpenSession>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.OpenSession>): grpc_1.ClientUnaryCall => {
+            return super.OpenSession(message, metadata, options, callback);
+        };
+        CloseSession: GrpcUnaryServiceInterface<dependency_2.sliverpb.CloseSession, dependency_1.commonpb.Empty> = (message: dependency_2.sliverpb.CloseSession, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_1.commonpb.Empty>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_1.commonpb.Empty>, callback?: grpc_1.requestCallback<dependency_1.commonpb.Empty>): grpc_1.ClientUnaryCall => {
+            return super.CloseSession(message, metadata, options, callback);
+        };
+        RegisterExtension: GrpcUnaryServiceInterface<dependency_2.sliverpb.RegisterExtensionReq, dependency_2.sliverpb.RegisterExtension> = (message: dependency_2.sliverpb.RegisterExtensionReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.RegisterExtension>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.RegisterExtension>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.RegisterExtension>): grpc_1.ClientUnaryCall => {
+            return super.RegisterExtension(message, metadata, options, callback);
+        };
+        CallExtension: GrpcUnaryServiceInterface<dependency_2.sliverpb.CallExtensionReq, dependency_2.sliverpb.CallExtension> = (message: dependency_2.sliverpb.CallExtensionReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.CallExtension>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.CallExtension>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.CallExtension>): grpc_1.ClientUnaryCall => {
+            return super.CallExtension(message, metadata, options, callback);
+        };
+        ListExtensions: GrpcUnaryServiceInterface<dependency_2.sliverpb.ListExtensionsReq, dependency_2.sliverpb.ListExtensions> = (message: dependency_2.sliverpb.ListExtensionsReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.ListExtensions>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.ListExtensions>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.ListExtensions>): grpc_1.ClientUnaryCall => {
+            return super.ListExtensions(message, metadata, options, callback);
         };
         WGStartPortForward: GrpcUnaryServiceInterface<dependency_2.sliverpb.WGPortForwardStartReq, dependency_2.sliverpb.WGPortForward> = (message: dependency_2.sliverpb.WGPortForwardStartReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.WGPortForward>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.WGPortForward>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.WGPortForward>): grpc_1.ClientUnaryCall => {
             return super.WGStartPortForward(message, metadata, options, callback);
@@ -1264,6 +1554,15 @@ export namespace rpcpb {
         };
         Portfwd: GrpcUnaryServiceInterface<dependency_2.sliverpb.PortfwdReq, dependency_2.sliverpb.Portfwd> = (message: dependency_2.sliverpb.PortfwdReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.Portfwd>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.Portfwd>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.Portfwd>): grpc_1.ClientUnaryCall => {
             return super.Portfwd(message, metadata, options, callback);
+        };
+        CreateSocks: GrpcUnaryServiceInterface<dependency_2.sliverpb.Socks, dependency_2.sliverpb.Socks> = (message: dependency_2.sliverpb.Socks, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.Socks>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.Socks>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.Socks>): grpc_1.ClientUnaryCall => {
+            return super.CreateSocks(message, metadata, options, callback);
+        };
+        CloseSocks: GrpcUnaryServiceInterface<dependency_2.sliverpb.Socks, dependency_1.commonpb.Empty> = (message: dependency_2.sliverpb.Socks, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_1.commonpb.Empty>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_1.commonpb.Empty>, callback?: grpc_1.requestCallback<dependency_1.commonpb.Empty>): grpc_1.ClientUnaryCall => {
+            return super.CloseSocks(message, metadata, options, callback);
+        };
+        SocksProxy: GrpcChunkServiceInterface<dependency_2.sliverpb.SocksData, dependency_2.sliverpb.SocksData> = (metadata?: grpc_1.Metadata | grpc_1.CallOptions, options?: grpc_1.CallOptions): grpc_1.ClientDuplexStream<dependency_2.sliverpb.SocksData, dependency_2.sliverpb.SocksData> => {
+            return super.SocksProxy(metadata, options);
         };
         CreateTunnel: GrpcUnaryServiceInterface<dependency_2.sliverpb.Tunnel, dependency_2.sliverpb.Tunnel> = (message: dependency_2.sliverpb.Tunnel, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.Tunnel>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.Tunnel>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.Tunnel>): grpc_1.ClientUnaryCall => {
             return super.CreateTunnel(message, metadata, options, callback);

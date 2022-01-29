@@ -6,6 +6,17 @@ var commonpb_common_pb = require('../commonpb/common_pb.js');
 var sliverpb_sliver_pb = require('../sliverpb/sliver_pb.js');
 var clientpb_client_pb = require('../clientpb/client_pb.js');
 
+function serialize_clientpb_AllHosts(arg) {
+  if (!(arg instanceof clientpb_client_pb.AllHosts)) {
+    throw new Error('Expected argument of type clientpb.AllHosts');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_clientpb_AllHosts(buffer_arg) {
+  return clientpb_client_pb.AllHosts.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_clientpb_AllLoot(arg) {
   if (!(arg instanceof clientpb_client_pb.AllLoot)) {
     throw new Error('Expected argument of type clientpb.AllLoot');
@@ -15,6 +26,50 @@ function serialize_clientpb_AllLoot(arg) {
 
 function deserialize_clientpb_AllLoot(buffer_arg) {
   return clientpb_client_pb.AllLoot.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_clientpb_Beacon(arg) {
+  if (!(arg instanceof clientpb_client_pb.Beacon)) {
+    throw new Error('Expected argument of type clientpb.Beacon');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_clientpb_Beacon(buffer_arg) {
+  return clientpb_client_pb.Beacon.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_clientpb_BeaconTask(arg) {
+  if (!(arg instanceof clientpb_client_pb.BeaconTask)) {
+    throw new Error('Expected argument of type clientpb.BeaconTask');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_clientpb_BeaconTask(buffer_arg) {
+  return clientpb_client_pb.BeaconTask.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_clientpb_BeaconTasks(arg) {
+  if (!(arg instanceof clientpb_client_pb.BeaconTasks)) {
+    throw new Error('Expected argument of type clientpb.BeaconTasks');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_clientpb_BeaconTasks(buffer_arg) {
+  return clientpb_client_pb.BeaconTasks.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_clientpb_Beacons(arg) {
+  if (!(arg instanceof clientpb_client_pb.Beacons)) {
+    throw new Error('Expected argument of type clientpb.Beacons');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_clientpb_Beacons(buffer_arg) {
+  return clientpb_client_pb.Beacons.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_clientpb_Canaries(arg) {
@@ -70,6 +125,28 @@ function serialize_clientpb_DeleteReq(arg) {
 
 function deserialize_clientpb_DeleteReq(buffer_arg) {
   return clientpb_client_pb.DeleteReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_clientpb_DllHijack(arg) {
+  if (!(arg instanceof clientpb_client_pb.DllHijack)) {
+    throw new Error('Expected argument of type clientpb.DllHijack');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_clientpb_DllHijack(buffer_arg) {
+  return clientpb_client_pb.DllHijack.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_clientpb_DllHijackReq(arg) {
+  if (!(arg instanceof clientpb_client_pb.DllHijackReq)) {
+    throw new Error('Expected argument of type clientpb.DllHijackReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_clientpb_DllHijackReq(buffer_arg) {
+  return clientpb_client_pb.DllHijackReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_clientpb_Event(arg) {
@@ -136,6 +213,28 @@ function serialize_clientpb_HTTPListenerReq(arg) {
 
 function deserialize_clientpb_HTTPListenerReq(buffer_arg) {
   return clientpb_client_pb.HTTPListenerReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_clientpb_Host(arg) {
+  if (!(arg instanceof clientpb_client_pb.Host)) {
+    throw new Error('Expected argument of type clientpb.Host');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_clientpb_Host(buffer_arg) {
+  return clientpb_client_pb.Host.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_clientpb_IOC(arg) {
+  if (!(arg instanceof clientpb_client_pb.IOC)) {
+    throw new Error('Expected argument of type clientpb.IOC');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_clientpb_IOC(buffer_arg) {
+  return clientpb_client_pb.IOC.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_clientpb_ImplantBuilds(arg) {
@@ -301,6 +400,17 @@ function serialize_clientpb_Operators(arg) {
 
 function deserialize_clientpb_Operators(buffer_arg) {
   return clientpb_client_pb.Operators.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_clientpb_PivotGraph(arg) {
+  if (!(arg instanceof clientpb_client_pb.PivotGraph)) {
+    throw new Error('Expected argument of type clientpb.PivotGraph');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_clientpb_PivotGraph(buffer_arg) {
+  return clientpb_client_pb.PivotGraph.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_clientpb_RegenerateReq(arg) {
@@ -534,6 +644,28 @@ function deserialize_sliverpb_BackdoorReq(buffer_arg) {
   return sliverpb_sliver_pb.BackdoorReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sliverpb_CallExtension(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.CallExtension)) {
+    throw new Error('Expected argument of type sliverpb.CallExtension');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sliverpb_CallExtension(buffer_arg) {
+  return sliverpb_sliver_pb.CallExtension.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sliverpb_CallExtensionReq(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.CallExtensionReq)) {
+    throw new Error('Expected argument of type sliverpb.CallExtensionReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sliverpb_CallExtensionReq(buffer_arg) {
+  return sliverpb_sliver_pb.CallExtensionReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sliverpb_CdReq(arg) {
   if (!(arg instanceof sliverpb_sliver_pb.CdReq)) {
     throw new Error('Expected argument of type sliverpb.CdReq');
@@ -543,6 +675,17 @@ function serialize_sliverpb_CdReq(arg) {
 
 function deserialize_sliverpb_CdReq(buffer_arg) {
   return sliverpb_sliver_pb.CdReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sliverpb_CloseSession(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.CloseSession)) {
+    throw new Error('Expected argument of type sliverpb.CloseSession');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sliverpb_CloseSession(buffer_arg) {
+  return sliverpb_sliver_pb.CloseSession.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_sliverpb_Download(arg) {
@@ -644,6 +787,28 @@ function deserialize_sliverpb_ExecuteTokenReq(buffer_arg) {
   return sliverpb_sliver_pb.ExecuteTokenReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sliverpb_GetPrivs(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.GetPrivs)) {
+    throw new Error('Expected argument of type sliverpb.GetPrivs');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sliverpb_GetPrivs(buffer_arg) {
+  return sliverpb_sliver_pb.GetPrivs.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sliverpb_GetPrivsReq(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.GetPrivsReq)) {
+    throw new Error('Expected argument of type sliverpb.GetPrivsReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sliverpb_GetPrivsReq(buffer_arg) {
+  return sliverpb_sliver_pb.GetPrivsReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sliverpb_GetSystem(arg) {
   if (!(arg instanceof sliverpb_sliver_pb.GetSystem)) {
     throw new Error('Expected argument of type sliverpb.GetSystem');
@@ -710,15 +875,37 @@ function deserialize_sliverpb_InvokeSpawnDllReq(buffer_arg) {
   return sliverpb_sliver_pb.InvokeSpawnDllReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_sliverpb_KillSessionReq(arg) {
-  if (!(arg instanceof sliverpb_sliver_pb.KillSessionReq)) {
-    throw new Error('Expected argument of type sliverpb.KillSessionReq');
+function serialize_sliverpb_KillReq(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.KillReq)) {
+    throw new Error('Expected argument of type sliverpb.KillReq');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_sliverpb_KillSessionReq(buffer_arg) {
-  return sliverpb_sliver_pb.KillSessionReq.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_sliverpb_KillReq(buffer_arg) {
+  return sliverpb_sliver_pb.KillReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sliverpb_ListExtensions(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.ListExtensions)) {
+    throw new Error('Expected argument of type sliverpb.ListExtensions');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sliverpb_ListExtensions(buffer_arg) {
+  return sliverpb_sliver_pb.ListExtensions.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sliverpb_ListExtensionsReq(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.ListExtensionsReq)) {
+    throw new Error('Expected argument of type sliverpb.ListExtensionsReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sliverpb_ListExtensionsReq(buffer_arg) {
+  return sliverpb_sliver_pb.ListExtensionsReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_sliverpb_Ls(arg) {
@@ -798,28 +985,6 @@ function deserialize_sliverpb_MkdirReq(buffer_arg) {
   return sliverpb_sliver_pb.MkdirReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_sliverpb_NamedPipes(arg) {
-  if (!(arg instanceof sliverpb_sliver_pb.NamedPipes)) {
-    throw new Error('Expected argument of type sliverpb.NamedPipes');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_sliverpb_NamedPipes(buffer_arg) {
-  return sliverpb_sliver_pb.NamedPipes.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_sliverpb_NamedPipesReq(arg) {
-  if (!(arg instanceof sliverpb_sliver_pb.NamedPipesReq)) {
-    throw new Error('Expected argument of type sliverpb.NamedPipesReq');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_sliverpb_NamedPipesReq(buffer_arg) {
-  return sliverpb_sliver_pb.NamedPipesReq.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 function serialize_sliverpb_Netstat(arg) {
   if (!(arg instanceof sliverpb_sliver_pb.Netstat)) {
     throw new Error('Expected argument of type sliverpb.Netstat');
@@ -842,6 +1007,17 @@ function deserialize_sliverpb_NetstatReq(buffer_arg) {
   return sliverpb_sliver_pb.NetstatReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sliverpb_OpenSession(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.OpenSession)) {
+    throw new Error('Expected argument of type sliverpb.OpenSession');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sliverpb_OpenSession(buffer_arg) {
+  return sliverpb_sliver_pb.OpenSession.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sliverpb_Ping(arg) {
   if (!(arg instanceof sliverpb_sliver_pb.Ping)) {
     throw new Error('Expected argument of type sliverpb.Ping');
@@ -853,26 +1029,59 @@ function deserialize_sliverpb_Ping(buffer_arg) {
   return sliverpb_sliver_pb.Ping.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_sliverpb_PivotList(arg) {
-  if (!(arg instanceof sliverpb_sliver_pb.PivotList)) {
-    throw new Error('Expected argument of type sliverpb.PivotList');
+function serialize_sliverpb_PivotListener(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.PivotListener)) {
+    throw new Error('Expected argument of type sliverpb.PivotListener');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_sliverpb_PivotList(buffer_arg) {
-  return sliverpb_sliver_pb.PivotList.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_sliverpb_PivotListener(buffer_arg) {
+  return sliverpb_sliver_pb.PivotListener.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_sliverpb_PivotListReq(arg) {
-  if (!(arg instanceof sliverpb_sliver_pb.PivotListReq)) {
-    throw new Error('Expected argument of type sliverpb.PivotListReq');
+function serialize_sliverpb_PivotListeners(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.PivotListeners)) {
+    throw new Error('Expected argument of type sliverpb.PivotListeners');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_sliverpb_PivotListReq(buffer_arg) {
-  return sliverpb_sliver_pb.PivotListReq.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_sliverpb_PivotListeners(buffer_arg) {
+  return sliverpb_sliver_pb.PivotListeners.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sliverpb_PivotListenersReq(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.PivotListenersReq)) {
+    throw new Error('Expected argument of type sliverpb.PivotListenersReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sliverpb_PivotListenersReq(buffer_arg) {
+  return sliverpb_sliver_pb.PivotListenersReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sliverpb_PivotStartListenerReq(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.PivotStartListenerReq)) {
+    throw new Error('Expected argument of type sliverpb.PivotStartListenerReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sliverpb_PivotStartListenerReq(buffer_arg) {
+  return sliverpb_sliver_pb.PivotStartListenerReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sliverpb_PivotStopListenerReq(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.PivotStopListenerReq)) {
+    throw new Error('Expected argument of type sliverpb.PivotStopListenerReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sliverpb_PivotStopListenerReq(buffer_arg) {
+  return sliverpb_sliver_pb.PivotStopListenerReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_sliverpb_Portfwd(arg) {
@@ -963,6 +1172,28 @@ function deserialize_sliverpb_PwdReq(buffer_arg) {
   return sliverpb_sliver_pb.PwdReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sliverpb_RegisterExtension(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.RegisterExtension)) {
+    throw new Error('Expected argument of type sliverpb.RegisterExtension');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sliverpb_RegisterExtension(buffer_arg) {
+  return sliverpb_sliver_pb.RegisterExtension.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sliverpb_RegisterExtensionReq(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.RegisterExtensionReq)) {
+    throw new Error('Expected argument of type sliverpb.RegisterExtensionReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sliverpb_RegisterExtensionReq(buffer_arg) {
+  return sliverpb_sliver_pb.RegisterExtensionReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sliverpb_RegistryCreateKey(arg) {
   if (!(arg instanceof sliverpb_sliver_pb.RegistryCreateKey)) {
     throw new Error('Expected argument of type sliverpb.RegistryCreateKey');
@@ -985,6 +1216,39 @@ function deserialize_sliverpb_RegistryCreateKeyReq(buffer_arg) {
   return sliverpb_sliver_pb.RegistryCreateKeyReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sliverpb_RegistryDeleteKey(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.RegistryDeleteKey)) {
+    throw new Error('Expected argument of type sliverpb.RegistryDeleteKey');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sliverpb_RegistryDeleteKey(buffer_arg) {
+  return sliverpb_sliver_pb.RegistryDeleteKey.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sliverpb_RegistryDeleteKeyReq(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.RegistryDeleteKeyReq)) {
+    throw new Error('Expected argument of type sliverpb.RegistryDeleteKeyReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sliverpb_RegistryDeleteKeyReq(buffer_arg) {
+  return sliverpb_sliver_pb.RegistryDeleteKeyReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sliverpb_RegistryListValuesReq(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.RegistryListValuesReq)) {
+    throw new Error('Expected argument of type sliverpb.RegistryListValuesReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sliverpb_RegistryListValuesReq(buffer_arg) {
+  return sliverpb_sliver_pb.RegistryListValuesReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sliverpb_RegistryRead(arg) {
   if (!(arg instanceof sliverpb_sliver_pb.RegistryRead)) {
     throw new Error('Expected argument of type sliverpb.RegistryRead');
@@ -1005,6 +1269,39 @@ function serialize_sliverpb_RegistryReadReq(arg) {
 
 function deserialize_sliverpb_RegistryReadReq(buffer_arg) {
   return sliverpb_sliver_pb.RegistryReadReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sliverpb_RegistrySubKeyList(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.RegistrySubKeyList)) {
+    throw new Error('Expected argument of type sliverpb.RegistrySubKeyList');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sliverpb_RegistrySubKeyList(buffer_arg) {
+  return sliverpb_sliver_pb.RegistrySubKeyList.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sliverpb_RegistrySubKeyListReq(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.RegistrySubKeyListReq)) {
+    throw new Error('Expected argument of type sliverpb.RegistrySubKeyListReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sliverpb_RegistrySubKeyListReq(buffer_arg) {
+  return sliverpb_sliver_pb.RegistrySubKeyListReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sliverpb_RegistryValuesList(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.RegistryValuesList)) {
+    throw new Error('Expected argument of type sliverpb.RegistryValuesList');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sliverpb_RegistryValuesList(buffer_arg) {
+  return sliverpb_sliver_pb.RegistryValuesList.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_sliverpb_RegistryWrite(arg) {
@@ -1227,6 +1524,28 @@ function deserialize_sliverpb_SideloadReq(buffer_arg) {
   return sliverpb_sliver_pb.SideloadReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sliverpb_Socks(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.Socks)) {
+    throw new Error('Expected argument of type sliverpb.Socks');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sliverpb_Socks(buffer_arg) {
+  return sliverpb_sliver_pb.Socks.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sliverpb_SocksData(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.SocksData)) {
+    throw new Error('Expected argument of type sliverpb.SocksData');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sliverpb_SocksData(buffer_arg) {
+  return sliverpb_sliver_pb.SocksData.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sliverpb_SpawnDll(arg) {
   if (!(arg instanceof sliverpb_sliver_pb.SpawnDll)) {
     throw new Error('Expected argument of type sliverpb.SpawnDll');
@@ -1258,28 +1577,6 @@ function serialize_sliverpb_StopServiceReq(arg) {
 
 function deserialize_sliverpb_StopServiceReq(buffer_arg) {
   return sliverpb_sliver_pb.StopServiceReq.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_sliverpb_TCPPivot(arg) {
-  if (!(arg instanceof sliverpb_sliver_pb.TCPPivot)) {
-    throw new Error('Expected argument of type sliverpb.TCPPivot');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_sliverpb_TCPPivot(buffer_arg) {
-  return sliverpb_sliver_pb.TCPPivot.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_sliverpb_TCPPivotReq(arg) {
-  if (!(arg instanceof sliverpb_sliver_pb.TCPPivotReq)) {
-    throw new Error('Expected argument of type sliverpb.TCPPivotReq');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_sliverpb_TCPPivotReq(buffer_arg) {
-  return sliverpb_sliver_pb.TCPPivotReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_sliverpb_Task(arg) {
@@ -1528,6 +1825,18 @@ getOperators: {
     responseSerialize: serialize_clientpb_Operators,
     responseDeserialize: deserialize_clientpb_Operators,
   },
+  // *** Generic ***
+kill: {
+    path: '/rpcpb.SliverRPC/Kill',
+    requestStream: false,
+    responseStream: false,
+    requestType: sliverpb_sliver_pb.KillReq,
+    responseType: commonpb_common_pb.Empty,
+    requestSerialize: serialize_sliverpb_KillReq,
+    requestDeserialize: deserialize_sliverpb_KillReq,
+    responseSerialize: serialize_commonpb_Empty,
+    responseDeserialize: deserialize_commonpb_Empty,
+  },
   // *** Sessions ***
 getSessions: {
     path: '/rpcpb.SliverRPC/GetSessions',
@@ -1540,17 +1849,6 @@ getSessions: {
     responseSerialize: serialize_clientpb_Sessions,
     responseDeserialize: deserialize_clientpb_Sessions,
   },
-  killSession: {
-    path: '/rpcpb.SliverRPC/KillSession',
-    requestStream: false,
-    responseStream: false,
-    requestType: sliverpb_sliver_pb.KillSessionReq,
-    responseType: commonpb_common_pb.Empty,
-    requestSerialize: serialize_sliverpb_KillSessionReq,
-    requestDeserialize: deserialize_sliverpb_KillSessionReq,
-    responseSerialize: serialize_commonpb_Empty,
-    responseDeserialize: deserialize_commonpb_Empty,
-  },
   updateSession: {
     path: '/rpcpb.SliverRPC/UpdateSession',
     requestStream: false,
@@ -1561,6 +1859,62 @@ getSessions: {
     requestDeserialize: deserialize_clientpb_UpdateSession,
     responseSerialize: serialize_clientpb_Session,
     responseDeserialize: deserialize_clientpb_Session,
+  },
+  // *** Beacons ***
+getBeacons: {
+    path: '/rpcpb.SliverRPC/GetBeacons',
+    requestStream: false,
+    responseStream: false,
+    requestType: commonpb_common_pb.Empty,
+    responseType: clientpb_client_pb.Beacons,
+    requestSerialize: serialize_commonpb_Empty,
+    requestDeserialize: deserialize_commonpb_Empty,
+    responseSerialize: serialize_clientpb_Beacons,
+    responseDeserialize: deserialize_clientpb_Beacons,
+  },
+  getBeacon: {
+    path: '/rpcpb.SliverRPC/GetBeacon',
+    requestStream: false,
+    responseStream: false,
+    requestType: clientpb_client_pb.Beacon,
+    responseType: clientpb_client_pb.Beacon,
+    requestSerialize: serialize_clientpb_Beacon,
+    requestDeserialize: deserialize_clientpb_Beacon,
+    responseSerialize: serialize_clientpb_Beacon,
+    responseDeserialize: deserialize_clientpb_Beacon,
+  },
+  rmBeacon: {
+    path: '/rpcpb.SliverRPC/RmBeacon',
+    requestStream: false,
+    responseStream: false,
+    requestType: clientpb_client_pb.Beacon,
+    responseType: commonpb_common_pb.Empty,
+    requestSerialize: serialize_clientpb_Beacon,
+    requestDeserialize: deserialize_clientpb_Beacon,
+    responseSerialize: serialize_commonpb_Empty,
+    responseDeserialize: deserialize_commonpb_Empty,
+  },
+  getBeaconTasks: {
+    path: '/rpcpb.SliverRPC/GetBeaconTasks',
+    requestStream: false,
+    responseStream: false,
+    requestType: clientpb_client_pb.Beacon,
+    responseType: clientpb_client_pb.BeaconTasks,
+    requestSerialize: serialize_clientpb_Beacon,
+    requestDeserialize: deserialize_clientpb_Beacon,
+    responseSerialize: serialize_clientpb_BeaconTasks,
+    responseDeserialize: deserialize_clientpb_BeaconTasks,
+  },
+  getBeaconTaskContent: {
+    path: '/rpcpb.SliverRPC/GetBeaconTaskContent',
+    requestStream: false,
+    responseStream: false,
+    requestType: clientpb_client_pb.BeaconTask,
+    responseType: clientpb_client_pb.BeaconTask,
+    requestSerialize: serialize_clientpb_BeaconTask,
+    requestDeserialize: deserialize_clientpb_BeaconTask,
+    responseSerialize: serialize_clientpb_BeaconTask,
+    responseDeserialize: deserialize_clientpb_BeaconTask,
   },
   // ***Threat monitoring ***
 monitorStart: {
@@ -1753,6 +2107,51 @@ lootAdd: {
     requestDeserialize: deserialize_clientpb_Loot,
     responseSerialize: serialize_clientpb_AllLoot,
     responseDeserialize: deserialize_clientpb_AllLoot,
+  },
+  // *** Hosts ***
+hosts: {
+    path: '/rpcpb.SliverRPC/Hosts',
+    requestStream: false,
+    responseStream: false,
+    requestType: commonpb_common_pb.Empty,
+    responseType: clientpb_client_pb.AllHosts,
+    requestSerialize: serialize_commonpb_Empty,
+    requestDeserialize: deserialize_commonpb_Empty,
+    responseSerialize: serialize_clientpb_AllHosts,
+    responseDeserialize: deserialize_clientpb_AllHosts,
+  },
+  host: {
+    path: '/rpcpb.SliverRPC/Host',
+    requestStream: false,
+    responseStream: false,
+    requestType: clientpb_client_pb.Host,
+    responseType: clientpb_client_pb.Host,
+    requestSerialize: serialize_clientpb_Host,
+    requestDeserialize: deserialize_clientpb_Host,
+    responseSerialize: serialize_clientpb_Host,
+    responseDeserialize: deserialize_clientpb_Host,
+  },
+  hostRm: {
+    path: '/rpcpb.SliverRPC/HostRm',
+    requestStream: false,
+    responseStream: false,
+    requestType: clientpb_client_pb.Host,
+    responseType: commonpb_common_pb.Empty,
+    requestSerialize: serialize_clientpb_Host,
+    requestDeserialize: deserialize_clientpb_Host,
+    responseSerialize: serialize_commonpb_Empty,
+    responseDeserialize: deserialize_commonpb_Empty,
+  },
+  hostIOCRm: {
+    path: '/rpcpb.SliverRPC/HostIOCRm',
+    requestStream: false,
+    responseStream: false,
+    requestType: clientpb_client_pb.IOC,
+    responseType: commonpb_common_pb.Empty,
+    requestSerialize: serialize_clientpb_IOC,
+    requestDeserialize: deserialize_clientpb_IOC,
+    responseSerialize: serialize_commonpb_Empty,
+    responseDeserialize: deserialize_commonpb_Empty,
   },
   // *** Implants ***
 generate: {
@@ -2169,22 +2568,22 @@ ping: {
     requestStream: false,
     responseStream: false,
     requestType: clientpb_client_pb.MSFReq,
-    responseType: commonpb_common_pb.Empty,
+    responseType: sliverpb_sliver_pb.Task,
     requestSerialize: serialize_clientpb_MSFReq,
     requestDeserialize: deserialize_clientpb_MSFReq,
-    responseSerialize: serialize_commonpb_Empty,
-    responseDeserialize: deserialize_commonpb_Empty,
+    responseSerialize: serialize_sliverpb_Task,
+    responseDeserialize: deserialize_sliverpb_Task,
   },
   msfRemote: {
     path: '/rpcpb.SliverRPC/MsfRemote',
     requestStream: false,
     responseStream: false,
     requestType: clientpb_client_pb.MSFRemoteReq,
-    responseType: commonpb_common_pb.Empty,
+    responseType: sliverpb_sliver_pb.Task,
     requestSerialize: serialize_clientpb_MSFRemoteReq,
     requestDeserialize: deserialize_clientpb_MSFRemoteReq,
-    responseSerialize: serialize_commonpb_Empty,
-    responseDeserialize: deserialize_commonpb_Empty,
+    responseSerialize: serialize_sliverpb_Task,
+    responseDeserialize: deserialize_sliverpb_Task,
   },
   executeAssembly: {
     path: '/rpcpb.SliverRPC/ExecuteAssembly',
@@ -2263,38 +2662,50 @@ ping: {
     responseSerialize: serialize_sliverpb_Screenshot,
     responseDeserialize: deserialize_sliverpb_Screenshot,
   },
-  namedPipes: {
-    path: '/rpcpb.SliverRPC/NamedPipes',
+  // *** Pivots ***
+pivotStartListener: {
+    path: '/rpcpb.SliverRPC/PivotStartListener',
     requestStream: false,
     responseStream: false,
-    requestType: sliverpb_sliver_pb.NamedPipesReq,
-    responseType: sliverpb_sliver_pb.NamedPipes,
-    requestSerialize: serialize_sliverpb_NamedPipesReq,
-    requestDeserialize: deserialize_sliverpb_NamedPipesReq,
-    responseSerialize: serialize_sliverpb_NamedPipes,
-    responseDeserialize: deserialize_sliverpb_NamedPipes,
+    requestType: sliverpb_sliver_pb.PivotStartListenerReq,
+    responseType: sliverpb_sliver_pb.PivotListener,
+    requestSerialize: serialize_sliverpb_PivotStartListenerReq,
+    requestDeserialize: deserialize_sliverpb_PivotStartListenerReq,
+    responseSerialize: serialize_sliverpb_PivotListener,
+    responseDeserialize: deserialize_sliverpb_PivotListener,
   },
-  tCPListener: {
-    path: '/rpcpb.SliverRPC/TCPListener',
+  pivotStopListener: {
+    path: '/rpcpb.SliverRPC/PivotStopListener',
     requestStream: false,
     responseStream: false,
-    requestType: sliverpb_sliver_pb.TCPPivotReq,
-    responseType: sliverpb_sliver_pb.TCPPivot,
-    requestSerialize: serialize_sliverpb_TCPPivotReq,
-    requestDeserialize: deserialize_sliverpb_TCPPivotReq,
-    responseSerialize: serialize_sliverpb_TCPPivot,
-    responseDeserialize: deserialize_sliverpb_TCPPivot,
+    requestType: sliverpb_sliver_pb.PivotStopListenerReq,
+    responseType: commonpb_common_pb.Empty,
+    requestSerialize: serialize_sliverpb_PivotStopListenerReq,
+    requestDeserialize: deserialize_sliverpb_PivotStopListenerReq,
+    responseSerialize: serialize_commonpb_Empty,
+    responseDeserialize: deserialize_commonpb_Empty,
   },
-  listPivots: {
-    path: '/rpcpb.SliverRPC/ListPivots',
+  pivotSessionListeners: {
+    path: '/rpcpb.SliverRPC/PivotSessionListeners',
     requestStream: false,
     responseStream: false,
-    requestType: sliverpb_sliver_pb.PivotListReq,
-    responseType: sliverpb_sliver_pb.PivotList,
-    requestSerialize: serialize_sliverpb_PivotListReq,
-    requestDeserialize: deserialize_sliverpb_PivotListReq,
-    responseSerialize: serialize_sliverpb_PivotList,
-    responseDeserialize: deserialize_sliverpb_PivotList,
+    requestType: sliverpb_sliver_pb.PivotListenersReq,
+    responseType: sliverpb_sliver_pb.PivotListeners,
+    requestSerialize: serialize_sliverpb_PivotListenersReq,
+    requestDeserialize: deserialize_sliverpb_PivotListenersReq,
+    responseSerialize: serialize_sliverpb_PivotListeners,
+    responseDeserialize: deserialize_sliverpb_PivotListeners,
+  },
+  pivotGraph: {
+    path: '/rpcpb.SliverRPC/PivotGraph',
+    requestStream: false,
+    responseStream: false,
+    requestType: commonpb_common_pb.Empty,
+    responseType: clientpb_client_pb.PivotGraph,
+    requestSerialize: serialize_commonpb_Empty,
+    requestDeserialize: deserialize_commonpb_Empty,
+    responseSerialize: serialize_clientpb_PivotGraph,
+    responseDeserialize: deserialize_clientpb_PivotGraph,
   },
   startService: {
     path: '/rpcpb.SliverRPC/StartService',
@@ -2417,6 +2828,39 @@ ping: {
     responseSerialize: serialize_sliverpb_RegistryCreateKey,
     responseDeserialize: deserialize_sliverpb_RegistryCreateKey,
   },
+  registryDeleteKey: {
+    path: '/rpcpb.SliverRPC/RegistryDeleteKey',
+    requestStream: false,
+    responseStream: false,
+    requestType: sliverpb_sliver_pb.RegistryDeleteKeyReq,
+    responseType: sliverpb_sliver_pb.RegistryDeleteKey,
+    requestSerialize: serialize_sliverpb_RegistryDeleteKeyReq,
+    requestDeserialize: deserialize_sliverpb_RegistryDeleteKeyReq,
+    responseSerialize: serialize_sliverpb_RegistryDeleteKey,
+    responseDeserialize: deserialize_sliverpb_RegistryDeleteKey,
+  },
+  registryListSubKeys: {
+    path: '/rpcpb.SliverRPC/RegistryListSubKeys',
+    requestStream: false,
+    responseStream: false,
+    requestType: sliverpb_sliver_pb.RegistrySubKeyListReq,
+    responseType: sliverpb_sliver_pb.RegistrySubKeyList,
+    requestSerialize: serialize_sliverpb_RegistrySubKeyListReq,
+    requestDeserialize: deserialize_sliverpb_RegistrySubKeyListReq,
+    responseSerialize: serialize_sliverpb_RegistrySubKeyList,
+    responseDeserialize: deserialize_sliverpb_RegistrySubKeyList,
+  },
+  registryListValues: {
+    path: '/rpcpb.SliverRPC/RegistryListValues',
+    requestStream: false,
+    responseStream: false,
+    requestType: sliverpb_sliver_pb.RegistryListValuesReq,
+    responseType: sliverpb_sliver_pb.RegistryValuesList,
+    requestSerialize: serialize_sliverpb_RegistryListValuesReq,
+    requestDeserialize: deserialize_sliverpb_RegistryListValuesReq,
+    responseSerialize: serialize_sliverpb_RegistryValuesList,
+    responseDeserialize: deserialize_sliverpb_RegistryValuesList,
+  },
   runSSHCommand: {
     path: '/rpcpb.SliverRPC/RunSSHCommand',
     requestStream: false,
@@ -2427,6 +2871,85 @@ ping: {
     requestDeserialize: deserialize_sliverpb_SSHCommandReq,
     responseSerialize: serialize_sliverpb_SSHCommand,
     responseDeserialize: deserialize_sliverpb_SSHCommand,
+  },
+  hijackDLL: {
+    path: '/rpcpb.SliverRPC/HijackDLL',
+    requestStream: false,
+    responseStream: false,
+    requestType: clientpb_client_pb.DllHijackReq,
+    responseType: clientpb_client_pb.DllHijack,
+    requestSerialize: serialize_clientpb_DllHijackReq,
+    requestDeserialize: deserialize_clientpb_DllHijackReq,
+    responseSerialize: serialize_clientpb_DllHijack,
+    responseDeserialize: deserialize_clientpb_DllHijack,
+  },
+  getPrivs: {
+    path: '/rpcpb.SliverRPC/GetPrivs',
+    requestStream: false,
+    responseStream: false,
+    requestType: sliverpb_sliver_pb.GetPrivsReq,
+    responseType: sliverpb_sliver_pb.GetPrivs,
+    requestSerialize: serialize_sliverpb_GetPrivsReq,
+    requestDeserialize: deserialize_sliverpb_GetPrivsReq,
+    responseSerialize: serialize_sliverpb_GetPrivs,
+    responseDeserialize: deserialize_sliverpb_GetPrivs,
+  },
+  // Beacon only commands
+openSession: {
+    path: '/rpcpb.SliverRPC/OpenSession',
+    requestStream: false,
+    responseStream: false,
+    requestType: sliverpb_sliver_pb.OpenSession,
+    responseType: sliverpb_sliver_pb.OpenSession,
+    requestSerialize: serialize_sliverpb_OpenSession,
+    requestDeserialize: deserialize_sliverpb_OpenSession,
+    responseSerialize: serialize_sliverpb_OpenSession,
+    responseDeserialize: deserialize_sliverpb_OpenSession,
+  },
+  closeSession: {
+    path: '/rpcpb.SliverRPC/CloseSession',
+    requestStream: false,
+    responseStream: false,
+    requestType: sliverpb_sliver_pb.CloseSession,
+    responseType: commonpb_common_pb.Empty,
+    requestSerialize: serialize_sliverpb_CloseSession,
+    requestDeserialize: deserialize_sliverpb_CloseSession,
+    responseSerialize: serialize_commonpb_Empty,
+    responseDeserialize: deserialize_commonpb_Empty,
+  },
+  // Extensions
+registerExtension: {
+    path: '/rpcpb.SliverRPC/RegisterExtension',
+    requestStream: false,
+    responseStream: false,
+    requestType: sliverpb_sliver_pb.RegisterExtensionReq,
+    responseType: sliverpb_sliver_pb.RegisterExtension,
+    requestSerialize: serialize_sliverpb_RegisterExtensionReq,
+    requestDeserialize: deserialize_sliverpb_RegisterExtensionReq,
+    responseSerialize: serialize_sliverpb_RegisterExtension,
+    responseDeserialize: deserialize_sliverpb_RegisterExtension,
+  },
+  callExtension: {
+    path: '/rpcpb.SliverRPC/CallExtension',
+    requestStream: false,
+    responseStream: false,
+    requestType: sliverpb_sliver_pb.CallExtensionReq,
+    responseType: sliverpb_sliver_pb.CallExtension,
+    requestSerialize: serialize_sliverpb_CallExtensionReq,
+    requestDeserialize: deserialize_sliverpb_CallExtensionReq,
+    responseSerialize: serialize_sliverpb_CallExtension,
+    responseDeserialize: deserialize_sliverpb_CallExtension,
+  },
+  listExtensions: {
+    path: '/rpcpb.SliverRPC/ListExtensions',
+    requestStream: false,
+    responseStream: false,
+    requestType: sliverpb_sliver_pb.ListExtensionsReq,
+    responseType: sliverpb_sliver_pb.ListExtensions,
+    requestSerialize: serialize_sliverpb_ListExtensionsReq,
+    requestDeserialize: deserialize_sliverpb_ListExtensionsReq,
+    responseSerialize: serialize_sliverpb_ListExtensions,
+    responseDeserialize: deserialize_sliverpb_ListExtensions,
   },
   // *** Wireguard Specific ***
 wGStartPortForward: {
@@ -2517,6 +3040,40 @@ shell: {
     requestDeserialize: deserialize_sliverpb_PortfwdReq,
     responseSerialize: serialize_sliverpb_Portfwd,
     responseDeserialize: deserialize_sliverpb_Portfwd,
+  },
+  // *** Socks5 ***
+createSocks: {
+    path: '/rpcpb.SliverRPC/CreateSocks',
+    requestStream: false,
+    responseStream: false,
+    requestType: sliverpb_sliver_pb.Socks,
+    responseType: sliverpb_sliver_pb.Socks,
+    requestSerialize: serialize_sliverpb_Socks,
+    requestDeserialize: deserialize_sliverpb_Socks,
+    responseSerialize: serialize_sliverpb_Socks,
+    responseDeserialize: deserialize_sliverpb_Socks,
+  },
+  closeSocks: {
+    path: '/rpcpb.SliverRPC/CloseSocks',
+    requestStream: false,
+    responseStream: false,
+    requestType: sliverpb_sliver_pb.Socks,
+    responseType: commonpb_common_pb.Empty,
+    requestSerialize: serialize_sliverpb_Socks,
+    requestDeserialize: deserialize_sliverpb_Socks,
+    responseSerialize: serialize_commonpb_Empty,
+    responseDeserialize: deserialize_commonpb_Empty,
+  },
+  socksProxy: {
+    path: '/rpcpb.SliverRPC/SocksProxy',
+    requestStream: true,
+    responseStream: true,
+    requestType: sliverpb_sliver_pb.SocksData,
+    responseType: sliverpb_sliver_pb.SocksData,
+    requestSerialize: serialize_sliverpb_SocksData,
+    requestDeserialize: deserialize_sliverpb_SocksData,
+    responseSerialize: serialize_sliverpb_SocksData,
+    responseDeserialize: deserialize_sliverpb_SocksData,
   },
   // *** Tunnels ***
 createTunnel: {

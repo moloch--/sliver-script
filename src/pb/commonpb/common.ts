@@ -49,7 +49,8 @@ export namespace commonpb {
         constructor(data?: any[] | {
             Async?: boolean;
             Timeout?: number;
-            SessionID?: number;
+            BeaconID?: string;
+            SessionID?: string;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
@@ -59,6 +60,9 @@ export namespace commonpb {
                 }
                 if ("Timeout" in data && data.Timeout != undefined) {
                     this.Timeout = data.Timeout;
+                }
+                if ("BeaconID" in data && data.BeaconID != undefined) {
+                    this.BeaconID = data.BeaconID;
                 }
                 if ("SessionID" in data && data.SessionID != undefined) {
                     this.SessionID = data.SessionID;
@@ -77,16 +81,23 @@ export namespace commonpb {
         set Timeout(value: number) {
             pb_1.Message.setField(this, 2, value);
         }
-        get SessionID() {
-            return pb_1.Message.getField(this, 9) as number;
+        get BeaconID() {
+            return pb_1.Message.getField(this, 8) as string;
         }
-        set SessionID(value: number) {
+        set BeaconID(value: string) {
+            pb_1.Message.setField(this, 8, value);
+        }
+        get SessionID() {
+            return pb_1.Message.getField(this, 9) as string;
+        }
+        set SessionID(value: string) {
             pb_1.Message.setField(this, 9, value);
         }
         static fromObject(data: {
             Async?: boolean;
             Timeout?: number;
-            SessionID?: number;
+            BeaconID?: string;
+            SessionID?: string;
         }) {
             const message = new Request({});
             if (data.Async != null) {
@@ -94,6 +105,9 @@ export namespace commonpb {
             }
             if (data.Timeout != null) {
                 message.Timeout = data.Timeout;
+            }
+            if (data.BeaconID != null) {
+                message.BeaconID = data.BeaconID;
             }
             if (data.SessionID != null) {
                 message.SessionID = data.SessionID;
@@ -104,13 +118,17 @@ export namespace commonpb {
             const data: {
                 Async?: boolean;
                 Timeout?: number;
-                SessionID?: number;
+                BeaconID?: string;
+                SessionID?: string;
             } = {};
             if (this.Async != null) {
                 data.Async = this.Async;
             }
             if (this.Timeout != null) {
                 data.Timeout = this.Timeout;
+            }
+            if (this.BeaconID != null) {
+                data.BeaconID = this.BeaconID;
             }
             if (this.SessionID != null) {
                 data.SessionID = this.SessionID;
@@ -125,8 +143,10 @@ export namespace commonpb {
                 writer.writeBool(1, this.Async);
             if (this.Timeout !== undefined)
                 writer.writeInt64(2, this.Timeout);
-            if (this.SessionID !== undefined)
-                writer.writeUint32(9, this.SessionID);
+            if (typeof this.BeaconID === "string" && this.BeaconID.length)
+                writer.writeString(8, this.BeaconID);
+            if (typeof this.SessionID === "string" && this.SessionID.length)
+                writer.writeString(9, this.SessionID);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -142,8 +162,11 @@ export namespace commonpb {
                     case 2:
                         message.Timeout = reader.readInt64();
                         break;
+                    case 8:
+                        message.BeaconID = reader.readString();
+                        break;
                     case 9:
-                        message.SessionID = reader.readUint32();
+                        message.SessionID = reader.readString();
                         break;
                     default: reader.skipField();
                 }
@@ -160,12 +183,24 @@ export namespace commonpb {
     export class Response extends pb_1.Message {
         constructor(data?: any[] | {
             Err?: string;
+            Async?: boolean;
+            BeaconID?: string;
+            TaskID?: string;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("Err" in data && data.Err != undefined) {
                     this.Err = data.Err;
+                }
+                if ("Async" in data && data.Async != undefined) {
+                    this.Async = data.Async;
+                }
+                if ("BeaconID" in data && data.BeaconID != undefined) {
+                    this.BeaconID = data.BeaconID;
+                }
+                if ("TaskID" in data && data.TaskID != undefined) {
+                    this.TaskID = data.TaskID;
                 }
             }
         }
@@ -175,21 +210,63 @@ export namespace commonpb {
         set Err(value: string) {
             pb_1.Message.setField(this, 1, value);
         }
+        get Async() {
+            return pb_1.Message.getField(this, 2) as boolean;
+        }
+        set Async(value: boolean) {
+            pb_1.Message.setField(this, 2, value);
+        }
+        get BeaconID() {
+            return pb_1.Message.getField(this, 8) as string;
+        }
+        set BeaconID(value: string) {
+            pb_1.Message.setField(this, 8, value);
+        }
+        get TaskID() {
+            return pb_1.Message.getField(this, 9) as string;
+        }
+        set TaskID(value: string) {
+            pb_1.Message.setField(this, 9, value);
+        }
         static fromObject(data: {
             Err?: string;
+            Async?: boolean;
+            BeaconID?: string;
+            TaskID?: string;
         }) {
             const message = new Response({});
             if (data.Err != null) {
                 message.Err = data.Err;
+            }
+            if (data.Async != null) {
+                message.Async = data.Async;
+            }
+            if (data.BeaconID != null) {
+                message.BeaconID = data.BeaconID;
+            }
+            if (data.TaskID != null) {
+                message.TaskID = data.TaskID;
             }
             return message;
         }
         toObject() {
             const data: {
                 Err?: string;
+                Async?: boolean;
+                BeaconID?: string;
+                TaskID?: string;
             } = {};
             if (this.Err != null) {
                 data.Err = this.Err;
+            }
+            if (this.Async != null) {
+                data.Async = this.Async;
+            }
+            if (this.BeaconID != null) {
+                data.BeaconID = this.BeaconID;
+            }
+            if (this.TaskID != null) {
+                data.TaskID = this.TaskID;
             }
             return data;
         }
@@ -199,6 +276,12 @@ export namespace commonpb {
             const writer = w || new pb_1.BinaryWriter();
             if (typeof this.Err === "string" && this.Err.length)
                 writer.writeString(1, this.Err);
+            if (this.Async !== undefined)
+                writer.writeBool(2, this.Async);
+            if (typeof this.BeaconID === "string" && this.BeaconID.length)
+                writer.writeString(8, this.BeaconID);
+            if (typeof this.TaskID === "string" && this.TaskID.length)
+                writer.writeString(9, this.TaskID);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -210,6 +293,15 @@ export namespace commonpb {
                 switch (reader.getFieldNumber()) {
                     case 1:
                         message.Err = reader.readString();
+                        break;
+                    case 2:
+                        message.Async = reader.readBool();
+                        break;
+                    case 8:
+                        message.BeaconID = reader.readString();
+                        break;
+                    case 9:
+                        message.TaskID = reader.readString();
                         break;
                     default: reader.skipField();
                 }
