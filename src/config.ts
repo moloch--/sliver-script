@@ -8,6 +8,7 @@ export interface SliverClientConfig {
   ca_certificate: string;
   certificate: string;
   private_key: string;
+  token: string;
 }
 
 export function ParseConfigFile(filePath: string): Promise<SliverClientConfig> {

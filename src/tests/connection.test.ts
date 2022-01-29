@@ -8,7 +8,7 @@ import { SliverClient } from '../client'
 const DEFAULT_CONFIG_PATH = path.join(os.homedir(), '.sliver-client', 'configs', 'default.cfg')
 const SLIVER_CONFIG_FILE = process.env['SLIVER_CONFIG_FILE'] || DEFAULT_CONFIG_PATH;
 
-(async () => {
+test('autenticate to server', async () => {
     console.log(`Loading config: ${SLIVER_CONFIG_FILE}`)
     const config = await ParseConfigFile(SLIVER_CONFIG_FILE)
     const client = new SliverClient(config)
@@ -16,8 +16,8 @@ const SLIVER_CONFIG_FILE = process.env['SLIVER_CONFIG_FILE'] || DEFAULT_CONFIG_P
     console.log(`Connecting to ${config.lhost} ...`)
     try {
         await client.connect()
+        await client.disconnect()
     } catch (err) {
         console.error(err)
-        process.exit(9)
     }
-})()
+})

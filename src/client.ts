@@ -498,9 +498,16 @@ export class SliverClient {
     const privateKey = Buffer.from(this._config.private_key);
     const certificate = Buffer.from(this._config.certificate);
     
-    return grpc.credentials.createSsl(ca, privateKey, certificate, {
-      checkServerIdentity: () => undefined,
-    });
+    return grpc.credentials.combineChannelCredentials(
+      grpc.credentials.createSsl(ca, privateKey, certificate, {
+        checkServerIdentity: () => undefined,
+      }),
+      grpc.credentials.createFromMetadataGenerator((args, cb) => {
+        const meta = new grpc.Metadata();
+        meta.set('Authorization', `Bearer ${this._config.token}`);
+        cb(null, meta);
+      }),
+    );
   }
 
   get config(): SliverClientConfig {
