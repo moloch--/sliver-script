@@ -721,7 +721,7 @@ export class SliverClient {
     });
   }
 
-  startTCPStagerListener(host: string, port: number, data: Buffer, persistent = false, timeout = TIMEOUT): Promise<clientpb.StagerListener|undefined> {
+  startTCPStagerListener(host: string, port: number, data: Buffer, timeout = TIMEOUT): Promise<clientpb.StagerListener|undefined> {
     return new Promise((resolve, reject) => {
       const req = new clientpb.StagerListenerReq();
       req.setProtocol(clientpb.StageProtocol.TCP);
@@ -875,8 +875,8 @@ export class SliverClient {
     }
 
     return new Promise((resolve, reject) => {
-      this.rpc.lootAllOf(loot, this.deadline(timeout), (err, loot) => {
-        err ? reject(err) : resolve(loot?.getLootList());
+      this.rpc.lootAllOf(loot, this.deadline(timeout), (err, allLoot) => {
+        err ? reject(err) : resolve(allLoot?.getLootList());
       });
     });
   }
