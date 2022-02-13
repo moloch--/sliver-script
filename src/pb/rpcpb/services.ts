@@ -62,6 +62,24 @@ export namespace rpcpb {
                 responseSerialize: (message: dependency_1.commonpb.Empty) => Buffer.from(message.serialize()),
                 responseDeserialize: (bytes: Buffer) => dependency_1.commonpb.Empty.deserialize(new Uint8Array(bytes))
             },
+            Reconfigure: {
+                path: "/rpcpb.SliverRPC/Reconfigure",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: dependency_2.sliverpb.ReconfigureReq) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_2.sliverpb.ReconfigureReq.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_2.sliverpb.Reconfigure) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_2.sliverpb.Reconfigure.deserialize(new Uint8Array(bytes))
+            },
+            Rename: {
+                path: "/rpcpb.SliverRPC/Rename",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: dependency_3.clientpb.RenameReq) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_3.clientpb.RenameReq.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_1.commonpb.Empty) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_1.commonpb.Empty.deserialize(new Uint8Array(bytes))
+            },
             GetSessions: {
                 path: "/rpcpb.SliverRPC/GetSessions",
                 requestStream: false,
@@ -70,15 +88,6 @@ export namespace rpcpb {
                 requestDeserialize: (bytes: Buffer) => dependency_1.commonpb.Empty.deserialize(new Uint8Array(bytes)),
                 responseSerialize: (message: dependency_3.clientpb.Sessions) => Buffer.from(message.serialize()),
                 responseDeserialize: (bytes: Buffer) => dependency_3.clientpb.Sessions.deserialize(new Uint8Array(bytes))
-            },
-            UpdateSession: {
-                path: "/rpcpb.SliverRPC/UpdateSession",
-                requestStream: false,
-                responseStream: false,
-                requestSerialize: (message: dependency_3.clientpb.UpdateSession) => Buffer.from(message.serialize()),
-                requestDeserialize: (bytes: Buffer) => dependency_3.clientpb.UpdateSession.deserialize(new Uint8Array(bytes)),
-                responseSerialize: (message: dependency_3.clientpb.Session) => Buffer.from(message.serialize()),
-                responseDeserialize: (bytes: Buffer) => dependency_3.clientpb.Session.deserialize(new Uint8Array(bytes))
             },
             GetBeacons: {
                 path: "/rpcpb.SliverRPC/GetBeacons",
@@ -1102,8 +1111,9 @@ export namespace rpcpb {
         abstract GetVersion(call: grpc_1.ServerUnaryCall<dependency_1.commonpb.Empty, dependency_3.clientpb.Version>, callback: grpc_1.sendUnaryData<dependency_3.clientpb.Version>): void;
         abstract GetOperators(call: grpc_1.ServerUnaryCall<dependency_1.commonpb.Empty, dependency_3.clientpb.Operators>, callback: grpc_1.sendUnaryData<dependency_3.clientpb.Operators>): void;
         abstract Kill(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.KillReq, dependency_1.commonpb.Empty>, callback: grpc_1.sendUnaryData<dependency_1.commonpb.Empty>): void;
+        abstract Reconfigure(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.ReconfigureReq, dependency_2.sliverpb.Reconfigure>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.Reconfigure>): void;
+        abstract Rename(call: grpc_1.ServerUnaryCall<dependency_3.clientpb.RenameReq, dependency_1.commonpb.Empty>, callback: grpc_1.sendUnaryData<dependency_1.commonpb.Empty>): void;
         abstract GetSessions(call: grpc_1.ServerUnaryCall<dependency_1.commonpb.Empty, dependency_3.clientpb.Sessions>, callback: grpc_1.sendUnaryData<dependency_3.clientpb.Sessions>): void;
-        abstract UpdateSession(call: grpc_1.ServerUnaryCall<dependency_3.clientpb.UpdateSession, dependency_3.clientpb.Session>, callback: grpc_1.sendUnaryData<dependency_3.clientpb.Session>): void;
         abstract GetBeacons(call: grpc_1.ServerUnaryCall<dependency_1.commonpb.Empty, dependency_3.clientpb.Beacons>, callback: grpc_1.sendUnaryData<dependency_3.clientpb.Beacons>): void;
         abstract GetBeacon(call: grpc_1.ServerUnaryCall<dependency_3.clientpb.Beacon, dependency_3.clientpb.Beacon>, callback: grpc_1.sendUnaryData<dependency_3.clientpb.Beacon>): void;
         abstract RmBeacon(call: grpc_1.ServerUnaryCall<dependency_3.clientpb.Beacon, dependency_1.commonpb.Empty>, callback: grpc_1.sendUnaryData<dependency_1.commonpb.Empty>): void;
@@ -1231,11 +1241,14 @@ export namespace rpcpb {
         Kill: GrpcUnaryServiceInterface<dependency_2.sliverpb.KillReq, dependency_1.commonpb.Empty> = (message: dependency_2.sliverpb.KillReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_1.commonpb.Empty>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_1.commonpb.Empty>, callback?: grpc_1.requestCallback<dependency_1.commonpb.Empty>): grpc_1.ClientUnaryCall => {
             return super.Kill(message, metadata, options, callback);
         };
+        Reconfigure: GrpcUnaryServiceInterface<dependency_2.sliverpb.ReconfigureReq, dependency_2.sliverpb.Reconfigure> = (message: dependency_2.sliverpb.ReconfigureReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.Reconfigure>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.Reconfigure>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.Reconfigure>): grpc_1.ClientUnaryCall => {
+            return super.Reconfigure(message, metadata, options, callback);
+        };
+        Rename: GrpcUnaryServiceInterface<dependency_3.clientpb.RenameReq, dependency_1.commonpb.Empty> = (message: dependency_3.clientpb.RenameReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_1.commonpb.Empty>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_1.commonpb.Empty>, callback?: grpc_1.requestCallback<dependency_1.commonpb.Empty>): grpc_1.ClientUnaryCall => {
+            return super.Rename(message, metadata, options, callback);
+        };
         GetSessions: GrpcUnaryServiceInterface<dependency_1.commonpb.Empty, dependency_3.clientpb.Sessions> = (message: dependency_1.commonpb.Empty, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.Sessions>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.Sessions>, callback?: grpc_1.requestCallback<dependency_3.clientpb.Sessions>): grpc_1.ClientUnaryCall => {
             return super.GetSessions(message, metadata, options, callback);
-        };
-        UpdateSession: GrpcUnaryServiceInterface<dependency_3.clientpb.UpdateSession, dependency_3.clientpb.Session> = (message: dependency_3.clientpb.UpdateSession, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.Session>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.Session>, callback?: grpc_1.requestCallback<dependency_3.clientpb.Session>): grpc_1.ClientUnaryCall => {
-            return super.UpdateSession(message, metadata, options, callback);
         };
         GetBeacons: GrpcUnaryServiceInterface<dependency_1.commonpb.Empty, dependency_3.clientpb.Beacons> = (message: dependency_1.commonpb.Empty, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.Beacons>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_3.clientpb.Beacons>, callback?: grpc_1.requestCallback<dependency_3.clientpb.Beacons>): grpc_1.ClientUnaryCall => {
             return super.GetBeacons(message, metadata, options, callback);

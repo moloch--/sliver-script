@@ -14067,9 +14067,11 @@ export namespace sliverpb {
             return WGTCPForwarders.deserialize(bytes);
         }
     }
-    export class ReconnectIntervalReq extends pb_1.Message {
+    export class ReconfigureReq extends pb_1.Message {
         constructor(data?: any[] | {
             ReconnectInterval?: number;
+            BeaconInterval?: number;
+            BeaconJitter?: number;
             Request?: dependency_1.commonpb.Request;
         }) {
             super();
@@ -14077,6 +14079,12 @@ export namespace sliverpb {
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("ReconnectInterval" in data && data.ReconnectInterval != undefined) {
                     this.ReconnectInterval = data.ReconnectInterval;
+                }
+                if ("BeaconInterval" in data && data.BeaconInterval != undefined) {
+                    this.BeaconInterval = data.BeaconInterval;
+                }
+                if ("BeaconJitter" in data && data.BeaconJitter != undefined) {
+                    this.BeaconJitter = data.BeaconJitter;
                 }
                 if ("Request" in data && data.Request != undefined) {
                     this.Request = data.Request;
@@ -14089,6 +14097,18 @@ export namespace sliverpb {
         set ReconnectInterval(value: number) {
             pb_1.Message.setField(this, 1, value);
         }
+        get BeaconInterval() {
+            return pb_1.Message.getField(this, 2) as number;
+        }
+        set BeaconInterval(value: number) {
+            pb_1.Message.setField(this, 2, value);
+        }
+        get BeaconJitter() {
+            return pb_1.Message.getField(this, 3) as number;
+        }
+        set BeaconJitter(value: number) {
+            pb_1.Message.setField(this, 3, value);
+        }
         get Request() {
             return pb_1.Message.getWrapperField(this, dependency_1.commonpb.Request, 9) as dependency_1.commonpb.Request;
         }
@@ -14097,11 +14117,19 @@ export namespace sliverpb {
         }
         static fromObject(data: {
             ReconnectInterval?: number;
+            BeaconInterval?: number;
+            BeaconJitter?: number;
             Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
         }) {
-            const message = new ReconnectIntervalReq({});
+            const message = new ReconfigureReq({});
             if (data.ReconnectInterval != null) {
                 message.ReconnectInterval = data.ReconnectInterval;
+            }
+            if (data.BeaconInterval != null) {
+                message.BeaconInterval = data.BeaconInterval;
+            }
+            if (data.BeaconJitter != null) {
+                message.BeaconJitter = data.BeaconJitter;
             }
             if (data.Request != null) {
                 message.Request = dependency_1.commonpb.Request.fromObject(data.Request);
@@ -14111,10 +14139,18 @@ export namespace sliverpb {
         toObject() {
             const data: {
                 ReconnectInterval?: number;
+                BeaconInterval?: number;
+                BeaconJitter?: number;
                 Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
             } = {};
             if (this.ReconnectInterval != null) {
                 data.ReconnectInterval = this.ReconnectInterval;
+            }
+            if (this.BeaconInterval != null) {
+                data.BeaconInterval = this.BeaconInterval;
+            }
+            if (this.BeaconJitter != null) {
+                data.BeaconJitter = this.BeaconJitter;
             }
             if (this.Request != null) {
                 data.Request = this.Request.toObject();
@@ -14127,19 +14163,29 @@ export namespace sliverpb {
             const writer = w || new pb_1.BinaryWriter();
             if (this.ReconnectInterval !== undefined)
                 writer.writeInt64(1, this.ReconnectInterval);
+            if (this.BeaconInterval !== undefined)
+                writer.writeInt64(2, this.BeaconInterval);
+            if (this.BeaconJitter !== undefined)
+                writer.writeInt64(3, this.BeaconJitter);
             if (this.Request !== undefined)
                 writer.writeMessage(9, this.Request, () => this.Request.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): ReconnectIntervalReq {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new ReconnectIntervalReq();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): ReconfigureReq {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new ReconfigureReq();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
                         message.ReconnectInterval = reader.readInt64();
+                        break;
+                    case 2:
+                        message.BeaconInterval = reader.readInt64();
+                        break;
+                    case 3:
+                        message.BeaconJitter = reader.readInt64();
                         break;
                     case 9:
                         reader.readMessage(message.Request, () => message.Request = dependency_1.commonpb.Request.deserialize(reader));
@@ -14152,11 +14198,11 @@ export namespace sliverpb {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): ReconnectIntervalReq {
-            return ReconnectIntervalReq.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): ReconfigureReq {
+            return ReconfigureReq.deserialize(bytes);
         }
     }
-    export class ReconnectInterval extends pb_1.Message {
+    export class Reconfigure extends pb_1.Message {
         constructor(data?: any[] | {
             Response?: dependency_1.commonpb.Response;
         }) {
@@ -14177,7 +14223,7 @@ export namespace sliverpb {
         static fromObject(data: {
             Response?: ReturnType<typeof dependency_1.commonpb.Response.prototype.toObject>;
         }) {
-            const message = new ReconnectInterval({});
+            const message = new Reconfigure({});
             if (data.Response != null) {
                 message.Response = dependency_1.commonpb.Response.fromObject(data.Response);
             }
@@ -14201,8 +14247,8 @@ export namespace sliverpb {
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): ReconnectInterval {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new ReconnectInterval();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): Reconfigure {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new Reconfigure();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
@@ -14218,8 +14264,8 @@ export namespace sliverpb {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): ReconnectInterval {
-            return ReconnectInterval.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): Reconfigure {
+            return Reconfigure.deserialize(bytes);
         }
     }
     export class PollIntervalReq extends pb_1.Message {

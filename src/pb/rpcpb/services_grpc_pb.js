@@ -424,15 +424,15 @@ function deserialize_clientpb_RegenerateReq(buffer_arg) {
   return clientpb_client_pb.RegenerateReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_clientpb_Session(arg) {
-  if (!(arg instanceof clientpb_client_pb.Session)) {
-    throw new Error('Expected argument of type clientpb.Session');
+function serialize_clientpb_RenameReq(arg) {
+  if (!(arg instanceof clientpb_client_pb.RenameReq)) {
+    throw new Error('Expected argument of type clientpb.RenameReq');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_clientpb_Session(buffer_arg) {
-  return clientpb_client_pb.Session.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_clientpb_RenameReq(buffer_arg) {
+  return clientpb_client_pb.RenameReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_clientpb_Sessions(arg) {
@@ -499,17 +499,6 @@ function serialize_clientpb_UniqueWGIP(arg) {
 
 function deserialize_clientpb_UniqueWGIP(buffer_arg) {
   return clientpb_client_pb.UniqueWGIP.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_clientpb_UpdateSession(arg) {
-  if (!(arg instanceof clientpb_client_pb.UpdateSession)) {
-    throw new Error('Expected argument of type clientpb.UpdateSession');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_clientpb_UpdateSession(buffer_arg) {
-  return clientpb_client_pb.UpdateSession.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_clientpb_Version(arg) {
@@ -1170,6 +1159,28 @@ function serialize_sliverpb_PwdReq(arg) {
 
 function deserialize_sliverpb_PwdReq(buffer_arg) {
   return sliverpb_sliver_pb.PwdReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sliverpb_Reconfigure(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.Reconfigure)) {
+    throw new Error('Expected argument of type sliverpb.Reconfigure');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sliverpb_Reconfigure(buffer_arg) {
+  return sliverpb_sliver_pb.Reconfigure.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sliverpb_ReconfigureReq(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.ReconfigureReq)) {
+    throw new Error('Expected argument of type sliverpb.ReconfigureReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sliverpb_ReconfigureReq(buffer_arg) {
+  return sliverpb_sliver_pb.ReconfigureReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_sliverpb_RegisterExtension(arg) {
@@ -1837,6 +1848,28 @@ kill: {
     responseSerialize: serialize_commonpb_Empty,
     responseDeserialize: deserialize_commonpb_Empty,
   },
+  reconfigure: {
+    path: '/rpcpb.SliverRPC/Reconfigure',
+    requestStream: false,
+    responseStream: false,
+    requestType: sliverpb_sliver_pb.ReconfigureReq,
+    responseType: sliverpb_sliver_pb.Reconfigure,
+    requestSerialize: serialize_sliverpb_ReconfigureReq,
+    requestDeserialize: deserialize_sliverpb_ReconfigureReq,
+    responseSerialize: serialize_sliverpb_Reconfigure,
+    responseDeserialize: deserialize_sliverpb_Reconfigure,
+  },
+  rename: {
+    path: '/rpcpb.SliverRPC/Rename',
+    requestStream: false,
+    responseStream: false,
+    requestType: clientpb_client_pb.RenameReq,
+    responseType: commonpb_common_pb.Empty,
+    requestSerialize: serialize_clientpb_RenameReq,
+    requestDeserialize: deserialize_clientpb_RenameReq,
+    responseSerialize: serialize_commonpb_Empty,
+    responseDeserialize: deserialize_commonpb_Empty,
+  },
   // *** Sessions ***
 getSessions: {
     path: '/rpcpb.SliverRPC/GetSessions',
@@ -1848,17 +1881,6 @@ getSessions: {
     requestDeserialize: deserialize_commonpb_Empty,
     responseSerialize: serialize_clientpb_Sessions,
     responseDeserialize: deserialize_clientpb_Sessions,
-  },
-  updateSession: {
-    path: '/rpcpb.SliverRPC/UpdateSession',
-    requestStream: false,
-    responseStream: false,
-    requestType: clientpb_client_pb.UpdateSession,
-    responseType: clientpb_client_pb.Session,
-    requestSerialize: serialize_clientpb_UpdateSession,
-    requestDeserialize: deserialize_clientpb_UpdateSession,
-    responseSerialize: serialize_clientpb_Session,
-    responseDeserialize: deserialize_clientpb_Session,
   },
   // *** Beacons ***
 getBeacons: {

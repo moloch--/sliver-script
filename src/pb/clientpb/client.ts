@@ -5896,31 +5896,23 @@ export namespace clientpb {
             return Sessions.deserialize(bytes);
         }
     }
-    export class UpdateSession extends pb_1.Message {
+    export class RenameReq extends pb_1.Message {
         constructor(data?: any[] | {
             SessionID?: string;
+            BeaconID?: string;
             Name?: string;
-            ReconnectInterval?: number;
-            PollInterval?: number;
-            Extensions?: string[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [5], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("SessionID" in data && data.SessionID != undefined) {
                     this.SessionID = data.SessionID;
                 }
+                if ("BeaconID" in data && data.BeaconID != undefined) {
+                    this.BeaconID = data.BeaconID;
+                }
                 if ("Name" in data && data.Name != undefined) {
                     this.Name = data.Name;
-                }
-                if ("ReconnectInterval" in data && data.ReconnectInterval != undefined) {
-                    this.ReconnectInterval = data.ReconnectInterval;
-                }
-                if ("PollInterval" in data && data.PollInterval != undefined) {
-                    this.PollInterval = data.PollInterval;
-                }
-                if ("Extensions" in data && data.Extensions != undefined) {
-                    this.Extensions = data.Extensions;
                 }
             }
         }
@@ -5930,77 +5922,49 @@ export namespace clientpb {
         set SessionID(value: string) {
             pb_1.Message.setField(this, 1, value);
         }
-        get Name() {
+        get BeaconID() {
             return pb_1.Message.getField(this, 2) as string;
         }
-        set Name(value: string) {
+        set BeaconID(value: string) {
             pb_1.Message.setField(this, 2, value);
         }
-        get ReconnectInterval() {
-            return pb_1.Message.getField(this, 3) as number;
+        get Name() {
+            return pb_1.Message.getField(this, 3) as string;
         }
-        set ReconnectInterval(value: number) {
+        set Name(value: string) {
             pb_1.Message.setField(this, 3, value);
-        }
-        get PollInterval() {
-            return pb_1.Message.getField(this, 4) as number;
-        }
-        set PollInterval(value: number) {
-            pb_1.Message.setField(this, 4, value);
-        }
-        get Extensions() {
-            return pb_1.Message.getField(this, 5) as string[];
-        }
-        set Extensions(value: string[]) {
-            pb_1.Message.setField(this, 5, value);
         }
         static fromObject(data: {
             SessionID?: string;
+            BeaconID?: string;
             Name?: string;
-            ReconnectInterval?: number;
-            PollInterval?: number;
-            Extensions?: string[];
         }) {
-            const message = new UpdateSession({});
+            const message = new RenameReq({});
             if (data.SessionID != null) {
                 message.SessionID = data.SessionID;
             }
+            if (data.BeaconID != null) {
+                message.BeaconID = data.BeaconID;
+            }
             if (data.Name != null) {
                 message.Name = data.Name;
-            }
-            if (data.ReconnectInterval != null) {
-                message.ReconnectInterval = data.ReconnectInterval;
-            }
-            if (data.PollInterval != null) {
-                message.PollInterval = data.PollInterval;
-            }
-            if (data.Extensions != null) {
-                message.Extensions = data.Extensions;
             }
             return message;
         }
         toObject() {
             const data: {
                 SessionID?: string;
+                BeaconID?: string;
                 Name?: string;
-                ReconnectInterval?: number;
-                PollInterval?: number;
-                Extensions?: string[];
             } = {};
             if (this.SessionID != null) {
                 data.SessionID = this.SessionID;
             }
+            if (this.BeaconID != null) {
+                data.BeaconID = this.BeaconID;
+            }
             if (this.Name != null) {
                 data.Name = this.Name;
-            }
-            if (this.ReconnectInterval != null) {
-                data.ReconnectInterval = this.ReconnectInterval;
-            }
-            if (this.PollInterval != null) {
-                data.PollInterval = this.PollInterval;
-            }
-            if (this.Extensions != null) {
-                data.Extensions = this.Extensions;
             }
             return data;
         }
@@ -6010,19 +5974,15 @@ export namespace clientpb {
             const writer = w || new pb_1.BinaryWriter();
             if (typeof this.SessionID === "string" && this.SessionID.length)
                 writer.writeString(1, this.SessionID);
+            if (typeof this.BeaconID === "string" && this.BeaconID.length)
+                writer.writeString(2, this.BeaconID);
             if (typeof this.Name === "string" && this.Name.length)
-                writer.writeString(2, this.Name);
-            if (this.ReconnectInterval !== undefined)
-                writer.writeInt64(3, this.ReconnectInterval);
-            if (this.PollInterval !== undefined)
-                writer.writeInt64(4, this.PollInterval);
-            if (this.Extensions !== undefined)
-                writer.writeRepeatedString(5, this.Extensions);
+                writer.writeString(3, this.Name);
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): UpdateSession {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new UpdateSession();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): RenameReq {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new RenameReq();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
@@ -6031,16 +5991,10 @@ export namespace clientpb {
                         message.SessionID = reader.readString();
                         break;
                     case 2:
-                        message.Name = reader.readString();
+                        message.BeaconID = reader.readString();
                         break;
                     case 3:
-                        message.ReconnectInterval = reader.readInt64();
-                        break;
-                    case 4:
-                        message.PollInterval = reader.readInt64();
-                        break;
-                    case 5:
-                        pb_1.Message.addToRepeatedField(message, 5, reader.readString());
+                        message.Name = reader.readString();
                         break;
                     default: reader.skipField();
                 }
@@ -6050,8 +6004,8 @@ export namespace clientpb {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): UpdateSession {
-            return UpdateSession.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): RenameReq {
+            return RenameReq.deserialize(bytes);
         }
     }
     export class GenerateReq extends pb_1.Message {
