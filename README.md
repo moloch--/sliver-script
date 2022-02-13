@@ -4,6 +4,7 @@ Sliver-script is a TypeScript/JavaScript client library for Sliver, it can be us
 
 ⚠️ Support for Sliver v1.5+ is a work in progress.
 
+[![NPM Publish](https://github.com/moloch--/sliver-script/actions/workflows/publish.yml/badge.svg)](https://github.com/moloch--/sliver-script/actions/workflows/publish.yml)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 ### Install
