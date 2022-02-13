@@ -426,71 +426,70 @@ export class InteractiveSession extends BaseCommands {
     return req;
   }
 
+  shell(path: string, pty: boolean, timeout = TIMEOUT): Promise<Tunnel> {
+    return new Promise((resolve, reject) => {
 
-  // shell(path: string, pty: boolean, timeout = TIMEOUT): Promise<Tunnel> {
-  //   return new Promise((resolve, reject) => {
+      const tunnel = new sliverpb.Tunnel();
+      tunnel.SessionID = this._sessionID;
 
-  //     const tunnel = new sliverpb.Tunnel();
-  //     tunnel.setSessionid(this._sessionId);
-
-  //     this._rpc.createTunnel(tunnel, (err, rpcTunnel) => {
-  //       if (err || rpcTunnel === undefined) {
-  //         return reject(err);
-  //       }
-  //       const tunnelId = rpcTunnel.getTunnelid();
-  //       const tunnelData = new sliverpb.TunnelData();
-  //       tunnelData.setSessionid(this._sessionId);
-  //       tunnelData.setTunnelid(tunnelId);
+      this._rpc.CreateTunnel(tunnel, (err, rpcTunnel) => {
+        if (err || rpcTunnel === undefined) {
+          return reject(err);
+        }
+        const tunnelId = rpcTunnel.TunnelID;
+        const tunnelData = new sliverpb.TunnelData();
+        tunnelData.SessionID = this._sessionID;
+        tunnelData.TunnelID = tunnelId;
         
-  //       this._tunnelStream.write(tunnelData, () => {
-  //         const req = new sliverpb.ShellReq();
-  //         req.setTunnelid(tunnelId);
-  //         req.setPath(path);
-  //         req.setEnablepty(pty);
-  //         req.Request = this.request(timeout);
-  //         this._rpc.shell(req, (err, shell) => {
-  //           if (err || shell === undefined) {
-  //             return reject(err);
-  //           }
-  //           const stdout = new Observable<Buffer>(producer => {
-  //             this._tunnelStream.on('data', (tunnelData: sliverpb.TunnelData) => {
-  //               if (tunnelData.getTunnelid() !== tunnelId) {
-  //                 return; // Data is from another tunnel
-  //               }
-  //               const isClosed = tunnelData.getClosed();
-  //               if (isClosed) {
-  //                 const drain = Buffer.from(tunnelData.getData_asU8());
-  //                 if (drain.length) {
-  //                   producer.next(drain);
-  //                 }
-  //                 producer.complete();
-  //               } else {
-  //                 producer.next(Buffer.from(tunnelData.getData_asU8()));
-  //               }
-  //             });
-  //           });
+        this._tunnelStream.write(tunnelData, () => {
+          const req = new sliverpb.ShellReq();
+          req.TunnelID = tunnelId;
+          req.Path = path;
+          req.EnablePTY = pty;
+          req.Request = this.request(timeout);
+          this._rpc.Shell(req, (err, shell) => {
+            if (err || shell === undefined) {
+              return reject(err);
+            }
+            const stdout = new Observable<Buffer>(producer => {
+              this._tunnelStream.on('data', (tunnelData: sliverpb.TunnelData) => {
+                if (tunnelData.TunnelID !== tunnelId) {
+                  return; // Data is from another tunnel
+                }
+                const isClosed = tunnelData.Closed;
+                if (isClosed) {
+                  const drain = Buffer.from(tunnelData.Data);
+                  if (drain.length) {
+                    producer.next(drain);
+                  }
+                  producer.complete();
+                } else {
+                  producer.next(Buffer.from(tunnelData.Data));
+                }
+              });
+            });
 
-  //           const stdin: Observer<Buffer> = {
-  //             next: (raw: Buffer) => {
-  //               const data = new sliverpb.TunnelData();
-  //               data.setTunnelid(tunnelId);
-  //               data.setSessionid(this._sessionId);
-  //               data.setData(raw);
-  //               this._tunnelStream.write(data);
-  //             },
-  //             complete: () => {
-  //               this._rpc.closeTunnel(rpcTunnel, () => { });
-  //             },
-  //             error: () => {
-  //               this._rpc.closeTunnel(rpcTunnel, () => { });
-  //             },
-  //           };
-  //           resolve({ stdin: stdin, stdout: stdout });
-  //         });
-  //       }); // Bind tunnel
-  //     });
-  //   });
-  // }
+            const stdin: Observer<Buffer> = {
+              next: (raw: Buffer) => {
+                const data = new sliverpb.TunnelData();
+                data.TunnelID = tunnelId;
+                data.SessionID = this._sessionID;
+                data.Data = raw;
+                this._tunnelStream.write(data);
+              },
+              complete: () => {
+                this._rpc.closeTunnel(rpcTunnel, () => { });
+              },
+              error: () => {
+                this._rpc.closeTunnel(rpcTunnel, () => { });
+              },
+            };
+            resolve({ stdin: stdin, stdout: stdout });
+          });
+        }); // Bind tunnel
+      });
+    });
+  }
 
 }
 
