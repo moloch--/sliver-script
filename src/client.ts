@@ -40,43 +40,74 @@ export interface Tunnel {
   stdin: Observer<Buffer>
 }
 
-export class InteractiveSession {
 
-  private _rpc: rpcpb.SliverRPCClient;
-  private _sessionId: string;
-  private _tunnelStream: grpc.ClientDuplexStream<sliverpb.TunnelData, sliverpb.TunnelData>;
+class BaseCommands {
 
-  constructor(rpc: rpcpb.SliverRPCClient,
-    tunnelStream: grpc.ClientDuplexStream<sliverpb.TunnelData, sliverpb.TunnelData>,
-    sessionId: string) {
+  protected _rpc: rpcpb.SliverRPCClient;
+  protected _tunnelStream: grpc.ClientDuplexStream<sliverpb.TunnelData, sliverpb.TunnelData>;
+
+  constructor(rpc: rpcpb.SliverRPCClient, tunnelStream: grpc.ClientDuplexStream<sliverpb.TunnelData, sliverpb.TunnelData>) {
     this._rpc = rpc;
     this._tunnelStream = tunnelStream;
-    this._sessionId = sessionId;
   }
 
-  private request(timeout: number): commonpb.Request {
-    const req = new commonpb.Request();
-    req.SessionID = this._sessionId;
-    req.Timeout = timeout;
-    return req;
-  }
+  protected request(timeout: number): commonpb.Request { return new commonpb.Request(); }
 
-  private deadline(timeout = TIMEOUT) {
+  protected deadline(timeout = TIMEOUT) {
     return {
       'deadline': Date.now() + ((timeout + 1) * 1000)
     }
   }
 
-  // ping(nonce: number, timeout = TIMEOUT): Promise<sliverpb.Ping|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const ping = new sliverpb.Ping();
-  //     ping.Request = this.request(timeout)
-  //     ping.Nonce = nonce
-  //     this._rpc.ping(ping, this.deadline(timeout), (err, pong) => {
-  //       err ? reject(err) : resolve(pong);
-  //     });
-  //   });
-  // }
+  ping(nonce: number, timeout = TIMEOUT): Promise<sliverpb.Ping|undefined> {
+    return new Promise((resolve, reject) => {
+      const ping = new sliverpb.Ping();
+      ping.Request = this.request(timeout)
+      ping.Nonce = nonce
+      this._rpc.Ping(ping, this.deadline(timeout), (err, pong) => {
+        err ? reject(err) : resolve(pong);
+      });
+    });
+  }
+
+}
+
+export class InteractiveBeacon extends BaseCommands {
+
+  private _beaconID: string;
+
+  constructor(rpc: rpcpb.SliverRPCClient, tunnelStream: grpc.ClientDuplexStream<sliverpb.TunnelData, sliverpb.TunnelData>, beaconID: string) {
+    super(rpc, tunnelStream);
+    this._beaconID = beaconID;
+  }
+
+  protected request(timeout: number): commonpb.Request {
+    const req = new commonpb.Request();
+    req.BeaconID = this._beaconID;
+    req.Timeout = timeout;
+    req.Async = true;
+    return req;
+  }
+
+}
+
+export class InteractiveSession extends BaseCommands {
+
+  private _sessionID: string;
+
+  constructor(rpc: rpcpb.SliverRPCClient,
+    tunnelStream: grpc.ClientDuplexStream<sliverpb.TunnelData, sliverpb.TunnelData>,
+    sessionId: string) {
+    super(rpc, tunnelStream);
+    this._sessionID = sessionId;
+  }
+
+  protected request(timeout: number): commonpb.Request {
+    const req = new commonpb.Request();
+    req.SessionID = this._sessionID;
+    req.Timeout = timeout;
+    return req;
+  }
 
   // ps(timeout = TIMEOUT): Promise<commonpb.Process[]|undefined> {
   //   return new Promise((resolve, reject) => {
@@ -124,7 +155,7 @@ export class InteractiveSession {
       const req = new sliverpb.LsReq();
       req.Path = path;
       req.Request = this.request(timeout);
-      this._rpc.ls(req, this.deadline(timeout), (err: Error, ls: sliverpb.Ls) => {
+      this._rpc.Ls(req, this.deadline(timeout), (err, ls) => {
         err ? reject(err) : resolve(ls);
       });
     });
@@ -612,12 +643,12 @@ export class SliverClient {
     });
   }
 
-  async interactWith(session: clientpb.Session, timeout = TIMEOUT): Promise<InteractiveSession> {
-    return new InteractiveSession(this.rpc, this.tunnelStream, session.ID);
+  async interactSession(sessionID: string, timeout = TIMEOUT): Promise<InteractiveSession> {
+    return new InteractiveSession(this.rpc, this.tunnelStream, sessionID);
   }
 
-  async interact(sessionId: string, timeout = TIMEOUT): Promise<InteractiveSession> {
-    return new InteractiveSession(this.rpc, this.tunnelStream, sessionId);
+  async interactBeacon(beaconID: string, timeout = TIMEOUT): Promise<InteractiveBeacon> {
+    return new InteractiveBeacon(this.rpc, this.tunnelStream, beaconID);
   }
 
   // killSession(sessionId: string, timeout = TIMEOUT): Promise<void> {
