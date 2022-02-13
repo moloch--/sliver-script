@@ -33,14 +33,13 @@ export async function gunzip(data: Buffer): Promise<Buffer> {
   });
 }
 
-
 // Exported/simplified tunnel interfaces
 export interface Tunnel {
   stdout: Observable<Buffer>
   stdin: Observer<Buffer>
 }
 
-
+// BaseCommands - Base command implementations shared between sessions and beacon
 class BaseCommands {
 
   protected _rpc: rpcpb.SliverRPCClient;
@@ -51,12 +50,22 @@ class BaseCommands {
     this._tunnelStream = tunnelStream;
   }
 
+  // request - should be overloaded by sub classes
   protected request(timeout: number): commonpb.Request { return new commonpb.Request(); }
 
   protected deadline(timeout = TIMEOUT) {
     return {
       'deadline': Date.now() + ((timeout + 1) * 1000)
     }
+  }
+
+  protected toUint8Array(buf: Buffer): Uint8Array {
+    let arrayBuf = new ArrayBuffer(buf.length);
+    let uint8Array = new Uint8Array(arrayBuf);
+    for (let index = 0; index < buf.length; ++index) {
+      uint8Array[index] = buf[index];
+    }
+    return uint8Array;
   }
 
   ping(nonce: number, timeout = TIMEOUT): Promise<sliverpb.Ping|undefined> {
@@ -66,6 +75,314 @@ class BaseCommands {
       ping.Nonce = nonce
       this._rpc.Ping(ping, this.deadline(timeout), (err, pong) => {
         err ? reject(err) : resolve(pong);
+      });
+    });
+  }
+
+  ps(timeout = TIMEOUT): Promise<commonpb.Process[]|undefined> {
+    return new Promise((resolve, reject) => {
+      const req = new sliverpb.PsReq();
+      req.Request = this.request(timeout);
+      this._rpc.Ps(req, this.deadline(timeout), (err, ps) => {
+        err ? reject(err) : resolve(ps?.Processes);
+      });
+    });
+  }
+
+  terminate(pid: number, timeout = TIMEOUT): Promise<sliverpb.Terminate|undefined> {
+    return new Promise((resolve, reject) => {
+      const req = new sliverpb.TerminateReq();
+      req.Pid = pid;
+      req.Request = this.request(timeout);
+      this._rpc.Terminate(req, this.deadline(timeout), (err, terminate) => {
+        err ? reject(err) : resolve(terminate);
+      });
+    });
+  }
+
+  ifconfig(timeout = TIMEOUT): Promise<sliverpb.Ifconfig|undefined> {
+    return new Promise((resolve, reject) => {
+      const req = new sliverpb.IfconfigReq();
+      req.Request = this.request(timeout);
+      this._rpc.Ifconfig(req, this.deadline(timeout), (err, ifconfig) => {
+        err ? reject(err) : resolve(ifconfig);
+      });
+    });
+  }
+
+  netstat(timeout = TIMEOUT): Promise<sliverpb.Netstat|undefined> {
+    return new Promise((resolve, reject) => {
+      const req = new sliverpb.NetstatReq();
+      req.Request = this.request(timeout);
+      this._rpc.Netstat(req, this.deadline(timeout), (err, netstat) => {
+        err ? reject(err) : resolve(netstat);
+      });
+    });
+  }
+
+  ls(path = '.', timeout = TIMEOUT): Promise<sliverpb.Ls|undefined> {
+    return new Promise((resolve, reject) => {
+      const req = new sliverpb.LsReq();
+      req.Path = path;
+      req.Request = this.request(timeout);
+      this._rpc.Ls(req, this.deadline(timeout), (err, ls) => {
+        err ? reject(err) : resolve(ls);
+      });
+    });
+  }
+
+  cd(path: string, timeout = TIMEOUT): Promise<sliverpb.Pwd|undefined> {
+    return new Promise((resolve, reject) => {
+      const req = new sliverpb.CdReq();
+      req.Path = path;
+      req.Request = this.request(timeout);
+      this._rpc.Cd(req, this.deadline(timeout), (err, pwd) => {
+        err ? reject(err) : resolve(pwd);
+      });
+    });
+  }
+
+  pwd(timeout = TIMEOUT): Promise<sliverpb.Pwd|undefined> {
+    return new Promise((resolve, reject) => {
+      const req = new sliverpb.PwdReq();
+      req.Request = this.request(timeout);
+      this._rpc.Pwd(req, this.deadline(timeout), (err, pwd) => {
+        err ? reject(err) : resolve(pwd);
+      });
+    });
+  }
+
+  rm(path: string, timeout = TIMEOUT): Promise<sliverpb.Rm|undefined> {
+    return new Promise((resolve, reject) => {
+      const req = new sliverpb.RmReq();
+      req.Path = path;
+      req.Request = this.request(timeout);
+      this._rpc.Rm(req, this.deadline(timeout), (err, rm) => {
+        err ? reject(err) : resolve(rm);
+      });
+    });
+  }
+
+  mkdir(path: string, timeout = TIMEOUT): Promise<sliverpb.Mkdir|undefined> {
+    return new Promise((resolve, reject) => {
+      const req = new sliverpb.MkdirReq();
+      req.Path = path;
+      req.Request = this.request(timeout);
+      this._rpc.Mkdir(req, this.deadline(timeout), (err, mkdir) => {
+        err ? reject(err) : resolve(mkdir);
+      });
+    });
+  }
+
+  download(path: string, timeout = TIMEOUT): Promise<Buffer> {
+    return new Promise((resolve, reject) => {
+      const req = new sliverpb.DownloadReq();
+      req.Path = path;
+      req.Request = this.request(timeout);
+      this._rpc.Download(req, this.deadline(timeout), async (err, download) => {
+        if (err || download === undefined) {
+          return reject(err ? err : 'Null response');
+        }
+        let data = Buffer.from(download.Data);
+        if (download.Encoder === 'gzip') {
+          data = await gunzip(data);
+        } else if (download.Encoder !== '') {
+          return reject(`Unsupported encoder ${download.Encoder}`);
+        }
+        resolve(data);
+      });
+    });
+  }
+
+  upload(path: string, data: Buffer, timeout = TIMEOUT): Promise<sliverpb.Upload|undefined> {
+    return new Promise(async (resolve, reject) => {
+      const req = new sliverpb.UploadReq();
+      req.Path = path;
+      req.Encoder = 'gzip';
+      const payload = await gzip(data)
+      req.Data = this.toUint8Array(payload);
+      req.Request = this.request(timeout);
+      this._rpc.Upload(req, this.deadline(timeout), (err, upload) => {
+        err ? reject(err) : resolve(upload);
+      });
+    });
+  }
+
+  processDump(pid: number, timeout = TIMEOUT): Promise<sliverpb.ProcessDump|undefined> {
+    return new Promise((resolve, reject) => {
+      const req = new sliverpb.ProcessDumpReq();
+      req.Pid = pid;
+      req.Request = this.request(timeout);
+      this._rpc.ProcessDump(req, this.deadline(timeout), (err, procdump) => {
+        err ? reject(err) : resolve(procdump);
+      });
+    });
+  }
+
+  runAs(userName: string, processName: string, args: string, timeout = TIMEOUT): Promise<sliverpb.RunAs|undefined> {
+    return new Promise((resolve, reject) => {
+      const req = new sliverpb.RunAsReq();
+      req.Username = userName;
+      req.ProcessName = processName;
+      req.Args = args;
+      req.Request = this.request(timeout);
+      this._rpc.RunAs(req, this.deadline(timeout), (err, runAs) => {
+        err ? reject(err) : resolve(runAs);
+      });
+    });
+  }
+
+  impersonate(userName: string, timeout = TIMEOUT): Promise<sliverpb.Impersonate|undefined> {
+    return new Promise((resolve, reject) => {
+      const req = new sliverpb.ImpersonateReq();
+      req.Username = userName;
+      req.Request = this.request(timeout);
+      this._rpc.Impersonate(req, this.deadline(timeout), (err, impersonate) => {
+        err ? reject(err) : resolve(impersonate);
+      });
+    });
+  }
+
+  revToSelf(timeout = TIMEOUT): Promise<sliverpb.RevToSelf|undefined> {
+    return new Promise((resolve, reject) => {
+      const req = new sliverpb.RevToSelfReq();
+      req.Request = this.request(timeout);
+      this._rpc.RevToSelf(req, this.deadline(timeout), (err, revToSelf) => {
+        err ? reject(err) : resolve(revToSelf);
+      });
+    });
+  }
+
+  getSystem(hostingProcess: string, config: clientpb.ImplantConfig, timeout = TIMEOUT): Promise<sliverpb.GetSystem|undefined> {
+    return new Promise((resolve, reject) => {
+      const req = new clientpb.GetSystemReq();
+      req.HostingProcess = hostingProcess;
+      req.Config = config;
+      req.Request = this.request(timeout);
+      this._rpc.GetSystem(req, this.deadline(timeout), (err, getSystem) => {
+        err ? reject(err) : resolve(getSystem);
+      });
+    });
+  }
+
+  // 'shellcode' aka "task"
+  executeShellcode(pid: number, shellcode: Buffer, encoder: string, rwx: boolean, timeout = TIMEOUT): Promise<sliverpb.Task|undefined> {
+    return new Promise((resolve, reject) => {
+      const req = new sliverpb.TaskReq();
+      req.Encoder = encoder;
+      req.RWXPages = rwx;
+      req.Pid = pid;
+      req.Data = shellcode;
+      req.Request = this.request(timeout);
+      this._rpc.Task(req, this.deadline(timeout), (err, task) => {
+        err ? reject(err) : resolve(task);
+      });
+    });
+  }
+
+  msf(payload: string, lhost: string, lport: number, encoder: string, iterations: number, timeout = TIMEOUT): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const req = new clientpb.MSFReq();
+      req.Payload = payload;
+      req.LHost = lhost;
+      req.LPort = lport;
+      req.Encoder = encoder;
+      req.Iterations = iterations;
+      req.Request = this.request(timeout);
+      this._rpc.Msf(req, this.deadline(timeout), (err) => {
+        err ? reject(err) : resolve();
+      });
+    });
+  }
+
+  msfRemote(pid: number, payload: string, lhost: string, lport: number, encoder: string, iterations: number, timeout = TIMEOUT): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const req = new clientpb.MSFRemoteReq();
+      req.PID = pid;
+      req.Payload = payload;
+      req.LHost = lhost;
+      req.LPort = lport;
+      req.Encoder = encoder;
+      req.Iterations = iterations;
+      req.Request = this.request(timeout);
+      this._rpc.Msf(req, (err) => {
+        err ? reject(err) : resolve();
+      });
+    });
+  }
+
+  executeAssembly(assembly: Buffer, args: string, process: string, timeout = TIMEOUT): Promise<sliverpb.ExecuteAssembly|undefined> {
+    return new Promise((resolve, reject) => {
+      const req = new sliverpb.ExecuteAssemblyReq();
+      req.Assembly = assembly;
+      req.Arguments = args;
+      req.Process = process;
+      req.Request = this.request(timeout);
+      this._rpc.ExecuteAssembly(req, this.deadline(timeout), (err, executeAssembly) => {
+        err ? reject(err) : resolve(executeAssembly);
+      });
+    });
+  }
+
+  migrate(pid: number, config: clientpb.ImplantConfig, timeout = TIMEOUT): Promise<sliverpb.Migrate|undefined> {
+    return new Promise((resolve, reject) => {
+      const req = new clientpb.MigrateReq();
+      req.Pid = pid;
+      req.Config = config;
+      req.Request = this.request(timeout);
+      this._rpc.Migrate(req, this.deadline(timeout), (err, migration) => {
+        err ? reject(err) : resolve(migration);
+      });
+    });
+  }
+
+  execute(exe: string, args: string[], output: boolean, timeout = TIMEOUT): Promise<sliverpb.Execute|undefined> {
+    return new Promise((resolve, reject) => {
+      const req = new sliverpb.ExecuteReq();
+      req.Path = exe;
+      req.Args = args;
+      req.Output = output;
+      req.Request = this.request(timeout);
+      this._rpc.Execute(req, this.deadline(timeout), (err, exec) => {
+        err ? reject(err) : resolve(exec);
+      });
+    });
+  }
+
+  sideload(data: Buffer, processName: string, args: string, entryPoint: string, timeout = TIMEOUT): Promise<sliverpb.Sideload|undefined> {
+    return new Promise((resolve, reject) => {
+      const req = new sliverpb.SideloadReq();
+      req.Data = data;
+      req.ProcessName = processName;
+      req.Args = args;
+      req.EntryPoint = entryPoint;
+      req.Request = this.request(timeout);
+      this._rpc.Sideload(req, this.deadline(timeout), (err, exec) => {
+        err ? reject(err) : resolve(exec);
+      });
+    });
+  }
+
+  spawnDLL(data: Buffer, entrypoint: string, processName: string, args: string, timeout = TIMEOUT): Promise<sliverpb.SpawnDll|undefined> {
+    return new Promise((resolve, reject) => {
+      const req = new sliverpb.InvokeSpawnDllReq();
+      req.Data = data;
+      req.ProcessName = processName;
+      req.Args = args;
+      req.EntryPoint = entrypoint;
+      req.Request = this.request(timeout);
+      this._rpc.SpawnDll(req, this.deadline(timeout), (err, dll) => {
+        err ? reject(err) : resolve(dll);
+      });
+    });
+  }
+
+  screenshot(timeout = TIMEOUT): Promise<sliverpb.Screenshot|undefined> {
+    return new Promise((resolve, reject) => {
+      const req = new sliverpb.ScreenshotReq();
+      req.Request = this.request(timeout);
+      this._rpc.Screenshot(req, this.deadline(timeout), (err, screenshot) => {
+        err ? reject(err) : resolve(screenshot);
       });
     });
   }
@@ -109,323 +426,6 @@ export class InteractiveSession extends BaseCommands {
     return req;
   }
 
-  // ps(timeout = TIMEOUT): Promise<commonpb.Process[]|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const req = new sliverpb.PsReq();
-  //     req.setRequest(this.request(timeout));
-  //     this._rpc.ps(req, this.deadline(timeout), (err, ps) => {
-  //       err ? reject(err) : resolve(ps?.getProcessesList());
-  //     });
-  //   });
-  // }
-
-  // terminate(pid: number, timeout = TIMEOUT): Promise<sliverpb.Terminate|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const req = new sliverpb.TerminateReq();
-  //     req.setPid(pid);
-  //     req.setRequest(this.request(timeout));
-  //     this._rpc.terminate(req, this.deadline(timeout), (err, terminate) => {
-  //       err ? reject(err) : resolve(terminate);
-  //     });
-  //   });
-  // }
-
-  // ifconfig(timeout = TIMEOUT): Promise<sliverpb.Ifconfig|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const req = new sliverpb.IfconfigReq();
-  //     req.setRequest(this.request(timeout));
-  //     this._rpc.ifconfig(req, this.deadline(timeout), (err, ifconfig) => {
-  //       err ? reject(err) : resolve(ifconfig);
-  //     });
-  //   });
-  // }
-
-  // netstat(timeout = TIMEOUT): Promise<sliverpb.Netstat|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const req = new sliverpb.NetstatReq();
-  //     req.setRequest(this.request(timeout));
-  //     this._rpc.netstat(req, this.deadline(timeout), (err, netstat) => {
-  //       err ? reject(err) : resolve(netstat);
-  //     });
-  //   });
-  // }
-
-  ls(path = '.', timeout = TIMEOUT): Promise<sliverpb.Ls|undefined> {
-    return new Promise((resolve, reject) => {
-      const req = new sliverpb.LsReq();
-      req.Path = path;
-      req.Request = this.request(timeout);
-      this._rpc.Ls(req, this.deadline(timeout), (err, ls) => {
-        err ? reject(err) : resolve(ls);
-      });
-    });
-  }
-
-  // cd(path: string, timeout = TIMEOUT): Promise<sliverpb.Pwd|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const req = new sliverpb.CdReq();
-  //     req.setPath(path);
-  //     req.setRequest(this.request(timeout));
-  //     this._rpc.cd(req, this.deadline(timeout), (err, pwd) => {
-  //       err ? reject(err) : resolve(pwd);
-  //     });
-  //   });
-  // }
-
-  // pwd(timeout = TIMEOUT): Promise<sliverpb.Pwd|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const req = new sliverpb.PwdReq();
-  //     req.setRequest(this.request(timeout));
-  //     this._rpc.pwd(req, this.deadline(timeout), (err, pwd) => {
-  //       err ? reject(err) : resolve(pwd);
-  //     });
-  //   });
-  // }
-
-  // rm(path: string, timeout = TIMEOUT): Promise<sliverpb.Rm|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const req = new sliverpb.RmReq();
-  //     req.setPath(path);
-  //     req.setRequest(this.request(timeout));
-  //     this._rpc.rm(req, this.deadline(timeout), (err, rm) => {
-  //       err ? reject(err) : resolve(rm);
-  //     });
-  //   });
-  // }
-
-  // mkdir(path: string, timeout = TIMEOUT): Promise<sliverpb.Mkdir|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const req = new sliverpb.MkdirReq();
-  //     req.setPath(path);
-  //     req.setRequest(this.request(timeout));
-  //     this._rpc.mkdir(req, this.deadline(timeout), (err, mkdir) => {
-  //       err ? reject(err) : resolve(mkdir);
-  //     });
-  //   });
-  // }
-
-  // download(path: string, timeout = TIMEOUT): Promise<Buffer> {
-  //   return new Promise((resolve, reject) => {
-  //     const req = new sliverpb.DownloadReq();
-  //     req.setPath(path);
-  //     req.setRequest(this.request(timeout));
-  //     this._rpc.download(req, this.deadline(timeout), async (err, download) => {
-  //       if (err || download === undefined) {
-  //         return reject(err ? err : 'Null response');
-  //       }
-  //       let data = Buffer.from(download.getData());
-  //       const encoder = download.getEncoder();
-  //       if (encoder === 'gzip') {
-  //         data = await gunzip(data);
-  //       } else if (encoder !== '') {
-  //         return reject(`Unsupported encoder ${encoder}`);
-  //       }
-  //       resolve(data);
-  //     });
-  //   });
-  // }
-
-  private toUint8Array(buf: Buffer): Uint8Array {
-    let arrayBuf = new ArrayBuffer(buf.length);
-    let uint8Array = new Uint8Array(arrayBuf);
-    for (let index = 0; index < buf.length; ++index) {
-      uint8Array[index] = buf[index];
-    }
-    return uint8Array;
-  }
-
-  // upload(path: string, data: Buffer, timeout = TIMEOUT): Promise<sliverpb.Upload|undefined> {
-  //   return new Promise(async (resolve, reject) => {
-  //     const req = new sliverpb.UploadReq();
-  //     req.setPath(path);
-  //     req.setEncoder('gzip');
-  //     const payload = await gzip(data)
-  //     req.setData(this.toUint8Array(payload));
-  //     req.setRequest(this.request(timeout));
-  //     this._rpc.upload(req, this.deadline(timeout), (err, upload) => {
-  //       err ? reject(err) : resolve(upload);
-  //     });
-  //   });
-  // }
-
-  // processDump(pid: number, timeout = TIMEOUT): Promise<sliverpb.ProcessDump|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const req = new sliverpb.ProcessDumpReq();
-  //     req.setPid(pid);
-  //     req.setRequest(this.request(timeout));
-  //     this._rpc.processDump(req, this.deadline(timeout), (err, procdump) => {
-  //       err ? reject(err) : resolve(procdump);
-  //     });
-  //   });
-  // }
-
-  // runAs(userName: string, processName: string, args: string, timeout = TIMEOUT): Promise<sliverpb.RunAs|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const req = new sliverpb.RunAsReq();
-  //     req.setUsername(userName);
-  //     req.setProcessname(processName);
-  //     req.setArgs(args);
-  //     req.setRequest(this.request(timeout));
-  //     this._rpc.runAs(req, this.deadline(timeout), (err, runAs) => {
-  //       err ? reject(err) : resolve(runAs);
-  //     });
-  //   });
-  // }
-
-  // impersonate(userName: string, timeout = TIMEOUT): Promise<sliverpb.Impersonate|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const req = new sliverpb.ImpersonateReq();
-  //     req.setUsername(userName);
-  //     req.setRequest(this.request(timeout));
-  //     this._rpc.impersonate(req, this.deadline(timeout), (err, impersonate) => {
-  //       err ? reject(err) : resolve(impersonate);
-  //     });
-  //   });
-  // }
-
-  // revToSelf(timeout = TIMEOUT): Promise<sliverpb.RevToSelf|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const req = new sliverpb.RevToSelfReq();
-  //     req.setRequest(this.request(timeout));
-  //     this._rpc.revToSelf(req, this.deadline(timeout), (err, revToSelf) => {
-  //       err ? reject(err) : resolve(revToSelf);
-  //     });
-  //   });
-  // }
-
-  // getSystem(hostingProcess: string, config: clientpb.ImplantConfig, timeout = TIMEOUT): Promise<sliverpb.GetSystem|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const req = new clientpb.GetSystemReq();
-  //     req.setHostingprocess(hostingProcess);
-  //     req.setConfig(config);
-  //     req.setRequest(this.request(timeout));
-  //     this._rpc.getSystem(req, this.deadline(timeout), (err, getSystem) => {
-  //       err ? reject(err) : resolve(getSystem);
-  //     });
-  //   });
-  // }
-
-  // // 'shellcode' aka "task"
-  // executeShellcode(pid: number, shellcode: Buffer, encoder: string, rwx: boolean, timeout = TIMEOUT): Promise<sliverpb.Task|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const req = new sliverpb.TaskReq();
-  //     req.setEncoder(encoder);
-  //     req.setRwxpages(rwx);
-  //     req.setPid(pid);
-  //     req.setData(shellcode);
-  //     req.setRequest(this.request(timeout));
-  //     this._rpc.task(req, this.deadline(timeout), (err, task) => {
-  //       err ? reject(err) : resolve(task);
-  //     });
-  //   });
-  // }
-
-  // msf(payload: string, lhost: string, lport: number, encoder: string, iterations: number, timeout = TIMEOUT): Promise<void> {
-  //   return new Promise((resolve, reject) => {
-  //     const req = new clientpb.MSFReq();
-  //     req.setPayload(payload);
-  //     req.setLhost(lhost);
-  //     req.setLport(lport);
-  //     req.setEncoder(encoder);
-  //     req.setIterations(iterations);
-  //     req.setRequest(this.request(timeout));
-  //     this._rpc.msf(req, this.deadline(timeout), (err) => {
-  //       err ? reject(err) : resolve();
-  //     });
-  //   });
-  // }
-
-  // msfRemote(pid: number, payload: string, lhost: string, lport: number, encoder: string, iterations: number, timeout = TIMEOUT): Promise<void> {
-  //   return new Promise((resolve, reject) => {
-  //     const req = new clientpb.MSFRemoteReq();
-  //     req.setPid(pid);
-  //     req.setPayload(payload);
-  //     req.setLhost(lhost);
-  //     req.setLport(lport);
-  //     req.setEncoder(encoder);
-  //     req.setIterations(iterations);
-  //     req.setRequest(this.request(timeout));
-  //     this._rpc.msf(req, (err) => {
-  //       err ? reject(err) : resolve();
-  //     });
-  //   });
-  // }
-
-  // executeAssembly(assembly: Buffer, args: string, process: string, timeout = TIMEOUT): Promise<sliverpb.ExecuteAssembly|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const req = new sliverpb.ExecuteAssemblyReq();
-  //     req.setAssembly(assembly);
-  //     req.setArguments(args);
-  //     req.setProcess(process);
-  //     req.setRequest(this.request(timeout));
-  //     this._rpc.executeAssembly(req, this.deadline(timeout), (err, executeAssembly) => {
-  //       err ? reject(err) : resolve(executeAssembly);
-  //     });
-  //   });
-  // }
-
-  // migrate(pid: number, config: clientpb.ImplantConfig, timeout = TIMEOUT): Promise<sliverpb.Migrate|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const req = new clientpb.MigrateReq();
-  //     req.setPid(pid);
-  //     req.setConfig(config);
-  //     req.setRequest(this.request(timeout));
-  //     this._rpc.migrate(req, this.deadline(timeout), (err, migration) => {
-  //       err ? reject(err) : resolve(migration);
-  //     });
-  //   });
-  // }
-
-  // execute(exe: string, args: string[], output: boolean, timeout = TIMEOUT): Promise<sliverpb.Execute|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const req = new sliverpb.ExecuteReq();
-  //     req.setPath(exe);
-  //     req.setArgsList(args);
-  //     req.setOutput(output);
-  //     req.setRequest(this.request(timeout));
-  //     this._rpc.execute(req, this.deadline(timeout), (err, exec) => {
-  //       err ? reject(err) : resolve(exec);
-  //     });
-  //   });
-  // }
-
-  // sideload(data: Buffer, processName: string, args: string, entryPoint: string, timeout = TIMEOUT): Promise<sliverpb.Sideload|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const req = new sliverpb.SideloadReq();
-  //     req.setData(data);
-  //     req.setProcessname(processName);
-  //     req.setArgs(args);
-  //     req.setEntrypoint(entryPoint);
-  //     req.setRequest(this.request(timeout));
-  //     this._rpc.sideload(req, this.deadline(timeout), (err, exec) => {
-  //       err ? reject(err) : resolve(exec);
-  //     });
-  //   });
-  // }
-
-  // spawnDLL(data: Buffer, entrypoint: string, processName: string, args: string, timeout = TIMEOUT): Promise<sliverpb.SpawnDll|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const req = new sliverpb.InvokeSpawnDllReq();
-  //     req.setData(data);
-  //     req.setProcessname(processName);
-  //     req.setArgs(args);
-  //     req.setEntrypoint(entrypoint);
-  //     req.setRequest(this.request(timeout));
-  //     this._rpc.spawnDll(req, this.deadline(timeout), (err, dll) => {
-  //       err ? reject(err) : resolve(dll);
-  //     });
-  //   });
-  // }
-
-  // screenshot(timeout = TIMEOUT): Promise<sliverpb.Screenshot|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const req = new sliverpb.ScreenshotReq();
-  //     req.setRequest(this.request(timeout));
-  //     this._rpc.screenshot(req, this.deadline(timeout), (err, screenshot) => {
-  //       err ? reject(err) : resolve(screenshot);
-  //     });
-  //   });
-  // }
 
   // shell(path: string, pty: boolean, timeout = TIMEOUT): Promise<Tunnel> {
   //   return new Promise((resolve, reject) => {
@@ -447,7 +447,7 @@ export class InteractiveSession extends BaseCommands {
   //         req.setTunnelid(tunnelId);
   //         req.setPath(path);
   //         req.setEnablepty(pty);
-  //         req.setRequest(this.request(timeout));
+  //         req.Request = this.request(timeout);
   //         this._rpc.shell(req, (err, shell) => {
   //           if (err || shell === undefined) {
   //             return reject(err);
