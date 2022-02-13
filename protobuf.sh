@@ -23,6 +23,11 @@ IN_DIR="./sliver/protobuf"
 PROTOC="node_modules/.bin/grpc_tools_node_protoc"
 PROTOC_GEN_TS="node_modules/.bin/protoc-gen-ts"
 
+# By default the _pb.js files are broken, we need to insert this line of code to create the namespaces
+# before any of hte _pb.js code can be used. Why are they broken by default? Fuck you that's why.
+INIT_NAMESPACE="if (proto === undefined) { var proto = {commonpb: {}, clientpb: {}, sliverpb: {}}; }"
+
+
 mkdir -p "$OUT_DIR"
 mkdir -p "$TS_OUT_DIR"
 
@@ -65,16 +70,35 @@ sed -i "" -e \
     "s/from \"grpc\"/from \"@grpc\/grpc-js\"/g" \
     "$TS_OUT_DIR/rpcpb/"*
 
-### Remove eval()'s
 
+# *** clientpb ***
+# - Init namespace
+# - Remove eval()'s
 sed -i "" -e \
     "s/Function('return this')()/(function(){return this;})()/g" \
     "$TS_OUT_DIR/clientpb/"*
+sed -i "" -e \
+    "s/\/\/\ \@ts-nocheck/\/\/\ \@ts-nocheck\n$INIT_NAMESPACE\n/g" \
+    "$TS_OUT_DIR/clientpb/"*
 
+
+# *** commonpb ***
+# - Init namespace
+# - Remove eval()'s
 sed -i "" -e \
     "s/Function('return this')()/(function(){return this;})()/g" \
     "$TS_OUT_DIR/commonpb/"*
+sed -i "" -e \
+    "s/\/\/\ \@ts-nocheck/\/\/\ \@ts-nocheck\n$INIT_NAMESPACE\n/g" \
+    "$TS_OUT_DIR/commonpb/"*
 
+
+# *** sliverpb ***
+# - Init namespace
+# - Remove eval()'s
 sed -i "" -e \
     "s/Function('return this')()/(function(){return this;})()/g" \
+    "$TS_OUT_DIR/sliverpb/"*
+sed -i "" -e \
+    "s/\/\/\ \@ts-nocheck/\/\/\ \@ts-nocheck\n$INIT_NAMESPACE\n/g" \
     "$TS_OUT_DIR/sliverpb/"*

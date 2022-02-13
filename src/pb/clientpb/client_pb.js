@@ -10,6 +10,8 @@
 // GENERATED CODE -- DO NOT EDIT!
 /* eslint-disable */
 // @ts-nocheck
+if (proto === undefined) { var proto = {commonpb: {}, clientpb: {}, sliverpb: {}}; }
+
 
 var jspb = require('google-protobuf');
 var goog = jspb;
