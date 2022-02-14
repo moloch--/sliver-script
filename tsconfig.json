@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
     "target": "es2015",
+    "module": "commonjs",
     "downlevelIteration": true,
     "declaration": true,
     "outDir": "./lib",
     "strict": true,
     "moduleResolution": "node",
-    "esModuleInterop": true,
     "lib": [
       "es2019"
     ]
