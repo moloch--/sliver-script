@@ -624,13 +624,13 @@ export class SliverClient {
 
   // ---- Operators ----
 
-  // getOperators(timeout = TIMEOUT): Promise<clientpb.Operator[]|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     this.rpc.getOperators(this.empty, this.deadline(timeout), (err, operators) => {
-  //       err ? reject(err) : resolve(operators?.getOperatorsList());
-  //     });
-  //   });
-  // }
+  getOperators(timeout = TIMEOUT): Promise<clientpb.Operator[]|undefined> {
+    return new Promise((resolve, reject) => {
+      this.rpc.GetOperators(this.empty, this.deadline(timeout), (err, operators) => {
+        err ? reject(err) : resolve(operators?.Operators);
+      });
+    });
+  }
 
   // ---- Sessions ----
 
@@ -650,378 +650,375 @@ export class SliverClient {
     return new InteractiveBeacon(this.rpc, this.tunnelStream, beaconID);
   }
 
-  // killSession(sessionId: string, timeout = TIMEOUT): Promise<void> {
-  //   return new Promise((resolve, reject) => {
-  //     const kill = new sliverpb.KillSessionReq();
-  //     const req = new commonpb.Request();
-  //     req.setSessionid(sessionId);
-  //     req.setTimeout(timeout);
-  //     kill.setRequest(req);
-  //     this.rpc.killSession(kill, this.deadline(timeout), (err) => {
-  //       err ? reject(err) : resolve();
-  //     });
-  //   });
-  // }
+  killSession(sessionId: string, timeout = TIMEOUT): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const kill = new sliverpb.KillReq();
+      
+      // req.setSessionid(sessionId);
+      // req.setTimeout(timeout);
+      kill.Request = new commonpb.Request();
 
-  // // ---- Jobs ----
+      this.rpc.Kill(kill, this.deadline(timeout), (err) => {
+        err ? reject(err) : resolve();
+      });
+    });
+  }
 
-  // jobs(timeout = TIMEOUT): Promise<clientpb.Job[]|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     this.rpc.getJobs(this.empty, this.deadline(timeout), (err, jobs) => {
-  //       err ? reject(err) : resolve(jobs?.getActiveList());
-  //     });
-  //   });
-  // }
+  // ---- Jobs ----
 
-  // killJob(jobId: number, timeout = TIMEOUT): Promise<clientpb.KillJob|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const kill = new clientpb.KillJobReq();
-  //     kill.setId(jobId);
-  //     this.rpc.killJob(kill, this.deadline(timeout), (err, killed) => {
-  //       err ? reject(err) : resolve(killed);
-  //     });
-  //   });
-  // }
+  jobs(timeout = TIMEOUT): Promise<clientpb.Job[]|undefined> {
+    return new Promise((resolve, reject) => {
+      this.rpc.GetJobs(this.empty, this.deadline(timeout), (err, jobs) => {
+        err ? reject(err) : resolve(jobs?.Active);
+      });
+    });
+  }
 
-  // // ---- Listeners ----
+  killJob(jobId: number, timeout = TIMEOUT): Promise<clientpb.KillJob|undefined> {
+    return new Promise((resolve, reject) => {
+      const killJob = new clientpb.KillJobReq();
+      killJob.ID = jobId;
+      this.rpc.KillJob(killJob, this.deadline(timeout), (err, killed) => {
+        err ? reject(err) : resolve(killed);
+      });
+    });
+  }
 
-  // startMTLSListener(host: string, port: number, persistent = false, timeout = TIMEOUT): Promise<clientpb.MTLSListener|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const mtls = new clientpb.MTLSListenerReq();
-  //     mtls.setHost(host);
-  //     mtls.setPort(port);
-  //     mtls.setPersistent(persistent);
-  //     this.rpc.startMTLSListener(mtls, this.deadline(timeout), (err, listener) => {
-  //       err ? reject(err) : resolve(listener);
-  //     });
-  //   });
-  // }
+  // ---- Listeners ----
 
-  // startDNSListener(domains: string[], canaries: boolean, host: string, port: number, persistent = false, timeout = TIMEOUT): Promise<clientpb.DNSListener|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const dns = new clientpb.DNSListenerReq();
-  //     dns.setDomainsList(domains);
-  //     dns.setCanaries(canaries);
-  //     dns.setHost(host);
-  //     dns.setPort(port);
-  //     dns.setPersistent(persistent);
-  //     this.rpc.startDNSListener(dns, this.deadline(timeout), (err, listener) => {
-  //       err ? reject(err) : resolve(listener);
-  //     });
-  //   });
-  // }
+  startMTLSListener(host: string, port: number, persistent = false, timeout = TIMEOUT): Promise<clientpb.MTLSListener|undefined> {
+    return new Promise((resolve, reject) => {
+      const mtls = new clientpb.MTLSListenerReq();
+      mtls.Host = host;
+      mtls.Port = port;
+      mtls.Persistent = persistent;
+      this.rpc.StartMTLSListener(mtls, this.deadline(timeout), (err, listener) => {
+        err ? reject(err) : resolve(listener);
+      });
+    });
+  }
 
-  // startHTTPListener(domain: string, host: string, port: number, website = '', persistent = false, timeout = TIMEOUT): Promise<clientpb.HTTPListener|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const http = new clientpb.HTTPListenerReq();
-  //     http.setDomain(domain);
-  //     http.setHost(host);
-  //     http.setPort(port);
-  //     http.setSecure(false);
-  //     http.setWebsite(website);
-  //     http.setPersistent(persistent);
-  //     this.rpc.startHTTPListener(http, this.deadline(timeout), (err, listener) => {
-  //       err ? reject(err) : resolve(listener);
-  //     });
-  //   });
-  // }
+  startDNSListener(domains: string[], canaries: boolean, host: string, port: number, persistent = false, timeout = TIMEOUT): Promise<clientpb.DNSListener|undefined> {
+    return new Promise((resolve, reject) => {
+      const dns = new clientpb.DNSListenerReq();
+      dns.Domains = domains;
+      dns.Canaries = canaries;
+      dns.Host = host;
+      dns.Port = port;
+      dns.Persistent = persistent;
+      this.rpc.StartDNSListener(dns, this.deadline(timeout), (err, listener) => {
+        err ? reject(err) : resolve(listener);
+      });
+    });
+  }
 
-  // startHTTPSListener(domain: string, host: string, port: number, acme = false, website = '',
-  //   cert?: Buffer, key?: Buffer, persistent = false,  timeout = TIMEOUT): Promise<clientpb.HTTPListener|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const https = new clientpb.HTTPListenerReq();
-  //     https.setDomain(domain);
-  //     https.setHost(host);
-  //     https.setPort(port);
-  //     https.setSecure(true);
-  //     cert ? https.setCert(cert) : null;
-  //     key ? https.setKey(key) : null;
-  //     https.setAcme(acme);
-  //     https.setWebsite(website);
-  //     https.setPersistent(persistent);
-  //     this.rpc.startHTTPSListener(https, this.deadline(timeout), (err, listener) => {
-  //       err ? reject(err) : resolve(listener);
-  //     });
-  //   });
-  // }
+  startHTTPListener(domain: string, host: string, port: number, website = '', persistent = false, timeout = TIMEOUT): Promise<clientpb.HTTPListener|undefined> {
+    return new Promise((resolve, reject) => {
+      const http = new clientpb.HTTPListenerReq();
+      http.Domain = domain;
+      http.Host = host;
+      http.Port = port;
+      http.Secure = false;
+      http.Website = website;
+      http.Persistent = persistent;
+      this.rpc.StartHTTPListener(http, this.deadline(timeout), (err, listener) => {
+        err ? reject(err) : resolve(listener);
+      });
+    });
+  }
 
-  // startWGListener(port: number, nPort: number, keyPort: number, persistent = false, timeout = TIMEOUT): Promise<clientpb.WGListener|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const req = new clientpb.WGListenerReq();
-  //     req.setPort(port);
-  //     req.setNport(nPort);
-  //     req.setKeyport(keyPort);
-  //     req.setPersistent(persistent);
-  //     this.rpc.startWGListener(req, this.deadline(timeout), (err, wgListener) => {
-  //       err ? reject(err) : resolve(wgListener);
-  //     });
-  //   });
-  // }
+  startHTTPSListener(domain: string, host: string, port: number, acme = false, website = '',
+    cert?: Buffer, key?: Buffer, persistent = false,  timeout = TIMEOUT): Promise<clientpb.HTTPListener|undefined> {
+    return new Promise((resolve, reject) => {
+      const https = new clientpb.HTTPListenerReq();
+      https.Domain = domain;
+      https.Host = host;
+      https.Port = port;
+      https.Secure = true;
+      cert ? https.Cert = cert : null;
+      key ? https.Key = key : null;
+      https.ACME = acme;
+      https.Website = website;
+      https.Persistent = persistent;
+      this.rpc.StartHTTPSListener(https, this.deadline(timeout), (err, listener) => {
+        err ? reject(err) : resolve(listener);
+      });
+    });
+  }
 
-  // startTCPStagerListener(host: string, port: number, data: Buffer, timeout = TIMEOUT): Promise<clientpb.StagerListener|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const req = new clientpb.StagerListenerReq();
-  //     req.setProtocol(clientpb.StageProtocol.TCP);
-  //     req.setHost(host);
-  //     req.setPort(port);
-  //     req.setData(data);
-  //     this.rpc.startTCPStagerListener(req, (err, tcpListener) => {
-  //       err ? reject(err) : resolve(tcpListener);
-  //     });
-  //   });
-  // }
+  startWGListener(port: number, nPort: number, keyPort: number, persistent = false, timeout = TIMEOUT): Promise<clientpb.WGListener|undefined> {
+    return new Promise((resolve, reject) => {
+      const req = new clientpb.WGListenerReq();
+      req.Port = port;
+      req.NPort = nPort;
+      req.KeyPort = keyPort;
+      req.Persistent = persistent;
+      this.rpc.StartWGListener(req, this.deadline(timeout), (err, wgListener) => {
+        err ? reject(err) : resolve(wgListener);
+      });
+    });
+  }
 
-  // startHTTPStagerListener(host: string, port: number, data: Buffer, timeout = TIMEOUT): Promise<clientpb.StagerListener|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const req = new clientpb.StagerListenerReq();
-  //     req.setProtocol(clientpb.StageProtocol.HTTP);
-  //     req.setHost(host);
-  //     req.setPort(port);
-  //     req.setData(data);
-  //     this.rpc.startHTTPStagerListener(req, this.deadline(timeout), (err, httpListener) => {
-  //       err ? reject(err) : resolve(httpListener);
-  //     });
-  //   });
-  // }
+  startTCPStagerListener(host: string, port: number, data: Buffer, timeout = TIMEOUT): Promise<clientpb.StagerListener|undefined> {
+    return new Promise((resolve, reject) => {
+      const req = new clientpb.StagerListenerReq();
+      req.Protocol = clientpb.StageProtocol.TCP;
+      req.Host = host;
+      req.Port = port;
+      req.Data = data;
+      this.rpc.StartTCPStagerListener(req, (err, tcpListener) => {
+        err ? reject(err) : resolve(tcpListener);
+      });
+    });
+  }
 
-  // startHTTPSStagerListener(host: string, port: number, data: Buffer, timeout = TIMEOUT): Promise<clientpb.StagerListener|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const req = new clientpb.StagerListenerReq();
-  //     req.setProtocol(clientpb.StageProtocol.HTTPS);
-  //     req.setHost(host);
-  //     req.setPort(port);
-  //     req.setData(data);
-  //     this.rpc.startHTTPStagerListener(req, this.deadline(timeout), (err, httpsListener) => {
-  //       err ? reject(err) : resolve(httpsListener);
-  //     });
-  //   });
-  // }
+  startHTTPStagerListener(host: string, port: number, data: Buffer, timeout = TIMEOUT): Promise<clientpb.StagerListener|undefined> {
+    return new Promise((resolve, reject) => {
+      const req = new clientpb.StagerListenerReq();
+      req.Protocol = clientpb.StageProtocol.HTTP;
+      req.Host = host;
+      req.Port = port;
+      req.Data = data;
+      this.rpc.StartHTTPStagerListener(req, this.deadline(timeout), (err, httpListener) => {
+        err ? reject(err) : resolve(httpListener);
+      });
+    });
+  }
 
-  // // ---- Implants ----
+  startHTTPSStagerListener(host: string, port: number, data: Buffer, timeout = TIMEOUT): Promise<clientpb.StagerListener|undefined> {
+    return new Promise((resolve, reject) => {
+      const req = new clientpb.StagerListenerReq();
+      req.Protocol = clientpb.StageProtocol.HTTPS;
+      req.Host = host;
+      req.Port = port;
+      req.Data = data;
+      this.rpc.StartHTTPStagerListener(req, this.deadline(timeout), (err, httpsListener) => {
+        err ? reject(err) : resolve(httpsListener);
+      });
+    });
+  }
 
-  // generate(config: clientpb.ImplantConfig, timeout = TIMEOUT): Promise<commonpb.File|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const req = new clientpb.GenerateReq();
-  //     req.setConfig(config);
-  //     this.rpc.generate(req, this.deadline(timeout), (err, generated) => {
-  //       err ? reject(err) : resolve(generated?.getFile());
-  //     });
-  //   });
-  // }
+  // ---- Implants ----
 
-  // compilerInfo(timeout = TIMEOUT): Promise<clientpb.Compiler|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     this.rpc.getCompiler(new commonpb.Empty(), this.deadline(timeout), (err, info) => {
-  //       err ? reject(err) : resolve(info);
-  //     });
-  //   });
-  // }
+  generate(config: clientpb.ImplantConfig, timeout = TIMEOUT): Promise<commonpb.File|undefined> {
+    return new Promise((resolve, reject) => {
+      const req = new clientpb.GenerateReq();
+      req.Config = config;
+      this.rpc.Generate(req, this.deadline(timeout), (err, generated) => {
+        err ? reject(err) : resolve(generated?.File);
+      });
+    });
+  }
 
-  // regenerate(name: string, timeout = TIMEOUT): Promise<commonpb.File|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const req = new clientpb.RegenerateReq();
-  //     req.setImplantname(name);
-  //     this.rpc.regenerate(req, this.deadline(timeout), (err, generated) => {
-  //       err ? reject(err) : resolve(generated?.getFile());
-  //     });
-  //   });
-  // }
+  compilerInfo(timeout = TIMEOUT): Promise<clientpb.Compiler|undefined> {
+    return new Promise((resolve, reject) => {
+      this.rpc.GetCompiler(new commonpb.Empty(), this.deadline(timeout), (err, info) => {
+        err ? reject(err) : resolve(info);
+      });
+    });
+  }
 
-  // implantBuilds(timeout = TIMEOUT): Promise<clientpb.ImplantBuilds|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     this.rpc.implantBuilds(this.empty, this.deadline(timeout), (err, builds) => {
-  //       err ? reject(err) : resolve(builds);
-  //     });
-  //   });
-  // }
+  regenerate(name: string, timeout = TIMEOUT): Promise<commonpb.File|undefined> {
+    return new Promise((resolve, reject) => {
+      const req = new clientpb.RegenerateReq();
+      req.ImplantName = name;
+      this.rpc.Regenerate(req, this.deadline(timeout), (err, generated) => {
+        err ? reject(err) : resolve(generated?.File);
+      });
+    });
+  }
 
-  // deleteImplantBuild(name: string, timeout = TIMEOUT): Promise<void> {
-  //   const delReq = new clientpb.DeleteReq();
-  //   delReq.setName(name);
-  //   return new Promise((resolve, reject) => {
-  //     this.rpc.deleteImplantBuild(delReq, this.deadline(timeout), (err) => {
-  //       err ? reject(err) : resolve();
-  //     });
-  //   });
-  // }
+  implantBuilds(timeout = TIMEOUT): Promise<clientpb.ImplantBuilds|undefined> {
+    return new Promise((resolve, reject) => {
+      this.rpc.ImplantBuilds(this.empty, this.deadline(timeout), (err, builds) => {
+        err ? reject(err) : resolve(builds);
+      });
+    });
+  }
 
-  // canaries(timeout = TIMEOUT): Promise<clientpb.DNSCanary[]|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     this.rpc.canaries(this.empty, this.deadline(timeout), (err, canaries) => {
-  //       err ? reject(err) : resolve(canaries?.getCanariesList());
-  //     });
-  //   });
-  // }
+  deleteImplantBuild(name: string, timeout = TIMEOUT): Promise<void> {
+    const delReq = new clientpb.DeleteReq();
+    delReq.Name = name;
+    return new Promise((resolve, reject) => {
+      this.rpc.DeleteImplantBuild(delReq, this.deadline(timeout), (err) => {
+        err ? reject(err) : resolve();
+      });
+    });
+  }
 
-  // implantProfiles(timeout = TIMEOUT): Promise<clientpb.ImplantProfile[]|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     this.rpc.implantProfiles(this.empty, this.deadline(timeout), (err, profiles) => {
-  //       err ? reject(err) : resolve(profiles?.getProfilesList());
-  //     });
-  //   });
-  // }
+  canaries(timeout = TIMEOUT): Promise<clientpb.DNSCanary[]|undefined> {
+    return new Promise((resolve, reject) => {
+      this.rpc.Canaries(this.empty, this.deadline(timeout), (err, canaries) => {
+        err ? reject(err) : resolve(canaries?.Canaries);
+      });
+    });
+  }
 
-  // saveImplantProfile(profile: clientpb.ImplantProfile, timeout = TIMEOUT): Promise<clientpb.ImplantProfile|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     this.rpc.saveImplantProfile(profile, this.deadline(timeout), (err, profile) => {
-  //       err ? reject(err) : resolve(profile);
-  //     });
-  //   });
-  // }
+  implantProfiles(timeout = TIMEOUT): Promise<clientpb.ImplantProfile[]|undefined> {
+    return new Promise((resolve, reject) => {
+      this.rpc.ImplantProfiles(this.empty, this.deadline(timeout), (err, profiles) => {
+        err ? reject(err) : resolve(profiles?.Profiles);
+      });
+    });
+  }
 
-  // deleteImplantProfile(name: string, timeout = TIMEOUT): Promise<void> {
-  //   const delReq = new clientpb.DeleteReq();
-  //   delReq.setName(name);
-  //   return new Promise((resolve, reject) => {
-  //     this.rpc.deleteImplantProfile(delReq, this.deadline(timeout), (err) => {
-  //       err ? reject(err) : resolve();
-  //     });
-  //   });
-  // }
+  saveImplantProfile(profile: clientpb.ImplantProfile, timeout = TIMEOUT): Promise<clientpb.ImplantProfile|undefined> {
+    return new Promise((resolve, reject) => {
+      this.rpc.SaveImplantProfile(profile, this.deadline(timeout), (err, profile) => {
+        err ? reject(err) : resolve(profile);
+      });
+    });
+  }
 
-  // // ---- Loot ----
-  // lootAll(timeout = TIMEOUT): Promise<clientpb.Loot[]|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     this.rpc.lootAll(this.empty, this.deadline(timeout), (err, loot) => {
-  //       err ? reject(err) : resolve(loot?.getLootList());
-  //     });
-  //   });
-  // }
+  deleteImplantProfile(name: string, timeout = TIMEOUT): Promise<void> {
+    const delReq = new clientpb.DeleteReq();
+    delReq.Name = name;
+    return new Promise((resolve, reject) => {
+      this.rpc.DeleteImplantProfile(delReq, this.deadline(timeout), (err) => {
+        err ? reject(err) : resolve();
+      });
+    });
+  }
 
-  // lootAllOf(lootType: string, timeout = TIMEOUT): Promise<clientpb.Loot[]|undefined> {
+  // ---- Loot ----
+  lootAll(timeout = TIMEOUT): Promise<clientpb.Loot[]|undefined> {
+    return new Promise((resolve, reject) => {
+      this.rpc.LootAll(this.empty, this.deadline(timeout), (err, loot) => {
+        err ? reject(err) : resolve(loot?.Loot);
+      });
+    });
+  }
 
-  //   // There doesn't seem to be a good way to strongly type this parameter
-  //   const loot = new clientpb.Loot();
-  //   switch (lootType.toLowerCase()) {
-  //     case 'c':
-  //     case 'cred':
-  //     case 'creds':
-  //     case 'credential':
-  //     case 'credentials':
-  //       loot.setType(clientpb.LootType.LOOT_CREDENTIAL);
-  //       break;
+  lootAllOf(lootType: string, timeout = TIMEOUT): Promise<clientpb.Loot[]|undefined> {
 
-  //     case 'f':
-  //     case 'file':
-  //     case 'files':
-  //       loot.setType(clientpb.LootType.LOOT_FILE);
-  //       break;
+    // There doesn't seem to be a good way to strongly type this parameter
+    const loot = new clientpb.Loot();
+    switch (lootType.toLowerCase()) {
+      case 'c':
+      case 'cred':
+      case 'creds':
+      case 'credential':
+      case 'credentials':
+        loot.Type = clientpb.LootType.LOOT_CREDENTIAL;
+        break;
 
-  //     default:
-  //       throw new Error(`Unknown loot type: ${lootType}`);
-  //   }
+      case 'f':
+      case 'file':
+      case 'files':
+        loot.Type = clientpb.LootType.LOOT_FILE;
+        break;
 
-  //   return new Promise((resolve, reject) => {
-  //     this.rpc.lootAllOf(loot, this.deadline(timeout), (err, allLoot) => {
-  //       err ? reject(err) : resolve(allLoot?.getLootList());
-  //     });
-  //   });
-  // }
+      default:
+        throw new Error(`Unknown loot type: ${lootType}`);
+    }
 
-  // lootAdd(loot: clientpb.Loot, timeout = TIMEOUT): Promise<clientpb.Loot|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     this.rpc.lootAdd(loot, this.deadline(timeout), (err, loot) => {
-  //       err ? reject(err) : resolve(loot);
-  //     });
-  //   });
-  // }
+    return new Promise((resolve, reject) => {
+      this.rpc.LootAllOf(loot, this.deadline(timeout), (err, allLoot) => {
+        err ? reject(err) : resolve(allLoot?.Loot);
+      });
+    });
+  }
 
-  // lootUpdate(lootID: string, name: string, timeout = TIMEOUT): Promise<clientpb.Loot|undefined> {
-  //   const loot = new clientpb.Loot();
-  //   loot.setLootid(lootID);
-  //   loot.setName(name);
-  //   return new Promise((resolve, reject) => {
-  //     this.rpc.lootUpdate(loot, this.deadline(timeout), (err, loot) => {
-  //       err ? reject(err) : resolve(loot);
-  //     });
-  //   });
-  // }
+  lootAdd(loot: clientpb.Loot, timeout = TIMEOUT): Promise<clientpb.Loot|undefined> {
+    return new Promise((resolve, reject) => {
+      this.rpc.LootAdd(loot, this.deadline(timeout), (err, loot) => {
+        err ? reject(err) : resolve(loot);
+      });
+    });
+  }
 
-  // lootRemove(lootID: string, timeout = TIMEOUT): Promise<void> {
-  //   const loot = new clientpb.Loot();
-  //   loot.setLootid(lootID);
-  //   return new Promise((resolve, reject) => {
-  //     this.rpc.lootRm(loot, this.deadline(timeout), (err) => {
-  //       err ? reject(err) : resolve();
-  //     });
-  //   });
-  // }
+  lootUpdate(lootID: string, name: string, timeout = TIMEOUT): Promise<clientpb.Loot|undefined> {
+    const loot = new clientpb.Loot();
+    loot.LootID = lootID;
+    loot.Name = name;
+    return new Promise((resolve, reject) => {
+      this.rpc.LootUpdate(loot, this.deadline(timeout), (err, loot) => {
+        err ? reject(err) : resolve(loot);
+      });
+    });
+  }
 
-  // lootContent(lootID: string, timeout = TIMEOUT): Promise<clientpb.Loot|undefined> {
-  //   const loot = new clientpb.Loot();
-  //   loot.setLootid(lootID);
-  //   return new Promise((resolve, reject) => {
-  //     this.rpc.lootContent(loot, this.deadline(timeout), (err, loot) => {
-  //       err ? reject(err) : resolve(loot);
-  //     });
-  //   });
-  // }
+  lootRemove(lootID: string, timeout = TIMEOUT): Promise<void> {
+    const loot = new clientpb.Loot();
+    loot.LootID = lootID;
+    return new Promise((resolve, reject) => {
+      this.rpc.LootRm(loot, this.deadline(timeout), (err) => {
+        err ? reject(err) : resolve();
+      });
+    });
+  }
 
-  // // ---- Websites ----
+  lootContent(lootID: string, timeout = TIMEOUT): Promise<clientpb.Loot|undefined> {
+    const loot = new clientpb.Loot();
+    loot.LootID = lootID;
+    return new Promise((resolve, reject) => {
+      this.rpc.LootContent(loot, this.deadline(timeout), (err, loot) => {
+        err ? reject(err) : resolve(loot);
+      });
+    });
+  }
+
+  // ---- Websites ----
   
-  // websites(timeout = TIMEOUT): Promise<clientpb.Website[]|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     this.rpc.websites(this.empty, this.deadline(timeout), (err, websites) => {
-  //       err ? reject(err) : resolve(websites?.getWebsitesList());
-  //     });
-  //   });
-  // }
+  websites(timeout = TIMEOUT): Promise<clientpb.Website[]|undefined> {
+    return new Promise((resolve, reject) => {
+      this.rpc.Websites(this.empty, this.deadline(timeout), (err, websites) => {
+        err ? reject(err) : resolve(websites?.Websites);
+      });
+    });
+  }
 
-  // website(name: string, timeout = TIMEOUT): Promise<clientpb.Website|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const web = new clientpb.Website();
-  //     web.setName(name);
-  //     this.rpc.website(web, this.deadline(timeout), (err, website) => {
-  //       err ? reject(err) : resolve(website);
-  //     });
-  //   });
-  // }
+  website(name: string, timeout = TIMEOUT): Promise<clientpb.Website|undefined> {
+    return new Promise((resolve, reject) => {
+      const web = new clientpb.Website();
+      web.Name = name;
+      this.rpc.Website(web, this.deadline(timeout), (err, website) => {
+        err ? reject(err) : resolve(website);
+      });
+    });
+  }
 
-  // websiteRemove(name: string, timeout = TIMEOUT): Promise<void> {
-  //   return new Promise((resolve, reject) => {
-  //     const web = new clientpb.Website();
-  //     web.setName(name);
-  //     this.rpc.websiteRemove(web, this.deadline(timeout), (err) => {
-  //       err ? reject(err) : resolve();
-  //     });
-  //   });
-  // }
+  websiteRemove(name: string, timeout = TIMEOUT): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const web = new clientpb.Website();
+      web.Name = name;
+      this.rpc.WebsiteRemove(web, this.deadline(timeout), (err) => {
+        err ? reject(err) : resolve();
+      });
+    });
+  }
 
-  // websiteAddContent(name: string, contents: Map<string, clientpb.WebContent>, timeout = TIMEOUT): Promise<clientpb.Website|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const addContent = new clientpb.WebsiteAddContent();
-  //     addContent.setName(name);
-  //     contents.forEach((value, key) => {
-  //       addContent.getContentsMap().set(key, value);
-  //     });
-  //     this.rpc.websiteAddContent(addContent, this.deadline(timeout), (err, website) => {
-  //       err ? reject(err) : resolve(website);
-  //     });
-  //   });
-  // }
+  websiteAddContent(name: string, contents: Map<string, clientpb.WebContent>, timeout = TIMEOUT): Promise<clientpb.Website|undefined> {
+    return new Promise((resolve, reject) => {
+      const addContent = new clientpb.WebsiteAddContent();
+      addContent.Name = name;
+      addContent.Contents = contents;
+      this.rpc.WebsiteAddContent(addContent, this.deadline(timeout), (err, website) => {
+        err ? reject(err) : resolve(website);
+      });
+    });
+  }
 
-  // websiteUpdateContent(name: string, contents: Map<string, clientpb.WebContent>, timeout = TIMEOUT): Promise<clientpb.Website|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const addContent = new clientpb.WebsiteAddContent();
-  //     addContent.setName(name);
-  //     contents.forEach((value, key) => {
-  //       addContent.getContentsMap().set(key, value);
-  //     });
-  //     this.rpc.websiteUpdateContent(addContent, this.deadline(timeout), (err, website) => {
-  //       err ? reject(err) : resolve(website);
-  //     });
-  //   });
-  // }
+  websiteUpdateContent(name: string, contents: Map<string, clientpb.WebContent>, timeout = TIMEOUT): Promise<clientpb.Website|undefined> {
+    return new Promise((resolve, reject) => {
+      const addContent = new clientpb.WebsiteAddContent();
+      addContent.Name = name;
+      addContent.Contents = contents;
+      this.rpc.WebsiteUpdateContent(addContent, this.deadline(timeout), (err, website) => {
+        err ? reject(err) : resolve(website);
+      });
+    });
+  }
 
-  // websiteRemoveContent(name: string, paths: string[], timeout = TIMEOUT): Promise<clientpb.Website|undefined> {
-  //   return new Promise((resolve, reject) => {
-  //     const rm = new clientpb.WebsiteRemoveContent();
-  //     rm.setName(name);
-  //     rm.setPathsList(paths);
-  //     this.rpc.websiteRemoveContent(rm, this.deadline(timeout), (err, website) => {
-  //       err ? reject(err) : resolve(website);
-  //     });
-  //   });
-  // }
+  websiteRemoveContent(name: string, paths: string[], timeout = TIMEOUT): Promise<clientpb.Website|undefined> {
+    return new Promise((resolve, reject) => {
+      const rm = new clientpb.WebsiteRemoveContent();
+      rm.Name = name;
+      rm.Paths = paths;
+      this.rpc.WebsiteRemoveContent(rm, this.deadline(timeout), (err, website) => {
+        err ? reject(err) : resolve(website);
+      });
+    });
+  }
 
 }
