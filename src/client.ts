@@ -1,7 +1,7 @@
 import * as zlib from 'zlib';
 
 import * as grpc from '@grpc/grpc-js';
-import { Subject, Observable, Observer } from 'rxjs';
+import { Subject, Observable, Observer, Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 import { commonpb } from './pb/commonpb/common';
@@ -43,11 +43,9 @@ export interface Tunnel {
 class BaseCommands {
 
   protected _rpc: rpcpb.SliverRPCClient;
-  protected _tunnelStream: grpc.ClientDuplexStream<sliverpb.TunnelData, sliverpb.TunnelData>;
 
-  constructor(rpc: rpcpb.SliverRPCClient, tunnelStream: grpc.ClientDuplexStream<sliverpb.TunnelData, sliverpb.TunnelData>) {
+  constructor(rpc: rpcpb.SliverRPCClient) {
     this._rpc = rpc;
-    this._tunnelStream = tunnelStream;
   }
 
   // request - should be overloaded by sub classes
@@ -392,10 +390,13 @@ class BaseCommands {
 export class InteractiveBeacon extends BaseCommands {
 
   private _beaconID: string;
+  private _taskresult$: Observable<clientpb.Event>;
+  private _pendingTasks: Map<string, Subscription> = new Map<string, Subscription>();
 
-  constructor(rpc: rpcpb.SliverRPCClient, tunnelStream: grpc.ClientDuplexStream<sliverpb.TunnelData, sliverpb.TunnelData>, beaconID: string) {
-    super(rpc, tunnelStream);
+  constructor(rpc: rpcpb.SliverRPCClient, taskresult$: Observable<clientpb.Event>, beaconID: string) {
+    super(rpc);
     this._beaconID = beaconID;
+    this._taskresult$ = taskresult$;
   }
 
   protected request(timeout: number): commonpb.Request {
@@ -406,16 +407,44 @@ export class InteractiveBeacon extends BaseCommands {
     return req;
   }
 
+  async ls(path?: string, timeout?: number): Promise<sliverpb.Ls | undefined> {
+    const lsTask = await super.ls();
+    if (!lsTask || lsTask.Response.Err !== undefined) {
+      console.error(`lsTask.Response.Err: ${lsTask?.Response?.Err}`);
+      return Promise.reject(lsTask);
+    }
+    return new Promise(async (resolve, reject) => {
+      const taskSubscription = this._taskresult$.subscribe(async (event: clientpb.Event) => {
+        let beaconTask = clientpb.BeaconTask.deserializeBinary(event.Data);
+        if (beaconTask.ID === lsTask?.Response?.TaskID) {
+          this._pendingTasks.get(beaconTask.ID)?.unsubscribe();
+          this._pendingTasks.delete(beaconTask.ID);
+          const taskReq = new clientpb.BeaconTask({ID: beaconTask.ID});
+          this._rpc.GetBeaconTaskContent(taskReq, async (err, taskContent) => {
+            if (err || !taskContent) {
+              reject(err);
+            } else {
+              const ls = sliverpb.Ls.deserializeBinary(taskContent.Response);
+              resolve(ls);
+            }
+          });
+        }
+      });
+      this._pendingTasks.set(lsTask.Response.TaskID, taskSubscription);
+    });
+  }
 }
 
 export class InteractiveSession extends BaseCommands {
 
   private _sessionID: string;
+  private _tunnelStream: grpc.ClientDuplexStream<sliverpb.TunnelData, sliverpb.TunnelData>;
 
   constructor(rpc: rpcpb.SliverRPCClient,
     tunnelStream: grpc.ClientDuplexStream<sliverpb.TunnelData, sliverpb.TunnelData>,
     sessionId: string) {
-    super(rpc, tunnelStream);
+    super(rpc);
+    this._tunnelStream = tunnelStream;
     this._sessionID = sessionId;
   }
 
@@ -474,7 +503,7 @@ export class InteractiveSession extends BaseCommands {
                 const data = new sliverpb.TunnelData();
                 data.TunnelID = tunnelId;
                 data.SessionID = this._sessionID;
-                data.Data = raw;
+                data.Data = this.toUint8Array(raw);
                 this._tunnelStream.write(data);
               },
               complete: () => {
@@ -496,6 +525,9 @@ export class InteractiveSession extends BaseCommands {
 
 export class SliverClient {
 
+  readonly BEACON_REGISTERED = 'beacon-registered';
+  readonly BEACON_TASKRESULT = 'beacon-taskresult';
+
   private _config: SliverClientConfig;
   private _rpc: rpcpb.SliverRPCClient | null = null;
   private empty = new commonpb.Empty();
@@ -507,6 +539,8 @@ export class SliverClient {
   session$ = this.event$.pipe(filter(event => event.Session !== undefined));
   job$ = this.event$.pipe(filter(event => event.Job !== undefined));
   client$ = this.event$.pipe(filter(event => event.Client !== undefined));
+  beacon$ = this.event$.pipe(filter(event => event.EventType === this.BEACON_REGISTERED));
+  taskresult$ = this.event$.pipe(filter(event => event.EventType === this.BEACON_TASKRESULT));
 
   // Filter anything that doesn't match one of the loot event types
   loot$ = this.event$.pipe(filter(event => this.lootEventTypes.some(lootEventType => { 
@@ -646,22 +680,16 @@ export class SliverClient {
     return new InteractiveSession(this.rpc, this.tunnelStream, sessionID);
   }
 
-  async interactBeacon(beaconID: string, timeout = TIMEOUT): Promise<InteractiveBeacon> {
-    return new InteractiveBeacon(this.rpc, this.tunnelStream, beaconID);
-  }
-
-  killSession(sessionId: string, timeout = TIMEOUT): Promise<void> {
+  beacons(timeout = TIMEOUT): Promise<clientpb.Beacon[]|undefined> {
     return new Promise((resolve, reject) => {
-      const kill = new sliverpb.KillReq();
-      
-      // req.setSessionid(sessionId);
-      // req.setTimeout(timeout);
-      kill.Request = new commonpb.Request();
-
-      this.rpc.Kill(kill, this.deadline(timeout), (err) => {
-        err ? reject(err) : resolve();
+      this.rpc.GetBeacons(this.empty, this.deadline(timeout), (err, beacons) => {
+        err ? reject(err) : resolve(beacons?.Beacons);
       });
     });
+  }
+
+  async interactBeacon(beaconID: string, timeout = TIMEOUT): Promise<InteractiveBeacon> {
+    return new InteractiveBeacon(this.rpc, this.taskresult$, beaconID);
   }
 
   // ---- Jobs ----
