@@ -4701,7 +4701,8 @@ proto.clientpb.ImplantConfig.toObject = function(includeInstance, msg) {
     issharedlib: jspb.Message.getBooleanFieldWithDefault(msg, 101, false),
     filename: jspb.Message.getFieldWithDefault(msg, 102, ""),
     isservice: jspb.Message.getBooleanFieldWithDefault(msg, 103, false),
-    isshellcode: jspb.Message.getBooleanFieldWithDefault(msg, 104, false)
+    isshellcode: jspb.Message.getBooleanFieldWithDefault(msg, 104, false),
+    runatload: jspb.Message.getBooleanFieldWithDefault(msg, 105, false)
   };
 
   if (includeInstance) {
@@ -4890,6 +4891,10 @@ proto.clientpb.ImplantConfig.deserializeBinaryFromReader = function(msg, reader)
     case 104:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setIsshellcode(value);
+      break;
+    case 105:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setRunatload(value);
       break;
     default:
       reader.skipField();
@@ -5184,6 +5189,13 @@ proto.clientpb.ImplantConfig.serializeBinaryToWriter = function(message, writer)
   if (f) {
     writer.writeBool(
       104,
+      f
+    );
+  }
+  f = message.getRunatload();
+  if (f) {
+    writer.writeBool(
+      105,
       f
     );
   }
@@ -5910,6 +5922,24 @@ proto.clientpb.ImplantConfig.prototype.getIsshellcode = function() {
  */
 proto.clientpb.ImplantConfig.prototype.setIsshellcode = function(value) {
   return jspb.Message.setProto3BooleanField(this, 104, value);
+};
+
+
+/**
+ * optional bool RunAtLoad = 105;
+ * @return {boolean}
+ */
+proto.clientpb.ImplantConfig.prototype.getRunatload = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 105, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.clientpb.ImplantConfig} returns this
+ */
+proto.clientpb.ImplantConfig.prototype.setRunatload = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 105, value);
 };
 
 
@@ -9482,7 +9512,8 @@ proto.clientpb.DNSListenerReq.toObject = function(includeInstance, msg) {
     canaries: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
     host: jspb.Message.getFieldWithDefault(msg, 3, ""),
     port: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    persistent: jspb.Message.getBooleanFieldWithDefault(msg, 5, false)
+    persistent: jspb.Message.getBooleanFieldWithDefault(msg, 5, false),
+    enforceotp: jspb.Message.getBooleanFieldWithDefault(msg, 6, false)
   };
 
   if (includeInstance) {
@@ -9538,6 +9569,10 @@ proto.clientpb.DNSListenerReq.deserializeBinaryFromReader = function(msg, reader
     case 5:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setPersistent(value);
+      break;
+    case 6:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setEnforceotp(value);
       break;
     default:
       reader.skipField();
@@ -9600,6 +9635,13 @@ proto.clientpb.DNSListenerReq.serializeBinaryToWriter = function(message, writer
   if (f) {
     writer.writeBool(
       5,
+      f
+    );
+  }
+  f = message.getEnforceotp();
+  if (f) {
+    writer.writeBool(
+      6,
       f
     );
   }
@@ -9712,6 +9754,24 @@ proto.clientpb.DNSListenerReq.prototype.getPersistent = function() {
  */
 proto.clientpb.DNSListenerReq.prototype.setPersistent = function(value) {
   return jspb.Message.setProto3BooleanField(this, 5, value);
+};
+
+
+/**
+ * optional bool EnforceOTP = 6;
+ * @return {boolean}
+ */
+proto.clientpb.DNSListenerReq.prototype.getEnforceotp = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 6, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.clientpb.DNSListenerReq} returns this
+ */
+proto.clientpb.DNSListenerReq.prototype.setEnforceotp = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 6, value);
 };
 
 

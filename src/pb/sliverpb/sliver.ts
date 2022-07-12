@@ -2268,6 +2268,7 @@ export namespace sliverpb {
             Size?: number;
             ModTime?: number;
             Mode?: string;
+            Link?: string;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
@@ -2286,6 +2287,9 @@ export namespace sliverpb {
                 }
                 if ("Mode" in data && data.Mode != undefined) {
                     this.Mode = data.Mode;
+                }
+                if ("Link" in data && data.Link != undefined) {
+                    this.Link = data.Link;
                 }
             }
         }
@@ -2319,12 +2323,19 @@ export namespace sliverpb {
         set Mode(value: string) {
             pb_1.Message.setField(this, 5, value);
         }
+        get Link() {
+            return pb_1.Message.getField(this, 6) as string;
+        }
+        set Link(value: string) {
+            pb_1.Message.setField(this, 6, value);
+        }
         static fromObject(data: {
             Name?: string;
             IsDir?: boolean;
             Size?: number;
             ModTime?: number;
             Mode?: string;
+            Link?: string;
         }) {
             const message = new FileInfo({});
             if (data.Name != null) {
@@ -2342,6 +2353,9 @@ export namespace sliverpb {
             if (data.Mode != null) {
                 message.Mode = data.Mode;
             }
+            if (data.Link != null) {
+                message.Link = data.Link;
+            }
             return message;
         }
         toObject() {
@@ -2351,6 +2365,7 @@ export namespace sliverpb {
                 Size?: number;
                 ModTime?: number;
                 Mode?: string;
+                Link?: string;
             } = {};
             if (this.Name != null) {
                 data.Name = this.Name;
@@ -2366,6 +2381,9 @@ export namespace sliverpb {
             }
             if (this.Mode != null) {
                 data.Mode = this.Mode;
+            }
+            if (this.Link != null) {
+                data.Link = this.Link;
             }
             return data;
         }
@@ -2383,6 +2401,8 @@ export namespace sliverpb {
                 writer.writeInt64(4, this.ModTime);
             if (typeof this.Mode === "string" && this.Mode.length)
                 writer.writeString(5, this.Mode);
+            if (typeof this.Link === "string" && this.Link.length)
+                writer.writeString(6, this.Link);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -2406,6 +2426,9 @@ export namespace sliverpb {
                         break;
                     case 5:
                         message.Mode = reader.readString();
+                        break;
+                    case 6:
+                        message.Link = reader.readString();
                         break;
                     default: reader.skipField();
                 }
@@ -2887,6 +2910,230 @@ export namespace sliverpb {
             return Rm.deserialize(bytes);
         }
     }
+    export class MvReq extends pb_1.Message {
+        constructor(data?: any[] | {
+            Src?: string;
+            Dst?: string;
+            Request?: dependency_1.commonpb.Request;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("Src" in data && data.Src != undefined) {
+                    this.Src = data.Src;
+                }
+                if ("Dst" in data && data.Dst != undefined) {
+                    this.Dst = data.Dst;
+                }
+                if ("Request" in data && data.Request != undefined) {
+                    this.Request = data.Request;
+                }
+            }
+        }
+        get Src() {
+            return pb_1.Message.getField(this, 1) as string;
+        }
+        set Src(value: string) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        get Dst() {
+            return pb_1.Message.getField(this, 2) as string;
+        }
+        set Dst(value: string) {
+            pb_1.Message.setField(this, 2, value);
+        }
+        get Request() {
+            return pb_1.Message.getWrapperField(this, dependency_1.commonpb.Request, 9) as dependency_1.commonpb.Request;
+        }
+        set Request(value: dependency_1.commonpb.Request) {
+            pb_1.Message.setWrapperField(this, 9, value);
+        }
+        static fromObject(data: {
+            Src?: string;
+            Dst?: string;
+            Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
+        }) {
+            const message = new MvReq({});
+            if (data.Src != null) {
+                message.Src = data.Src;
+            }
+            if (data.Dst != null) {
+                message.Dst = data.Dst;
+            }
+            if (data.Request != null) {
+                message.Request = dependency_1.commonpb.Request.fromObject(data.Request);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                Src?: string;
+                Dst?: string;
+                Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
+            } = {};
+            if (this.Src != null) {
+                data.Src = this.Src;
+            }
+            if (this.Dst != null) {
+                data.Dst = this.Dst;
+            }
+            if (this.Request != null) {
+                data.Request = this.Request.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (typeof this.Src === "string" && this.Src.length)
+                writer.writeString(1, this.Src);
+            if (typeof this.Dst === "string" && this.Dst.length)
+                writer.writeString(2, this.Dst);
+            if (this.Request !== undefined)
+                writer.writeMessage(9, this.Request, () => this.Request.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): MvReq {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new MvReq();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.Src = reader.readString();
+                        break;
+                    case 2:
+                        message.Dst = reader.readString();
+                        break;
+                    case 9:
+                        reader.readMessage(message.Request, () => message.Request = dependency_1.commonpb.Request.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): MvReq {
+            return MvReq.deserialize(bytes);
+        }
+    }
+    export class Mv extends pb_1.Message {
+        constructor(data?: any[] | {
+            Src?: string;
+            Dst?: string;
+            Response?: dependency_1.commonpb.Response;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("Src" in data && data.Src != undefined) {
+                    this.Src = data.Src;
+                }
+                if ("Dst" in data && data.Dst != undefined) {
+                    this.Dst = data.Dst;
+                }
+                if ("Response" in data && data.Response != undefined) {
+                    this.Response = data.Response;
+                }
+            }
+        }
+        get Src() {
+            return pb_1.Message.getField(this, 1) as string;
+        }
+        set Src(value: string) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        get Dst() {
+            return pb_1.Message.getField(this, 2) as string;
+        }
+        set Dst(value: string) {
+            pb_1.Message.setField(this, 2, value);
+        }
+        get Response() {
+            return pb_1.Message.getWrapperField(this, dependency_1.commonpb.Response, 9) as dependency_1.commonpb.Response;
+        }
+        set Response(value: dependency_1.commonpb.Response) {
+            pb_1.Message.setWrapperField(this, 9, value);
+        }
+        static fromObject(data: {
+            Src?: string;
+            Dst?: string;
+            Response?: ReturnType<typeof dependency_1.commonpb.Response.prototype.toObject>;
+        }) {
+            const message = new Mv({});
+            if (data.Src != null) {
+                message.Src = data.Src;
+            }
+            if (data.Dst != null) {
+                message.Dst = data.Dst;
+            }
+            if (data.Response != null) {
+                message.Response = dependency_1.commonpb.Response.fromObject(data.Response);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                Src?: string;
+                Dst?: string;
+                Response?: ReturnType<typeof dependency_1.commonpb.Response.prototype.toObject>;
+            } = {};
+            if (this.Src != null) {
+                data.Src = this.Src;
+            }
+            if (this.Dst != null) {
+                data.Dst = this.Dst;
+            }
+            if (this.Response != null) {
+                data.Response = this.Response.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (typeof this.Src === "string" && this.Src.length)
+                writer.writeString(1, this.Src);
+            if (typeof this.Dst === "string" && this.Dst.length)
+                writer.writeString(2, this.Dst);
+            if (this.Response !== undefined)
+                writer.writeMessage(9, this.Response, () => this.Response.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): Mv {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new Mv();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.Src = reader.readString();
+                        break;
+                    case 2:
+                        message.Dst = reader.readString();
+                        break;
+                    case 9:
+                        reader.readMessage(message.Response, () => message.Response = dependency_1.commonpb.Response.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): Mv {
+            return Mv.deserialize(bytes);
+        }
+    }
     export class MkdirReq extends pb_1.Message {
         constructor(data?: any[] | {
             Path?: string;
@@ -3070,6 +3317,7 @@ export namespace sliverpb {
             Path?: string;
             Start?: number;
             Stop?: number;
+            Recurse?: boolean;
             Request?: dependency_1.commonpb.Request;
         }) {
             super();
@@ -3083,6 +3331,9 @@ export namespace sliverpb {
                 }
                 if ("Stop" in data && data.Stop != undefined) {
                     this.Stop = data.Stop;
+                }
+                if ("Recurse" in data && data.Recurse != undefined) {
+                    this.Recurse = data.Recurse;
                 }
                 if ("Request" in data && data.Request != undefined) {
                     this.Request = data.Request;
@@ -3107,6 +3358,12 @@ export namespace sliverpb {
         set Stop(value: number) {
             pb_1.Message.setField(this, 3, value);
         }
+        get Recurse() {
+            return pb_1.Message.getField(this, 4) as boolean;
+        }
+        set Recurse(value: boolean) {
+            pb_1.Message.setField(this, 4, value);
+        }
         get Request() {
             return pb_1.Message.getWrapperField(this, dependency_1.commonpb.Request, 9) as dependency_1.commonpb.Request;
         }
@@ -3117,6 +3374,7 @@ export namespace sliverpb {
             Path?: string;
             Start?: number;
             Stop?: number;
+            Recurse?: boolean;
             Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
         }) {
             const message = new DownloadReq({});
@@ -3129,6 +3387,9 @@ export namespace sliverpb {
             if (data.Stop != null) {
                 message.Stop = data.Stop;
             }
+            if (data.Recurse != null) {
+                message.Recurse = data.Recurse;
+            }
             if (data.Request != null) {
                 message.Request = dependency_1.commonpb.Request.fromObject(data.Request);
             }
@@ -3139,6 +3400,7 @@ export namespace sliverpb {
                 Path?: string;
                 Start?: number;
                 Stop?: number;
+                Recurse?: boolean;
                 Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
             } = {};
             if (this.Path != null) {
@@ -3149,6 +3411,9 @@ export namespace sliverpb {
             }
             if (this.Stop != null) {
                 data.Stop = this.Stop;
+            }
+            if (this.Recurse != null) {
+                data.Recurse = this.Recurse;
             }
             if (this.Request != null) {
                 data.Request = this.Request.toObject();
@@ -3165,6 +3430,8 @@ export namespace sliverpb {
                 writer.writeInt64(2, this.Start);
             if (this.Stop !== undefined)
                 writer.writeInt64(3, this.Stop);
+            if (this.Recurse !== undefined)
+                writer.writeBool(4, this.Recurse);
             if (this.Request !== undefined)
                 writer.writeMessage(9, this.Request, () => this.Request.serialize(writer));
             if (!w)
@@ -3184,6 +3451,9 @@ export namespace sliverpb {
                         break;
                     case 3:
                         message.Stop = reader.readInt64();
+                        break;
+                    case 4:
+                        message.Recurse = reader.readBool();
                         break;
                     case 9:
                         reader.readMessage(message.Request, () => message.Request = dependency_1.commonpb.Request.deserialize(reader));
@@ -3208,6 +3478,9 @@ export namespace sliverpb {
             Start?: number;
             Stop?: number;
             Data?: Uint8Array;
+            IsDir?: boolean;
+            ReadFiles?: number;
+            UnreadableFiles?: number;
             Response?: dependency_1.commonpb.Response;
         }) {
             super();
@@ -3230,6 +3503,15 @@ export namespace sliverpb {
                 }
                 if ("Data" in data && data.Data != undefined) {
                     this.Data = data.Data;
+                }
+                if ("IsDir" in data && data.IsDir != undefined) {
+                    this.IsDir = data.IsDir;
+                }
+                if ("ReadFiles" in data && data.ReadFiles != undefined) {
+                    this.ReadFiles = data.ReadFiles;
+                }
+                if ("UnreadableFiles" in data && data.UnreadableFiles != undefined) {
+                    this.UnreadableFiles = data.UnreadableFiles;
                 }
                 if ("Response" in data && data.Response != undefined) {
                     this.Response = data.Response;
@@ -3272,6 +3554,24 @@ export namespace sliverpb {
         set Data(value: Uint8Array) {
             pb_1.Message.setField(this, 6, value);
         }
+        get IsDir() {
+            return pb_1.Message.getField(this, 7) as boolean;
+        }
+        set IsDir(value: boolean) {
+            pb_1.Message.setField(this, 7, value);
+        }
+        get ReadFiles() {
+            return pb_1.Message.getField(this, 8) as number;
+        }
+        set ReadFiles(value: number) {
+            pb_1.Message.setField(this, 8, value);
+        }
+        get UnreadableFiles() {
+            return pb_1.Message.getField(this, 10) as number;
+        }
+        set UnreadableFiles(value: number) {
+            pb_1.Message.setField(this, 10, value);
+        }
         get Response() {
             return pb_1.Message.getWrapperField(this, dependency_1.commonpb.Response, 9) as dependency_1.commonpb.Response;
         }
@@ -3285,6 +3585,9 @@ export namespace sliverpb {
             Start?: number;
             Stop?: number;
             Data?: Uint8Array;
+            IsDir?: boolean;
+            ReadFiles?: number;
+            UnreadableFiles?: number;
             Response?: ReturnType<typeof dependency_1.commonpb.Response.prototype.toObject>;
         }) {
             const message = new Download({});
@@ -3306,6 +3609,15 @@ export namespace sliverpb {
             if (data.Data != null) {
                 message.Data = data.Data;
             }
+            if (data.IsDir != null) {
+                message.IsDir = data.IsDir;
+            }
+            if (data.ReadFiles != null) {
+                message.ReadFiles = data.ReadFiles;
+            }
+            if (data.UnreadableFiles != null) {
+                message.UnreadableFiles = data.UnreadableFiles;
+            }
             if (data.Response != null) {
                 message.Response = dependency_1.commonpb.Response.fromObject(data.Response);
             }
@@ -3319,6 +3631,9 @@ export namespace sliverpb {
                 Start?: number;
                 Stop?: number;
                 Data?: Uint8Array;
+                IsDir?: boolean;
+                ReadFiles?: number;
+                UnreadableFiles?: number;
                 Response?: ReturnType<typeof dependency_1.commonpb.Response.prototype.toObject>;
             } = {};
             if (this.Path != null) {
@@ -3338,6 +3653,15 @@ export namespace sliverpb {
             }
             if (this.Data != null) {
                 data.Data = this.Data;
+            }
+            if (this.IsDir != null) {
+                data.IsDir = this.IsDir;
+            }
+            if (this.ReadFiles != null) {
+                data.ReadFiles = this.ReadFiles;
+            }
+            if (this.UnreadableFiles != null) {
+                data.UnreadableFiles = this.UnreadableFiles;
             }
             if (this.Response != null) {
                 data.Response = this.Response.toObject();
@@ -3360,6 +3684,12 @@ export namespace sliverpb {
                 writer.writeInt64(5, this.Stop);
             if (this.Data !== undefined)
                 writer.writeBytes(6, this.Data);
+            if (this.IsDir !== undefined)
+                writer.writeBool(7, this.IsDir);
+            if (this.ReadFiles !== undefined)
+                writer.writeInt32(8, this.ReadFiles);
+            if (this.UnreadableFiles !== undefined)
+                writer.writeInt32(10, this.UnreadableFiles);
             if (this.Response !== undefined)
                 writer.writeMessage(9, this.Response, () => this.Response.serialize(writer));
             if (!w)
@@ -3388,6 +3718,15 @@ export namespace sliverpb {
                         break;
                     case 6:
                         message.Data = reader.readBytes();
+                        break;
+                    case 7:
+                        message.IsDir = reader.readBool();
+                        break;
+                    case 8:
+                        message.ReadFiles = reader.readInt32();
+                        break;
+                    case 10:
+                        message.UnreadableFiles = reader.readInt32();
                         break;
                     case 9:
                         reader.readMessage(message.Response, () => message.Response = dependency_1.commonpb.Response.deserialize(reader));
@@ -4361,6 +4700,161 @@ export namespace sliverpb {
         }
         static deserializeBinary(bytes: Uint8Array): RevToSelf {
             return RevToSelf.deserialize(bytes);
+        }
+    }
+    export class CurrentTokenOwnerReq extends pb_1.Message {
+        constructor(data?: any[] | {
+            Request?: dependency_1.commonpb.Request;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("Request" in data && data.Request != undefined) {
+                    this.Request = data.Request;
+                }
+            }
+        }
+        get Request() {
+            return pb_1.Message.getWrapperField(this, dependency_1.commonpb.Request, 9) as dependency_1.commonpb.Request;
+        }
+        set Request(value: dependency_1.commonpb.Request) {
+            pb_1.Message.setWrapperField(this, 9, value);
+        }
+        static fromObject(data: {
+            Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
+        }) {
+            const message = new CurrentTokenOwnerReq({});
+            if (data.Request != null) {
+                message.Request = dependency_1.commonpb.Request.fromObject(data.Request);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
+            } = {};
+            if (this.Request != null) {
+                data.Request = this.Request.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.Request !== undefined)
+                writer.writeMessage(9, this.Request, () => this.Request.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): CurrentTokenOwnerReq {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new CurrentTokenOwnerReq();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 9:
+                        reader.readMessage(message.Request, () => message.Request = dependency_1.commonpb.Request.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): CurrentTokenOwnerReq {
+            return CurrentTokenOwnerReq.deserialize(bytes);
+        }
+    }
+    export class CurrentTokenOwner extends pb_1.Message {
+        constructor(data?: any[] | {
+            Output?: string;
+            Response?: dependency_1.commonpb.Response;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("Output" in data && data.Output != undefined) {
+                    this.Output = data.Output;
+                }
+                if ("Response" in data && data.Response != undefined) {
+                    this.Response = data.Response;
+                }
+            }
+        }
+        get Output() {
+            return pb_1.Message.getField(this, 1) as string;
+        }
+        set Output(value: string) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        get Response() {
+            return pb_1.Message.getWrapperField(this, dependency_1.commonpb.Response, 9) as dependency_1.commonpb.Response;
+        }
+        set Response(value: dependency_1.commonpb.Response) {
+            pb_1.Message.setWrapperField(this, 9, value);
+        }
+        static fromObject(data: {
+            Output?: string;
+            Response?: ReturnType<typeof dependency_1.commonpb.Response.prototype.toObject>;
+        }) {
+            const message = new CurrentTokenOwner({});
+            if (data.Output != null) {
+                message.Output = data.Output;
+            }
+            if (data.Response != null) {
+                message.Response = dependency_1.commonpb.Response.fromObject(data.Response);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                Output?: string;
+                Response?: ReturnType<typeof dependency_1.commonpb.Response.prototype.toObject>;
+            } = {};
+            if (this.Output != null) {
+                data.Output = this.Output;
+            }
+            if (this.Response != null) {
+                data.Response = this.Response.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (typeof this.Output === "string" && this.Output.length)
+                writer.writeString(1, this.Output);
+            if (this.Response !== undefined)
+                writer.writeMessage(9, this.Response, () => this.Response.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): CurrentTokenOwner {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new CurrentTokenOwner();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.Output = reader.readString();
+                        break;
+                    case 9:
+                        reader.readMessage(message.Response, () => message.Response = dependency_1.commonpb.Response.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): CurrentTokenOwner {
+            return CurrentTokenOwner.deserialize(bytes);
         }
     }
     export class InvokeGetSystemReq extends pb_1.Message {
@@ -11750,16 +12244,20 @@ export namespace sliverpb {
         constructor(data?: any[] | {
             Type?: PivotType;
             BindAddress?: string;
+            Options?: boolean[];
             Request?: dependency_1.commonpb.Request;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], []);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("Type" in data && data.Type != undefined) {
                     this.Type = data.Type;
                 }
                 if ("BindAddress" in data && data.BindAddress != undefined) {
                     this.BindAddress = data.BindAddress;
+                }
+                if ("Options" in data && data.Options != undefined) {
+                    this.Options = data.Options;
                 }
                 if ("Request" in data && data.Request != undefined) {
                     this.Request = data.Request;
@@ -11778,6 +12276,12 @@ export namespace sliverpb {
         set BindAddress(value: string) {
             pb_1.Message.setField(this, 2, value);
         }
+        get Options() {
+            return pb_1.Message.getField(this, 3) as boolean[];
+        }
+        set Options(value: boolean[]) {
+            pb_1.Message.setField(this, 3, value);
+        }
         get Request() {
             return pb_1.Message.getWrapperField(this, dependency_1.commonpb.Request, 9) as dependency_1.commonpb.Request;
         }
@@ -11787,6 +12291,7 @@ export namespace sliverpb {
         static fromObject(data: {
             Type?: PivotType;
             BindAddress?: string;
+            Options?: boolean[];
             Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
         }) {
             const message = new PivotStartListenerReq({});
@@ -11795,6 +12300,9 @@ export namespace sliverpb {
             }
             if (data.BindAddress != null) {
                 message.BindAddress = data.BindAddress;
+            }
+            if (data.Options != null) {
+                message.Options = data.Options;
             }
             if (data.Request != null) {
                 message.Request = dependency_1.commonpb.Request.fromObject(data.Request);
@@ -11805,6 +12313,7 @@ export namespace sliverpb {
             const data: {
                 Type?: PivotType;
                 BindAddress?: string;
+                Options?: boolean[];
                 Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
             } = {};
             if (this.Type != null) {
@@ -11812,6 +12321,9 @@ export namespace sliverpb {
             }
             if (this.BindAddress != null) {
                 data.BindAddress = this.BindAddress;
+            }
+            if (this.Options != null) {
+                data.Options = this.Options;
             }
             if (this.Request != null) {
                 data.Request = this.Request.toObject();
@@ -11826,6 +12338,8 @@ export namespace sliverpb {
                 writer.writeEnum(1, this.Type);
             if (typeof this.BindAddress === "string" && this.BindAddress.length)
                 writer.writeString(2, this.BindAddress);
+            if (this.Options !== undefined)
+                writer.writePackedBool(3, this.Options);
             if (this.Request !== undefined)
                 writer.writeMessage(9, this.Request, () => this.Request.serialize(writer));
             if (!w)
@@ -11842,6 +12356,9 @@ export namespace sliverpb {
                         break;
                     case 2:
                         message.BindAddress = reader.readString();
+                        break;
+                    case 3:
+                        message.Options = reader.readPackedBool();
                         break;
                     case 9:
                         reader.readMessage(message.Request, () => message.Request = dependency_1.commonpb.Request.deserialize(reader));
@@ -12108,7 +12625,7 @@ export namespace sliverpb {
     export class PivotHello extends pb_1.Message {
         constructor(data?: any[] | {
             PublicKey?: Uint8Array;
-            PeerID?: number;
+            PeerID?: string;
             PublicKeySignature?: string;
             SessionKey?: Uint8Array;
         }) {
@@ -12136,9 +12653,9 @@ export namespace sliverpb {
             pb_1.Message.setField(this, 1, value);
         }
         get PeerID() {
-            return pb_1.Message.getField(this, 2) as number;
+            return pb_1.Message.getField(this, 2) as string;
         }
-        set PeerID(value: number) {
+        set PeerID(value: string) {
             pb_1.Message.setField(this, 2, value);
         }
         get PublicKeySignature() {
@@ -12155,7 +12672,7 @@ export namespace sliverpb {
         }
         static fromObject(data: {
             PublicKey?: Uint8Array;
-            PeerID?: number;
+            PeerID?: string;
             PublicKeySignature?: string;
             SessionKey?: Uint8Array;
         }) {
@@ -12177,7 +12694,7 @@ export namespace sliverpb {
         toObject() {
             const data: {
                 PublicKey?: Uint8Array;
-                PeerID?: number;
+                PeerID?: string;
                 PublicKeySignature?: string;
                 SessionKey?: Uint8Array;
             } = {};
@@ -12202,7 +12719,7 @@ export namespace sliverpb {
             if (this.PublicKey !== undefined)
                 writer.writeBytes(1, this.PublicKey);
             if (this.PeerID !== undefined)
-                writer.writeInt64(2, this.PeerID);
+                writer.writeInt64String(2, this.PeerID);
             if (typeof this.PublicKeySignature === "string" && this.PublicKeySignature.length)
                 writer.writeString(3, this.PublicKeySignature);
             if (this.SessionKey !== undefined)
@@ -12220,7 +12737,7 @@ export namespace sliverpb {
                         message.PublicKey = reader.readBytes();
                         break;
                     case 2:
-                        message.PeerID = reader.readInt64();
+                        message.PeerID = reader.readInt64String();
                         break;
                     case 3:
                         message.PublicKeySignature = reader.readString();
@@ -12331,7 +12848,7 @@ export namespace sliverpb {
     }
     export class PivotPeer extends pb_1.Message {
         constructor(data?: any[] | {
-            PeerID?: number;
+            PeerID?: string;
             Name?: string;
         }) {
             super();
@@ -12346,9 +12863,9 @@ export namespace sliverpb {
             }
         }
         get PeerID() {
-            return pb_1.Message.getField(this, 1) as number;
+            return pb_1.Message.getField(this, 1) as string;
         }
-        set PeerID(value: number) {
+        set PeerID(value: string) {
             pb_1.Message.setField(this, 1, value);
         }
         get Name() {
@@ -12358,7 +12875,7 @@ export namespace sliverpb {
             pb_1.Message.setField(this, 2, value);
         }
         static fromObject(data: {
-            PeerID?: number;
+            PeerID?: string;
             Name?: string;
         }) {
             const message = new PivotPeer({});
@@ -12372,7 +12889,7 @@ export namespace sliverpb {
         }
         toObject() {
             const data: {
-                PeerID?: number;
+                PeerID?: string;
                 Name?: string;
             } = {};
             if (this.PeerID != null) {
@@ -12388,7 +12905,7 @@ export namespace sliverpb {
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
             if (this.PeerID !== undefined)
-                writer.writeInt64(1, this.PeerID);
+                writer.writeInt64String(1, this.PeerID);
             if (typeof this.Name === "string" && this.Name.length)
                 writer.writeString(2, this.Name);
             if (!w)
@@ -12401,7 +12918,7 @@ export namespace sliverpb {
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        message.PeerID = reader.readInt64();
+                        message.PeerID = reader.readInt64String();
                         break;
                     case 2:
                         message.Name = reader.readString();
@@ -12644,7 +13161,7 @@ export namespace sliverpb {
     }
     export class NetConnPivot extends pb_1.Message {
         constructor(data?: any[] | {
-            PeerID?: number;
+            PeerID?: string;
             RemoteAddress?: string;
         }) {
             super();
@@ -12659,9 +13176,9 @@ export namespace sliverpb {
             }
         }
         get PeerID() {
-            return pb_1.Message.getField(this, 1) as number;
+            return pb_1.Message.getField(this, 1) as string;
         }
-        set PeerID(value: number) {
+        set PeerID(value: string) {
             pb_1.Message.setField(this, 1, value);
         }
         get RemoteAddress() {
@@ -12671,7 +13188,7 @@ export namespace sliverpb {
             pb_1.Message.setField(this, 2, value);
         }
         static fromObject(data: {
-            PeerID?: number;
+            PeerID?: string;
             RemoteAddress?: string;
         }) {
             const message = new NetConnPivot({});
@@ -12685,7 +13202,7 @@ export namespace sliverpb {
         }
         toObject() {
             const data: {
-                PeerID?: number;
+                PeerID?: string;
                 RemoteAddress?: string;
             } = {};
             if (this.PeerID != null) {
@@ -12701,7 +13218,7 @@ export namespace sliverpb {
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
             if (this.PeerID !== undefined)
-                writer.writeInt64(1, this.PeerID);
+                writer.writeInt64String(1, this.PeerID);
             if (typeof this.RemoteAddress === "string" && this.RemoteAddress.length)
                 writer.writeString(2, this.RemoteAddress);
             if (!w)
@@ -12714,7 +13231,7 @@ export namespace sliverpb {
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        message.PeerID = reader.readInt64();
+                        message.PeerID = reader.readInt64String();
                         break;
                     case 2:
                         message.RemoteAddress = reader.readString();
@@ -12733,7 +13250,7 @@ export namespace sliverpb {
     }
     export class PivotPeerFailure extends pb_1.Message {
         constructor(data?: any[] | {
-            PeerID?: number;
+            PeerID?: string;
             Type?: PeerFailureType;
             Err?: string;
         }) {
@@ -12752,9 +13269,9 @@ export namespace sliverpb {
             }
         }
         get PeerID() {
-            return pb_1.Message.getField(this, 1) as number;
+            return pb_1.Message.getField(this, 1) as string;
         }
-        set PeerID(value: number) {
+        set PeerID(value: string) {
             pb_1.Message.setField(this, 1, value);
         }
         get Type() {
@@ -12770,7 +13287,7 @@ export namespace sliverpb {
             pb_1.Message.setField(this, 3, value);
         }
         static fromObject(data: {
-            PeerID?: number;
+            PeerID?: string;
             Type?: PeerFailureType;
             Err?: string;
         }) {
@@ -12788,7 +13305,7 @@ export namespace sliverpb {
         }
         toObject() {
             const data: {
-                PeerID?: number;
+                PeerID?: string;
                 Type?: PeerFailureType;
                 Err?: string;
             } = {};
@@ -12808,7 +13325,7 @@ export namespace sliverpb {
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
             if (this.PeerID !== undefined)
-                writer.writeInt64(1, this.PeerID);
+                writer.writeInt64String(1, this.PeerID);
             if (this.Type !== undefined)
                 writer.writeEnum(2, this.Type);
             if (typeof this.Err === "string" && this.Err.length)
@@ -12823,7 +13340,7 @@ export namespace sliverpb {
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        message.PeerID = reader.readInt64();
+                        message.PeerID = reader.readInt64String();
                         break;
                     case 2:
                         message.Type = reader.readEnum();

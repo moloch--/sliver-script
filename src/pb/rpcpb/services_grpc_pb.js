@@ -677,6 +677,28 @@ function deserialize_sliverpb_CloseSession(buffer_arg) {
   return sliverpb_sliver_pb.CloseSession.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sliverpb_CurrentTokenOwner(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.CurrentTokenOwner)) {
+    throw new Error('Expected argument of type sliverpb.CurrentTokenOwner');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sliverpb_CurrentTokenOwner(buffer_arg) {
+  return sliverpb_sliver_pb.CurrentTokenOwner.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sliverpb_CurrentTokenOwnerReq(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.CurrentTokenOwnerReq)) {
+    throw new Error('Expected argument of type sliverpb.CurrentTokenOwnerReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sliverpb_CurrentTokenOwnerReq(buffer_arg) {
+  return sliverpb_sliver_pb.CurrentTokenOwnerReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sliverpb_Download(arg) {
   if (!(arg instanceof sliverpb_sliver_pb.Download)) {
     throw new Error('Expected argument of type sliverpb.Download');
@@ -972,6 +994,28 @@ function serialize_sliverpb_MkdirReq(arg) {
 
 function deserialize_sliverpb_MkdirReq(buffer_arg) {
   return sliverpb_sliver_pb.MkdirReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sliverpb_Mv(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.Mv)) {
+    throw new Error('Expected argument of type sliverpb.Mv');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sliverpb_Mv(buffer_arg) {
+  return sliverpb_sliver_pb.Mv.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sliverpb_MvReq(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.MvReq)) {
+    throw new Error('Expected argument of type sliverpb.MvReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sliverpb_MvReq(buffer_arg) {
+  return sliverpb_sliver_pb.MvReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_sliverpb_Netstat(arg) {
@@ -2475,6 +2519,17 @@ ping: {
     responseSerialize: serialize_sliverpb_Pwd,
     responseDeserialize: deserialize_sliverpb_Pwd,
   },
+  mv: {
+    path: '/rpcpb.SliverRPC/Mv',
+    requestStream: false,
+    responseStream: false,
+    requestType: sliverpb_sliver_pb.MvReq,
+    responseType: sliverpb_sliver_pb.Mv,
+    requestSerialize: serialize_sliverpb_MvReq,
+    requestDeserialize: deserialize_sliverpb_MvReq,
+    responseSerialize: serialize_sliverpb_Mv,
+    responseDeserialize: deserialize_sliverpb_Mv,
+  },
   rm: {
     path: '/rpcpb.SliverRPC/Rm',
     requestStream: false,
@@ -2683,6 +2738,17 @@ ping: {
     requestDeserialize: deserialize_sliverpb_ScreenshotReq,
     responseSerialize: serialize_sliverpb_Screenshot,
     responseDeserialize: deserialize_sliverpb_Screenshot,
+  },
+  currentTokenOwner: {
+    path: '/rpcpb.SliverRPC/CurrentTokenOwner',
+    requestStream: false,
+    responseStream: false,
+    requestType: sliverpb_sliver_pb.CurrentTokenOwnerReq,
+    responseType: sliverpb_sliver_pb.CurrentTokenOwner,
+    requestSerialize: serialize_sliverpb_CurrentTokenOwnerReq,
+    requestDeserialize: deserialize_sliverpb_CurrentTokenOwnerReq,
+    responseSerialize: serialize_sliverpb_CurrentTokenOwner,
+    responseDeserialize: deserialize_sliverpb_CurrentTokenOwner,
   },
   // *** Pivots ***
 pivotStartListener: {

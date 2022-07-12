@@ -2029,6 +2029,7 @@ export namespace clientpb {
             FileName?: string;
             IsService?: boolean;
             IsShellcode?: boolean;
+            RunAtLoad?: boolean;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [50, 51], []);
@@ -2146,6 +2147,9 @@ export namespace clientpb {
                 }
                 if ("IsShellcode" in data && data.IsShellcode != undefined) {
                     this.IsShellcode = data.IsShellcode;
+                }
+                if ("RunAtLoad" in data && data.RunAtLoad != undefined) {
+                    this.RunAtLoad = data.RunAtLoad;
                 }
             }
         }
@@ -2377,6 +2381,12 @@ export namespace clientpb {
         set IsShellcode(value: boolean) {
             pb_1.Message.setField(this, 104, value);
         }
+        get RunAtLoad() {
+            return pb_1.Message.getField(this, 105) as boolean;
+        }
+        set RunAtLoad(value: boolean) {
+            pb_1.Message.setField(this, 105, value);
+        }
         static fromObject(data: {
             ID?: string;
             IsBeacon?: boolean;
@@ -2416,6 +2426,7 @@ export namespace clientpb {
             FileName?: string;
             IsService?: boolean;
             IsShellcode?: boolean;
+            RunAtLoad?: boolean;
         }) {
             const message = new ImplantConfig({});
             if (data.ID != null) {
@@ -2532,6 +2543,9 @@ export namespace clientpb {
             if (data.IsShellcode != null) {
                 message.IsShellcode = data.IsShellcode;
             }
+            if (data.RunAtLoad != null) {
+                message.RunAtLoad = data.RunAtLoad;
+            }
             return message;
         }
         toObject() {
@@ -2574,6 +2588,7 @@ export namespace clientpb {
                 FileName?: string;
                 IsService?: boolean;
                 IsShellcode?: boolean;
+                RunAtLoad?: boolean;
             } = {};
             if (this.ID != null) {
                 data.ID = this.ID;
@@ -2689,6 +2704,9 @@ export namespace clientpb {
             if (this.IsShellcode != null) {
                 data.IsShellcode = this.IsShellcode;
             }
+            if (this.RunAtLoad != null) {
+                data.RunAtLoad = this.RunAtLoad;
+            }
             return data;
         }
         serialize(): Uint8Array;
@@ -2771,6 +2789,8 @@ export namespace clientpb {
                 writer.writeBool(103, this.IsService);
             if (this.IsShellcode !== undefined)
                 writer.writeBool(104, this.IsShellcode);
+            if (this.RunAtLoad !== undefined)
+                writer.writeBool(105, this.RunAtLoad);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -2893,6 +2913,9 @@ export namespace clientpb {
                         break;
                     case 104:
                         message.IsShellcode = reader.readBool();
+                        break;
+                    case 105:
+                        message.RunAtLoad = reader.readBool();
                         break;
                     default: reader.skipField();
                 }
@@ -4825,6 +4848,7 @@ export namespace clientpb {
             Host?: string;
             Port?: number;
             Persistent?: boolean;
+            EnforceOTP?: boolean;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
@@ -4843,6 +4867,9 @@ export namespace clientpb {
                 }
                 if ("Persistent" in data && data.Persistent != undefined) {
                     this.Persistent = data.Persistent;
+                }
+                if ("EnforceOTP" in data && data.EnforceOTP != undefined) {
+                    this.EnforceOTP = data.EnforceOTP;
                 }
             }
         }
@@ -4876,12 +4903,19 @@ export namespace clientpb {
         set Persistent(value: boolean) {
             pb_1.Message.setField(this, 5, value);
         }
+        get EnforceOTP() {
+            return pb_1.Message.getField(this, 6) as boolean;
+        }
+        set EnforceOTP(value: boolean) {
+            pb_1.Message.setField(this, 6, value);
+        }
         static fromObject(data: {
             Domains?: string[];
             Canaries?: boolean;
             Host?: string;
             Port?: number;
             Persistent?: boolean;
+            EnforceOTP?: boolean;
         }) {
             const message = new DNSListenerReq({});
             if (data.Domains != null) {
@@ -4899,6 +4933,9 @@ export namespace clientpb {
             if (data.Persistent != null) {
                 message.Persistent = data.Persistent;
             }
+            if (data.EnforceOTP != null) {
+                message.EnforceOTP = data.EnforceOTP;
+            }
             return message;
         }
         toObject() {
@@ -4908,6 +4945,7 @@ export namespace clientpb {
                 Host?: string;
                 Port?: number;
                 Persistent?: boolean;
+                EnforceOTP?: boolean;
             } = {};
             if (this.Domains != null) {
                 data.Domains = this.Domains;
@@ -4923,6 +4961,9 @@ export namespace clientpb {
             }
             if (this.Persistent != null) {
                 data.Persistent = this.Persistent;
+            }
+            if (this.EnforceOTP != null) {
+                data.EnforceOTP = this.EnforceOTP;
             }
             return data;
         }
@@ -4940,6 +4981,8 @@ export namespace clientpb {
                 writer.writeUint32(4, this.Port);
             if (this.Persistent !== undefined)
                 writer.writeBool(5, this.Persistent);
+            if (this.EnforceOTP !== undefined)
+                writer.writeBool(6, this.EnforceOTP);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -4963,6 +5006,9 @@ export namespace clientpb {
                         break;
                     case 5:
                         message.Persistent = reader.readBool();
+                        break;
+                    case 6:
+                        message.EnforceOTP = reader.readBool();
                         break;
                     default: reader.skipField();
                 }

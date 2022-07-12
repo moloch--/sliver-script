@@ -565,6 +565,15 @@ export namespace rpcpb {
                 responseSerialize: (message: dependency_2.sliverpb.Pwd) => Buffer.from(message.serialize()),
                 responseDeserialize: (bytes: Buffer) => dependency_2.sliverpb.Pwd.deserialize(new Uint8Array(bytes))
             },
+            Mv: {
+                path: "/rpcpb.SliverRPC/Mv",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: dependency_2.sliverpb.MvReq) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_2.sliverpb.MvReq.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_2.sliverpb.Mv) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_2.sliverpb.Mv.deserialize(new Uint8Array(bytes))
+            },
             Rm: {
                 path: "/rpcpb.SliverRPC/Rm",
                 requestStream: false,
@@ -735,6 +744,15 @@ export namespace rpcpb {
                 requestDeserialize: (bytes: Buffer) => dependency_2.sliverpb.ScreenshotReq.deserialize(new Uint8Array(bytes)),
                 responseSerialize: (message: dependency_2.sliverpb.Screenshot) => Buffer.from(message.serialize()),
                 responseDeserialize: (bytes: Buffer) => dependency_2.sliverpb.Screenshot.deserialize(new Uint8Array(bytes))
+            },
+            CurrentTokenOwner: {
+                path: "/rpcpb.SliverRPC/CurrentTokenOwner",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: dependency_2.sliverpb.CurrentTokenOwnerReq) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => dependency_2.sliverpb.CurrentTokenOwnerReq.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: dependency_2.sliverpb.CurrentTokenOwner) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => dependency_2.sliverpb.CurrentTokenOwner.deserialize(new Uint8Array(bytes))
             },
             PivotStartListener: {
                 path: "/rpcpb.SliverRPC/PivotStartListener",
@@ -1166,6 +1184,7 @@ export namespace rpcpb {
         abstract Ls(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.LsReq, dependency_2.sliverpb.Ls>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.Ls>): void;
         abstract Cd(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.CdReq, dependency_2.sliverpb.Pwd>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.Pwd>): void;
         abstract Pwd(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.PwdReq, dependency_2.sliverpb.Pwd>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.Pwd>): void;
+        abstract Mv(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.MvReq, dependency_2.sliverpb.Mv>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.Mv>): void;
         abstract Rm(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.RmReq, dependency_2.sliverpb.Rm>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.Rm>): void;
         abstract Mkdir(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.MkdirReq, dependency_2.sliverpb.Mkdir>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.Mkdir>): void;
         abstract Download(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.DownloadReq, dependency_2.sliverpb.Download>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.Download>): void;
@@ -1185,6 +1204,7 @@ export namespace rpcpb {
         abstract Sideload(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.SideloadReq, dependency_2.sliverpb.Sideload>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.Sideload>): void;
         abstract SpawnDll(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.InvokeSpawnDllReq, dependency_2.sliverpb.SpawnDll>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.SpawnDll>): void;
         abstract Screenshot(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.ScreenshotReq, dependency_2.sliverpb.Screenshot>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.Screenshot>): void;
+        abstract CurrentTokenOwner(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.CurrentTokenOwnerReq, dependency_2.sliverpb.CurrentTokenOwner>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.CurrentTokenOwner>): void;
         abstract PivotStartListener(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.PivotStartListenerReq, dependency_2.sliverpb.PivotListener>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.PivotListener>): void;
         abstract PivotStopListener(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.PivotStopListenerReq, dependency_1.commonpb.Empty>, callback: grpc_1.sendUnaryData<dependency_1.commonpb.Empty>): void;
         abstract PivotSessionListeners(call: grpc_1.ServerUnaryCall<dependency_2.sliverpb.PivotListenersReq, dependency_2.sliverpb.PivotListeners>, callback: grpc_1.sendUnaryData<dependency_2.sliverpb.PivotListeners>): void;
@@ -1408,6 +1428,9 @@ export namespace rpcpb {
         Pwd: GrpcUnaryServiceInterface<dependency_2.sliverpb.PwdReq, dependency_2.sliverpb.Pwd> = (message: dependency_2.sliverpb.PwdReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.Pwd>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.Pwd>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.Pwd>): grpc_1.ClientUnaryCall => {
             return super.Pwd(message, metadata, options, callback);
         };
+        Mv: GrpcUnaryServiceInterface<dependency_2.sliverpb.MvReq, dependency_2.sliverpb.Mv> = (message: dependency_2.sliverpb.MvReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.Mv>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.Mv>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.Mv>): grpc_1.ClientUnaryCall => {
+            return super.Mv(message, metadata, options, callback);
+        };
         Rm: GrpcUnaryServiceInterface<dependency_2.sliverpb.RmReq, dependency_2.sliverpb.Rm> = (message: dependency_2.sliverpb.RmReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.Rm>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.Rm>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.Rm>): grpc_1.ClientUnaryCall => {
             return super.Rm(message, metadata, options, callback);
         };
@@ -1464,6 +1487,9 @@ export namespace rpcpb {
         };
         Screenshot: GrpcUnaryServiceInterface<dependency_2.sliverpb.ScreenshotReq, dependency_2.sliverpb.Screenshot> = (message: dependency_2.sliverpb.ScreenshotReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.Screenshot>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.Screenshot>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.Screenshot>): grpc_1.ClientUnaryCall => {
             return super.Screenshot(message, metadata, options, callback);
+        };
+        CurrentTokenOwner: GrpcUnaryServiceInterface<dependency_2.sliverpb.CurrentTokenOwnerReq, dependency_2.sliverpb.CurrentTokenOwner> = (message: dependency_2.sliverpb.CurrentTokenOwnerReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.CurrentTokenOwner>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.CurrentTokenOwner>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.CurrentTokenOwner>): grpc_1.ClientUnaryCall => {
+            return super.CurrentTokenOwner(message, metadata, options, callback);
         };
         PivotStartListener: GrpcUnaryServiceInterface<dependency_2.sliverpb.PivotStartListenerReq, dependency_2.sliverpb.PivotListener> = (message: dependency_2.sliverpb.PivotStartListenerReq, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.PivotListener>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_2.sliverpb.PivotListener>, callback?: grpc_1.requestCallback<dependency_2.sliverpb.PivotListener>): grpc_1.ClientUnaryCall => {
             return super.PivotStartListener(message, metadata, options, callback);
