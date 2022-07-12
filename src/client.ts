@@ -58,8 +58,8 @@ class BaseCommands {
   }
 
   protected toUint8Array(buf: Buffer): Uint8Array {
-    let arrayBuf = new ArrayBuffer(buf.length);
-    let uint8Array = new Uint8Array(arrayBuf);
+    const arrayBuf = new ArrayBuffer(buf.length);
+    const uint8Array = new Uint8Array(arrayBuf);
     for (let index = 0; index < buf.length; ++index) {
       uint8Array[index] = buf[index];
     }
@@ -69,8 +69,8 @@ class BaseCommands {
   ping(nonce: number, timeout = TIMEOUT): Promise<sliverpb.Ping|undefined> {
     return new Promise((resolve, reject) => {
       const ping = new sliverpb.Ping();
-      ping.Request = this.request(timeout)
-      ping.Nonce = nonce
+      ping.Request = this.request(timeout);
+      ping.Nonce = nonce;
       this._rpc.Ping(ping, this.deadline(timeout), (err, pong) => {
         err ? reject(err) : resolve(pong);
       });
@@ -411,7 +411,7 @@ export class InteractiveBeacon extends BaseCommands {
     const lsTask = await super.ls();
     if (!lsTask || lsTask.Response.Err !== undefined) {
       console.error(`lsTask.Response.Err: ${lsTask?.Response?.Err}`);
-      return Promise.reject(lsTask);
+      return Promise.reject(lsTask?.Response?.Err);
     }
     return new Promise(async (resolve, reject) => {
       const taskSubscription = this._taskresult$.subscribe(async (event: clientpb.Event) => {
