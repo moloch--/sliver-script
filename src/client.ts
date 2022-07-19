@@ -66,7 +66,7 @@ class BaseCommands {
     return uint8Array;
   }
 
-  ping(nonce: number, timeout = TIMEOUT): Promise<sliverpb.Ping|undefined> {
+  ping(nonce: number, timeout = TIMEOUT): Promise<sliverpb.Ping | undefined> {
     return new Promise((resolve, reject) => {
       const ping = new sliverpb.Ping();
       ping.Request = this.request(timeout);
@@ -77,7 +77,7 @@ class BaseCommands {
     });
   }
 
-  ps(timeout = TIMEOUT): Promise<commonpb.Process[]|undefined> {
+  ps(timeout = TIMEOUT): Promise<commonpb.Process[] | undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.PsReq();
       req.Request = this.request(timeout);
@@ -87,7 +87,7 @@ class BaseCommands {
     });
   }
 
-  terminate(pid: number, timeout = TIMEOUT): Promise<sliverpb.Terminate|undefined> {
+  terminate(pid: number, timeout = TIMEOUT): Promise<sliverpb.Terminate | undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.TerminateReq();
       req.Pid = pid;
@@ -98,7 +98,7 @@ class BaseCommands {
     });
   }
 
-  ifconfig(timeout = TIMEOUT): Promise<sliverpb.Ifconfig|undefined> {
+  ifconfig(timeout = TIMEOUT): Promise<sliverpb.Ifconfig | undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.IfconfigReq();
       req.Request = this.request(timeout);
@@ -108,7 +108,7 @@ class BaseCommands {
     });
   }
 
-  netstat(timeout = TIMEOUT): Promise<sliverpb.Netstat|undefined> {
+  netstat(timeout = TIMEOUT): Promise<sliverpb.Netstat | undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.NetstatReq();
       req.Request = this.request(timeout);
@@ -118,7 +118,7 @@ class BaseCommands {
     });
   }
 
-  ls(path = '.', timeout = TIMEOUT): Promise<sliverpb.Ls|undefined> {
+  ls(path = '.', timeout = TIMEOUT): Promise<sliverpb.Ls | undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.LsReq();
       req.Path = path;
@@ -129,7 +129,7 @@ class BaseCommands {
     });
   }
 
-  cd(path: string, timeout = TIMEOUT): Promise<sliverpb.Pwd|undefined> {
+  cd(path: string, timeout = TIMEOUT): Promise<sliverpb.Pwd | undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.CdReq();
       req.Path = path;
@@ -140,7 +140,7 @@ class BaseCommands {
     });
   }
 
-  pwd(timeout = TIMEOUT): Promise<sliverpb.Pwd|undefined> {
+  pwd(timeout = TIMEOUT): Promise<sliverpb.Pwd | undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.PwdReq();
       req.Request = this.request(timeout);
@@ -150,7 +150,7 @@ class BaseCommands {
     });
   }
 
-  rm(path: string, timeout = TIMEOUT): Promise<sliverpb.Rm|undefined> {
+  rm(path: string, timeout = TIMEOUT): Promise<sliverpb.Rm | undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.RmReq();
       req.Path = path;
@@ -161,7 +161,7 @@ class BaseCommands {
     });
   }
 
-  mkdir(path: string, timeout = TIMEOUT): Promise<sliverpb.Mkdir|undefined> {
+  mkdir(path: string, timeout = TIMEOUT): Promise<sliverpb.Mkdir | undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.MkdirReq();
       req.Path = path;
@@ -192,7 +192,7 @@ class BaseCommands {
     });
   }
 
-  upload(path: string, data: Buffer, timeout = TIMEOUT): Promise<sliverpb.Upload|undefined> {
+  upload(path: string, data: Buffer, timeout = TIMEOUT): Promise<sliverpb.Upload | undefined> {
     return new Promise(async (resolve, reject) => {
       const req = new sliverpb.UploadReq();
       req.Path = path;
@@ -206,7 +206,7 @@ class BaseCommands {
     });
   }
 
-  processDump(pid: number, timeout = TIMEOUT): Promise<sliverpb.ProcessDump|undefined> {
+  processDump(pid: number, timeout = TIMEOUT): Promise<sliverpb.ProcessDump | undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.ProcessDumpReq();
       req.Pid = pid;
@@ -217,7 +217,7 @@ class BaseCommands {
     });
   }
 
-  runAs(userName: string, processName: string, args: string, timeout = TIMEOUT): Promise<sliverpb.RunAs|undefined> {
+  runAs(userName: string, processName: string, args: string, timeout = TIMEOUT): Promise<sliverpb.RunAs | undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.RunAsReq();
       req.Username = userName;
@@ -230,7 +230,7 @@ class BaseCommands {
     });
   }
 
-  impersonate(userName: string, timeout = TIMEOUT): Promise<sliverpb.Impersonate|undefined> {
+  impersonate(userName: string, timeout = TIMEOUT): Promise<sliverpb.Impersonate | undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.ImpersonateReq();
       req.Username = userName;
@@ -241,7 +241,7 @@ class BaseCommands {
     });
   }
 
-  revToSelf(timeout = TIMEOUT): Promise<sliverpb.RevToSelf|undefined> {
+  revToSelf(timeout = TIMEOUT): Promise<sliverpb.RevToSelf | undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.RevToSelfReq();
       req.Request = this.request(timeout);
@@ -251,7 +251,7 @@ class BaseCommands {
     });
   }
 
-  getSystem(hostingProcess: string, config: clientpb.ImplantConfig, timeout = TIMEOUT): Promise<sliverpb.GetSystem|undefined> {
+  getSystem(hostingProcess: string, config: clientpb.ImplantConfig, timeout = TIMEOUT): Promise<sliverpb.GetSystem | undefined> {
     return new Promise((resolve, reject) => {
       const req = new clientpb.GetSystemReq();
       req.HostingProcess = hostingProcess;
@@ -264,7 +264,7 @@ class BaseCommands {
   }
 
   // 'shellcode' aka "task"
-  executeShellcode(pid: number, shellcode: Buffer, encoder: string, rwx: boolean, timeout = TIMEOUT): Promise<sliverpb.Task|undefined> {
+  executeShellcode(pid: number, shellcode: Buffer, encoder: string, rwx: boolean, timeout = TIMEOUT): Promise<sliverpb.Task | undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.TaskReq();
       req.Encoder = encoder;
@@ -309,7 +309,7 @@ class BaseCommands {
     });
   }
 
-  executeAssembly(assembly: Buffer, args: string, process: string, timeout = TIMEOUT): Promise<sliverpb.ExecuteAssembly|undefined> {
+  executeAssembly(assembly: Buffer, args: string, process: string, timeout = TIMEOUT): Promise<sliverpb.ExecuteAssembly | undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.ExecuteAssemblyReq();
       req.Assembly = assembly;
@@ -322,7 +322,7 @@ class BaseCommands {
     });
   }
 
-  migrate(pid: number, config: clientpb.ImplantConfig, timeout = TIMEOUT): Promise<sliverpb.Migrate|undefined> {
+  migrate(pid: number, config: clientpb.ImplantConfig, timeout = TIMEOUT): Promise<sliverpb.Migrate | undefined> {
     return new Promise((resolve, reject) => {
       const req = new clientpb.MigrateReq();
       req.Pid = pid;
@@ -334,7 +334,7 @@ class BaseCommands {
     });
   }
 
-  execute(exe: string, args: string[], output: boolean, timeout = TIMEOUT): Promise<sliverpb.Execute|undefined> {
+  execute(exe: string, args: string[], output: boolean, timeout = TIMEOUT): Promise<sliverpb.Execute | undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.ExecuteReq();
       req.Path = exe;
@@ -347,7 +347,7 @@ class BaseCommands {
     });
   }
 
-  sideload(data: Buffer, processName: string, args: string, entryPoint: string, timeout = TIMEOUT): Promise<sliverpb.Sideload|undefined> {
+  sideload(data: Buffer, processName: string, args: string, entryPoint: string, timeout = TIMEOUT): Promise<sliverpb.Sideload | undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.SideloadReq();
       req.Data = data;
@@ -361,7 +361,7 @@ class BaseCommands {
     });
   }
 
-  spawnDLL(data: Buffer, entrypoint: string, processName: string, args: string, timeout = TIMEOUT): Promise<sliverpb.SpawnDll|undefined> {
+  spawnDLL(data: Buffer, entrypoint: string, processName: string, args: string, timeout = TIMEOUT): Promise<sliverpb.SpawnDll | undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.InvokeSpawnDllReq();
       req.Data = data;
@@ -375,7 +375,7 @@ class BaseCommands {
     });
   }
 
-  screenshot(timeout = TIMEOUT): Promise<sliverpb.Screenshot|undefined> {
+  screenshot(timeout = TIMEOUT): Promise<sliverpb.Screenshot | undefined> {
     return new Promise((resolve, reject) => {
       const req = new sliverpb.ScreenshotReq();
       req.Request = this.request(timeout);
@@ -419,7 +419,7 @@ export class InteractiveBeacon extends BaseCommands {
         if (beaconTask.ID === lsTask?.Response?.TaskID) {
           this._pendingTasks.get(beaconTask.ID)?.unsubscribe();
           this._pendingTasks.delete(beaconTask.ID);
-          const taskReq = new clientpb.BeaconTask({ID: beaconTask.ID});
+          const taskReq = new clientpb.BeaconTask({ ID: beaconTask.ID });
           this._rpc.GetBeaconTaskContent(taskReq, async (err, taskContent) => {
             if (err || !taskContent) {
               reject(err);
@@ -469,7 +469,7 @@ export class InteractiveSession extends BaseCommands {
         const tunnelData = new sliverpb.TunnelData();
         tunnelData.SessionID = this._sessionID;
         tunnelData.TunnelID = tunnelId;
-        
+
         this._tunnelStream.write(tunnelData, () => {
           const req = new sliverpb.ShellReq();
           req.TunnelID = tunnelId;
@@ -493,7 +493,9 @@ export class InteractiveSession extends BaseCommands {
                   }
                   producer.complete();
                 } else {
-                  producer.next(Buffer.from(tunnelData.Data));
+                  if (tunnelData?.Data.length) {
+                    producer.next(Buffer.from(tunnelData.Data));
+                  }
                 }
               });
             });
@@ -543,7 +545,7 @@ export class SliverClient {
   taskresult$ = this.event$.pipe(filter(event => event.EventType === this.BEACON_TASKRESULT));
 
   // Filter anything that doesn't match one of the loot event types
-  loot$ = this.event$.pipe(filter(event => this.lootEventTypes.some(lootEventType => { 
+  loot$ = this.event$.pipe(filter(event => this.lootEventTypes.some(lootEventType => {
     lootEventType === event.EventType
   })));
 
@@ -561,7 +563,7 @@ export class SliverClient {
     const ca = Buffer.from(this._config.ca_certificate);
     const privateKey = Buffer.from(this._config.private_key);
     const certificate = Buffer.from(this._config.certificate);
-    
+
     return grpc.credentials.combineChannelCredentials(
       grpc.credentials.createSsl(ca, privateKey, certificate, {
         checkServerIdentity: () => undefined,
@@ -648,7 +650,7 @@ export class SliverClient {
 
   // ---- Version ----
 
-  getVersion(timeout = TIMEOUT): Promise<clientpb.Version|undefined> {
+  getVersion(timeout = TIMEOUT): Promise<clientpb.Version | undefined> {
     return new Promise((resolve, reject) => {
       this.rpc.GetVersion(this.empty, this.deadline(timeout), (err, version) => {
         err ? reject(err) : resolve(version);
@@ -658,7 +660,7 @@ export class SliverClient {
 
   // ---- Operators ----
 
-  getOperators(timeout = TIMEOUT): Promise<clientpb.Operator[]|undefined> {
+  getOperators(timeout = TIMEOUT): Promise<clientpb.Operator[] | undefined> {
     return new Promise((resolve, reject) => {
       this.rpc.GetOperators(this.empty, this.deadline(timeout), (err, operators) => {
         err ? reject(err) : resolve(operators?.Operators);
@@ -668,7 +670,7 @@ export class SliverClient {
 
   // ---- Sessions ----
 
-  sessions(timeout = TIMEOUT): Promise<clientpb.Session[]|undefined> {
+  sessions(timeout = TIMEOUT): Promise<clientpb.Session[] | undefined> {
     return new Promise((resolve, reject) => {
       this.rpc.GetSessions(this.empty, this.deadline(timeout), (err, sessions) => {
         err ? reject(err) : resolve(sessions?.Sessions);
@@ -680,7 +682,7 @@ export class SliverClient {
     return new InteractiveSession(this.rpc, this.tunnelStream, sessionID);
   }
 
-  beacons(timeout = TIMEOUT): Promise<clientpb.Beacon[]|undefined> {
+  beacons(timeout = TIMEOUT): Promise<clientpb.Beacon[] | undefined> {
     return new Promise((resolve, reject) => {
       this.rpc.GetBeacons(this.empty, this.deadline(timeout), (err, beacons) => {
         err ? reject(err) : resolve(beacons?.Beacons);
@@ -694,7 +696,7 @@ export class SliverClient {
 
   // ---- Jobs ----
 
-  jobs(timeout = TIMEOUT): Promise<clientpb.Job[]|undefined> {
+  jobs(timeout = TIMEOUT): Promise<clientpb.Job[] | undefined> {
     return new Promise((resolve, reject) => {
       this.rpc.GetJobs(this.empty, this.deadline(timeout), (err, jobs) => {
         err ? reject(err) : resolve(jobs?.Active);
@@ -702,7 +704,7 @@ export class SliverClient {
     });
   }
 
-  killJob(jobId: number, timeout = TIMEOUT): Promise<clientpb.KillJob|undefined> {
+  killJob(jobId: number, timeout = TIMEOUT): Promise<clientpb.KillJob | undefined> {
     return new Promise((resolve, reject) => {
       const killJob = new clientpb.KillJobReq();
       killJob.ID = jobId;
@@ -714,7 +716,7 @@ export class SliverClient {
 
   // ---- Listeners ----
 
-  startMTLSListener(host: string, port: number, persistent = false, timeout = TIMEOUT): Promise<clientpb.MTLSListener|undefined> {
+  startMTLSListener(host: string, port: number, persistent = false, timeout = TIMEOUT): Promise<clientpb.MTLSListener | undefined> {
     return new Promise((resolve, reject) => {
       const mtls = new clientpb.MTLSListenerReq();
       mtls.Host = host;
@@ -726,7 +728,7 @@ export class SliverClient {
     });
   }
 
-  startDNSListener(domains: string[], canaries: boolean, host: string, port: number, persistent = false, timeout = TIMEOUT): Promise<clientpb.DNSListener|undefined> {
+  startDNSListener(domains: string[], canaries: boolean, host: string, port: number, persistent = false, timeout = TIMEOUT): Promise<clientpb.DNSListener | undefined> {
     return new Promise((resolve, reject) => {
       const dns = new clientpb.DNSListenerReq();
       dns.Domains = domains;
@@ -740,7 +742,7 @@ export class SliverClient {
     });
   }
 
-  startHTTPListener(domain: string, host: string, port: number, website = '', persistent = false, timeout = TIMEOUT): Promise<clientpb.HTTPListener|undefined> {
+  startHTTPListener(domain: string, host: string, port: number, website = '', persistent = false, timeout = TIMEOUT): Promise<clientpb.HTTPListener | undefined> {
     return new Promise((resolve, reject) => {
       const http = new clientpb.HTTPListenerReq();
       http.Domain = domain;
@@ -756,7 +758,7 @@ export class SliverClient {
   }
 
   startHTTPSListener(domain: string, host: string, port: number, acme = false, website = '',
-    cert?: Buffer, key?: Buffer, persistent = false,  timeout = TIMEOUT): Promise<clientpb.HTTPListener|undefined> {
+    cert?: Buffer, key?: Buffer, persistent = false, timeout = TIMEOUT): Promise<clientpb.HTTPListener | undefined> {
     return new Promise((resolve, reject) => {
       const https = new clientpb.HTTPListenerReq();
       https.Domain = domain;
@@ -774,7 +776,7 @@ export class SliverClient {
     });
   }
 
-  startWGListener(port: number, nPort: number, keyPort: number, persistent = false, timeout = TIMEOUT): Promise<clientpb.WGListener|undefined> {
+  startWGListener(port: number, nPort: number, keyPort: number, persistent = false, timeout = TIMEOUT): Promise<clientpb.WGListener | undefined> {
     return new Promise((resolve, reject) => {
       const req = new clientpb.WGListenerReq();
       req.Port = port;
@@ -787,7 +789,7 @@ export class SliverClient {
     });
   }
 
-  startTCPStagerListener(host: string, port: number, data: Buffer, timeout = TIMEOUT): Promise<clientpb.StagerListener|undefined> {
+  startTCPStagerListener(host: string, port: number, data: Buffer, timeout = TIMEOUT): Promise<clientpb.StagerListener | undefined> {
     return new Promise((resolve, reject) => {
       const req = new clientpb.StagerListenerReq();
       req.Protocol = clientpb.StageProtocol.TCP;
@@ -800,7 +802,7 @@ export class SliverClient {
     });
   }
 
-  startHTTPStagerListener(host: string, port: number, data: Buffer, timeout = TIMEOUT): Promise<clientpb.StagerListener|undefined> {
+  startHTTPStagerListener(host: string, port: number, data: Buffer, timeout = TIMEOUT): Promise<clientpb.StagerListener | undefined> {
     return new Promise((resolve, reject) => {
       const req = new clientpb.StagerListenerReq();
       req.Protocol = clientpb.StageProtocol.HTTP;
@@ -813,7 +815,7 @@ export class SliverClient {
     });
   }
 
-  startHTTPSStagerListener(host: string, port: number, data: Buffer, timeout = TIMEOUT): Promise<clientpb.StagerListener|undefined> {
+  startHTTPSStagerListener(host: string, port: number, data: Buffer, timeout = TIMEOUT): Promise<clientpb.StagerListener | undefined> {
     return new Promise((resolve, reject) => {
       const req = new clientpb.StagerListenerReq();
       req.Protocol = clientpb.StageProtocol.HTTPS;
@@ -828,7 +830,7 @@ export class SliverClient {
 
   // ---- Implants ----
 
-  generate(config: clientpb.ImplantConfig, timeout = TIMEOUT): Promise<commonpb.File|undefined> {
+  generate(config: clientpb.ImplantConfig, timeout = TIMEOUT): Promise<commonpb.File | undefined> {
     return new Promise((resolve, reject) => {
       const req = new clientpb.GenerateReq();
       req.Config = config;
@@ -838,7 +840,7 @@ export class SliverClient {
     });
   }
 
-  compilerInfo(timeout = TIMEOUT): Promise<clientpb.Compiler|undefined> {
+  compilerInfo(timeout = TIMEOUT): Promise<clientpb.Compiler | undefined> {
     return new Promise((resolve, reject) => {
       this.rpc.GetCompiler(new commonpb.Empty(), this.deadline(timeout), (err, info) => {
         err ? reject(err) : resolve(info);
@@ -846,7 +848,7 @@ export class SliverClient {
     });
   }
 
-  regenerate(name: string, timeout = TIMEOUT): Promise<commonpb.File|undefined> {
+  regenerate(name: string, timeout = TIMEOUT): Promise<commonpb.File | undefined> {
     return new Promise((resolve, reject) => {
       const req = new clientpb.RegenerateReq();
       req.ImplantName = name;
@@ -856,7 +858,7 @@ export class SliverClient {
     });
   }
 
-  implantBuilds(timeout = TIMEOUT): Promise<clientpb.ImplantBuilds|undefined> {
+  implantBuilds(timeout = TIMEOUT): Promise<clientpb.ImplantBuilds | undefined> {
     return new Promise((resolve, reject) => {
       this.rpc.ImplantBuilds(this.empty, this.deadline(timeout), (err, builds) => {
         err ? reject(err) : resolve(builds);
@@ -874,7 +876,7 @@ export class SliverClient {
     });
   }
 
-  canaries(timeout = TIMEOUT): Promise<clientpb.DNSCanary[]|undefined> {
+  canaries(timeout = TIMEOUT): Promise<clientpb.DNSCanary[] | undefined> {
     return new Promise((resolve, reject) => {
       this.rpc.Canaries(this.empty, this.deadline(timeout), (err, canaries) => {
         err ? reject(err) : resolve(canaries?.Canaries);
@@ -882,7 +884,7 @@ export class SliverClient {
     });
   }
 
-  implantProfiles(timeout = TIMEOUT): Promise<clientpb.ImplantProfile[]|undefined> {
+  implantProfiles(timeout = TIMEOUT): Promise<clientpb.ImplantProfile[] | undefined> {
     return new Promise((resolve, reject) => {
       this.rpc.ImplantProfiles(this.empty, this.deadline(timeout), (err, profiles) => {
         err ? reject(err) : resolve(profiles?.Profiles);
@@ -890,7 +892,7 @@ export class SliverClient {
     });
   }
 
-  saveImplantProfile(profile: clientpb.ImplantProfile, timeout = TIMEOUT): Promise<clientpb.ImplantProfile|undefined> {
+  saveImplantProfile(profile: clientpb.ImplantProfile, timeout = TIMEOUT): Promise<clientpb.ImplantProfile | undefined> {
     return new Promise((resolve, reject) => {
       this.rpc.SaveImplantProfile(profile, this.deadline(timeout), (err, profile) => {
         err ? reject(err) : resolve(profile);
@@ -909,7 +911,7 @@ export class SliverClient {
   }
 
   // ---- Loot ----
-  lootAll(timeout = TIMEOUT): Promise<clientpb.Loot[]|undefined> {
+  lootAll(timeout = TIMEOUT): Promise<clientpb.Loot[] | undefined> {
     return new Promise((resolve, reject) => {
       this.rpc.LootAll(this.empty, this.deadline(timeout), (err, loot) => {
         err ? reject(err) : resolve(loot?.Loot);
@@ -917,7 +919,7 @@ export class SliverClient {
     });
   }
 
-  lootAllOf(lootType: string, timeout = TIMEOUT): Promise<clientpb.Loot[]|undefined> {
+  lootAllOf(lootType: string, timeout = TIMEOUT): Promise<clientpb.Loot[] | undefined> {
 
     // There doesn't seem to be a good way to strongly type this parameter
     const loot = new clientpb.Loot();
@@ -947,7 +949,7 @@ export class SliverClient {
     });
   }
 
-  lootAdd(loot: clientpb.Loot, timeout = TIMEOUT): Promise<clientpb.Loot|undefined> {
+  lootAdd(loot: clientpb.Loot, timeout = TIMEOUT): Promise<clientpb.Loot | undefined> {
     return new Promise((resolve, reject) => {
       this.rpc.LootAdd(loot, this.deadline(timeout), (err, loot) => {
         err ? reject(err) : resolve(loot);
@@ -955,7 +957,7 @@ export class SliverClient {
     });
   }
 
-  lootUpdate(lootID: string, name: string, timeout = TIMEOUT): Promise<clientpb.Loot|undefined> {
+  lootUpdate(lootID: string, name: string, timeout = TIMEOUT): Promise<clientpb.Loot | undefined> {
     const loot = new clientpb.Loot();
     loot.LootID = lootID;
     loot.Name = name;
@@ -976,7 +978,7 @@ export class SliverClient {
     });
   }
 
-  lootContent(lootID: string, timeout = TIMEOUT): Promise<clientpb.Loot|undefined> {
+  lootContent(lootID: string, timeout = TIMEOUT): Promise<clientpb.Loot | undefined> {
     const loot = new clientpb.Loot();
     loot.LootID = lootID;
     return new Promise((resolve, reject) => {
@@ -987,8 +989,8 @@ export class SliverClient {
   }
 
   // ---- Websites ----
-  
-  websites(timeout = TIMEOUT): Promise<clientpb.Website[]|undefined> {
+
+  websites(timeout = TIMEOUT): Promise<clientpb.Website[] | undefined> {
     return new Promise((resolve, reject) => {
       this.rpc.Websites(this.empty, this.deadline(timeout), (err, websites) => {
         err ? reject(err) : resolve(websites?.Websites);
@@ -996,7 +998,7 @@ export class SliverClient {
     });
   }
 
-  website(name: string, timeout = TIMEOUT): Promise<clientpb.Website|undefined> {
+  website(name: string, timeout = TIMEOUT): Promise<clientpb.Website | undefined> {
     return new Promise((resolve, reject) => {
       const web = new clientpb.Website();
       web.Name = name;
@@ -1016,7 +1018,7 @@ export class SliverClient {
     });
   }
 
-  websiteAddContent(name: string, contents: Map<string, clientpb.WebContent>, timeout = TIMEOUT): Promise<clientpb.Website|undefined> {
+  websiteAddContent(name: string, contents: Map<string, clientpb.WebContent>, timeout = TIMEOUT): Promise<clientpb.Website | undefined> {
     return new Promise((resolve, reject) => {
       const addContent = new clientpb.WebsiteAddContent();
       addContent.Name = name;
@@ -1027,7 +1029,7 @@ export class SliverClient {
     });
   }
 
-  websiteUpdateContent(name: string, contents: Map<string, clientpb.WebContent>, timeout = TIMEOUT): Promise<clientpb.Website|undefined> {
+  websiteUpdateContent(name: string, contents: Map<string, clientpb.WebContent>, timeout = TIMEOUT): Promise<clientpb.Website | undefined> {
     return new Promise((resolve, reject) => {
       const addContent = new clientpb.WebsiteAddContent();
       addContent.Name = name;
@@ -1038,7 +1040,7 @@ export class SliverClient {
     });
   }
 
-  websiteRemoveContent(name: string, paths: string[], timeout = TIMEOUT): Promise<clientpb.Website|undefined> {
+  websiteRemoveContent(name: string, paths: string[], timeout = TIMEOUT): Promise<clientpb.Website | undefined> {
     return new Promise((resolve, reject) => {
       const rm = new clientpb.WebsiteRemoveContent();
       rm.Name = name;
