@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "sliver-script": "^1.0.32"
+    "sliver-script": "^1.2.5"
   }
 }

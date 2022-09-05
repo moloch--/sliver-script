@@ -482,6 +482,7 @@ export class InteractiveSession extends BaseCommands {
             }
             const stdout = new Observable<Buffer>(producer => {
               this._tunnelStream.on('data', (tunnelData: sliverpb.TunnelData) => {
+                console.log(tunnelData);
                 if (tunnelData.TunnelID !== tunnelId) {
                   return; // Data is from another tunnel
                 }
@@ -493,9 +494,7 @@ export class InteractiveSession extends BaseCommands {
                   }
                   producer.complete();
                 } else {
-                  if (tunnelData?.Data.length) {
-                    producer.next(Buffer.from(tunnelData.Data));
-                  }
+                  producer.next(Buffer.from(tunnelData.Data));
                 }
               });
             });

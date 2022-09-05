@@ -409,6 +409,7 @@ export namespace commonpb {
             Ppid?: number;
             Executable?: string;
             Owner?: string;
+            Architecture?: string;
             SessionID?: number;
             CmdLine?: string[];
         }) {
@@ -426,6 +427,9 @@ export namespace commonpb {
                 }
                 if ("Owner" in data && data.Owner != undefined) {
                     this.Owner = data.Owner;
+                }
+                if ("Architecture" in data && data.Architecture != undefined) {
+                    this.Architecture = data.Architecture;
                 }
                 if ("SessionID" in data && data.SessionID != undefined) {
                     this.SessionID = data.SessionID;
@@ -459,6 +463,12 @@ export namespace commonpb {
         set Owner(value: string) {
             pb_1.Message.setField(this, 4, value);
         }
+        get Architecture() {
+            return pb_1.Message.getField(this, 7) as string;
+        }
+        set Architecture(value: string) {
+            pb_1.Message.setField(this, 7, value);
+        }
         get SessionID() {
             return pb_1.Message.getField(this, 5) as number;
         }
@@ -476,6 +486,7 @@ export namespace commonpb {
             Ppid?: number;
             Executable?: string;
             Owner?: string;
+            Architecture?: string;
             SessionID?: number;
             CmdLine?: string[];
         }) {
@@ -492,6 +503,9 @@ export namespace commonpb {
             if (data.Owner != null) {
                 message.Owner = data.Owner;
             }
+            if (data.Architecture != null) {
+                message.Architecture = data.Architecture;
+            }
             if (data.SessionID != null) {
                 message.SessionID = data.SessionID;
             }
@@ -506,6 +520,7 @@ export namespace commonpb {
                 Ppid?: number;
                 Executable?: string;
                 Owner?: string;
+                Architecture?: string;
                 SessionID?: number;
                 CmdLine?: string[];
             } = {};
@@ -520,6 +535,9 @@ export namespace commonpb {
             }
             if (this.Owner != null) {
                 data.Owner = this.Owner;
+            }
+            if (this.Architecture != null) {
+                data.Architecture = this.Architecture;
             }
             if (this.SessionID != null) {
                 data.SessionID = this.SessionID;
@@ -541,6 +559,8 @@ export namespace commonpb {
                 writer.writeString(3, this.Executable);
             if (typeof this.Owner === "string" && this.Owner.length)
                 writer.writeString(4, this.Owner);
+            if (typeof this.Architecture === "string" && this.Architecture.length)
+                writer.writeString(7, this.Architecture);
             if (this.SessionID !== undefined)
                 writer.writeInt32(5, this.SessionID);
             if (this.CmdLine !== undefined)
@@ -565,6 +585,9 @@ export namespace commonpb {
                         break;
                     case 4:
                         message.Owner = reader.readString();
+                        break;
+                    case 7:
+                        message.Architecture = reader.readString();
                         break;
                     case 5:
                         message.SessionID = reader.readInt32();

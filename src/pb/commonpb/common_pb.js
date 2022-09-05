@@ -917,6 +917,7 @@ proto.commonpb.Process.toObject = function(includeInstance, msg) {
     ppid: jspb.Message.getFieldWithDefault(msg, 2, 0),
     executable: jspb.Message.getFieldWithDefault(msg, 3, ""),
     owner: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    architecture: jspb.Message.getFieldWithDefault(msg, 7, ""),
     sessionid: jspb.Message.getFieldWithDefault(msg, 5, 0),
     cmdlineList: (f = jspb.Message.getRepeatedField(msg, 6)) == null ? undefined : f
   };
@@ -970,6 +971,10 @@ proto.commonpb.Process.deserializeBinaryFromReader = function(msg, reader) {
     case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setOwner(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setArchitecture(value);
       break;
     case 5:
       var value = /** @type {number} */ (reader.readInt32());
@@ -1033,6 +1038,13 @@ proto.commonpb.Process.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeString(
       4,
+      f
+    );
+  }
+  f = message.getArchitecture();
+  if (f.length > 0) {
+    writer.writeString(
+      7,
       f
     );
   }
@@ -1122,6 +1134,24 @@ proto.commonpb.Process.prototype.getOwner = function() {
  */
 proto.commonpb.Process.prototype.setOwner = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional string Architecture = 7;
+ * @return {string}
+ */
+proto.commonpb.Process.prototype.getArchitecture = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.commonpb.Process} returns this
+ */
+proto.commonpb.Process.prototype.setArchitecture = function(value) {
+  return jspb.Message.setProto3StringField(this, 7, value);
 };
 
 
