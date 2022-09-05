@@ -446,6 +446,39 @@ function deserialize_clientpb_Sessions(buffer_arg) {
   return clientpb_client_pb.Sessions.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_clientpb_ShellcodeEncode(arg) {
+  if (!(arg instanceof clientpb_client_pb.ShellcodeEncode)) {
+    throw new Error('Expected argument of type clientpb.ShellcodeEncode');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_clientpb_ShellcodeEncode(buffer_arg) {
+  return clientpb_client_pb.ShellcodeEncode.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_clientpb_ShellcodeEncodeReq(arg) {
+  if (!(arg instanceof clientpb_client_pb.ShellcodeEncodeReq)) {
+    throw new Error('Expected argument of type clientpb.ShellcodeEncodeReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_clientpb_ShellcodeEncodeReq(buffer_arg) {
+  return clientpb_client_pb.ShellcodeEncodeReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_clientpb_ShellcodeEncoderMap(arg) {
+  if (!(arg instanceof clientpb_client_pb.ShellcodeEncoderMap)) {
+    throw new Error('Expected argument of type clientpb.ShellcodeEncoderMap');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_clientpb_ShellcodeEncoderMap(buffer_arg) {
+  return clientpb_client_pb.ShellcodeEncoderMap.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_clientpb_ShellcodeRDI(arg) {
   if (!(arg instanceof clientpb_client_pb.ShellcodeRDI)) {
     throw new Error('Expected argument of type clientpb.ShellcodeRDI');
@@ -787,15 +820,15 @@ function deserialize_sliverpb_ExecuteReq(buffer_arg) {
   return sliverpb_sliver_pb.ExecuteReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_sliverpb_ExecuteTokenReq(arg) {
-  if (!(arg instanceof sliverpb_sliver_pb.ExecuteTokenReq)) {
-    throw new Error('Expected argument of type sliverpb.ExecuteTokenReq');
+function serialize_sliverpb_ExecuteWindowsReq(arg) {
+  if (!(arg instanceof sliverpb_sliver_pb.ExecuteWindowsReq)) {
+    throw new Error('Expected argument of type sliverpb.ExecuteWindowsReq');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_sliverpb_ExecuteTokenReq(buffer_arg) {
-  return sliverpb_sliver_pb.ExecuteTokenReq.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_sliverpb_ExecuteWindowsReq(buffer_arg) {
+  return sliverpb_sliver_pb.ExecuteWindowsReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_sliverpb_GetPrivs(arg) {
@@ -1982,6 +2015,17 @@ getBeacons: {
     responseSerialize: serialize_clientpb_BeaconTask,
     responseDeserialize: deserialize_clientpb_BeaconTask,
   },
+  cancelBeaconTask: {
+    path: '/rpcpb.SliverRPC/CancelBeaconTask',
+    requestStream: false,
+    responseStream: false,
+    requestType: clientpb_client_pb.BeaconTask,
+    responseType: clientpb_client_pb.BeaconTask,
+    requestSerialize: serialize_clientpb_BeaconTask,
+    requestDeserialize: deserialize_clientpb_BeaconTask,
+    responseSerialize: serialize_clientpb_BeaconTask,
+    responseDeserialize: deserialize_clientpb_BeaconTask,
+  },
   // ***Threat monitoring ***
 monitorStart: {
     path: '/rpcpb.SliverRPC/MonitorStart',
@@ -2363,6 +2407,28 @@ generate: {
     responseSerialize: serialize_clientpb_Compiler,
     responseDeserialize: deserialize_clientpb_Compiler,
   },
+  shellcodeEncoder: {
+    path: '/rpcpb.SliverRPC/ShellcodeEncoder',
+    requestStream: false,
+    responseStream: false,
+    requestType: clientpb_client_pb.ShellcodeEncodeReq,
+    responseType: clientpb_client_pb.ShellcodeEncode,
+    requestSerialize: serialize_clientpb_ShellcodeEncodeReq,
+    requestDeserialize: deserialize_clientpb_ShellcodeEncodeReq,
+    responseSerialize: serialize_clientpb_ShellcodeEncode,
+    responseDeserialize: deserialize_clientpb_ShellcodeEncode,
+  },
+  shellcodeEncoderMap: {
+    path: '/rpcpb.SliverRPC/ShellcodeEncoderMap',
+    requestStream: false,
+    responseStream: false,
+    requestType: commonpb_common_pb.Empty,
+    responseType: clientpb_client_pb.ShellcodeEncoderMap,
+    requestSerialize: serialize_commonpb_Empty,
+    requestDeserialize: deserialize_commonpb_Empty,
+    responseSerialize: serialize_clientpb_ShellcodeEncoderMap,
+    responseDeserialize: deserialize_clientpb_ShellcodeEncoderMap,
+  },
   // *** Websites ***
 websites: {
     path: '/rpcpb.SliverRPC/Websites',
@@ -2695,14 +2761,14 @@ ping: {
     responseSerialize: serialize_sliverpb_Execute,
     responseDeserialize: deserialize_sliverpb_Execute,
   },
-  executeToken: {
-    path: '/rpcpb.SliverRPC/ExecuteToken',
+  executeWindows: {
+    path: '/rpcpb.SliverRPC/ExecuteWindows',
     requestStream: false,
     responseStream: false,
-    requestType: sliverpb_sliver_pb.ExecuteTokenReq,
+    requestType: sliverpb_sliver_pb.ExecuteWindowsReq,
     responseType: sliverpb_sliver_pb.Execute,
-    requestSerialize: serialize_sliverpb_ExecuteTokenReq,
-    requestDeserialize: deserialize_sliverpb_ExecuteTokenReq,
+    requestSerialize: serialize_sliverpb_ExecuteWindowsReq,
+    requestDeserialize: deserialize_sliverpb_ExecuteWindowsReq,
     responseSerialize: serialize_sliverpb_Execute,
     responseDeserialize: deserialize_sliverpb_Execute,
   },

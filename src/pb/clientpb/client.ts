@@ -32,6 +32,9 @@ export namespace clientpb {
         BINARY = 1,
         TEXT = 2
     }
+    export enum ShellcodeEncoder {
+        SHIKATA_GA_NAI = 0
+    }
     export class Version extends pb_1.Message {
         constructor(data?: any[] | {
             Major?: number;
@@ -10079,6 +10082,352 @@ export namespace clientpb {
         }
         static deserializeBinary(bytes: Uint8Array): DllHijack {
             return DllHijack.deserialize(bytes);
+        }
+    }
+    export class ShellcodeEncodeReq extends pb_1.Message {
+        constructor(data?: any[] | {
+            Encoder?: ShellcodeEncoder;
+            Architecture?: string;
+            Iterations?: number;
+            BadChars?: Uint8Array;
+            Data?: Uint8Array;
+            Request?: dependency_1.commonpb.Request;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("Encoder" in data && data.Encoder != undefined) {
+                    this.Encoder = data.Encoder;
+                }
+                if ("Architecture" in data && data.Architecture != undefined) {
+                    this.Architecture = data.Architecture;
+                }
+                if ("Iterations" in data && data.Iterations != undefined) {
+                    this.Iterations = data.Iterations;
+                }
+                if ("BadChars" in data && data.BadChars != undefined) {
+                    this.BadChars = data.BadChars;
+                }
+                if ("Data" in data && data.Data != undefined) {
+                    this.Data = data.Data;
+                }
+                if ("Request" in data && data.Request != undefined) {
+                    this.Request = data.Request;
+                }
+            }
+        }
+        get Encoder() {
+            return pb_1.Message.getField(this, 1) as ShellcodeEncoder;
+        }
+        set Encoder(value: ShellcodeEncoder) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        get Architecture() {
+            return pb_1.Message.getField(this, 2) as string;
+        }
+        set Architecture(value: string) {
+            pb_1.Message.setField(this, 2, value);
+        }
+        get Iterations() {
+            return pb_1.Message.getField(this, 3) as number;
+        }
+        set Iterations(value: number) {
+            pb_1.Message.setField(this, 3, value);
+        }
+        get BadChars() {
+            return pb_1.Message.getField(this, 4) as Uint8Array;
+        }
+        set BadChars(value: Uint8Array) {
+            pb_1.Message.setField(this, 4, value);
+        }
+        get Data() {
+            return pb_1.Message.getField(this, 8) as Uint8Array;
+        }
+        set Data(value: Uint8Array) {
+            pb_1.Message.setField(this, 8, value);
+        }
+        get Request() {
+            return pb_1.Message.getWrapperField(this, dependency_1.commonpb.Request, 9) as dependency_1.commonpb.Request;
+        }
+        set Request(value: dependency_1.commonpb.Request) {
+            pb_1.Message.setWrapperField(this, 9, value);
+        }
+        static fromObject(data: {
+            Encoder?: ShellcodeEncoder;
+            Architecture?: string;
+            Iterations?: number;
+            BadChars?: Uint8Array;
+            Data?: Uint8Array;
+            Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
+        }) {
+            const message = new ShellcodeEncodeReq({});
+            if (data.Encoder != null) {
+                message.Encoder = data.Encoder;
+            }
+            if (data.Architecture != null) {
+                message.Architecture = data.Architecture;
+            }
+            if (data.Iterations != null) {
+                message.Iterations = data.Iterations;
+            }
+            if (data.BadChars != null) {
+                message.BadChars = data.BadChars;
+            }
+            if (data.Data != null) {
+                message.Data = data.Data;
+            }
+            if (data.Request != null) {
+                message.Request = dependency_1.commonpb.Request.fromObject(data.Request);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                Encoder?: ShellcodeEncoder;
+                Architecture?: string;
+                Iterations?: number;
+                BadChars?: Uint8Array;
+                Data?: Uint8Array;
+                Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
+            } = {};
+            if (this.Encoder != null) {
+                data.Encoder = this.Encoder;
+            }
+            if (this.Architecture != null) {
+                data.Architecture = this.Architecture;
+            }
+            if (this.Iterations != null) {
+                data.Iterations = this.Iterations;
+            }
+            if (this.BadChars != null) {
+                data.BadChars = this.BadChars;
+            }
+            if (this.Data != null) {
+                data.Data = this.Data;
+            }
+            if (this.Request != null) {
+                data.Request = this.Request.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.Encoder !== undefined)
+                writer.writeEnum(1, this.Encoder);
+            if (typeof this.Architecture === "string" && this.Architecture.length)
+                writer.writeString(2, this.Architecture);
+            if (this.Iterations !== undefined)
+                writer.writeUint32(3, this.Iterations);
+            if (this.BadChars !== undefined)
+                writer.writeBytes(4, this.BadChars);
+            if (this.Data !== undefined)
+                writer.writeBytes(8, this.Data);
+            if (this.Request !== undefined)
+                writer.writeMessage(9, this.Request, () => this.Request.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): ShellcodeEncodeReq {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new ShellcodeEncodeReq();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.Encoder = reader.readEnum();
+                        break;
+                    case 2:
+                        message.Architecture = reader.readString();
+                        break;
+                    case 3:
+                        message.Iterations = reader.readUint32();
+                        break;
+                    case 4:
+                        message.BadChars = reader.readBytes();
+                        break;
+                    case 8:
+                        message.Data = reader.readBytes();
+                        break;
+                    case 9:
+                        reader.readMessage(message.Request, () => message.Request = dependency_1.commonpb.Request.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): ShellcodeEncodeReq {
+            return ShellcodeEncodeReq.deserialize(bytes);
+        }
+    }
+    export class ShellcodeEncode extends pb_1.Message {
+        constructor(data?: any[] | {
+            Data?: Uint8Array;
+            Response?: dependency_1.commonpb.Response;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("Data" in data && data.Data != undefined) {
+                    this.Data = data.Data;
+                }
+                if ("Response" in data && data.Response != undefined) {
+                    this.Response = data.Response;
+                }
+            }
+        }
+        get Data() {
+            return pb_1.Message.getField(this, 8) as Uint8Array;
+        }
+        set Data(value: Uint8Array) {
+            pb_1.Message.setField(this, 8, value);
+        }
+        get Response() {
+            return pb_1.Message.getWrapperField(this, dependency_1.commonpb.Response, 9) as dependency_1.commonpb.Response;
+        }
+        set Response(value: dependency_1.commonpb.Response) {
+            pb_1.Message.setWrapperField(this, 9, value);
+        }
+        static fromObject(data: {
+            Data?: Uint8Array;
+            Response?: ReturnType<typeof dependency_1.commonpb.Response.prototype.toObject>;
+        }) {
+            const message = new ShellcodeEncode({});
+            if (data.Data != null) {
+                message.Data = data.Data;
+            }
+            if (data.Response != null) {
+                message.Response = dependency_1.commonpb.Response.fromObject(data.Response);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                Data?: Uint8Array;
+                Response?: ReturnType<typeof dependency_1.commonpb.Response.prototype.toObject>;
+            } = {};
+            if (this.Data != null) {
+                data.Data = this.Data;
+            }
+            if (this.Response != null) {
+                data.Response = this.Response.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.Data !== undefined)
+                writer.writeBytes(8, this.Data);
+            if (this.Response !== undefined)
+                writer.writeMessage(9, this.Response, () => this.Response.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): ShellcodeEncode {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new ShellcodeEncode();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 8:
+                        message.Data = reader.readBytes();
+                        break;
+                    case 9:
+                        reader.readMessage(message.Response, () => message.Response = dependency_1.commonpb.Response.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): ShellcodeEncode {
+            return ShellcodeEncode.deserialize(bytes);
+        }
+    }
+    export class ShellcodeEncoderMap extends pb_1.Message {
+        constructor(data?: any[] | {
+            Encoders?: Map<string, ShellcodeEncoder>;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("Encoders" in data && data.Encoders != undefined) {
+                    this.Encoders = data.Encoders;
+                }
+            }
+            if (!this.Encoders)
+                this.Encoders = new Map();
+        }
+        get Encoders() {
+            return pb_1.Message.getField(this, 1) as any as Map<string, ShellcodeEncoder>;
+        }
+        set Encoders(value: Map<string, ShellcodeEncoder>) {
+            pb_1.Message.setField(this, 1, value as any);
+        }
+        static fromObject(data: {
+            Encoders?: {
+                [key: string]: ShellcodeEncoder;
+            };
+        }) {
+            const message = new ShellcodeEncoderMap({});
+            if (typeof data.Encoders == "object") {
+                message.Encoders = new Map(Object.entries(data.Encoders));
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                Encoders?: {
+                    [key: string]: ShellcodeEncoder;
+                };
+            } = {};
+            if (this.Encoders.size > 0) {
+                data.Encoders = Object.fromEntries(this.Encoders);
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            for (const [key, value] of this.Encoders) {
+                writer.writeMessage(1, this.Encoders, () => {
+                    writer.writeString(1, key);
+                    writer.writeEnum(2, value);
+                });
+            }
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): ShellcodeEncoderMap {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new ShellcodeEncoderMap();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        reader.readMessage(message, () => pb_1.Map.deserializeBinary(message.Encoders as any, reader, reader.readString, reader.readEnum));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): ShellcodeEncoderMap {
+            return ShellcodeEncoderMap.deserialize(bytes);
         }
     }
 }

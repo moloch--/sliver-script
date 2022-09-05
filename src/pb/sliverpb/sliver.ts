@@ -6,6 +6,13 @@
 import * as dependency_1 from "./../commonpb/common";
 import * as pb_1 from "google-protobuf";
 export namespace sliverpb {
+    export enum RegistryType {
+        Unknown = 0,
+        Binary = 1,
+        String = 2,
+        DWORD = 3,
+        QWORD = 4
+    }
     export enum PivotType {
         TCP = 0,
         UDP = 1,
@@ -5470,10 +5477,16 @@ export namespace sliverpb {
             ClassName?: string;
             Method?: string;
             AppDomain?: string;
+            PPid?: number;
+            ProcessArgs?: string[];
+            InProcess?: boolean;
+            Runtime?: string;
+            AmsiBypass?: boolean;
+            EtwBypass?: boolean;
             Request?: dependency_1.commonpb.Request;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [11], []);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("Assembly" in data && data.Assembly != undefined) {
                     this.Assembly = data.Assembly;
@@ -5498,6 +5511,24 @@ export namespace sliverpb {
                 }
                 if ("AppDomain" in data && data.AppDomain != undefined) {
                     this.AppDomain = data.AppDomain;
+                }
+                if ("PPid" in data && data.PPid != undefined) {
+                    this.PPid = data.PPid;
+                }
+                if ("ProcessArgs" in data && data.ProcessArgs != undefined) {
+                    this.ProcessArgs = data.ProcessArgs;
+                }
+                if ("InProcess" in data && data.InProcess != undefined) {
+                    this.InProcess = data.InProcess;
+                }
+                if ("Runtime" in data && data.Runtime != undefined) {
+                    this.Runtime = data.Runtime;
+                }
+                if ("AmsiBypass" in data && data.AmsiBypass != undefined) {
+                    this.AmsiBypass = data.AmsiBypass;
+                }
+                if ("EtwBypass" in data && data.EtwBypass != undefined) {
+                    this.EtwBypass = data.EtwBypass;
                 }
                 if ("Request" in data && data.Request != undefined) {
                     this.Request = data.Request;
@@ -5552,6 +5583,42 @@ export namespace sliverpb {
         set AppDomain(value: string) {
             pb_1.Message.setField(this, 8, value);
         }
+        get PPid() {
+            return pb_1.Message.getField(this, 10) as number;
+        }
+        set PPid(value: number) {
+            pb_1.Message.setField(this, 10, value);
+        }
+        get ProcessArgs() {
+            return pb_1.Message.getField(this, 11) as string[];
+        }
+        set ProcessArgs(value: string[]) {
+            pb_1.Message.setField(this, 11, value);
+        }
+        get InProcess() {
+            return pb_1.Message.getField(this, 12) as boolean;
+        }
+        set InProcess(value: boolean) {
+            pb_1.Message.setField(this, 12, value);
+        }
+        get Runtime() {
+            return pb_1.Message.getField(this, 13) as string;
+        }
+        set Runtime(value: string) {
+            pb_1.Message.setField(this, 13, value);
+        }
+        get AmsiBypass() {
+            return pb_1.Message.getField(this, 14) as boolean;
+        }
+        set AmsiBypass(value: boolean) {
+            pb_1.Message.setField(this, 14, value);
+        }
+        get EtwBypass() {
+            return pb_1.Message.getField(this, 15) as boolean;
+        }
+        set EtwBypass(value: boolean) {
+            pb_1.Message.setField(this, 15, value);
+        }
         get Request() {
             return pb_1.Message.getWrapperField(this, dependency_1.commonpb.Request, 9) as dependency_1.commonpb.Request;
         }
@@ -5567,6 +5634,12 @@ export namespace sliverpb {
             ClassName?: string;
             Method?: string;
             AppDomain?: string;
+            PPid?: number;
+            ProcessArgs?: string[];
+            InProcess?: boolean;
+            Runtime?: string;
+            AmsiBypass?: boolean;
+            EtwBypass?: boolean;
             Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
         }) {
             const message = new ExecuteAssemblyReq({});
@@ -5594,6 +5667,24 @@ export namespace sliverpb {
             if (data.AppDomain != null) {
                 message.AppDomain = data.AppDomain;
             }
+            if (data.PPid != null) {
+                message.PPid = data.PPid;
+            }
+            if (data.ProcessArgs != null) {
+                message.ProcessArgs = data.ProcessArgs;
+            }
+            if (data.InProcess != null) {
+                message.InProcess = data.InProcess;
+            }
+            if (data.Runtime != null) {
+                message.Runtime = data.Runtime;
+            }
+            if (data.AmsiBypass != null) {
+                message.AmsiBypass = data.AmsiBypass;
+            }
+            if (data.EtwBypass != null) {
+                message.EtwBypass = data.EtwBypass;
+            }
             if (data.Request != null) {
                 message.Request = dependency_1.commonpb.Request.fromObject(data.Request);
             }
@@ -5609,6 +5700,12 @@ export namespace sliverpb {
                 ClassName?: string;
                 Method?: string;
                 AppDomain?: string;
+                PPid?: number;
+                ProcessArgs?: string[];
+                InProcess?: boolean;
+                Runtime?: string;
+                AmsiBypass?: boolean;
+                EtwBypass?: boolean;
                 Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
             } = {};
             if (this.Assembly != null) {
@@ -5635,6 +5732,24 @@ export namespace sliverpb {
             if (this.AppDomain != null) {
                 data.AppDomain = this.AppDomain;
             }
+            if (this.PPid != null) {
+                data.PPid = this.PPid;
+            }
+            if (this.ProcessArgs != null) {
+                data.ProcessArgs = this.ProcessArgs;
+            }
+            if (this.InProcess != null) {
+                data.InProcess = this.InProcess;
+            }
+            if (this.Runtime != null) {
+                data.Runtime = this.Runtime;
+            }
+            if (this.AmsiBypass != null) {
+                data.AmsiBypass = this.AmsiBypass;
+            }
+            if (this.EtwBypass != null) {
+                data.EtwBypass = this.EtwBypass;
+            }
             if (this.Request != null) {
                 data.Request = this.Request.toObject();
             }
@@ -5660,6 +5775,18 @@ export namespace sliverpb {
                 writer.writeString(7, this.Method);
             if (typeof this.AppDomain === "string" && this.AppDomain.length)
                 writer.writeString(8, this.AppDomain);
+            if (this.PPid !== undefined)
+                writer.writeUint32(10, this.PPid);
+            if (this.ProcessArgs !== undefined)
+                writer.writeRepeatedString(11, this.ProcessArgs);
+            if (this.InProcess !== undefined)
+                writer.writeBool(12, this.InProcess);
+            if (typeof this.Runtime === "string" && this.Runtime.length)
+                writer.writeString(13, this.Runtime);
+            if (this.AmsiBypass !== undefined)
+                writer.writeBool(14, this.AmsiBypass);
+            if (this.EtwBypass !== undefined)
+                writer.writeBool(15, this.EtwBypass);
             if (this.Request !== undefined)
                 writer.writeMessage(9, this.Request, () => this.Request.serialize(writer));
             if (!w)
@@ -5695,6 +5822,24 @@ export namespace sliverpb {
                     case 8:
                         message.AppDomain = reader.readString();
                         break;
+                    case 10:
+                        message.PPid = reader.readUint32();
+                        break;
+                    case 11:
+                        pb_1.Message.addToRepeatedField(message, 11, reader.readString());
+                        break;
+                    case 12:
+                        message.InProcess = reader.readBool();
+                        break;
+                    case 13:
+                        message.Runtime = reader.readString();
+                        break;
+                    case 14:
+                        message.AmsiBypass = reader.readBool();
+                        break;
+                    case 15:
+                        message.EtwBypass = reader.readBool();
+                        break;
                     case 9:
                         reader.readMessage(message.Request, () => message.Request = dependency_1.commonpb.Request.deserialize(reader));
                         break;
@@ -5714,16 +5859,24 @@ export namespace sliverpb {
         constructor(data?: any[] | {
             Data?: Uint8Array;
             process?: string;
+            PPid?: number;
+            ProcessArgs?: string[];
             Request?: dependency_1.commonpb.Request;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [11], []);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("Data" in data && data.Data != undefined) {
                     this.Data = data.Data;
                 }
                 if ("process" in data && data.process != undefined) {
                     this.process = data.process;
+                }
+                if ("PPid" in data && data.PPid != undefined) {
+                    this.PPid = data.PPid;
+                }
+                if ("ProcessArgs" in data && data.ProcessArgs != undefined) {
+                    this.ProcessArgs = data.ProcessArgs;
                 }
                 if ("Request" in data && data.Request != undefined) {
                     this.Request = data.Request;
@@ -5742,6 +5895,18 @@ export namespace sliverpb {
         set process(value: string) {
             pb_1.Message.setField(this, 2, value);
         }
+        get PPid() {
+            return pb_1.Message.getField(this, 10) as number;
+        }
+        set PPid(value: number) {
+            pb_1.Message.setField(this, 10, value);
+        }
+        get ProcessArgs() {
+            return pb_1.Message.getField(this, 11) as string[];
+        }
+        set ProcessArgs(value: string[]) {
+            pb_1.Message.setField(this, 11, value);
+        }
         get Request() {
             return pb_1.Message.getWrapperField(this, dependency_1.commonpb.Request, 9) as dependency_1.commonpb.Request;
         }
@@ -5751,6 +5916,8 @@ export namespace sliverpb {
         static fromObject(data: {
             Data?: Uint8Array;
             process?: string;
+            PPid?: number;
+            ProcessArgs?: string[];
             Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
         }) {
             const message = new InvokeExecuteAssemblyReq({});
@@ -5759,6 +5926,12 @@ export namespace sliverpb {
             }
             if (data.process != null) {
                 message.process = data.process;
+            }
+            if (data.PPid != null) {
+                message.PPid = data.PPid;
+            }
+            if (data.ProcessArgs != null) {
+                message.ProcessArgs = data.ProcessArgs;
             }
             if (data.Request != null) {
                 message.Request = dependency_1.commonpb.Request.fromObject(data.Request);
@@ -5769,6 +5942,8 @@ export namespace sliverpb {
             const data: {
                 Data?: Uint8Array;
                 process?: string;
+                PPid?: number;
+                ProcessArgs?: string[];
                 Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
             } = {};
             if (this.Data != null) {
@@ -5776,6 +5951,12 @@ export namespace sliverpb {
             }
             if (this.process != null) {
                 data.process = this.process;
+            }
+            if (this.PPid != null) {
+                data.PPid = this.PPid;
+            }
+            if (this.ProcessArgs != null) {
+                data.ProcessArgs = this.ProcessArgs;
             }
             if (this.Request != null) {
                 data.Request = this.Request.toObject();
@@ -5790,6 +5971,10 @@ export namespace sliverpb {
                 writer.writeBytes(1, this.Data);
             if (typeof this.process === "string" && this.process.length)
                 writer.writeString(2, this.process);
+            if (this.PPid !== undefined)
+                writer.writeUint32(10, this.PPid);
+            if (this.ProcessArgs !== undefined)
+                writer.writeRepeatedString(11, this.ProcessArgs);
             if (this.Request !== undefined)
                 writer.writeMessage(9, this.Request, () => this.Request.serialize(writer));
             if (!w)
@@ -5807,6 +5992,12 @@ export namespace sliverpb {
                     case 2:
                         message.process = reader.readString();
                         break;
+                    case 10:
+                        message.PPid = reader.readUint32();
+                        break;
+                    case 11:
+                        pb_1.Message.addToRepeatedField(message, 11, reader.readString());
+                        break;
                     case 9:
                         reader.readMessage(message.Request, () => message.Request = dependency_1.commonpb.Request.deserialize(reader));
                         break;
@@ -5820,6 +6011,187 @@ export namespace sliverpb {
         }
         static deserializeBinary(bytes: Uint8Array): InvokeExecuteAssemblyReq {
             return InvokeExecuteAssemblyReq.deserialize(bytes);
+        }
+    }
+    export class InvokeInProcExecuteAssemblyReq extends pb_1.Message {
+        constructor(data?: any[] | {
+            Data?: Uint8Array;
+            Arguments?: string[];
+            Runtime?: string;
+            AmsiBypass?: boolean;
+            EtwBypass?: boolean;
+            Request?: dependency_1.commonpb.Request;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("Data" in data && data.Data != undefined) {
+                    this.Data = data.Data;
+                }
+                if ("Arguments" in data && data.Arguments != undefined) {
+                    this.Arguments = data.Arguments;
+                }
+                if ("Runtime" in data && data.Runtime != undefined) {
+                    this.Runtime = data.Runtime;
+                }
+                if ("AmsiBypass" in data && data.AmsiBypass != undefined) {
+                    this.AmsiBypass = data.AmsiBypass;
+                }
+                if ("EtwBypass" in data && data.EtwBypass != undefined) {
+                    this.EtwBypass = data.EtwBypass;
+                }
+                if ("Request" in data && data.Request != undefined) {
+                    this.Request = data.Request;
+                }
+            }
+        }
+        get Data() {
+            return pb_1.Message.getField(this, 1) as Uint8Array;
+        }
+        set Data(value: Uint8Array) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        get Arguments() {
+            return pb_1.Message.getField(this, 2) as string[];
+        }
+        set Arguments(value: string[]) {
+            pb_1.Message.setField(this, 2, value);
+        }
+        get Runtime() {
+            return pb_1.Message.getField(this, 3) as string;
+        }
+        set Runtime(value: string) {
+            pb_1.Message.setField(this, 3, value);
+        }
+        get AmsiBypass() {
+            return pb_1.Message.getField(this, 4) as boolean;
+        }
+        set AmsiBypass(value: boolean) {
+            pb_1.Message.setField(this, 4, value);
+        }
+        get EtwBypass() {
+            return pb_1.Message.getField(this, 5) as boolean;
+        }
+        set EtwBypass(value: boolean) {
+            pb_1.Message.setField(this, 5, value);
+        }
+        get Request() {
+            return pb_1.Message.getWrapperField(this, dependency_1.commonpb.Request, 9) as dependency_1.commonpb.Request;
+        }
+        set Request(value: dependency_1.commonpb.Request) {
+            pb_1.Message.setWrapperField(this, 9, value);
+        }
+        static fromObject(data: {
+            Data?: Uint8Array;
+            Arguments?: string[];
+            Runtime?: string;
+            AmsiBypass?: boolean;
+            EtwBypass?: boolean;
+            Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
+        }) {
+            const message = new InvokeInProcExecuteAssemblyReq({});
+            if (data.Data != null) {
+                message.Data = data.Data;
+            }
+            if (data.Arguments != null) {
+                message.Arguments = data.Arguments;
+            }
+            if (data.Runtime != null) {
+                message.Runtime = data.Runtime;
+            }
+            if (data.AmsiBypass != null) {
+                message.AmsiBypass = data.AmsiBypass;
+            }
+            if (data.EtwBypass != null) {
+                message.EtwBypass = data.EtwBypass;
+            }
+            if (data.Request != null) {
+                message.Request = dependency_1.commonpb.Request.fromObject(data.Request);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                Data?: Uint8Array;
+                Arguments?: string[];
+                Runtime?: string;
+                AmsiBypass?: boolean;
+                EtwBypass?: boolean;
+                Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
+            } = {};
+            if (this.Data != null) {
+                data.Data = this.Data;
+            }
+            if (this.Arguments != null) {
+                data.Arguments = this.Arguments;
+            }
+            if (this.Runtime != null) {
+                data.Runtime = this.Runtime;
+            }
+            if (this.AmsiBypass != null) {
+                data.AmsiBypass = this.AmsiBypass;
+            }
+            if (this.EtwBypass != null) {
+                data.EtwBypass = this.EtwBypass;
+            }
+            if (this.Request != null) {
+                data.Request = this.Request.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.Data !== undefined)
+                writer.writeBytes(1, this.Data);
+            if (this.Arguments !== undefined)
+                writer.writeRepeatedString(2, this.Arguments);
+            if (typeof this.Runtime === "string" && this.Runtime.length)
+                writer.writeString(3, this.Runtime);
+            if (this.AmsiBypass !== undefined)
+                writer.writeBool(4, this.AmsiBypass);
+            if (this.EtwBypass !== undefined)
+                writer.writeBool(5, this.EtwBypass);
+            if (this.Request !== undefined)
+                writer.writeMessage(9, this.Request, () => this.Request.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): InvokeInProcExecuteAssemblyReq {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new InvokeInProcExecuteAssemblyReq();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.Data = reader.readBytes();
+                        break;
+                    case 2:
+                        pb_1.Message.addToRepeatedField(message, 2, reader.readString());
+                        break;
+                    case 3:
+                        message.Runtime = reader.readString();
+                        break;
+                    case 4:
+                        message.AmsiBypass = reader.readBool();
+                        break;
+                    case 5:
+                        message.EtwBypass = reader.readBool();
+                        break;
+                    case 9:
+                        reader.readMessage(message.Request, () => message.Request = dependency_1.commonpb.Request.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): InvokeInProcExecuteAssemblyReq {
+            return InvokeInProcExecuteAssemblyReq.deserialize(bytes);
         }
     }
     export class ExecuteAssembly extends pb_1.Message {
@@ -6119,6 +6491,7 @@ export namespace sliverpb {
             Output?: boolean;
             Stdout?: string;
             Stderr?: string;
+            PPid?: number;
             Request?: dependency_1.commonpb.Request;
         }) {
             super();
@@ -6138,6 +6511,9 @@ export namespace sliverpb {
                 }
                 if ("Stderr" in data && data.Stderr != undefined) {
                     this.Stderr = data.Stderr;
+                }
+                if ("PPid" in data && data.PPid != undefined) {
+                    this.PPid = data.PPid;
                 }
                 if ("Request" in data && data.Request != undefined) {
                     this.Request = data.Request;
@@ -6174,6 +6550,12 @@ export namespace sliverpb {
         set Stderr(value: string) {
             pb_1.Message.setField(this, 5, value);
         }
+        get PPid() {
+            return pb_1.Message.getField(this, 10) as number;
+        }
+        set PPid(value: number) {
+            pb_1.Message.setField(this, 10, value);
+        }
         get Request() {
             return pb_1.Message.getWrapperField(this, dependency_1.commonpb.Request, 9) as dependency_1.commonpb.Request;
         }
@@ -6186,6 +6568,7 @@ export namespace sliverpb {
             Output?: boolean;
             Stdout?: string;
             Stderr?: string;
+            PPid?: number;
             Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
         }) {
             const message = new ExecuteReq({});
@@ -6204,6 +6587,9 @@ export namespace sliverpb {
             if (data.Stderr != null) {
                 message.Stderr = data.Stderr;
             }
+            if (data.PPid != null) {
+                message.PPid = data.PPid;
+            }
             if (data.Request != null) {
                 message.Request = dependency_1.commonpb.Request.fromObject(data.Request);
             }
@@ -6216,6 +6602,7 @@ export namespace sliverpb {
                 Output?: boolean;
                 Stdout?: string;
                 Stderr?: string;
+                PPid?: number;
                 Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
             } = {};
             if (this.Path != null) {
@@ -6232,6 +6619,9 @@ export namespace sliverpb {
             }
             if (this.Stderr != null) {
                 data.Stderr = this.Stderr;
+            }
+            if (this.PPid != null) {
+                data.PPid = this.PPid;
             }
             if (this.Request != null) {
                 data.Request = this.Request.toObject();
@@ -6252,6 +6642,8 @@ export namespace sliverpb {
                 writer.writeString(4, this.Stdout);
             if (typeof this.Stderr === "string" && this.Stderr.length)
                 writer.writeString(5, this.Stderr);
+            if (this.PPid !== undefined)
+                writer.writeUint32(10, this.PPid);
             if (this.Request !== undefined)
                 writer.writeMessage(9, this.Request, () => this.Request.serialize(writer));
             if (!w)
@@ -6278,6 +6670,9 @@ export namespace sliverpb {
                     case 5:
                         message.Stderr = reader.readString();
                         break;
+                    case 10:
+                        message.PPid = reader.readUint32();
+                        break;
                     case 9:
                         reader.readMessage(message.Request, () => message.Request = dependency_1.commonpb.Request.deserialize(reader));
                         break;
@@ -6293,13 +6688,15 @@ export namespace sliverpb {
             return ExecuteReq.deserialize(bytes);
         }
     }
-    export class ExecuteTokenReq extends pb_1.Message {
+    export class ExecuteWindowsReq extends pb_1.Message {
         constructor(data?: any[] | {
             Path?: string;
             Args?: string[];
             Output?: boolean;
             Stdout?: string;
             Stderr?: string;
+            UseToken?: boolean;
+            PPid?: number;
             Request?: dependency_1.commonpb.Request;
         }) {
             super();
@@ -6319,6 +6716,12 @@ export namespace sliverpb {
                 }
                 if ("Stderr" in data && data.Stderr != undefined) {
                     this.Stderr = data.Stderr;
+                }
+                if ("UseToken" in data && data.UseToken != undefined) {
+                    this.UseToken = data.UseToken;
+                }
+                if ("PPid" in data && data.PPid != undefined) {
+                    this.PPid = data.PPid;
                 }
                 if ("Request" in data && data.Request != undefined) {
                     this.Request = data.Request;
@@ -6355,6 +6758,18 @@ export namespace sliverpb {
         set Stderr(value: string) {
             pb_1.Message.setField(this, 5, value);
         }
+        get UseToken() {
+            return pb_1.Message.getField(this, 6) as boolean;
+        }
+        set UseToken(value: boolean) {
+            pb_1.Message.setField(this, 6, value);
+        }
+        get PPid() {
+            return pb_1.Message.getField(this, 10) as number;
+        }
+        set PPid(value: number) {
+            pb_1.Message.setField(this, 10, value);
+        }
         get Request() {
             return pb_1.Message.getWrapperField(this, dependency_1.commonpb.Request, 9) as dependency_1.commonpb.Request;
         }
@@ -6367,9 +6782,11 @@ export namespace sliverpb {
             Output?: boolean;
             Stdout?: string;
             Stderr?: string;
+            UseToken?: boolean;
+            PPid?: number;
             Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
         }) {
-            const message = new ExecuteTokenReq({});
+            const message = new ExecuteWindowsReq({});
             if (data.Path != null) {
                 message.Path = data.Path;
             }
@@ -6385,6 +6802,12 @@ export namespace sliverpb {
             if (data.Stderr != null) {
                 message.Stderr = data.Stderr;
             }
+            if (data.UseToken != null) {
+                message.UseToken = data.UseToken;
+            }
+            if (data.PPid != null) {
+                message.PPid = data.PPid;
+            }
             if (data.Request != null) {
                 message.Request = dependency_1.commonpb.Request.fromObject(data.Request);
             }
@@ -6397,6 +6820,8 @@ export namespace sliverpb {
                 Output?: boolean;
                 Stdout?: string;
                 Stderr?: string;
+                UseToken?: boolean;
+                PPid?: number;
                 Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
             } = {};
             if (this.Path != null) {
@@ -6413,6 +6838,12 @@ export namespace sliverpb {
             }
             if (this.Stderr != null) {
                 data.Stderr = this.Stderr;
+            }
+            if (this.UseToken != null) {
+                data.UseToken = this.UseToken;
+            }
+            if (this.PPid != null) {
+                data.PPid = this.PPid;
             }
             if (this.Request != null) {
                 data.Request = this.Request.toObject();
@@ -6433,13 +6864,17 @@ export namespace sliverpb {
                 writer.writeString(4, this.Stdout);
             if (typeof this.Stderr === "string" && this.Stderr.length)
                 writer.writeString(5, this.Stderr);
+            if (this.UseToken !== undefined)
+                writer.writeBool(6, this.UseToken);
+            if (this.PPid !== undefined)
+                writer.writeUint32(10, this.PPid);
             if (this.Request !== undefined)
                 writer.writeMessage(9, this.Request, () => this.Request.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): ExecuteTokenReq {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new ExecuteTokenReq();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): ExecuteWindowsReq {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new ExecuteWindowsReq();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
@@ -6459,6 +6894,12 @@ export namespace sliverpb {
                     case 5:
                         message.Stderr = reader.readString();
                         break;
+                    case 6:
+                        message.UseToken = reader.readBool();
+                        break;
+                    case 10:
+                        message.PPid = reader.readUint32();
+                        break;
                     case 9:
                         reader.readMessage(message.Request, () => message.Request = dependency_1.commonpb.Request.deserialize(reader));
                         break;
@@ -6470,8 +6911,8 @@ export namespace sliverpb {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): ExecuteTokenReq {
-            return ExecuteTokenReq.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): ExecuteWindowsReq {
+            return ExecuteWindowsReq.deserialize(bytes);
         }
     }
     export class Execute extends pb_1.Message {
@@ -6640,10 +7081,13 @@ export namespace sliverpb {
             EntryPoint?: string;
             Kill?: boolean;
             isDLL?: boolean;
+            isUnicode?: boolean;
+            PPid?: number;
+            ProcessArgs?: string[];
             Request?: dependency_1.commonpb.Request;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [11], []);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("Data" in data && data.Data != undefined) {
                     this.Data = data.Data;
@@ -6662,6 +7106,15 @@ export namespace sliverpb {
                 }
                 if ("isDLL" in data && data.isDLL != undefined) {
                     this.isDLL = data.isDLL;
+                }
+                if ("isUnicode" in data && data.isUnicode != undefined) {
+                    this.isUnicode = data.isUnicode;
+                }
+                if ("PPid" in data && data.PPid != undefined) {
+                    this.PPid = data.PPid;
+                }
+                if ("ProcessArgs" in data && data.ProcessArgs != undefined) {
+                    this.ProcessArgs = data.ProcessArgs;
                 }
                 if ("Request" in data && data.Request != undefined) {
                     this.Request = data.Request;
@@ -6704,6 +7157,24 @@ export namespace sliverpb {
         set isDLL(value: boolean) {
             pb_1.Message.setField(this, 6, value);
         }
+        get isUnicode() {
+            return pb_1.Message.getField(this, 7) as boolean;
+        }
+        set isUnicode(value: boolean) {
+            pb_1.Message.setField(this, 7, value);
+        }
+        get PPid() {
+            return pb_1.Message.getField(this, 10) as number;
+        }
+        set PPid(value: number) {
+            pb_1.Message.setField(this, 10, value);
+        }
+        get ProcessArgs() {
+            return pb_1.Message.getField(this, 11) as string[];
+        }
+        set ProcessArgs(value: string[]) {
+            pb_1.Message.setField(this, 11, value);
+        }
         get Request() {
             return pb_1.Message.getWrapperField(this, dependency_1.commonpb.Request, 9) as dependency_1.commonpb.Request;
         }
@@ -6717,6 +7188,9 @@ export namespace sliverpb {
             EntryPoint?: string;
             Kill?: boolean;
             isDLL?: boolean;
+            isUnicode?: boolean;
+            PPid?: number;
+            ProcessArgs?: string[];
             Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
         }) {
             const message = new SideloadReq({});
@@ -6738,6 +7212,15 @@ export namespace sliverpb {
             if (data.isDLL != null) {
                 message.isDLL = data.isDLL;
             }
+            if (data.isUnicode != null) {
+                message.isUnicode = data.isUnicode;
+            }
+            if (data.PPid != null) {
+                message.PPid = data.PPid;
+            }
+            if (data.ProcessArgs != null) {
+                message.ProcessArgs = data.ProcessArgs;
+            }
             if (data.Request != null) {
                 message.Request = dependency_1.commonpb.Request.fromObject(data.Request);
             }
@@ -6751,6 +7234,9 @@ export namespace sliverpb {
                 EntryPoint?: string;
                 Kill?: boolean;
                 isDLL?: boolean;
+                isUnicode?: boolean;
+                PPid?: number;
+                ProcessArgs?: string[];
                 Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
             } = {};
             if (this.Data != null) {
@@ -6770,6 +7256,15 @@ export namespace sliverpb {
             }
             if (this.isDLL != null) {
                 data.isDLL = this.isDLL;
+            }
+            if (this.isUnicode != null) {
+                data.isUnicode = this.isUnicode;
+            }
+            if (this.PPid != null) {
+                data.PPid = this.PPid;
+            }
+            if (this.ProcessArgs != null) {
+                data.ProcessArgs = this.ProcessArgs;
             }
             if (this.Request != null) {
                 data.Request = this.Request.toObject();
@@ -6792,6 +7287,12 @@ export namespace sliverpb {
                 writer.writeBool(5, this.Kill);
             if (this.isDLL !== undefined)
                 writer.writeBool(6, this.isDLL);
+            if (this.isUnicode !== undefined)
+                writer.writeBool(7, this.isUnicode);
+            if (this.PPid !== undefined)
+                writer.writeUint32(10, this.PPid);
+            if (this.ProcessArgs !== undefined)
+                writer.writeRepeatedString(11, this.ProcessArgs);
             if (this.Request !== undefined)
                 writer.writeMessage(9, this.Request, () => this.Request.serialize(writer));
             if (!w)
@@ -6820,6 +7321,15 @@ export namespace sliverpb {
                         break;
                     case 6:
                         message.isDLL = reader.readBool();
+                        break;
+                    case 7:
+                        message.isUnicode = reader.readBool();
+                        break;
+                    case 10:
+                        message.PPid = reader.readUint32();
+                        break;
+                    case 11:
+                        pb_1.Message.addToRepeatedField(message, 11, reader.readString());
                         break;
                     case 9:
                         reader.readMessage(message.Request, () => message.Request = dependency_1.commonpb.Request.deserialize(reader));
@@ -6932,10 +7442,12 @@ export namespace sliverpb {
             Args?: string;
             EntryPoint?: string;
             Kill?: boolean;
+            PPid?: number;
+            ProcessArgs?: string[];
             Request?: dependency_1.commonpb.Request;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [11], []);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("Data" in data && data.Data != undefined) {
                     this.Data = data.Data;
@@ -6951,6 +7463,12 @@ export namespace sliverpb {
                 }
                 if ("Kill" in data && data.Kill != undefined) {
                     this.Kill = data.Kill;
+                }
+                if ("PPid" in data && data.PPid != undefined) {
+                    this.PPid = data.PPid;
+                }
+                if ("ProcessArgs" in data && data.ProcessArgs != undefined) {
+                    this.ProcessArgs = data.ProcessArgs;
                 }
                 if ("Request" in data && data.Request != undefined) {
                     this.Request = data.Request;
@@ -6987,6 +7505,18 @@ export namespace sliverpb {
         set Kill(value: boolean) {
             pb_1.Message.setField(this, 5, value);
         }
+        get PPid() {
+            return pb_1.Message.getField(this, 10) as number;
+        }
+        set PPid(value: number) {
+            pb_1.Message.setField(this, 10, value);
+        }
+        get ProcessArgs() {
+            return pb_1.Message.getField(this, 11) as string[];
+        }
+        set ProcessArgs(value: string[]) {
+            pb_1.Message.setField(this, 11, value);
+        }
         get Request() {
             return pb_1.Message.getWrapperField(this, dependency_1.commonpb.Request, 9) as dependency_1.commonpb.Request;
         }
@@ -6999,6 +7529,8 @@ export namespace sliverpb {
             Args?: string;
             EntryPoint?: string;
             Kill?: boolean;
+            PPid?: number;
+            ProcessArgs?: string[];
             Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
         }) {
             const message = new InvokeSpawnDllReq({});
@@ -7017,6 +7549,12 @@ export namespace sliverpb {
             if (data.Kill != null) {
                 message.Kill = data.Kill;
             }
+            if (data.PPid != null) {
+                message.PPid = data.PPid;
+            }
+            if (data.ProcessArgs != null) {
+                message.ProcessArgs = data.ProcessArgs;
+            }
             if (data.Request != null) {
                 message.Request = dependency_1.commonpb.Request.fromObject(data.Request);
             }
@@ -7029,6 +7567,8 @@ export namespace sliverpb {
                 Args?: string;
                 EntryPoint?: string;
                 Kill?: boolean;
+                PPid?: number;
+                ProcessArgs?: string[];
                 Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
             } = {};
             if (this.Data != null) {
@@ -7045,6 +7585,12 @@ export namespace sliverpb {
             }
             if (this.Kill != null) {
                 data.Kill = this.Kill;
+            }
+            if (this.PPid != null) {
+                data.PPid = this.PPid;
+            }
+            if (this.ProcessArgs != null) {
+                data.ProcessArgs = this.ProcessArgs;
             }
             if (this.Request != null) {
                 data.Request = this.Request.toObject();
@@ -7065,6 +7611,10 @@ export namespace sliverpb {
                 writer.writeString(4, this.EntryPoint);
             if (this.Kill !== undefined)
                 writer.writeBool(5, this.Kill);
+            if (this.PPid !== undefined)
+                writer.writeUint32(10, this.PPid);
+            if (this.ProcessArgs !== undefined)
+                writer.writeRepeatedString(11, this.ProcessArgs);
             if (this.Request !== undefined)
                 writer.writeMessage(9, this.Request, () => this.Request.serialize(writer));
             if (!w)
@@ -7091,6 +7641,12 @@ export namespace sliverpb {
                     case 5:
                         message.Kill = reader.readBool();
                         break;
+                    case 10:
+                        message.PPid = reader.readUint32();
+                        break;
+                    case 11:
+                        pb_1.Message.addToRepeatedField(message, 11, reader.readString());
+                        break;
                     case 9:
                         reader.readMessage(message.Request, () => message.Request = dependency_1.commonpb.Request.deserialize(reader));
                         break;
@@ -7113,10 +7669,12 @@ export namespace sliverpb {
             Offset?: number;
             Args?: string;
             Kill?: boolean;
+            PPid?: number;
+            ProcessArgs?: string[];
             Request?: dependency_1.commonpb.Request;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [11], []);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("Data" in data && data.Data != undefined) {
                     this.Data = data.Data;
@@ -7132,6 +7690,12 @@ export namespace sliverpb {
                 }
                 if ("Kill" in data && data.Kill != undefined) {
                     this.Kill = data.Kill;
+                }
+                if ("PPid" in data && data.PPid != undefined) {
+                    this.PPid = data.PPid;
+                }
+                if ("ProcessArgs" in data && data.ProcessArgs != undefined) {
+                    this.ProcessArgs = data.ProcessArgs;
                 }
                 if ("Request" in data && data.Request != undefined) {
                     this.Request = data.Request;
@@ -7168,6 +7732,18 @@ export namespace sliverpb {
         set Kill(value: boolean) {
             pb_1.Message.setField(this, 5, value);
         }
+        get PPid() {
+            return pb_1.Message.getField(this, 10) as number;
+        }
+        set PPid(value: number) {
+            pb_1.Message.setField(this, 10, value);
+        }
+        get ProcessArgs() {
+            return pb_1.Message.getField(this, 11) as string[];
+        }
+        set ProcessArgs(value: string[]) {
+            pb_1.Message.setField(this, 11, value);
+        }
         get Request() {
             return pb_1.Message.getWrapperField(this, dependency_1.commonpb.Request, 9) as dependency_1.commonpb.Request;
         }
@@ -7180,6 +7756,8 @@ export namespace sliverpb {
             Offset?: number;
             Args?: string;
             Kill?: boolean;
+            PPid?: number;
+            ProcessArgs?: string[];
             Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
         }) {
             const message = new SpawnDllReq({});
@@ -7198,6 +7776,12 @@ export namespace sliverpb {
             if (data.Kill != null) {
                 message.Kill = data.Kill;
             }
+            if (data.PPid != null) {
+                message.PPid = data.PPid;
+            }
+            if (data.ProcessArgs != null) {
+                message.ProcessArgs = data.ProcessArgs;
+            }
             if (data.Request != null) {
                 message.Request = dependency_1.commonpb.Request.fromObject(data.Request);
             }
@@ -7210,6 +7794,8 @@ export namespace sliverpb {
                 Offset?: number;
                 Args?: string;
                 Kill?: boolean;
+                PPid?: number;
+                ProcessArgs?: string[];
                 Request?: ReturnType<typeof dependency_1.commonpb.Request.prototype.toObject>;
             } = {};
             if (this.Data != null) {
@@ -7226,6 +7812,12 @@ export namespace sliverpb {
             }
             if (this.Kill != null) {
                 data.Kill = this.Kill;
+            }
+            if (this.PPid != null) {
+                data.PPid = this.PPid;
+            }
+            if (this.ProcessArgs != null) {
+                data.ProcessArgs = this.ProcessArgs;
             }
             if (this.Request != null) {
                 data.Request = this.Request.toObject();
@@ -7246,6 +7838,10 @@ export namespace sliverpb {
                 writer.writeString(4, this.Args);
             if (this.Kill !== undefined)
                 writer.writeBool(5, this.Kill);
+            if (this.PPid !== undefined)
+                writer.writeUint32(10, this.PPid);
+            if (this.ProcessArgs !== undefined)
+                writer.writeRepeatedString(11, this.ProcessArgs);
             if (this.Request !== undefined)
                 writer.writeMessage(9, this.Request, () => this.Request.serialize(writer));
             if (!w)
@@ -7271,6 +7867,12 @@ export namespace sliverpb {
                         break;
                     case 5:
                         message.Kill = reader.readBool();
+                        break;
+                    case 10:
+                        message.PPid = reader.readUint32();
+                        break;
+                    case 11:
+                        pb_1.Message.addToRepeatedField(message, 11, reader.readString());
                         break;
                     case 9:
                         reader.readMessage(message.Request, () => message.Request = dependency_1.commonpb.Request.deserialize(reader));
